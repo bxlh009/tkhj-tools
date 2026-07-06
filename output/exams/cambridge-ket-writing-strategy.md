@@ -1,7 +1,7 @@
 ---
 title: "Cambridge KET Writing Strategy: 3 Steps to Break Basic Sentences"
 slug: "cambridge-ket-writing-strategy"
-date: "2026-07-06"
+date: "2026-04-24"
 exam: "Cambridge KET"
 section: "Writing"
 primary_keyword: "cambridge ket writing strategy"

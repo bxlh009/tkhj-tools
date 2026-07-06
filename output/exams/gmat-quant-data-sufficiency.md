@@ -1,7 +1,7 @@
 ---
 title: "GMAT Quant Data Sufficiency: 5 Proven Strategies to Stop Guessing"
 slug: "gmat-quant-data-sufficiency"
-date: "2026-07-06"
+date: "2026-05-07"
 exam: "GMAT"
 section: "Quant"
 primary_keyword: "gmat quant data sufficiency"

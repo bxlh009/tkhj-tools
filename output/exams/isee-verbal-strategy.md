@@ -1,7 +1,7 @@
 ---
 title: "ISEE Verbal Strategy: 3 Proven Steps to Boost Synonyms & Reading Comprehension Scores"
 slug: "isee-verbal-strategy"
-date: "2026-07-06"
+date: "2026-05-23"
 exam: "ISEE"
 section: "Verbal"
 primary_keyword: "isee verbal strategy"

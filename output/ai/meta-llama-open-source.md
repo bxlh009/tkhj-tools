@@ -1,7 +1,7 @@
 ---
 title: "Meta Llama open source 2026: Why the new 405B model changes everything for devs"
 slug: "meta-llama-open-source"
-date: "2026-07-06"
+date: "2026-06-02"
 category: "ai-news"
 primary_keyword: "Meta Llama open source 2026"
 long_tail: ["Meta Llama open source 2026", "Llama 4 405B benchmark", "open source AI alternatives 2026"]

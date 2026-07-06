@@ -1,7 +1,7 @@
 ---
 title: "IB English Paper 1 Guide: 5 Textual Analysis Strategies to Boost Your Score"
 slug: "ib-english-paper1-guide"
-date: "2026-07-06"
+date: "2026-05-15"
 exam: "IB English"
 section: "Paper 1"
 primary_keyword: "ib english paper1 guide"

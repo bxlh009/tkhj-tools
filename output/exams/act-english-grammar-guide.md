@@ -1,7 +1,7 @@
 ---
 title: "ACT English Grammar Guide: 5 Fixes to Boost Your Score Fast"
 slug: "act-english-grammar-guide"
-date: "2026-07-06"
+date: "2026-02-05"
 exam: "ACT"
 section: "English"
 primary_keyword: "act english grammar guide"

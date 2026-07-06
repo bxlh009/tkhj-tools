@@ -1,7 +1,7 @@
 ---
 title: "Cambridge Flyers Reading: 5 Fixes for Basic Vocabulary Struggles"
 slug: "cambridge-flyers-reading"
-date: "2026-07-06"
+date: "2026-04-21"
 exam: "Cambridge Flyers"
 section: "Reading"
 primary_keyword: "cambridge flyers reading"

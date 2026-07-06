@@ -1,7 +1,7 @@
 ---
 title: "AI Focus Apps Comparison 2026: Which One Actually Blocks Distractions?"
 slug: "ai-focus-apps-comparison"
-date: "2026-07-06"
+date: "2026-02-18"
 category: "comparison"
 primary_keyword: "ai focus apps comparison"
 long_tail: ["ai focus apps comparison", "best ai blocker 2026", "smart distraction filter"]

@@ -1,7 +1,7 @@
 ---
 title: "IELTS Writing Band 7 Tips: 4 Proven Strategies to Break the 6.5 Plateau"
 slug: "ielts-writing-band-7-strategy"
-date: "2026-04-28"
+date: "2026-01-18"
 exam: "IELTS"
 section: "Writing"
 primary_keyword: "ielts writing band 7 tips"

@@ -1,7 +1,7 @@
 ---
 title: "LSAT Logical Reasoning: 5 Flaw Question Hacks to Boost Your Score Fast"
 slug: "lsat-logical-reasoning"
-date: "2026-07-06"
+date: "2026-05-25"
 exam: "LSAT"
 section: "Logical Reasoning"
 primary_keyword: "lsat logical reasoning"

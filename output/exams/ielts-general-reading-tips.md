@@ -1,7 +1,7 @@
 ---
 title: "IELTS General Reading Tips: 5 Proven Strategies to Fix Slow Skimming"
 slug: "ielts-general-reading-tips"
-date: "2026-07-06"
+date: "2026-05-20"
 exam: "IELTS General"
 section: "Reading"
 primary_keyword: "ielts general reading tips"

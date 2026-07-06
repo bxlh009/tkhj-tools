@@ -1,7 +1,7 @@
 ---
 title: "OpenAI Google Anthropic July 2026: Who Actually Won the Summer War?"
 slug: "ai-news-roundup-july-2026"
-date: "2026-07-06"
+date: "2026-03-06"
 category: "comparison"
 primary_keyword: "OpenAI Google Anthropic July 2026"
 long_tail: ["AI news this week", "latest AI breakthroughs"]

@@ -1,7 +1,7 @@
 ---
 title: "Cambridge PET Reading Tips: 3 Strategies to Fix Slow Comprehension Fast"
 slug: "cambridge-pet-reading-tips"
-date: "2026-07-06"
+date: "2026-04-27"
 exam: "Cambridge PET (B1 Preliminary)"
 section: "Reading"
 primary_keyword: "cambridge pet reading tips"

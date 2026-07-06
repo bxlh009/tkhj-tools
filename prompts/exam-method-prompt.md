@@ -10,7 +10,7 @@ Language = **English** only.
 - Word count: {min_words}-{max_words} (target: 2000+). If short by even 50 words, quality drops a tier.
 - Article date must be: date: "{current_date}"
 - All dates / prices / version numbers = real, current-year (2026). No hallucinated dates.
-- Zero copied official text. Every example question = freshly written (change topic, numbers, characters; keep the test concept).
+- Zero copied official text. Paraphrase everything in your own words. Never copy sentences from any source. Every example question = freshly written (change topic, numbers, characters; keep the test concept).
 - VARY the article structure each time. Some articles start with a story, others with data, others with a question. Avoid repetitive patterns.
 - Dont always include Q&A sections. Some articles can have them, others should skip them entirely.
 - Dont always start with a student anecdote. Mix it up.

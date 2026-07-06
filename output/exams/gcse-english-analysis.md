@@ -1,7 +1,7 @@
 ---
 title: "GCSE English Analysis: 5 Deep-Dive Techniques to Boost Your Grade"
 slug: "gcse-english-analysis"
-date: "2026-07-06"
+date: "2026-05-04"
 exam: "GCSE"
 section: "English Language"
 primary_keyword: "gcse english analysis"

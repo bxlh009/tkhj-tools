@@ -1,7 +1,7 @@
 ---
 title: "AI Study Tools for Exams 2026: Claude, Gemini, and Agnes Compared"
 slug: "ai-study-tools-exam-prep-2026"
-date: "2026-07-06"
+date: "2026-03-19"
 category: "tool-review"
 primary_keyword: "AI study tools for exams"
 long_tail: ["AI for exam preparation", "best AI tutors"]

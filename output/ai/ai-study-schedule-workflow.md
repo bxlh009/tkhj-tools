@@ -1,7 +1,7 @@
 ---
 title: "Stop Guessing Your Study Plan: The AI Study Schedule Workflow That Actually Works"
 slug: "ai-study-schedule-workflow"
-date: "2026-07-06"
+date: "2026-03-16"
 category: "tool-review"
 primary_keyword: "ai study schedule workflow"
 long_tail: ["ai study schedule workflow"]

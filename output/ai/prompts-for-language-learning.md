@@ -1,7 +1,7 @@
 ---
 title: "Prompts for Language Learning: Why Your AI Tutor is Failing You (And How to Fix It)"
 slug: "prompts-for-language-learning"
-date: "2026-07-06"
+date: "2026-06-20"
 category: "tool-review"
 primary_keyword: "prompts for language learning"
 long_tail: ["prompts for language learning", "AI language tutor mistakes", "effective LLM prompting for ESL"]

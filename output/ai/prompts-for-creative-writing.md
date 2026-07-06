@@ -1,7 +1,7 @@
 ---
 title: "Creative Writing Prompts AI: Stop Using Them Like Crutches"
 slug: "prompts-for-creative-writing"
-date: "2026-07-06"
+date: "2026-06-18"
 category: "ai-news"
 primary_keyword: "creative writing prompts AI"
 long_tail: ["creative writing prompts AI", "AI writing assistants for professionals", "how to use AI for creative writing"]

@@ -1,7 +1,7 @@
 ---
 title: "OpenAI GPT History: The Untold Story of How We Got Here"
 slug: "openai-gpt-history"
-date: "2026-07-06"
+date: "2026-06-07"
 category: "ai-news"
 primary_keyword: "openai gpt history"
 long_tail: ["openai gpt history"]

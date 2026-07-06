@@ -1,7 +1,7 @@
 ---
 title: "AI Coding Prompts Guide: Why Your Code Still Breaks (And How to Fix It)"
 slug: "prompts-for-coding"
-date: "2026-07-06"
+date: "2026-06-15"
 category: "tool-review"
 primary_keyword: "AI coding prompts guide"
 long_tail: ["AI coding prompts guide", "better LLM code generation", "prompt engineering for developers"]

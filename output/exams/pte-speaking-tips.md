@@ -1,7 +1,7 @@
 ---
 title: "PTE Speaking Tips: 5 Fluency Fixes That Actually Work"
 slug: "pte-speaking-tips"
-date: "2026-07-06"
+date: "2026-06-28"
 exam: "PTE Academic"
 section: "Speaking"
 primary_keyword: "pte speaking tips"

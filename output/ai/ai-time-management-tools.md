@@ -1,7 +1,7 @@
 ---
 title: "AI Time Management Tools: I Tested 5 So You Don't Waste Cash"
 slug: "ai-time-management-tools"
-date: "2026-07-06"
+date: "2026-03-21"
 category: "tool-review"
 primary_keyword: "ai time management tools"
 long_tail: ["ai time management tools", "best ai productivity apps 2026", "ai scheduling software review"]

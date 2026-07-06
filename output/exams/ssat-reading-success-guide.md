@@ -1,7 +1,7 @@
 ---
 title: "SSAT Reading Comprehension Tips: 5 Strategies to Master Timing & Boost Score"
 slug: "ssat-reading-success-guide"
-date: "2026-06-09"
+date: "2026-01-25"
 exam: "SSAT"
 section: "Reading"
 primary_keyword: "ssat reading comprehension tips"

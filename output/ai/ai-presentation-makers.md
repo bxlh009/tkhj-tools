@@ -1,7 +1,7 @@
 ---
 title: "AI Presentation Makers in 2026: I Tested 5 Tools So You Don't Waste Money"
 slug: "ai-presentation-makers"
-date: "2026-07-06"
+date: "2026-03-11"
 category: "tool-review"
 primary_keyword: "ai presentation makers"
 long_tail: ["ai presentation makers", "best ai ppt tools 2026", "gamma vs beautiful.ai"]

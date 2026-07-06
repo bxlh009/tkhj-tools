@@ -1,7 +1,7 @@
 ---
 title: "Cambridge YLE Reading Starters: 5 Proven Fixes for Vocabulary Struggles"
 slug: "cambridge-yle-reading-starters"
-date: "2026-07-06"
+date: "2026-04-29"
 exam: "Cambridge YLE"
 section: "Reading"
 primary_keyword: "cambridge yle reading starters"

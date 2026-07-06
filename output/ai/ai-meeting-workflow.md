@@ -1,7 +1,7 @@
 ---
 title: "Stop Wasting Time: My AI Meeting Assistant Workflow That Actually Saves Hours"
 slug: "ai-meeting-workflow"
-date: "2026-07-06"
+date: "2026-02-28"
 category: "tool-review"
 primary_keyword: "AI meeting assistant workflow"
 long_tail: ["AI meeting assistant workflow", "best AI meeting notes 2026", "automate meeting summaries"]

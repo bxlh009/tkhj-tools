@@ -1,7 +1,7 @@
 ---
 title: "OET Writing Referral Mastery: 5 Steps to Fix Your Letter Structure"
 slug: "oet-writing-referral"
-date: "2026-07-06"
+date: "2026-06-05"
 exam: "OET"
 section: "Writing"
 primary_keyword: "oet writing referral"

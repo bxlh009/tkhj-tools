@@ -1,7 +1,7 @@
 ---
 title: "OpenAI vs Anthropic vs Google: The 2026 Reality Check for Professionals"
 slug: "openai-vs-anthropic-vs-google"
-date: "2026-07-06"
+date: "2026-06-10"
 category: "comparison"
 primary_keyword: "openai vs anthropic vs google"
 long_tail: ["openai vs anthropic vs google", "best ai model for work 2026", "claude vs gpt vs gemini"]

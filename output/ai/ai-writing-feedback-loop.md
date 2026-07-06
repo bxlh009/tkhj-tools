@@ -1,7 +1,7 @@
 ---
 title: "The AI Writing Feedback Loop: Why Your Drafts Are Still Bad (And How to Fix Them)"
 slug: "ai-writing-feedback-loop"
-date: "2026-07-06"
+date: "2026-03-29"
 category: "tool-review"
 primary_keyword: "ai writing feedback loop"
 long_tail: ["ai writing feedback loop", "how to get better ai writing feedback", "iterative ai editing workflow"]

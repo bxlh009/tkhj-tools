@@ -5,8 +5,8 @@ import os, json
 DATA = os.path.dirname(os.path.abspath(__file__))
 HERE = pathlib.Path(DATA)
 OUT  = HERE / "_site"
-EXAM = pathlib.Path("D:/codex/content-engine/output/exams")
-AI   = pathlib.Path("D:/codex/content-engine/output/ai")
+EXAM = HERE.parent / "output" / "exams"
+AI   = HERE.parent / "output" / "ai"
 STA  = HERE / "static"
 
 DOM  = "tkhjtools.top"
@@ -196,7 +196,7 @@ def wp(path, content):
 def load_articles(folder, is_exam=True):
     arts = []
     if not folder.exists(): return arts
-    for f in sorted(folder.glob("*.md"), reverse=True):
+    for f in folder.glob("*.md"):
         if re.search(r"-\d{1,2}$", f.stem) and not re.search(r"20\d{2}$", f.stem): continue
         body = read(f)
         meta, _ = fm(body)
@@ -236,6 +236,7 @@ def load_articles(folder, is_exam=True):
             "primary_keyword":meta.get("primary_keyword",""),
             "section":meta.get("section","General"),
         })
+    arts.sort(key=lambda a: a["date"], reverse=True)
     return arts
 
 def section_hero(title, desc, tag=None):

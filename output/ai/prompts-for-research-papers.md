@@ -1,7 +1,7 @@
 ---
 title: "Prompts for Research Papers: Why Your AI Drafts Are Still Garbage (And How to Fix Them)"
 slug: "prompts-for-research-papers"
-date: "2026-07-06"
+date: "2026-06-26"
 category: "ai-news"
 primary_keyword: "prompts for research papers"
 long_tail: ["prompts for research papers", "academic writing AI prompts", "research paper drafting workflow"]

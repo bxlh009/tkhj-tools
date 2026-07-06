@@ -1,7 +1,7 @@
 ---
 title: "TOEFL Junior Listening Tips: 5 Strategies to Master Lecture Speed"
 slug: "toefl-junior-listening-tips"
-date: "2026-07-06"
+date: "2026-07-01"
 exam: "TOEFL Junior"
 section: "Listening"
 primary_keyword: "toefl junior listening tips"

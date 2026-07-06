@@ -1,7 +1,7 @@
 ---
 title: "TOEFL Reading Tips: 5 Inference Strategies to Break the 22 Ceiling"
 slug: "toefl-reading-inference-strategy"
-date: "2026-04-14"
+date: "2026-01-15"
 exam: "TOEFL iBT"
 section: "Reading"
 primary_keyword: "toefl reading tips"

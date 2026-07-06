@@ -1,7 +1,7 @@
 ---
 title: "Stop Memorizing Everything: Why AI Flashcard Generators Are Actually Saving Your Brain"
 slug: "ai-flashcard-generators"
-date: "2026-07-06"
+date: "2026-02-15"
 category: "tool-review"
 primary_keyword: "ai flashcard generators"
 long_tail: ["ai flashcard generators", "best spaced repetition tools 2026", "Anki alternatives AI"]

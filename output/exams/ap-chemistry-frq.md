@@ -1,7 +1,7 @@
 ---
 title: "AP Chemistry FRQ Stoichiometry Mastery: 5 Steps to Full Credit"
 slug: "ap-chemistry-frq"
-date: "2026-07-06"
+date: "2026-04-08"
 exam: "AP Chemistry"
 section: "Free Response"
 primary_keyword: "ap chemistry frq"

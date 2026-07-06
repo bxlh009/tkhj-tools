@@ -1,7 +1,7 @@
 ---
 title: "GRE Text Completion Strategy: 5 Steps to Break 160+ in 6 Weeks"
 slug: "gre-text-completion-master-plan"
-date: "2026-05-12"
+date: "2026-01-20"
 exam: "GRE"
 section: "Verbal Reasoning"
 primary_keyword: "gre text completion strategy"

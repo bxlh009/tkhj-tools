@@ -1,7 +1,7 @@
 ---
 title: "AI for Job Search: Why Your Resume Gets Deleted Before a Human Sees It"
 slug: "ai-job-search-workflow"
-date: "2026-07-06"
+date: "2026-02-26"
 category: "ai-news"
 primary_keyword: "AI for job search"
 long_tail: ["AI for job search", "ATS resume optimization", "job search automation"]

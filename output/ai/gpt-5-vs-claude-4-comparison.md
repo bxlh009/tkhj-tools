@@ -1,7 +1,7 @@
 ---
 title: "GPT-5 vs Claude 4 Comparison: The Brutal Truth About 2026's Best AI Models"
 slug: "gpt-5-vs-claude-4-comparison"
-date: "2026-06-23"
+date: "2026-01-28"
 category: "comparison"
 primary_keyword: "GPT-5 vs Claude 4 comparison"
 long_tail: ["best AI model 2026", "GPT-5 pricing", "Claude 4 features"]

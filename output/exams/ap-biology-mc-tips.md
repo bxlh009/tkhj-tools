@@ -1,7 +1,7 @@
 ---
 title: "AP Biology MC Tips: 3 Cell Biology Hacks to Boost Your Score Fast"
 slug: "ap-biology-mc-tips"
-date: "2026-07-06"
+date: "2026-04-03"
 exam: "AP Biology"
 section: "Multiple Choice"
 primary_keyword: "ap biology mc tips"

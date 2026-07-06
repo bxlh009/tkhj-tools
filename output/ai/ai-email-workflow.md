@@ -1,7 +1,7 @@
 ---
 title: "AI Email Productivity Tools Tested: Why Most Are Still Garbage"
 slug: "ai-email-workflow"
-date: "2026-07-06"
+date: "2026-02-13"
 category: "tool-review"
 primary_keyword: "AI email productivity"
 long_tail: ["AI email productivity", "best AI email assistant 2026"]

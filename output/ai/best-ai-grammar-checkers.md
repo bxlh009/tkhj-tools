@@ -1,7 +1,7 @@
 ---
 title: "Best AI Grammar Checkers in 2026: I Tested 5 Tools So You Don't Have To"
 slug: "best-ai-grammar-checkers"
-date: "2026-07-06"
+date: "2026-04-14"
 category: "tool-review"
 primary_keyword: "best ai grammar checkers"
 long_tail: ["best ai grammar checkers", "ai writing assistant comparison 2026", "grammar checker for professionals"]

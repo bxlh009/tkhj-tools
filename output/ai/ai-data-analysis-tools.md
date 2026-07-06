@@ -1,7 +1,7 @@
 ---
 title: "Agentic AI for Data Analysis: Why Your Dashboard is Dead"
 slug: "ai-data-analysis-tools"
-date: "2026-07-06"
+date: "2026-02-10"
 category: "tool-review"
 primary_keyword: "AI for data analysis"
 long_tail: ["AI for data analysis", "agentic workflows", "data science automation"]

@@ -1,7 +1,7 @@
 ---
 title: "IB Math AA Paper 1: 3 Proofs That Actually Work (Stop Memorizing)"
 slug: "ib-math-aa-paper1"
-date: "2026-07-06"
+date: "2026-05-17"
 exam: "IB Math Analysis and Approaches"
 section: "Paper 1"
 primary_keyword: "ib math aa paper1"

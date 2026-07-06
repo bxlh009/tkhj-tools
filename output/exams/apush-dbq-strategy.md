@@ -1,7 +1,7 @@
 ---
 title: "APUSH DBQ Strategy: 5 Steps to Break Your Score Ceiling"
 slug: "apush-dbq-strategy"
-date: "2026-07-06"
+date: "2026-04-11"
 exam: "AP US History"
 section: "DBQ"
 primary_keyword: "apush dbq strategy"

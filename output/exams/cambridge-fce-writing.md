@@ -1,7 +1,7 @@
 ---
 title: "Cambridge FCE Writing Mastery: 5 Structural Fixes for Band C"
 slug: "cambridge-fce-writing"
-date: "2026-07-06"
+date: "2026-04-19"
 exam: "Cambridge FCE (B2 First)"
 section: "Writing"
 primary_keyword: "cambridge fce writing"

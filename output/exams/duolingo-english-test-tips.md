@@ -1,7 +1,7 @@
 ---
 title: "Duolingo English Test Tips: 7 Proven Strategies to Beat Adaptive Anxiety"
 slug: "duolingo-english-test-tips"
-date: "2026-07-06"
+date: "2026-05-02"
 exam: "Duolingo English Test"
 section: "All Sections"
 primary_keyword: "duolingo english test tips"

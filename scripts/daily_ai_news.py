@@ -43,19 +43,20 @@ NEWS_LOG    = ENGINE_DIR / "ai_news_log.jsonl"
 SITE_BUILD  = ENGINE_DIR / "site" / "build.py"
 
 RSS_FEEDS = [
-    ("OpenAI Blog",              "https://openai.com/blog/rss.xml"),
-    ("Google AI Blog",           "https://blog.google/technology/ai/rss/"),
-    ("DeepMind Blog",            "https://deepmind.google/blog/rss.xml"),
-    ("Anthropic News",           "https://www.anthropic.com/news/rss"),
-    ("Meta AI",                  "https://ai.meta.com/blog/rss/"),
-    ("Mistral News",             "https://mistral.ai/news/rss"),
-    ("MIT AI News",              "https://news.mit.edu/topic/mitartificial-intelligence2-rss.xml"),
-    ("VentureBeat AI",           "https://venturebeat.com/category/ai/feed/"),
-    ("The Verge AI",             "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
-    ("Ars Technica AI",          "https://feeds.arstechnica.com/arstechnica/technology-lab"),
-    ("TechCrunch AI",            "https://techcrunch.com/category/artificial-intelligence/feed/"),
-    ("Wired AI",                 "https://www.wired.com/feed/tag/ai/latest/rss"),
+    ("VentureBeat AI",              "https://venturebeat.com/category/ai/feed/"),
+    ("TechCrunch AI",                "https://techcrunch.com/category/artificial-intelligence/feed/"),
+    ("Hacker News Front Page",       "https://hnrss.org/frontpage"),
+    ("Hacker News AI",               "https://hnrss.org/newest?q=AI+OR+GPT+OR+Claude+OR+Gemini&count=20"),
+    ("Ars Technica AI",              "https://feeds.arstechnica.com/arstechnica/technology-lab"),
+    ("Google Research Blog",         "https://blog.research.google/feeds/posts/default"),
+    ("Hugging Face Blog",            "https://huggingface.co/blog/feed.xml"),
+    ("MarkTechPost",                 "https://www.marktechpost.com/feed/"),
+    ("ScienceDaily AI",              "https://www.sciencedaily.com/rss/computers_math/artificial_intelligence.xml"),
+    ("Neowin AI",                    "https://www.neowin.net/news/tag/artificial-intelligence/rss"),
+    ("Reddit MachineLearning",       "https://www.reddit.com/r/MachineLearning/.rss"),
+    ("The Decoder",                  "https://the-decoder.com/feed/"),
 ]
+
 
 KEYWORD_WEIGHTS = {
     "gpt-5": 10, "gpt-4.5": 8, "gpt-4o": 6, "o1": 7, "o3": 7,
@@ -106,7 +107,7 @@ def pull_feeds(max_per_feed=6):
         except Exception as e:
             print(f"  [warn] {name}: {e}")
             continue
-        xml_clean = _re.sub(r"<[^>]+xmlns[^>]*>", "", xml, count=1)
+        xml_clean = _re.sub(chr(92)+chr(115)+chr(43)+chr(120)+chr(109)+chr(108)+chr(110)+chr(115)+chr(91)+chr(94)+chr(61)+chr(93)+chr(43)+chr(61)+chr(92)+chr(83)+chr(43)+chr(32), chr(32), xml)
         try:
             root = _ET.fromstring(xml_clean)
         except Exception as e:
@@ -166,6 +167,7 @@ def make_prompt(item, style_rules):
         "Write a concise 800-1000 word article in American English, "
         "conversational style with contractions, varied sentence length, "
         "rhetorical questions, and at least 3 em-dashes.\n"
+        "Do not copy sentences from the source article. Write entirely in your own words. Paraphrase everything.\n"
         "End with the disclaimer: 'This article is independently written "
         "and does not represent the views of any exam body or vendor.'"
     )

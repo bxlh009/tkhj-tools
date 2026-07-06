@@ -1,7 +1,7 @@
 ---
 title: "IB Economics Paper 1 Essay Structure: 3 Steps to Top Marks"
 slug: "ib-economics-paper1"
-date: "2026-07-06"
+date: "2026-05-12"
 exam: "IB Economics"
 section: "Paper 1"
 primary_keyword: "ib economics paper1"

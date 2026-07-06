@@ -1,7 +1,7 @@
 ---
 title: "AP Calculus AB Review: 5 Limit Strategies That Actually Work"
 slug: "ap-calculus-ab-review"
-date: "2026-07-06"
+date: "2026-04-06"
 exam: "AP Calculus AB"
 section: "Limits and Derivatives"
 primary_keyword: "ap calculus ab review"

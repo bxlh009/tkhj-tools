@@ -1,7 +1,7 @@
 ---
 title: "Business Prompt Templates That Actually Work: Stop Wasting Hours on Bad AI Outputs"
 slug: "prompts-for-business"
-date: "2026-07-06"
+date: "2026-06-13"
 category: "tool-review"
 primary_keyword: "business prompt templates"
 long_tail: ["business prompt templates", "effective ai prompts for work", "prompt engineering for professionals"]

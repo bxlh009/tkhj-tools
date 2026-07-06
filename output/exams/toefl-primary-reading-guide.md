@@ -1,7 +1,7 @@
 ---
 title: "TOEFL Primary Reading Guide: 5 Strategies to Boost Vocabulary Scores Fast"
 slug: "toefl-primary-reading-guide"
-date: "2026-07-06"
+date: "2026-07-03"
 exam: "TOEFL Primary"
 section: "Reading"
 primary_keyword: "toefl primary reading guide"

@@ -1,7 +1,7 @@
 ---
 title: "Stop Wasting Hours: My AI Research Workflow for Busy Professionals"
 slug: "ai-research-workflow"
-date: "2026-07-06"
+date: "2026-03-13"
 category: "tool-review"
 primary_keyword: "ai research workflow"
 long_tail: ["ai research workflow", "automate literature review", "AI for professionals"]

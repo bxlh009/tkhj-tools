@@ -1,7 +1,7 @@
 ---
 title: "Claude Enterprise Features: Why Your IT Team Is Panicking (And Shouldn't Be)"
 slug: "anthropic-claude-enterprise"
-date: "2026-07-06"
+date: "2026-04-01"
 category: "tool-review"
 primary_keyword: "Claude enterprise features"
 long_tail: ["Claude enterprise features", "Anthropic enterprise security", "Claude vs GPT-4o enterprise"]

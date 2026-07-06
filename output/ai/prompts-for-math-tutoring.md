@@ -1,7 +1,7 @@
 ---
 title: "Prompts for Math Tutoring: Why Your AI is Still Bad at Algebra (And How to Fix It)"
 slug: "prompts-for-math-tutoring"
-date: "2026-07-06"
+date: "2026-06-23"
 category: "tool-review"
 primary_keyword: "prompts for math tutoring"
 long_tail: ["prompts for math tutoring", "best AI math tutor prompts", "how to prompt LLMs for math"]

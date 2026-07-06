@@ -1,7 +1,7 @@
 ---
 title: "SAT Math No Calculator Tips: 5 Proven Strategies to Break 700"
 slug: "sat-math-no-calculator-700"
-date: "2026-05-26"
+date: "2026-01-23"
 exam: "SAT"
 section: "Math"
 primary_keyword: "sat math no calculator tips"

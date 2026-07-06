@@ -1,7 +1,7 @@
 ---
 title: "MCAT CARS Strategy: 3 Steps to Boost Reading Speed Without Losing Accuracy"
 slug: "mcat-cars-strategy"
-date: "2026-07-06"
+date: "2026-05-31"
 exam: "MCAT"
 section: "CARS"
 primary_keyword: "mcat cars strategy"
