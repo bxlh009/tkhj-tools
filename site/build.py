@@ -14,6 +14,8 @@ NAME = "TKHJ Tools"
 TAG  = "Free study guides for every level, and honest AI news coverage."
 CSL  = "static/style.css"
 JSL  = "static/nav.js"
+AD_UNIT = '<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8913718352251239" data-ad-slot="4470604333"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>'
+AD_HEAD = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8913718352251239" crossorigin="anonymous"></script>'
 
 EXAM_TABS = ["All Exams","IELTS","TOEFL","GRE","SAT","More"]
 AI_TABS   = ["All","AI","Tools","Prompts","Workflows","Productivity"]
@@ -28,6 +30,8 @@ for d in ["static","exam","exam/article","exam/tools","ai","ai/article","ai/tool
     (OUT / d).mkdir(parents=True, exist_ok=True)
 for f in STA.iterdir():
     if f.is_file(): shutil.copy2(str(f), str(OUT / "static" / f.name))
+for f in HERE.glob("ads.txt"):
+    if f.is_file(): shutil.copy2(str(f), str(OUT / f.name))
 
 FAV = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#3B82F6"/><g transform="translate(7,6) scale(0.95)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></g></svg>'
 (OUT / "favicon.svg").write_text(FAV, encoding="utf-8")
@@ -184,7 +188,8 @@ def page(title, body_str, active="home"):
         '<link rel="icon" type="image/svg+xml" href="/favicon.svg">',
         '<title>' + esc(title) + ' &middot; ' + NAME + '</title>',
         '<meta name="description" content="' + TAG + '">',
-        '<link rel="stylesheet" href="/' + CSL + '">'
+        '<link rel="stylesheet" href="/' + CSL + '">',
+        AD_HEAD,
     ]
     return "<!doctype html><html lang=\"en\" data-theme=\"light\"><head>" + NL.join(meta) + "</head><body><script>try{var t=localStorage.getItem('tkhj-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>" + nav(active) + "<main>" + body_str + "</main>" + footer() + '<script src="/' + JSL + '"></script></body></html>'
 
@@ -395,7 +400,7 @@ def main():
             + '<h1>' + esc(a["title"]) + '</h1>'
             + '<div class="meta"><span>&#9200; ' + str(max(1, a["_wc"] // 220)) + ' min read</span><span>' + esc(a.get("date","")[:10]) + '</span><span>' + esc(a["_display_cat"]) + '</span></div>'
             + '</div></div>'
-            + '<div class="article-body">' + md2html(body) + '</div>'
+            + '<div class="article-body">' + (lambda h: h[:h.find(chr(60)+chr(47)+chr(112)+chr(62), len(h)//2)] + AD_UNIT + h[h.find(chr(60)+chr(47)+chr(112)+chr(62), len(h)//2):])(md2html(body)) + '</div>'
             + '</article>', "exam")
         wp("exam/article/" + slug + ".html", html)
 
@@ -409,7 +414,7 @@ def main():
             + '<h1>' + esc(a["title"]) + '</h1>'
             + '<div class="meta"><span>&#9200; ' + str(max(1, a["_wc"] // 220)) + ' min read</span><span>' + esc(a.get("date","")[:10]) + '</span><span>' + esc(a["_display_cat"]) + '</span></div>'
             + '</div></div>'
-            + '<div class="article-body">' + md2html(body) + '</div>'
+            + '<div class="article-body">' + (lambda h: h[:h.find(chr(60)+chr(47)+chr(112)+chr(62), len(h)//2)] + AD_UNIT + h[h.find(chr(60)+chr(47)+chr(112)+chr(62), len(h)//2):])(md2html(body)) + '</div>'
             + '</article>', "ai")
         wp("ai/article/" + slug + ".html", html)
 
