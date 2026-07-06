@@ -1,0 +1,13 @@
+{
+  "type": "ai-news",
+  "target_audience": "students",
+  "category": "ai-news",
+  "min_words": 800,
+  "max_words": 1200,
+  "primary_keyword": "OpenAI Sora latest update",
+  "long_tail_keywords": [
+    "OpenAI Sora latest update"
+  ],
+  "slug": "ai-openai-sora-update",
+  "current_date": "2026-07-06"
+}

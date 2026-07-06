@@ -1,0 +1,17 @@
+{
+  "_comment": "AI 新闻示例",
+  "type": "ai-news",
+  "min_words": 1800,
+  "max_words": 2500,
+  "target_audience": "想用 AI 提效但时间有限的职场人 / 自由职业者",
+  "primary_keyword": "GPT-5 vs GPT-4o",
+  "long_tail_keywords": [
+    "GPT-5 release date",
+    "GPT-5 pricing",
+    "GPT-5 new features"
+  ],
+  "slug": "gpt-5-vs-gpt-4o-comparison",
+  "category": "comparison",
+  "_force_current_year": 2026,
+  "language": "English"
+}

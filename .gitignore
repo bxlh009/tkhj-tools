@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+_task_def.xml
+.seen_*
+ai_news_log.jsonl
+daily_log.jsonl
+site/_site/

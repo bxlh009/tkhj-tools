@@ -1,0 +1,14 @@
+{
+  "type": "workflow",
+  "target_audience": "creators",
+  "category": "Workflows",
+  "min_words": 700,
+  "max_words": 1000,
+  "primary_keyword": "AI content creation workflow",
+  "long_tail_keywords": [
+    "content with AI",
+    "AI writing workflow"
+  ],
+  "slug": "ai-content-workflow-2026",
+  "current_date": "2026-07-06"
+}

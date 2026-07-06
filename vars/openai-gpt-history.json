@@ -1,0 +1,13 @@
+{
+  "type": "ai-news",
+  "category": "ai-news",
+  "slug": "openai-gpt-history",
+  "target_audience": "students",
+  "min_words": 800,
+  "max_words": 1200,
+  "primary_keyword": "openai gpt history",
+  "long_tail_keywords": [
+    "openai gpt history"
+  ],
+  "current_date": "2026-07-06"
+}

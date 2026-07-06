@@ -1,0 +1,13 @@
+{
+  "type": "workflow",
+  "category": "Workflows",
+  "slug": "ai-writing-feedback-loop",
+  "target_audience": "students",
+  "min_words": 800,
+  "max_words": 1200,
+  "primary_keyword": "ai writing feedback loop",
+  "long_tail_keywords": [
+    "ai writing feedback loop"
+  ],
+  "current_date": "2026-07-06"
+}

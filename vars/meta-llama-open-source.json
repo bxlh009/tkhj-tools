@@ -1,0 +1,13 @@
+{
+  "type": "ai-news",
+  "target_audience": "students",
+  "category": "ai-news",
+  "min_words": 800,
+  "max_words": 1200,
+  "primary_keyword": "Meta Llama open source 2026",
+  "long_tail_keywords": [
+    "Meta Llama open source 2026"
+  ],
+  "slug": "meta-llama-open-source",
+  "current_date": "2026-07-06"
+}

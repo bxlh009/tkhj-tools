@@ -1,0 +1,14 @@
+{
+  "type": "tool-review",
+  "target_audience": "students",
+  "category": "Tools",
+  "min_words": 700,
+  "max_words": 1000,
+  "primary_keyword": "AI note-taking apps compared",
+  "long_tail_keywords": [
+    "Notion AI vs Mem",
+    "AI for students"
+  ],
+  "slug": "ai-note-taking-apps-2026",
+  "current_date": "2026-07-06"
+}

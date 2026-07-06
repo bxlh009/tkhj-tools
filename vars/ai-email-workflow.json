@@ -1,0 +1,13 @@
+{
+  "type": "workflow",
+  "target_audience": "students",
+  "category": "Workflows",
+  "min_words": 800,
+  "max_words": 1200,
+  "primary_keyword": "AI email productivity",
+  "long_tail_keywords": [
+    "AI email productivity"
+  ],
+  "slug": "ai-email-workflow",
+  "current_date": "2026-07-06"
+}

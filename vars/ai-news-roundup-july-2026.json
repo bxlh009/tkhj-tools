@@ -1,0 +1,14 @@
+{
+  "type": "ai-news",
+  "target_audience": "general audience",
+  "category": "ai-news",
+  "min_words": 1800,
+  "max_words": 2500,
+  "primary_keyword": "OpenAI Google Anthropic July 2026",
+  "long_tail_keywords": [
+    "AI news this week",
+    "latest AI breakthroughs"
+  ],
+  "slug": "ai-news-roundup-july-2026",
+  "current_date": "2026-07-06"
+}

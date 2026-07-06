@@ -1,0 +1,13 @@
+{
+  "type": "prompts",
+  "target_audience": "students",
+  "category": "Prompts",
+  "min_words": 800,
+  "max_words": 1200,
+  "primary_keyword": "AI coding prompts guide",
+  "long_tail_keywords": [
+    "AI coding prompts guide"
+  ],
+  "slug": "prompts-for-coding",
+  "current_date": "2026-07-06"
+}

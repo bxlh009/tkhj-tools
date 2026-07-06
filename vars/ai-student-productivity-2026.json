@@ -1,0 +1,14 @@
+{
+  "type": "productivity",
+  "target_audience": "students",
+  "category": "Productivity",
+  "min_words": 700,
+  "max_words": 1000,
+  "primary_keyword": "AI tools for student productivity",
+  "long_tail_keywords": [
+    "study productivity AI",
+    "AI task management"
+  ],
+  "slug": "ai-student-productivity-2026",
+  "current_date": "2026-07-06"
+}

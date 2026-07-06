@@ -1,0 +1,14 @@
+{
+  "type": "workflow",
+  "target_audience": "students",
+  "category": "productivity",
+  "min_words": 1500,
+  "max_words": 2000,
+  "primary_keyword": "AI study tools for exams",
+  "long_tail_keywords": [
+    "AI for exam preparation",
+    "best AI tutors"
+  ],
+  "slug": "ai-study-tools-exam-prep-2026",
+  "current_date": "2026-07-06"
+}

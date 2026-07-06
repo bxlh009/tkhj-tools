@@ -1,0 +1,14 @@
+{
+  "type": "prompts",
+  "target_audience": "writers",
+  "category": "Prompts",
+  "min_words": 700,
+  "max_words": 1000,
+  "primary_keyword": "prompt engineering best practices",
+  "long_tail_keywords": [
+    "prompt engineering guide",
+    "prompt patterns"
+  ],
+  "slug": "prompt-engineering-guide-2026",
+  "current_date": "2026-07-06"
+}

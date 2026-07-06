@@ -1,0 +1,13 @@
+{
+  "type": "tool-review",
+  "target_audience": "students",
+  "category": "Tools",
+  "min_words": 800,
+  "max_words": 1200,
+  "primary_keyword": "AI for data analysis",
+  "long_tail_keywords": [
+    "AI for data analysis"
+  ],
+  "slug": "ai-data-analysis-tools",
+  "current_date": "2026-07-06"
+}

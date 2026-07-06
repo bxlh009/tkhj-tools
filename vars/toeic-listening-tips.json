@@ -1,0 +1,15 @@
+{
+  "exam_name": "TOEIC",
+  "section_name": "Listening",
+  "years": 3,
+  "bottleneck_score": "fast speakers",
+  "min_words": 1000,
+  "max_words": 1500,
+  "primary_keyword": "toeic listening tips",
+  "long_tail_keywords": [
+    "toeic listening tips",
+    "toeic tips"
+  ],
+  "slug": "toeic-listening-tips",
+  "language": "English"
+}

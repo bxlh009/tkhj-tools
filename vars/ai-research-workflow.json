@@ -1,0 +1,13 @@
+{
+  "type": "workflow",
+  "category": "Workflows",
+  "slug": "ai-research-workflow",
+  "target_audience": "students",
+  "min_words": 800,
+  "max_words": 1200,
+  "primary_keyword": "ai research workflow",
+  "long_tail_keywords": [
+    "ai research workflow"
+  ],
+  "current_date": "2026-07-06"
+}

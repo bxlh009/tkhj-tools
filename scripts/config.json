@@ -1,0 +1,20 @@
+{
+  "api": {
+    "base_url": "https://apihub.agnes-ai.com/v1/chat/completions",
+    "api_key_env": "OPENAI_API_KEY",
+    "model": "agnes-2.0-flash",
+    "temperature": 0.4,
+    "max_tokens": 16384,
+    "base_url_models": "https://apihub.agnes-ai.com/v1/models",
+    "top_p": 0.9
+  },
+  "defaults": {
+    "exam_method_min_words": 1500,
+    "exam_method_max_words": 2500,
+    "ai_news_min_words": 800,
+    "ai_news_max_words": 1500
+  },
+  "output_dir": "../output",
+  "rules_file": "../rules/WRITING_RULES.md",
+  "prompts_dir": "../prompts"
+}

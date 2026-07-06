@@ -1,0 +1,15 @@
+{
+  "exam_name": "LSAT",
+  "section_name": "Logical Reasoning",
+  "years": 3,
+  "bottleneck_score": "flaw questions",
+  "min_words": 1000,
+  "max_words": 1500,
+  "primary_keyword": "lsat logical reasoning",
+  "long_tail_keywords": [
+    "lsat logical reasoning",
+    "lsat tips"
+  ],
+  "slug": "lsat-logical-reasoning",
+  "language": "English"
+}

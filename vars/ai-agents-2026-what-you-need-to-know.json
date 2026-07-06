@@ -1,0 +1,14 @@
+{
+  "type": "ai-news",
+  "target_audience": "tech professionals",
+  "category": "ai-news",
+  "min_words": 1500,
+  "max_words": 2000,
+  "primary_keyword": "AI agents 2026 trends",
+  "long_tail_keywords": [
+    "AI agent frameworks",
+    "autonomous AI agents"
+  ],
+  "slug": "ai-agents-2026-what-you-need-to-know",
+  "current_date": "2026-07-06"
+}

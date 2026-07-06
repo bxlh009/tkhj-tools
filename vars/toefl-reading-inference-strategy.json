@@ -1,0 +1,15 @@
+{
+  "exam_name": "TOEFL",
+  "section_name": "Reading",
+  "years": 3,
+  "bottleneck_score": "stuck at 22",
+  "min_words": 1800,
+  "max_words": 2500,
+  "primary_keyword": "toefl reading tips",
+  "long_tail_keywords": [
+    "toefl reading inference questions",
+    "toefl reading time management"
+  ],
+  "slug": "toefl-reading-inference-strategy",
+  "language": "English"
+}

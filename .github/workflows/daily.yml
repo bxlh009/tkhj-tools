@@ -1,0 +1,32 @@
+name: Daily Content Generation
+
+on:
+  schedule:
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set API key
+        run: echo "OPENAI_API_KEY=${{ secrets.AGNES_API_KEY }}" >> $GITHUB_ENV
+
+      - name: Generate daily content
+        run: python scripts/daily_generate.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "TKHJ Bot"
+          git config user.email "bot@tkhjtools.top"
+          git add output/ daily_log.jsonl .seen_exam_vars.json .seen_ai_stories.json ai_news_log.jsonl
+          git diff --staged --quiet || git commit -m "Daily content $(date +'%Y-%m-%d')"
+          git push

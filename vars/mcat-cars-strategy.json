@@ -1,0 +1,15 @@
+{
+  "exam_name": "MCAT",
+  "section_name": "CARS",
+  "years": 3,
+  "bottleneck_score": "reading speed",
+  "min_words": 1000,
+  "max_words": 1500,
+  "primary_keyword": "mcat cars strategy",
+  "long_tail_keywords": [
+    "mcat cars strategy",
+    "mcat tips"
+  ],
+  "slug": "mcat-cars-strategy",
+  "language": "English"
+}

@@ -1,0 +1,13 @@
+{
+  "type": "tool-review",
+  "category": "Tools",
+  "slug": "ai-flashcard-generators",
+  "target_audience": "students",
+  "min_words": 800,
+  "max_words": 1200,
+  "primary_keyword": "ai flashcard generators",
+  "long_tail_keywords": [
+    "ai flashcard generators"
+  ],
+  "current_date": "2026-07-06"
+}
