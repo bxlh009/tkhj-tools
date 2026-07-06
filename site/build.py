@@ -400,7 +400,7 @@ def main():
             + '<h1>' + esc(a["title"]) + '</h1>'
             + '<div class="meta"><span>&#9200; ' + str(max(1, a["_wc"] // 220)) + ' min read</span><span>' + esc(a.get("date","")[:10]) + '</span><span>' + esc(a["_display_cat"]) + '</span></div>'
             + '</div></div>'
-            + '<div class="article-body">' + (lambda h: h[:h.find(chr(60)+chr(47)+chr(112)+chr(62), len(h)//2)] + AD_UNIT + h[h.find(chr(60)+chr(47)+chr(112)+chr(62), len(h)//2):])(md2html(body)) + '</div>'
+            + '<div class="article-body">' + (lambda h: h[:h.find(chr(60)+chr(47)+chr(112)+chr(62), len(h)//2)] + AD_UNIT + h[h.find(chr(60)+chr(47)+chr(112)+chr(62), len(h)//2):])(md2html(body)) + '</div>' + AD_UNIT
             + '</article>', "exam")
         wp("exam/article/" + slug + ".html", html)
 
@@ -414,7 +414,7 @@ def main():
             + '<h1>' + esc(a["title"]) + '</h1>'
             + '<div class="meta"><span>&#9200; ' + str(max(1, a["_wc"] // 220)) + ' min read</span><span>' + esc(a.get("date","")[:10]) + '</span><span>' + esc(a["_display_cat"]) + '</span></div>'
             + '</div></div>'
-            + '<div class="article-body">' + (lambda h: h[:h.find(chr(60)+chr(47)+chr(112)+chr(62), len(h)//2)] + AD_UNIT + h[h.find(chr(60)+chr(47)+chr(112)+chr(62), len(h)//2):])(md2html(body)) + '</div>'
+            + '<div class="article-body">' + (lambda h: h[:h.find(chr(60)+chr(47)+chr(112)+chr(62), len(h)//2)] + AD_UNIT + h[h.find(chr(60)+chr(47)+chr(112)+chr(62), len(h)//2):])(md2html(body)) + '</div>' + AD_UNIT
             + '</article>', "ai")
         wp("ai/article/" + slug + ".html", html)
 
