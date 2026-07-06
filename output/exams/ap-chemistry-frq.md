@@ -156,6 +156,4 @@ You don't need to be a genius. You need to be systematic.
 
 Do this, and you'll crush the FRQ.
 
-If you need more practice, try [exam.tkjtools.io] for timed drills.
-
 > Disclaimer: This is independently written educational content. Not endorsed by AP Chemistry or any official body. Example questions are rewritten for teaching. Always refer to official guides.

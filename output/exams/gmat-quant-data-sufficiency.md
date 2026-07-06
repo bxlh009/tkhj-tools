@@ -147,6 +147,4 @@ Data sufficiency is a skill. It takes practice. But once you get it, it's your b
 
 Don't let DS intimidate you. Treat it like a game. Logic over calculation. Efficiency over perfection.
 
-If you need more practice, try [exam.tkjtools.io] for timed drills. It's a great resource.
-
 > Disclaimer: This is independently written educational content. Not endorsed by GMAT or any official body. Example questions are rewritten for teaching. Always refer to official guides.

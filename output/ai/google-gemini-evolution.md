@@ -108,6 +108,4 @@ Experimentation is key. Start with simple prompts and gradually add complexity. 
 
 The Google Gemini evolution isn't just about bigger numbers. It's about smarter, more adaptable models that can handle the complexities of modern work. If you're still using old strategies, you're falling behind. Adapt, experiment, and leverage the right tool for the job.
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
-
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.

@@ -105,6 +105,4 @@ A: Frequently. Midjourney releases updates monthly. Flux has weekly community im
 Q6: Are there any hidden costs?
 A: Yes. API calls can add up. Cloud hosting for Flux can be expensive. Midjourney subscriptions are fixed. Budget accordingly.
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
-
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.

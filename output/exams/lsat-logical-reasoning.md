@@ -69,8 +69,6 @@ Solution: Step 1: Conclusion is “people from NYC are generally rude.” Step 2
 
 Flaw questions are the backbone of LSAT logical reasoning. They appear in nearly every section. Master them, and you boost your score across the board. Miss them, and you waste time second-guessing. The key is discipline. Stick to the process. Identify conclusion. Find premises. Spot the gap. Prephrase. Eliminate. Repeat.
 
-If you need to drill this skill, try timed sets on [exam.tkjtools.io]. Focus on flaw questions specifically. Track your accuracy. Improve your speed. You'll see results.
-
 ## Frequently Asked Questions
 
 Q: Should I worry about whether the premises are true?

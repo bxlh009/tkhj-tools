@@ -7,7 +7,6 @@ primary_keyword: "prompts for language learning"
 long_tail: ["prompts for language learning", "AI language tutor mistakes", "effective LLM prompting for ESL"]
 word_count: 0
 estimated_read_min: 6
-sources: ["https://ai.tkjtools.io/blog/prompt-engineering-2026", "https://openai.com/research/advanced-reasoning"]
 structure_template: "D"
 ---
 
@@ -131,7 +130,5 @@ A: Yes. Many open-weight models and free tiers of major platforms offer robust c
 
 **Q8: How do I measure my progress with AI?**
 A: Track your error rate over time. Save your early drafts and compare them to your later ones. Look for recurring mistakes that disappear. AI can generate quizzes for you, so take those weekly. Quantifiable data helps you stay motivated when progress feels slow.
-
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
 
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。

@@ -139,6 +139,4 @@ They're okay for vocabulary. But they're terrible for grammar or pronunciation. 
 **Q6: What's the best free AI flashcard generator in 2026?**
 Quizlet's free tier is generous. AnkiPro's desktop version is free. Brainscape has a limited free plan. Avoid tools that lock basic features behind expensive subscriptions. You don't need $50/month to learn. You need consistency.
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
-
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. This article is independently written teaching content and does not represent the views of any examination agency.

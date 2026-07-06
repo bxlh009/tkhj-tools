@@ -111,6 +111,4 @@ A: Setup varies. Some require extensive permission grants and integrations, whil
 **Q: Will AI help me stick to habits long-term?**
 A: Yes, if the app learns from your failures and successes. Static reminders fade; adaptive systems stay relevant. Look for apps that evolve with you.
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
-
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.

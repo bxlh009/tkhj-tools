@@ -100,7 +100,7 @@ Writing referral letters isn't about showing off your medical knowledge. It's ab
 
 Practice this filter-first approach. Take a clinical note. Highlight the referral reason. Highlight the supporting facts. Delete the rest. Repeat until it feels natural.
 
-If you need more OET tips, check out our guide on listening section strategies. And remember, consistency beats intensity. Ten minutes a day is better than one marathon session a week.
+ Ten minutes a day is better than one marathon session a week.
 
 Good luck. You've got this.
 

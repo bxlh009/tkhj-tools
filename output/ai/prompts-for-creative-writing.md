@@ -119,8 +119,6 @@ A: It varies. For brainstorming, maybe 50%. For drafting, 30%. For editing, 40%.
 Q8: Will AI replace human writers?
 A: No. It will replace writers who refuse to adapt. Humans bring empathy, nuance, and lived experience. AI brings speed and volume. Combine them, and you're unstoppable. Alone, you're limited.
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
-
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
 
 本文为独立编写的教学内容，不代表任何考试机构观点。

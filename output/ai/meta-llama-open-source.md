@@ -85,6 +85,4 @@ Yes, especially if you fine-tune it on GRE-specific datasets. It can generate pe
 **What hardware do I need for optimal performance?**
 For the full 405B model, you need multiple high-end GPUs (e.g., 8x A100 80GB). For quantized versions, a single GPU with 24GB VRAM is sufficient.
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
-
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.

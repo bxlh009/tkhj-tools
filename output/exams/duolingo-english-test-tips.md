@@ -150,8 +150,6 @@ Adaptive test anxiety is real. But it's manageable. You don't need to be perfect
 
 Slow down. Trust your framework. Pivot when stuck. And remember: the algorithm is just a tool. It's not judging you. It's measuring you.
 
-If you need to practice this under realistic conditions, try [exam.tkjtools.io]'s adaptive simulator. It mimics the DET's difficulty curve. You'll get used to the pressure.
-
 Good luck. You've got this.
 
 > Disclaimer: This is independently written educational content. Not endorsed by Duolingo English Test or any official body. Example questions are rewritten for teaching. Always refer to official guides.

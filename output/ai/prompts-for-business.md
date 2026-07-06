@@ -114,6 +114,4 @@ A: Yes. Just add technical constraints like language version, library preference
 Q8: Where can I find pre-made templates?
 A: Many communities share them online. But building your own ensures they fit your specific needs perfectly.
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
-
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.本文为独立编写的教学内容，不代表任何考试机构观点。

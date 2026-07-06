@@ -99,6 +99,4 @@ OpenAI is widely considered the best for creative writing due to its nuanced und
 **Q6: Are there security concerns with using these models?**
 Yes, data privacy is a major concern. Anthropic emphasizes privacy and offers enterprise-grade security features. OpenAI has improved its security but has faced past controversies. Google's integration with Workspace provides some security benefits but also raises data sharing concerns. For sensitive data, Anthropic or a private deployment of OpenAI is recommended. Always review the provider's privacy policy.
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
-
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。

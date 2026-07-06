@@ -125,4 +125,3 @@ A: They test different skills. CAE Use of English is more about precision and ma
 
 > Disclaimer: This is independently written educational content. Not endorsed by Cambridge CAE or any official body. Example questions are rewritten for teaching. Always refer to official guides.
 
-If you're serious about cracking the CAE Use of English, you need more than just tips. You need a system. Try our timed practice modules at [exam.tkjtools.io] to simulate the pressure of the real exam. You'll thank me later.

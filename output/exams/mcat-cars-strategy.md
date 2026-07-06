@@ -125,4 +125,3 @@ A: Yes. Eliminate obviously wrong answers, then guess from the remaining options
 
 > Disclaimer: This is independently written educational content. Not endorsed by MCAT or any official body. Example questions are rewritten for teaching. Always refer to official guides.
 
-If you need a structured plan to implement these tips, check out our [MCAT prep course](https://exam.tkjtools.io). It's designed for busy professionals who want results fast. Stop wasting time. Start studying smart.

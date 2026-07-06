@@ -145,8 +145,6 @@ Because I know he didn't just pass a test. He learned how to learn.
 
 That's the real victory. Not the certificate. The confidence.
 
-If you need more help, check out our guide on [Cambridge YLE Tips](https://exam.tkjtools.io/cambridge-yle-tips). Or try our timed practice tools at [exam.tkjtools.io](https://exam.tkjtools.io).
-
 Remember: it's not about being smart. It's about being strategic.
 
 Go get 'em.

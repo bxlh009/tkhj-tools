@@ -87,6 +87,4 @@ Check the privacy settings. Some tools allow data training unless you opt out. E
 **Q6: Which tool is best for non-native English speakers?**
 Gamma and Tome are quite good at simplifying language. They avoid complex idioms. Beautiful.ai focuses more on visual structure. If language is your main barrier, start with Gamma. It generates clear, simple text that is easy to edit.
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
-
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。

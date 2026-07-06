@@ -170,6 +170,4 @@ Stop cramming. Start mapping. Stop skimming. Start structuring. Stop guessing. S
 
 Your score will follow.
 
-If you need a structured plan to implement these steps, check out our [ISEE Prep Course](https://exam.tkjtools.io) for guided practice and personalized feedback.
-
 > Disclaimer: This is independently written educational content. Not endorsed by ISEE or any official body. Example questions are rewritten for teaching. Always refer to official guides.

@@ -7,7 +7,6 @@ primary_keyword: "ai writing feedback loop"
 long_tail: ["ai writing feedback loop", "how to get better ai writing feedback", "iterative ai editing workflow"]
 word_count: 0
 estimated_read_min: 0
-sources: ["https://ai.tkjtools.io/blog/feedback-loops", "https://openai.com/research/gpt-4o-capabilities"]
 structure_template: "D"
 ---
 
@@ -102,7 +101,5 @@ A: Not fully. You need to make judgment calls on each critique. However, you can
 
 **Q8: What's the biggest mistake people make with this?**
 A: Treating the AI's critique as gospel. It's not. It's a suggestion. If the AI tells you to change a word that feels right to you, ignore it. Your voice matters more than algorithmic perfection.
-
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
 
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.

@@ -140,6 +140,4 @@ A: 2-4 weeks with consistent practice. Don't rush. Steady progress is better tha
 
 If you need to improve your reading speed in 30 days, try our timed practice modules. They're designed to mimic the real exam pressure.
 
-Visit [exam.tkjtools.io](http://exam.tkjtools.io) for structured practice plans.
-
 > Disclaimer: This is independently written educational content. Not endorsed by Cambridge PET or any official body. Example questions are rewritten for teaching. Always refer to official guides.

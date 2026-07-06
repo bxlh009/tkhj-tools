@@ -119,6 +119,4 @@ A: Significantly better. Focus on step-by-step thinking reduces errors and impro
 Q8: Is there a free trial for enterprise features?
 A: Contact sales for a customized demo. They often provide limited trials for qualified enterprise prospects.
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
-
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。

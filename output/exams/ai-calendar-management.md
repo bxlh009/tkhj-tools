@@ -118,6 +118,4 @@ A: Yes, always. You're the boss. If the AI suggests moving a meeting, you can sa
 
 Stop coloring your life. Start automating it. The future of productivity isn't about working harder; it's about working smarter. AI calendar tools are the lever that lets you lift more weight with less effort.
 
-If you need to optimize your schedule in the next 30 days, try [exam.tkjtools.io]'s automated planning module. It's designed for busy pros who don't have time for guesswork.
-
 > Disclaimer: This is independently written educational content. Not endorsed by any official body or software provider. Example questions are rewritten for teaching. Always refer to official guides and terms of service.

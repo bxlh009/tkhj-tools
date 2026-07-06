@@ -106,6 +106,4 @@ A: AI models can be inconsistent. If you get different outputs, compare them aga
 **Q8: Is it okay to use AI for brainstorming?**
 A: Absolutely. Brainstorming is one of the safest uses. It helps overcome writer's block and generates ideas you might not have considered. Just remember to evaluate each idea critically. Not every suggestion is good. Use AI as a springboard, not a destination.
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
-
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.本文为独立编写的教学内容，不代表任何考试机构观点。

@@ -68,7 +68,6 @@ H1 with keyword + the news hook
  -> Prompt + AI output excerpt + analysis
  -> When to adopt / when to skip
  -> FAQ 6-8
- -> CTA + Disclaimer
 
 ### Template B: The Comparison Battle
 H1 with /X vs Y vs Z/
@@ -77,7 +76,6 @@ H1 with /X vs Y vs Z/
  -> Prompt + output excerpts from TWO tools running the same prompt
  -> Use-case recommendations (tool A for X, tool B for Y)
  -> FAQ 6-8
- -> CTA + Disclaimer
 
 ### Template C: The Upgrade Advisor
 H1 with /Should I upgrade.../
@@ -86,7 +84,6 @@ H1 with /Should I upgrade.../
  -> Prompt + AI output excerpt showing the difference
  -> 3 scenarios with specific personas (e.g., /daily writer/, /enterprise dev/, /student/)
  -> FAQ 6-8 with real upgrade questions
- -> CTA + Disclaimer
 
 ### Template D: The Workflow Deep-Dive
 H1 with /How I use X for Y/
@@ -95,7 +92,6 @@ H1 with /How I use X for Y/
  -> Prompt + AI output excerpt at the critical step
  -> Honest pros / cons table
  -> FAQ 6-8 (focus on /what if.../ edge cases)
- -> CTA + Disclaimer
 
 ## Identity
 
@@ -141,7 +137,6 @@ A: (50-80 words)
 
 (repeat x 6-8)
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
 
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
 

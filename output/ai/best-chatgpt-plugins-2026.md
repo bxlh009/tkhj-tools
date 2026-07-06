@@ -77,6 +77,4 @@ A: Assuming the AI knows everything. It doesn't. It retrieves or generates based
 **Q8: Will these tools replace human editors?**
 A: No. They assist. DeepL improves drafts, but humans provide the final polish. AI lacks true empathy and cultural intuition. Use it as a co-pilot, not the pilot.
 
-One last thing: want fresh AI tool breakdowns every week? Visit [ai.tkjtools.io](https://ai.tkjtools.io).
-
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。

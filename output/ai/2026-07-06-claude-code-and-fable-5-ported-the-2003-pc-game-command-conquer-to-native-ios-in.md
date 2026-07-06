@@ -76,8 +76,4 @@ Claude Code is a tool. A powerful one. But it’s not a replacement for human in
 
 I’m excited. I’m also scared. But mostly, I’m curious. What will we build next?
 
-Try it yourself. Go to [ai.tkjtools.io](http://ai.tkjtools.io) and test Claude Code on a small project. See how fast it goes. Then see how many bugs you find.
-
-And if you’re prepping for exams while learning these tools, check out [exam.tkjtools.io](http://exam.tkjtools.io) for timed practice. Balance is key.
-
 This article is independently written and does not represent the views of any exam body or vendor.

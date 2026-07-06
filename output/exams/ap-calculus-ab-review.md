@@ -138,6 +138,4 @@ Start with direct substitution. Factor if you can. Use conjugates for radicals. 
 
 Practice these five strategies until they're automatic. Then, tackle the harder problems.
 
-If you need more targeted practice, try [exam.tkjtools.io] for timed drills.
-
 > Disclaimer: This is independently written educational content. Not endorsed by AP Calculus or any official body. Example questions are rewritten for teaching. Always refer to official guides.

@@ -82,8 +82,6 @@ You need to train your ears. Start slow. Then speed up.
 
 Listen to educational videos for kids. Yes, really. The language is clear. The pace is moderate. Then move to teen documentaries. Finally, tackle adult lectures.
 
-Use tools like [exam.tkjtools.io] to simulate test conditions. Time yourself. No pausing. No rewinding. This builds stamina. Your brain needs to learn how to sustain attention for twenty minutes straight. It's exhausting at first. But it gets easier.
-
 ## Worked Example 1: The Science Lecture
 
 **Audio Transcript (Simulated):**

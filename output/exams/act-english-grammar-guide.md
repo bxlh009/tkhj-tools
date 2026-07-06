@@ -178,6 +178,4 @@ A) 75 questions in 45 minutes. That's roughly 36 seconds per question. Fast. Ver
 
 > Disclaimer: This is independently written educational content. Not endorsed by ACT or any official body. Example questions are rewritten for teaching. Always refer to official guides.
 
-If you need to drill these concepts without the pressure of a full test, try [exam.tkjtools.io] for targeted grammar drills. It's fast, it's free, and it's exactly what you need to build muscle memory.
-
 God, I hope this helps. You've got this. Just remember: concise, clear, correct. Nothing else matters.

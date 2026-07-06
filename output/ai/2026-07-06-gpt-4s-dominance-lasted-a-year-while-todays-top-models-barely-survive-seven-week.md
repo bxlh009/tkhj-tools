@@ -109,6 +109,4 @@ Are you going to spend the next week testing new APIs? Or are you going to use t
 
 I’m betting on the latter.
 
-Want to see how AI tools can actually boost your TOEFL writing score without getting lost in the hype? Check out our guide on [exam.tkjtools.io](https://exam.tkjtools.io) for practical, benchmark-agnostic strategies.
-
 This article is independently written and does not represent the views of any exam body or vendor.
