@@ -1,11 +1,6 @@
 __pycache__/
 *.pyc
 _task_def.xml
-.seen_*
-!.seen_exam_vars.json
-!.seen_ai_stories.json
-!ai_news_log.jsonl
-!daily_log.jsonl
-ai_news_log.jsonl
-daily_log.jsonl
+.seen_ai_stories.json
+.seen_exam_vars.json
 site/_site/
