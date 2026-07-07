@@ -3,3 +3,6 @@
 {"type": "build", "status": "ok", "_time": "2026-07-06T17:31:47.836346"}
 {"type": "ai", "status": "ok", "output": "rror: junk after document element: line 1, column 130\n  pulled 24 candidate items\n[2/5] Scoring for big-news relevance...\n  big-news matches: 4\n[end] No new big-news AI story today — nothing written.\n", "_time": "2026-07-06T17:38:46.460001"}
 {"type": "build", "status": "ok", "_time": "2026-07-06T17:38:46.551718"}
+{"type": "exam", "var": "prompts-for-language-learning.json", "status": "ok", "output": "core: 75/100 verdict=PASS\n[WARN] opener fix failed: No module named '_force_opener'\n[OK]   written: /home/runner/work/tkhj-tools/tkhj-tools/output/exams/prompts-for-language-learning.md (~1341 words)\n", "_time": "2026-07-07T14:12:07.858877"}
+{"type": "ai", "status": "ok", "output": "ving + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-07-zhipu-ai-launches-zcode-to-challenge-claude-code-and-openai-codex-at-a-fraction.md\n  rebuilt site: True\n", "_time": "2026-07-07T14:13:16.685833"}
+{"type": "build", "status": "ok", "_time": "2026-07-07T14:13:16.784106"}
