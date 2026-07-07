@@ -1,0 +1,20 @@
+{
+  "_comment": "TOEFL Writing Integrated Task Guide",
+  "type": "exam",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "students preparing for TOEFL writing section",
+  "exam_name": "TOEFL",
+  "section_name": "Writing",
+  "years": "5",
+  "bottleneck_score": "struggling with the section",
+  "primary_keyword": "TOEFL integrated writing task strategies",
+  "long_tail_keywords": [
+    "TOEFL integrated writing",
+    "TOEFL writing task",
+    "TOEFL lecture notes",
+    "TOEFL academic writing"
+  ],
+  "slug": "toefl-writing-integrated",
+  "language": "English"
+}

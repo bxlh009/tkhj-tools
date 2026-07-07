@@ -1,0 +1,20 @@
+{
+  "_comment": "GRE Sentence Equivalence",
+  "type": "exam",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "students who struggle with GRE text completion questions",
+  "exam_name": "GRE",
+  "section_name": "Verbal",
+  "years": "5",
+  "bottleneck_score": "struggling with the section",
+  "primary_keyword": "GRE sentence equivalence strategies",
+  "long_tail_keywords": [
+    "GRE sentence equivalence",
+    "GRE text completion",
+    "GRE vocabulary",
+    "GRE blank questions"
+  ],
+  "slug": "gre-sentence-equivalence",
+  "language": "English"
+}

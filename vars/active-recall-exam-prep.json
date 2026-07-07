@@ -1,0 +1,21 @@
+{
+  "_comment": "Active Recall for Exam Preparation",
+  "type": "exam",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "students looking for effective study techniques to retain information longer",
+  "exam_name": "General",
+  "section_name": "",
+  "years": "5",
+  "bottleneck_score": "struggling with the section",
+  "primary_keyword": "active recall study technique exams",
+  "long_tail_keywords": [
+    "active recall",
+    "study technique",
+    "exam preparation",
+    "memory retention",
+    "spaced repetition"
+  ],
+  "slug": "active-recall-exam-prep",
+  "language": "English"
+}

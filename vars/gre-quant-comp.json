@@ -1,0 +1,21 @@
+{
+  "_comment": "GRE Quantitative Comparison",
+  "type": "exam",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "students preparing for GRE quantitative reasoning",
+  "exam_name": "GRE",
+  "section_name": "Math",
+  "years": "5",
+  "bottleneck_score": "struggling with the section",
+  "primary_keyword": "GRE quantitative comparison strategies",
+  "long_tail_keywords": [
+    "GRE quant",
+    "GRE quantitative comparison",
+    "GRE math",
+    "GRE algebra",
+    "GRE data analysis"
+  ],
+  "slug": "gre-quant-comp",
+  "language": "English"
+}

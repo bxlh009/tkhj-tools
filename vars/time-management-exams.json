@@ -1,0 +1,21 @@
+{
+  "_comment": "Time Management During Exams",
+  "type": "exam",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "students who run out of time during exams",
+  "exam_name": "General",
+  "section_name": "",
+  "years": "5",
+  "bottleneck_score": "struggling with the section",
+  "primary_keyword": "time management test taking strategies",
+  "long_tail_keywords": [
+    "time management",
+    "test taking strategy",
+    "exam timing",
+    "question pacing",
+    "exam anxiety"
+  ],
+  "slug": "time-management-exams",
+  "language": "English"
+}

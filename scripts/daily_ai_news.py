@@ -162,6 +162,27 @@ def score_item(item):
 def is_big_news(item, threshold=8):
     return score_item(item) >= threshold
 
+def is_today(item):
+    """Check if the RSS item was published today."""
+    pub = item.get("pubDate", "")
+    if not pub:
+        return True
+    for fmt in [
+        "%a, %d %b %Y %H:%M:%S %z",
+        "%a, %d %b %Y %H:%M:%S %Z",
+        "%Y-%m-%dT%H:%M:%S%z",
+        "%Y-%m-%dT%H:%M:%S",
+        "%Y-%m-%d",
+    ]:
+        try:
+            from datetime import datetime as _dt2
+            parsed = _dt2.strptime(pub.strip(), fmt)
+            today = _dt.datetime.now(parsed.tzinfo if parsed.tzinfo else _dt.timezone.utc)
+            return (parsed.date() == today.date())
+        except ValueError:
+            continue
+    return True
+
 def _fingerprint(item):
     return _hashlib.sha1((item["title"] + "|" + item["link"]).encode("utf-8")).hexdigest()[:14]
 
@@ -259,7 +280,7 @@ def main():
     items = pull_feeds()
     print(f"  pulled {len(items)} candidate items")
     print("[2/5] Scoring for big-news relevance...")
-    big = [it for it in items if is_big_news(it)]
+    big = [it for it in items if is_today(it) and is_big_news(it)]
     print(f"  big-news matches: {len(big)}")
     target = None
     for it in sorted(big, key=score_item, reverse=True):

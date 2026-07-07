@@ -1,0 +1,21 @@
+{
+  "_comment": "GRE Reading Comprehension Strategies",
+  "type": "exam",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "students preparing for GRE verbal reasoning",
+  "exam_name": "GRE",
+  "section_name": "Verbal",
+  "years": "5",
+  "bottleneck_score": "struggling with the section",
+  "primary_keyword": "GRE reading comprehension passages",
+  "long_tail_keywords": [
+    "GRE reading",
+    "GRE verbal",
+    "GRE passages",
+    "GRE long reading",
+    "GRE critical reasoning"
+  ],
+  "slug": "gre-reading-comprehension",
+  "language": "English"
+}

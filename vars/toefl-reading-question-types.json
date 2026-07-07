@@ -1,0 +1,21 @@
+{
+  "_comment": "TOEFL Reading Question Types",
+  "type": "exam",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "students preparing for the TOEFL reading section",
+  "exam_name": "TOEFL",
+  "section_name": "Reading",
+  "years": "5",
+  "bottleneck_score": "struggling with the section",
+  "primary_keyword": "TOEFL reading question types strategies",
+  "long_tail_keywords": [
+    "TOEFL reading",
+    "TOEFL question types",
+    "TOEFL reading strategies",
+    "TOEFL inference",
+    "TOEFL vocabulary"
+  ],
+  "slug": "toefl-reading-question-types",
+  "language": "English"
+}

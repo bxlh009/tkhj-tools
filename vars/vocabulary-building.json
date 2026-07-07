@@ -1,0 +1,22 @@
+{
+  "_comment": "Vocabulary Building for English Exams",
+  "type": "exam",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "students who want to expand their vocabulary for English proficiency exams",
+  "exam_name": "General",
+  "section_name": "",
+  "years": "5",
+  "bottleneck_score": "struggling with the section",
+  "primary_keyword": "vocabulary building TOEFL IELTS GRE",
+  "long_tail_keywords": [
+    "vocabulary",
+    "word learning",
+    "TOEFL vocabulary",
+    "IELTS vocabulary",
+    "GRE vocabulary",
+    "collocations"
+  ],
+  "slug": "vocabulary-building",
+  "language": "English"
+}

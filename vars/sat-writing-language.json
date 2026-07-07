@@ -1,0 +1,20 @@
+{
+  "_comment": "SAT Writing and Language",
+  "type": "exam",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "students preparing for SAT writing section",
+  "exam_name": "SAT",
+  "section_name": "Writing",
+  "years": "5",
+  "bottleneck_score": "struggling with the section",
+  "primary_keyword": "SAT writing and language test strategies",
+  "long_tail_keywords": [
+    "SAT writing",
+    "SAT grammar",
+    "SAT punctuation",
+    "SAT sentence structure"
+  ],
+  "slug": "sat-writing-language",
+  "language": "English"
+}

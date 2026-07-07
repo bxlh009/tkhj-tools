@@ -1,0 +1,20 @@
+{
+  "_comment": "IELTS Reading Matching Headings",
+  "type": "exam",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "students struggling with IELTS reading matching questions",
+  "exam_name": "IELTS",
+  "section_name": "Reading",
+  "years": "5",
+  "bottleneck_score": "struggling with the section",
+  "primary_keyword": "IELTS reading matching headings strategies",
+  "long_tail_keywords": [
+    "IELTS reading",
+    "IELTS matching headings",
+    "IELTS paragraph matching",
+    "IELTS skimming"
+  ],
+  "slug": "ielts-reading-matching",
+  "language": "English"
+}
