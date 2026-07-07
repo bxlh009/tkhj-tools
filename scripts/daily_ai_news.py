@@ -46,15 +46,23 @@ RSS_FEEDS = [
     ("VentureBeat AI",              "https://venturebeat.com/category/ai/feed/"),
     ("TechCrunch AI",                "https://techcrunch.com/category/artificial-intelligence/feed/"),
     ("Hacker News Front Page",       "https://hnrss.org/frontpage"),
-    ("Hacker News AI",               "https://hnrss.org/newest?q=AI+OR+GPT+OR+Claude+OR+Gemini&count=20"),
+    ("Hacker News AI",               "https://hnrss.org/newest?q=AI+OR+GPT+OR+Claude+OR+Gemini+OR+DeepSeek+OR+Llama" + "&count=30"),
+    ("Hacker News Prompt Eng",       "https://hnrss.org/newest?q=prompt+engineering+OR+LLM+OR+coding+agent" + "&count=20"),
     ("Ars Technica AI",              "https://feeds.arstechnica.com/arstechnica/technology-lab"),
     ("Google Research Blog",         "https://blog.research.google/feeds/posts/default"),
+    ("Google News AI",               "https://news.google.com/rss/search?q=AI+artificial+intelligence+model+release" + "&hl=en-US&gl=US&ceid=US:en"),
+    ("Google News AI Tools",         "https://news.google.com/rss/search?q=AI+tool+prompt+engineering+workflow" + "&hl=en-US&gl=US&ceid=US:en"),
     ("Hugging Face Blog",            "https://huggingface.co/blog/feed.xml"),
     ("MarkTechPost",                 "https://www.marktechpost.com/feed/"),
     ("ScienceDaily AI",              "https://www.sciencedaily.com/rss/computers_math/artificial_intelligence.xml"),
     ("Neowin AI",                    "https://www.neowin.net/news/tag/artificial-intelligence/rss"),
     ("Reddit MachineLearning",       "https://www.reddit.com/r/MachineLearning/.rss"),
+    ("Reddit LocalLLaMA",            "https://www.reddit.com/r/LocalLLaMA/.rss"),
     ("The Decoder",                  "https://the-decoder.com/feed/"),
+    ("Analytics Vidhya",             "https://www.analyticsvidhya.com/feed/"),
+    ("AI Business",                  "https://aibusiness.com/feed"),
+    ("MIT AI News",                  "https://news.mit.edu/topic/artificial-intelligence2/rss"),
+    ("Prompt Engineering Guide",     "https://www.promptingguide.ai/rss.xml"),
 ]
 
 
@@ -110,7 +118,7 @@ def _slugify(text):
     text = _re.sub(r"[\s_]+", "-", text)
     return _re.sub(r"-{2,}", "-", text)[:80].strip("-")
 
-def pull_feeds(max_per_feed=6):
+def pull_feeds(max_per_feed=10):
     items, seen_links = [], set()
     for name, url in RSS_FEEDS:
         try:
