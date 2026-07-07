@@ -1,0 +1,19 @@
+{
+  "_comment": "Anthropic Jacobian Lens - LLM transparency breakthrough",
+  "type": "ai-news",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "AI researchers, developers, and enthusiasts interested in LLM interpretability",
+  "primary_keyword": "Anthropic Jacobian Lens Claude inner monologue",
+  "long_tail_keywords": [
+    "Anthropic Jacobian Lens",
+    "Claude inner monologue",
+    "LLM transparency",
+    "AI interpretability",
+    "Claude hidden reasoning"
+  ],
+  "slug": "claude-jacobian-lens-inner-monologue",
+  "category": "ai-news",
+  "_force_current_year": 2026,
+  "language": "English"
+}
