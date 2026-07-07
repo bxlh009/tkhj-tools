@@ -263,6 +263,27 @@ def main():
             f"Details are still emerging — check the source: {target['link']}.\n"
         )
         print("  [warn] LLM gave no output; fallback stub saved")
+    # Validate body is not JSON metadata (pipeline bug protection)
+    body_stripped = body.strip()
+    if body_stripped.startswith("{") and body_stripped.endswith("}"):
+        try:
+            import json as _jc
+            _jc.loads(body_stripped)
+            ws = "  [warn] LLM returned JSON metadata instead of article; using fallback"
+            print(ws)
+            body = (
+                "## " + target["title"] + "
+
+"
+                + "This story broke today via " + target["source"] + ". "
+                + "Details are still emerging "
+                + chr(8212)
+                + " check the source: "
+                + target["link"] + ".
+"
+            )
+        except Exception:
+            pass
     print("[5/5] Saving + rebuilding site...")
     out_path = save_article(target, body)
     mark_seen(target, db)
