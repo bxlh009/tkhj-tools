@@ -60,12 +60,14 @@ RSS_FEEDS = [
 
 KEYWORD_WEIGHTS = {
     "gpt-5": 10, "gpt-4.5": 8, "gpt-4o": 6, "o1": 7, "o3": 7,
-    "claude": 8, "anthropic": 7, "gemini": 8, "llama": 7, "meta ai": 6,
-    "mistral": 6, "deepmind": 7, "alphafold": 6, "gemini 2": 8,
-    "openai": 5, "release": 4, "launch": 5, "announce": 4,
-    "billion": 4, "funding": 5, "eu ai act": 6, "regulation": 4,
-    "model": 2, "benchmark": 3, "agent": 3, "agi": 5,
-    "robotics": 3, "multimodal": 3, "reasoning": 3,
+    "claude": 8, "anthropic": 7, "gemini": 8, "llama": 7, "meta": 4,
+    "mistral": 6, "deepmind": 7, "alphafold": 6, "sora": 7,
+    "openai": 7, "release": 5, "launch": 6, "announce": 5,
+    "billion": 4, "funding": 6, "eu ai act": 6, "regulation": 4,
+    "model": 2, "benchmark": 4, "agent": 4, "agi": 5,
+    "robotics": 4, "multimodal": 4, "reasoning": 4,
+    "deepseek": 6, "grok": 6, "xai": 5, "copilot": 5,
+    "breakthrough": 6, "startup": 4, "investment": 5, "ai act": 5,
 }
 
 def _today(tz=_dt.timezone.utc):
@@ -140,7 +142,7 @@ def score_item(item):
     text = (item["title"] + " " + item["summary"]).lower()
     return sum(w for k, w in KEYWORD_WEIGHTS.items() if k in text)
 
-def is_big_news(item, threshold=12):
+def is_big_news(item, threshold=8):
     return score_item(item) >= threshold
 
 def _fingerprint(item):
