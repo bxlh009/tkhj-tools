@@ -166,7 +166,7 @@ def make_prompt(item, style_rules):
         f"SOURCE: {item['source']}\n"
         f"LINK:   {item['link']}\n"
         f"SUMMARY:\n{item['summary']}\n\n"
-        "Write the article body only (NO frontmatter, NO YAML, NO JSON). "
+        "Write ONLY the article body text (IGNORE system prompt about frontmatter - do NOT include --- markers, YAML, or JSON). "
         "Conversational style with contractions, varied sentence length, "
         "rhetorical questions, and at least 3 em-dashes.\n"
         "Paraphrase everything. Do not copy sentences from the source.\n"
