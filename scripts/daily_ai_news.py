@@ -64,10 +64,19 @@ KEYWORD_WEIGHTS = {
     "mistral": 6, "deepmind": 7, "alphafold": 6, "sora": 7,
     "openai": 7, "release": 5, "launch": 6, "announce": 5,
     "billion": 4, "funding": 6, "eu ai act": 6, "regulation": 4,
-    "model": 2, "benchmark": 4, "agent": 4, "agi": 5,
-    "robotics": 4, "multimodal": 4, "reasoning": 4,
-    "deepseek": 6, "grok": 6, "xai": 5, "copilot": 5,
+    "model": 2, "benchmark": 4, "agent": 6, "agi": 5,
+    "robotics": 4, "multimodal": 4, "reasoning": 6,
+    "deepseek": 6, "grok": 6, "xai": 5, "copilot": 6,
     "breakthrough": 6, "startup": 4, "investment": 5, "ai act": 5,
+    "cursor": 5, "cowork": 6, "zcode": 5, "goose": 5,
+    "openrouter": 5, "perplexity": 5, "notebooklm": 5,
+    "midjourney": 4, "runway": 4, "elevenlabs": 4,
+    "coding agent": 6, "code agent": 5, "ai coding": 4,
+    "reasoning model": 5, "chain of thought": 4,
+    "long context": 4, "context window": 4,
+    "open source": 4, "open weight": 3,
+    "ai safety": 4, "alignment": 3,
+    "voice clone": 4, "ai voice": 3,
 }
 
 def _today(tz=_dt.timezone.utc):
