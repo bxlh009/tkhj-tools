@@ -1,0 +1,19 @@
+{
+  "_comment": "AI Prompt Patterns and Templates",
+  "type": "ai-news",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "anyone who wants to get better AI outputs consistently",
+  "primary_keyword": "AI prompt patterns templates",
+  "long_tail_keywords": [
+    "prompt templates",
+    "prompt patterns",
+    "few-shot prompting",
+    "persona prompting",
+    "format prompting"
+  ],
+  "slug": "ai-prompt-patterns",
+  "category": "tool-review",
+  "_force_current_year": 2026,
+  "language": "English"
+}

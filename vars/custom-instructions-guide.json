@@ -1,0 +1,19 @@
+{
+  "_comment": "Custom Instructions for ChatGPT Claude Gemini",
+  "type": "ai-news",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "users who want to personalize their AI tools",
+  "primary_keyword": "custom instructions ChatGPT Claude Gemini",
+  "long_tail_keywords": [
+    "custom instructions",
+    "ChatGPT custom instructions",
+    "Claude project knowledge",
+    "AI personalization",
+    "Gemini saved info"
+  ],
+  "slug": "custom-instructions-guide",
+  "category": "tool-review",
+  "_force_current_year": 2026,
+  "language": "English"
+}

@@ -1,0 +1,19 @@
+{
+  "_comment": "System Prompt Design Best Practices",
+  "type": "ai-news",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "developers and power users customizing AI behavior",
+  "primary_keyword": "system prompt design best practices",
+  "long_tail_keywords": [
+    "system prompt",
+    "prompt engineering",
+    "AI instructions",
+    "custom GPT instructions",
+    "prompt structure"
+  ],
+  "slug": "system-prompt-design",
+  "category": "tool-review",
+  "_force_current_year": 2026,
+  "language": "English"
+}

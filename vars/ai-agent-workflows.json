@@ -1,0 +1,19 @@
+{
+  "_comment": "AI Agent Workflows for Daily Tasks",
+  "type": "ai-news",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "professionals looking to automate repetitive tasks with AI agents",
+  "primary_keyword": "AI agent workflows daily tasks",
+  "long_tail_keywords": [
+    "AI agent",
+    "agent workflow",
+    "AI automation",
+    "autonomous AI",
+    "agent tasks"
+  ],
+  "slug": "ai-agent-workflows",
+  "category": "workflow",
+  "_force_current_year": 2026,
+  "language": "English"
+}

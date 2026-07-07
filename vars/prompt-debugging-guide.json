@@ -1,0 +1,19 @@
+{
+  "_comment": "How to Debug AI Prompts",
+  "type": "ai-news",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "AI users frustrated with inconsistent outputs",
+  "primary_keyword": "debug AI prompts troubleshooting",
+  "long_tail_keywords": [
+    "prompt debugging",
+    "AI troubleshooting",
+    "prompt fixing",
+    "AI output quality",
+    "prompt testing"
+  ],
+  "slug": "prompt-debugging-guide",
+  "category": "tool-review",
+  "_force_current_year": 2026,
+  "language": "English"
+}

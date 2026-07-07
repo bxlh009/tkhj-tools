@@ -1,0 +1,19 @@
+{
+  "_comment": "Prompt Chaining Techniques",
+  "type": "ai-news",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "AI users who want more reliable multi-step outputs",
+  "primary_keyword": "prompt chaining AI techniques",
+  "long_tail_keywords": [
+    "prompt chaining",
+    "AI workflow",
+    "prompt engineering",
+    "chain of thought prompting",
+    "multi-step prompting"
+  ],
+  "slug": "prompt-chaining-techniques",
+  "category": "tool-review",
+  "_force_current_year": 2026,
+  "language": "English"
+}

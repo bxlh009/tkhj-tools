@@ -1,0 +1,19 @@
+{
+  "_comment": "Building Custom Codex Skills",
+  "type": "ai-news",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "Codex users building custom skills for their workflow",
+  "primary_keyword": "Codex skills custom instructions",
+  "long_tail_keywords": [
+    "Codex skill",
+    "custom skill",
+    "AI skill building",
+    "Codex customization",
+    "skill development"
+  ],
+  "slug": "codex-skill-building-guide",
+  "category": "tool-review",
+  "_force_current_year": 2026,
+  "language": "English"
+}
