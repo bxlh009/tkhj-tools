@@ -1,0 +1,21 @@
+{
+  "_comment": "Zhipu AI ZCode launch - AI coding tool comparison",
+  "type": "ai-news",
+  "min_words": 1500,
+  "max_words": 2500,
+  "target_audience": "developers and tech leads evaluating AI coding assistants",
+  "primary_keyword": "Zhipu AI ZCode vs Claude Code vs OpenAI Codex",
+  "long_tail_keywords": [
+    "Zhipu AI",
+    "ZCode",
+    "GLM-5.2",
+    "coding assistant",
+    "AI tools",
+    "Claude Code",
+    "OpenAI Codex"
+  ],
+  "slug": "zhipu-ai-launches-zcode-challenge-claude-code-openai-codex",
+  "category": "comparison",
+  "_force_current_year": 2026,
+  "language": "English"
+}
