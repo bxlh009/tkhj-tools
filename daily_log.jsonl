@@ -6,3 +6,5 @@
 {"type": "exam", "var": "prompts-for-language-learning.json", "status": "ok", "output": "core: 75/100 verdict=PASS\n[WARN] opener fix failed: No module named '_force_opener'\n[OK]   written: /home/runner/work/tkhj-tools/tkhj-tools/output/exams/prompts-for-language-learning.md (~1341 words)\n", "_time": "2026-07-07T14:12:07.858877"}
 {"type": "ai", "status": "ok", "output": "ving + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-07-zhipu-ai-launches-zcode-to-challenge-claude-code-and-openai-codex-at-a-fraction.md\n  rebuilt site: True\n", "_time": "2026-07-07T14:13:16.685833"}
 {"type": "build", "status": "ok", "_time": "2026-07-07T14:13:16.784106"}
+{"type": "ai", "status": "ok", "output": "ing + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-07-claudes-hidden-inner-monologue-is-now-readable-thanks-to-anthropics-new-jacobian.md\n  rebuilt site: True\n", "_time": "2026-07-07T15:28:27.808439"}
+{"type": "build", "status": "ok", "_time": "2026-07-07T15:28:27.925194"}
