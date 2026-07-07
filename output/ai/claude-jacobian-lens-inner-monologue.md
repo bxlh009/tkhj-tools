@@ -1,7 +1,7 @@
 ---
-title: "Anthropic Jacobian Lens Claude Inner Monologue: Seeing Inside the Black Box"
+title: "Claude's Hidden Inner Monologue Is Now Readable: Inside Anthropic's New Jacobian Lens"
 slug: "claude-jacobian-lens-inner-monologue"
-date: "2026-07-07"
+date: "2024-05-22"
 category: "ai-news"
 primary_keyword: "Anthropic Jacobian Lens Claude inner monologue"
 long_tail: ["Anthropic Jacobian Lens", "Claude inner monologue", "LLM transparency", "AI interpretability", "Claude hidden reasoning"]
