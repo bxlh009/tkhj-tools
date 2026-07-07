@@ -164,13 +164,12 @@ def make_prompt(item, style_rules):
         f"SOURCE: {item['source']}\n"
         f"LINK:   {item['link']}\n"
         f"SUMMARY:\n{item['summary']}\n\n"
-        "Write a concise 800-1000 word article in American English, "
-        "conversational style with contractions, varied sentence length, "
+        "Write the article body only (NO frontmatter, NO YAML, NO JSON). "
+        "Conversational style with contractions, varied sentence length, "
         "rhetorical questions, and at least 3 em-dashes.\n"
-        "Do not copy sentences from the source article. Write entirely in your own words. Paraphrase everything.\n"
-        "End with the disclaimer: 'This article is independently written "
-        "and does not represent the views of any exam body or vendor.'"
-    )
+        "Paraphrase everything. Do not copy sentences from the source.\n"
+        "End with disclaimer: 'This article is independently written "
+        "and does not represent the views of any exam body or vendor."    )
     return system, user_msg
 
 
