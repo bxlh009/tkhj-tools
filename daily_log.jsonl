@@ -10,3 +10,5 @@
 {"type": "build", "status": "ok", "_time": "2026-07-07T15:28:27.925194"}
 {"type": "ai", "status": "ok", "output": " Saving + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-07-chinese-ai-models-regularly-pass-30-percent-on-openrouter-as-cost-gap-widens.md\n  rebuilt site: True\n", "_time": "2026-07-07T15:36:59.088413"}
 {"type": "build", "status": "ok", "_time": "2026-07-07T15:36:59.191621"}
+{"type": "ai", "status": "ok", "output": "ing + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-07-openai-and-anthropic-are-giving-away-millions-in-computing-power-to-attract-star.md\n  rebuilt site: True\n", "_time": "2026-07-07T15:41:39.514303"}
+{"type": "build", "status": "ok", "_time": "2026-07-07T15:41:39.619243"}
