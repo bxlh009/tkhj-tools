@@ -16,3 +16,6 @@
 {"type": "build", "status": "ok", "_time": "2026-07-07T16:09:06.619845"}
 {"type": "ai", "status": "fail", "output": "", "_time": "2026-07-07T16:47:53.151047"}
 {"type": "build", "status": "ok", "_time": "2026-07-07T16:47:53.249128"}
+{"type": "exam", "var": "ai-meeting-workflow.json", "status": "fail", "error": "dtoolcache/Python/3.12.13/x64/lib/python3.12/ssl.py\", line 1103, in read\n    return self._sslobj.read(len, buffer)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTimeoutError: The read operation timed out\n", "_time": "2026-07-08T13:46:44.964071"}
+{"type": "ai", "status": "fail", "output": "", "_time": "2026-07-08T13:46:44.979706"}
+{"type": "build", "status": "ok", "_time": "2026-07-08T13:46:45.071757"}
