@@ -43,6 +43,7 @@ def esc(s):
     return s
 def read(p): return pathlib.Path(p).read_text("utf-8")
 def fm(md):
+    md = md.lstrip("\ufeff")  # strip BOM if present
     m = re.match(r"^---\n(.*?)\n---\n(.*)$", md, re.S)
     if not m: return {}, md
     meta = {}
@@ -84,7 +85,20 @@ def esc(s):
     s = str(s).replace('&', '&amp;').replace('<', '&lt;').replace('"', '&quot;')
     return s
 
+def _strip_fm(text):
+    """Strip leading --- ... --- frontmatter block."""
+    import re as _re
+    m = _re.match(r"^---\n.*?\n---\n", text, _re.S | _re.M)
+    if m:
+        return text[m.end():]
+    # also try without leading newline
+    m = _re.match(r"---\n.*?\n---\n", text, _re.S)
+    if m:
+        return text[m.end():]
+    return text
+
 def md2html(text):
+    text = _strip_fm(text)
     text = clean_md(text)
     out = []
     for line in text.split(chr(10)):

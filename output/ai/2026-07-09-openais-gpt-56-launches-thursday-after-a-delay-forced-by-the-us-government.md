@@ -1,4 +1,4 @@
-﻿---
+---
 title: "OpenAI launches GPT-5.6 after US government clears delayed release"
 slug: "2026-07-09-openais-gpt-56-launches-thursday-after-a-delay-forced-by-the-us-government"
 date: "2026-07-09"
