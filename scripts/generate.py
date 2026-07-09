@@ -16,7 +16,7 @@ AI_OUT   = SCRIPTS_DIR.parent / 'output' / 'ai'
 
 def get_api_key():
     k = os.environ.get(CONFIG['api']['api_key_env'])
-    if not k: sys.exit('[ERROR] env missing')
+    if not k or not k.strip(): sys.exit('[ERROR] env missing')
     return k
 
 def read(p): return pathlib.Path(p).read_text(encoding='utf-8')

@@ -38,10 +38,6 @@ _fav_src = HERE / "static" / "favicon.png"
 if _fav_src.exists():
     shutil.copy2(str(_fav_src), str(OUT / "favicon.png"))
 NL = chr(10); Q = chr(34); SQ = chr(39); AMP = "&"
-def esc(s):
-    s = str(s)
-    s = s.replace("&","&amp;").replace("<","&lt;").replace(Q,"&quot;")
-    return s
 def read(p): return pathlib.Path(p).read_text("utf-8")
 def fm(md):
     md = md.lstrip("\ufeff")  # strip BOM if present
@@ -171,7 +167,7 @@ def footer():
     grid = ""
     for c in cols:
         grid += '<div class="foot-col">' + c + "</div>"
-    return '<footer class="site-footer"><div class="container"><div class="foot-grid">' + grid + '</div><p class="foot-copy">&copy; ' + y + " " + DOM + " · Independent study guides · All content is educational · Some content is AI-assisted and reviewed by human editors</ · Some content is AI-assisted and reviewed by human editorsp></div></footer>"
+    return '<footer class="site-footer"><div class="container"><div class="foot-grid">' + grid + '</div><p class="foot-copy">&copy; ' + y + " " + DOM + " · Independent study guides · All content is educational · Some content is AI-assisted and reviewed by human editors.</p></div></footer>"
 
 def nav(active="home"):
     out = ["<header class=\"site-header\">"]
