@@ -311,7 +311,7 @@ def main():
             ws = "  [warn] LLM returned JSON metadata instead of article; using fallback"
             print(ws)
             body = (
-                "## " + target["title"] + "
+                " + target["title"] + "
 
 "
                 + "This story broke today via " + target["source"] + ". "
@@ -323,6 +323,13 @@ def main():
             )
         except Exception:
             pass
+    # Final cleanup: strip stray frontmatter leaking into body
+    try:
+        import importlib as _il
+        _clean = _il.import_module("_clean_body")
+        body = _clean.clean_body(body)
+    except Exception:
+        pass
     print("[5/5] Saving + rebuilding site...")
     out_path = save_article(target, body)
     mark_seen(target, db)

@@ -98,6 +98,8 @@ def md2html(text):
     body = chr(10).join(out)
     body = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', body)
     body = re.sub(r'\*(.+?)\*', r'<em>\1</em>', body)
+    # Strip any remaining unpaired asterisks so they never leak to the webpage
+    body = body.replace('*', '')
     return body
 
 

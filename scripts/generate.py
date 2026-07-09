@@ -1,5 +1,8 @@
 ﻿import pathlib, re, random, statistics, sys, json, os, argparse
 import urllib.request, urllib.error
+import time
+
+import importlib
 from datetime import datetime
 
 SCRIPTS_DIR = pathlib.Path(__file__).resolve().parent
@@ -22,15 +25,27 @@ def inj(tpl, v):
     return tpl
 def read_json(p): return json.loads(read(p))
 
-def call_api(system, user):
+def call_api(system, user, retries=3, base_delay=5):
     payload = {'model':CONFIG['api']['model'],'messages':[{'role':'system','content':system},{'role':'user','content':user}],
                'temperature':CONFIG['api']['temperature'],'top_p':CONFIG['api'].get('top_p',1.0),'max_tokens':CONFIG['api']['max_tokens']}
     req = urllib.request.Request(CONFIG['api']['base_url'], data=json.dumps(payload).encode(),
         headers={'Content-Type':'application/json','Authorization':'Bearer '+get_api_key()}, method='POST')
-    with urllib.request.urlopen(req, timeout=180) as r:
-        body = json.loads(r.read().decode())
-    print('[INFO] prompt='+str(body.get('usage',{}).get('prompt_tokens'))+' cmp='+str(body.get('usage',{}).get('completion_tokens')))
-    return body['choices'][0]['message']['content']
+    last_err = None
+    for attempt in range(1, retries + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=180) as r:
+                body = json.loads(r.read().decode())
+            print('[INFO] prompt='+str(body.get('usage',{}).get('prompt_tokens'))+' cmp='+str(body.get('usage',{}).get('completion_tokens')))
+            return body['choices'][0]['message']['content']
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            last_err = e
+            if attempt < retries:
+                delay = base_delay * (2 ** (attempt - 1))
+                print(f'[WARN] API attempt {attempt}/{retries} failed ({type(e).__name__}: {e}); retry in {delay}s')
+                time.sleep(delay)
+            else:
+                print(f'[ERROR] API call failed after {retries} attempts: {e}')
+    raise RuntimeError(f'API call failed after {retries} attempts: {last_err}')
 
 # Layer 1 system prompt (loaded fresh per call with rules baked in)
 def sys_prompt(atype):
@@ -164,8 +179,18 @@ def main():
     up = up + "\n\n--- FORMAT INSTRUCTION ---\nStart with a relatable student mistake or confusion. Mix short sections and long deep-dives. No numbered lists.\n"
     print('[INFO] generating [%s]...' % args.type)
     article = call_api(sys_prompt(args.type), up)
+    # Clean stray frontmatter / YAML / JSON leaking into body
+    try:
+        _clean = importlib.import_module("_clean_body")
+        cleaned = _clean.clean_body(article)
+        if cleaned != article:
+            print("[OK]   cleaned frontmatter/YAML leakage from body")
+        article = cleaned
+    except Exception as _e:
+        print(f"[WARN] _clean_body failed: {_e}")
+
     sc, verdict = score(article)
-    print('[OK]   Score: %d/100 verdict=%s' % (sc, verdict))
+    print("[OK]   Score: %d/100 verdict=%s" % (sc, verdict))
     # Layer 2e: GPT paragraph rewrite (ONLY other instance adds contractions)
     if verdict == 'WARN':
         article = force_casual(article, n=6)
@@ -183,10 +208,9 @@ def main():
         print('[WARN] still WARN; 5-min human polish pushes >90')
     # Force-rewrite banned opening lines (Most students think...)
     try:
-        import importlib, sys as _sys
-        _mod = importlib.import_module("_force_opener")
-        if _mod.has_banned_opener(article):
-            article = _mod.rewrite_opening(article, call_api)
+        from _force_opener import has_banned_opener, rewrite_opening
+        if has_banned_opener(article):
+            article = rewrite_opening(article, call_api)
             sc_after, _ = score(article)
             print("[OK]   opener rewritten; new score:", sc_after)
     except Exception as e_op:
