@@ -22,6 +22,7 @@ Optional: AGNES_API_KEY env var. Falls back to generating a
 from __future__ import annotations
 
 import datetime as _dt
+import random as _random
 import hashlib as _hashlib
 import json as _json
 import os as _os
@@ -65,6 +66,23 @@ RSS_FEEDS = [
     ("Prompt Engineering Guide",     "https://www.promptingguide.ai/rss.xml"),
 ]
 
+
+# Safety: blocklist for dangerous/skip domains
+BLOCKED_DOMAINS = [
+    "xxx", "porn", "sex", "gambling", "casino", "pharmacy",
+    "ransomware", "malware", "darknet", "tor.", "onion.",
+]
+BLOCKED_TLDS = [".xxx", ".sex", ".porn", ".adult", ".gambling"]
+
+def _is_safe_url(url):
+    u = url.lower()
+    for d in BLOCKED_DOMAINS:
+        if d in u:
+            return False
+    for tld in BLOCKED_TLDS:
+        if tld in u:
+            return False
+    return True
 
 KEYWORD_WEIGHTS = {
     "gpt-5": 10, "gpt-4.5": 8, "gpt-4o": 6, "o1": 7, "o3": 7,
@@ -149,6 +167,9 @@ def pull_feeds(max_per_feed=10):
             title_s, desc_s = _strip_html(title), _strip_html(desc)[:500]
             if not title_s or link in seen_links:
                 continue
+            if not _is_safe_url(link):
+                print(f"  [skip blocked] {name}: {link[:60]}")
+                continue
             items.append({"source": name, "title": title_s, "link": link.strip(),
                           "summary": desc_s, "pubDate": pubDate})
             seen_links.add(link)
@@ -193,12 +214,8 @@ def mark_seen(item, db):
     db[_fingerprint(item)] = {"title": item["title"], "link": item["link"], "date": _today()}
 
 def make_prompt(item, style_rules):
-    sys_path = ENGINE_DIR / "prompts" / "system_prompt_layer1.md"
-    base = sys_path.read_text("utf-8") if sys_path.exists() else ""
-    if "{atype}" in base:
-        system = base.replace("{atype}", "ai-news").replace("{rules}", style_rules)
-    else:
-        system = "You are Evan, an AI-researcher TOEFL/GRE instructor with 300+ students.\n\n--- Writing Rules ---\n" + style_rules
+    sys_path = ENGINE_DIR / "prompts" / "system_prompt_ai.md"
+    system = sys_path.read_text("utf-8") if sys_path.exists() else "You are Alex, independent AI tools researcher."
     user_msg = (
         f"TITLE: {item['title']}\n"
         f"SOURCE: {item['source']}\n"
@@ -208,10 +225,16 @@ def make_prompt(item, style_rules):
         "Conversational style with contractions, varied sentence length, "
         "rhetorical questions, and at least 3 em-dashes.\n"
         "Paraphrase everything. Do not copy sentences from the source.\n"
-        "End with disclaimer: 'This article is independently written "
-        "and does not represent the views of any exam body or vendor."    )
+        "End with disclaimer: 'This article is independently written based on publicly available information. AI products evolve fast; verify with official sources. No vendor sponsorship.'\n\n"
+        "CRITICAL RULES:\n"
+        "- This article MUST be 1500-2500 words. Short articles get rejected.\n"
+        "- NEVER invent specific numbers, scores, or benchmarks. If you dont know a number, say 'exact figures were not disclosed' or similar.\n"
+        "- NEVER compare models with made-up performance data. Use qualitative language: 'reportedly faster,' 'claimed to improve.'\n"
+        "- Use the source link as your only factual anchor. Paraphrase, dont fabricate.\n"
+        "- Vary sentence length dramatically. Mix short punchy sentences with longer analytical ones.\n"
+        "- BANNED: 'I've been teaching TOEFL/GRE' or any mention of teaching. This is a tech blog, not an exam blog."
+    )
     return system, user_msg
-
 
 def call_llm(system, user):
     api_key = _os.environ.get(CONFIG["api"]["api_key_env"], "")
@@ -343,11 +366,23 @@ def main():
             target = sorted(available, key=score_item, reverse=True)[0]
             print(f"  [freq] Forced pick (score {score_item(target)}): {target['title']}")
     if target is None:
-        print("[end] No new AI story today — nothing written.")
-        log_event({"date": _today(), "action": "skipped", "reason": "no-new-story"})
-        return 0
+        # DAILY FALLBACK: every day must have an AI article
+        print(f"  [daily] No fresh story \u2014 using daily fallback")
+        available_daily = [it for it in items if is_today(it)]
+        if available_daily:
+            target = sorted(available_daily, key=score_item, reverse=True)[0]
+            print(f"  [daily] Daily pick (score {score_item(target)}): {target['title']}")
+        else:
+            CURATED = [
+                {"title": "Top 7 Prompt Engineering Patterns for 2026", "source": "Curated", "link": "https://www.promptingguide.ai", "summary": "Roundup of the latest prompt chaining, few-shot, and system-prompt techniques professionals are using right now."},
+                {"title": "AI Coding Assistants Compared: Which One Actually Ships Code", "source": "Curated", "link": "https://github.com/features/copilot", "summary": "A practical comparison of Cursor, GitHub Copilot, Cody, and Windsurf on real-world tasks."},
+                {"title": "How to Build an AI Agent That Does Your Email", "source": "Curated", "link": "https://www.langchain.ai", "summary": "Step by step guide to wiring an LLM agent to triage, draft, and send email."},
+                {"title": "10 AI Productivity Tools Worth Paying For in 2026", "source": "Curated", "link": "https://www.notion.ai", "summary": "Honest ROI breakdown of AI tools across writing, analysis, design, and scheduling."},
+                {"title": "The State of Open-Weight Models: Llama 4, Mistral, and Beyond", "source": "Curated", "link": "https://huggingface.co", "summary": "What the latest open-weight releases actually mean for developers and startups."}
+            ]
+            target = _random.choice(CURATED)
+            print(f"  [daily] Curated pick: {target['title']}")
     print(f"[3/5] Selected: {target['title']}  ({target['source']})")
-    print("[4/5] Generating article via LLM...")
     system, user_msg = make_prompt(target, style_rules)
     body = call_llm(system, user_msg)
     if not body:
