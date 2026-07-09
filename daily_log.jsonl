@@ -22,3 +22,5 @@
 {"type": "exam", "var": "ai-job-search-workflow.json", "status": "ok", "output": "OK]   Score: 75/100 verdict=PASS\n[WARN] opener fix failed: No module named '_force_opener'\n[OK]   written: /home/runner/work/tkhj-tools/tkhj-tools/output/exams/ai-job-search-workflow.md (~1471 words)\n", "_time": "2026-07-09T03:56:05.565030"}
 {"type": "ai", "status": "fail", "output": "", "_time": "2026-07-09T03:56:05.580758"}
 {"type": "build", "status": "ok", "_time": "2026-07-09T03:56:05.673626"}
+{"type": "ai", "status": "fail", "output": "", "_time": "2026-07-09T04:34:37.372352"}
+{"type": "build", "status": "ok", "_time": "2026-07-09T04:34:37.460197"}
