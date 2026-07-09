@@ -33,9 +33,10 @@ for f in STA.iterdir():
 for f in HERE.glob("ads.txt"):
     if f.is_file(): shutil.copy2(str(f), str(OUT / f.name))
 
-FAV = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#3B82F6"/><g transform="translate(7,6) scale(0.95)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></g></svg>'
-(OUT / "favicon.svg").write_text(FAV, encoding="utf-8")
-
+# favicon copied from static/
+_fav_src = HERE / "static" / "favicon.png"
+if _fav_src.exists():
+    shutil.copy2(str(_fav_src), str(OUT / "favicon.png"))
 NL = chr(10); Q = chr(34); SQ = chr(39); AMP = "&"
 def esc(s):
     s = str(s)
@@ -175,7 +176,7 @@ def footer():
 def nav(active="home"):
     out = ["<header class=\"site-header\">"]
     out.append("<div class=\"container nav-row\">")
-    out.append("<a href=\"/\" class=\"brand\"><img src=\"/static/logo.svg\" alt=\"TKHJ Tools\" height=\"28\"></a>")
+    out.append("<a href=\"/\" class=\"brand\"><img src=\"/static/logo.png\" alt=\"TKHJ Tools\" height=\"48\"></a>")
     out.append("<nav class=\"nav-links\">")
     for label, url, is_active in [
         ("Home","/",active=="home"),
@@ -201,7 +202,7 @@ def page(title, body_str, active="home"):
         '<meta name="viewport" content="width=device-width,initial-scale=1">',
         '<meta name="theme-color" content="#3B82F6" media="(prefers-color-scheme:light)">',
         '<meta name="theme-color" content="#0B0F19" media="(prefers-color-scheme:dark)">',
-        '<link rel="icon" type="image/svg+xml" href="/favicon.svg">',
+        '<link rel="icon" type="image/png" href="/static/favicon.png">',
         '<title>' + esc(title) + ' &middot; ' + NAME + '</title>',
         '<meta name="description" content="' + TAG + '">',
         '<link rel="stylesheet" href="/' + CSL + '">',
