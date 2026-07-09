@@ -53,20 +53,93 @@ def sys_prompt(atype):
     base = read(SYSP_F)
     return base.replace('{atype}', atype).replace('{rules}', rules)
 
-def score(t):
+def score(t, min_words=None, max_words=None):
+    """10-dimensional quality score (each 0-10, total 0-100).
+
+    Dimensions:
+      1. Avg sentence length 8-22
+      2. Burstiness (stdev >= 5)
+      3. Contractions >= 20
+      4. Rich punctuation (!?--)
+      5. Vocal markers (honestly, look, you know, I mean, basically)
+      6. No banned formatting (#, *, ---, | tables)
+      7. Word count within target range
+      8. 2+ worked examples with solutions
+      9. CTA to tkjtools.io
+      10. Disclaimer present
+    """
     t = t.split('---',1)[-1] if t.strip().startswith('---') else t
     wds = t.split()
-    if not wds: return 0, 'EMPTY'
+    if not wds: return 0, 'EMPTY', {}
     lens = [len(s.split()) for s in re.split(r'[.!?]+', t) if len(s.split())>1]
     if not lens: lens=[1]
-    t = t.replace('’', "'").replace('‘', "'")  # normalize Unicode apostrophes
-    contr = len(re.findall(r"[A-Za-z]+'[A-Za-z]+", t))
-    dash = t.count('--')+t.count('—')+t.count('–')
-    excl = t.count('!'); qmark = t.count('?')
+    t_norm = t.replace('’', "'").replace('‘', "'")  # normalize Unicode apostrophes
+    contr = len(re.findall(r"[A-Za-z]+'[A-Za-z]+", t_norm))
+    dash = t_norm.count('--')+t_norm.count('—')+t_norm.count('–')
+    excl = t_norm.count('!'); qmark = t_norm.count('?')
     ev = statistics.stdev(lens) if len(lens)>1 else 0
     avg = sum(lens)/len(lens)
-    sc = (25 if 8<=avg<=22 else 0)+(25 if ev>=5 else 0)+(25 if contr>=15 else 0)+(25 if dash+excl+qmark>=10 else 0)
-    return sc, ('PASS' if sc>=75 else 'WARN')
+    vocal_markers = ['honestly', 'look,', 'you know', 'i mean,', 'basically,', 'turns out', 'let me be clear', 'no wait']
+    vocal_count = sum(t_norm.lower().count(m) for m in vocal_markers)
+
+    # points
+    p1 = 10 if 8<=avg<=22 else 0
+    p2 = 10 if ev>=5 else 0
+    p3 = 10 if contr>=20 else (5 if contr>=10 else 0)
+    p4 = 10 if dash+excl+qmark>=10 else (5 if dash+excl+qmark>=5 else 0)
+    p5 = 10 if vocal_count>=3 else (5 if vocal_count>=1 else 0)
+    # formatting bans
+    has_banned_format = bool(re.search(r'(^#{1,6}\s|\|.*\||^\s*[-*]\s|---)', t_norm, re.M))
+    p6 = 0 if has_banned_format else 10
+    # word count
+    word_count = len(wds)
+    if min_words and max_words:
+        p7 = 10 if min_words<=word_count<=max_words else (5 if word_count>=min_words*0.8 else 0)
+    else:
+        p7 = 10
+    # worked examples (>=2 with Solution/思路)
+    example_count = len(re.findall(r'(Worked Example|Example \d|Solution|解题思路)', t, re.I))
+    p8 = 10 if example_count>=2 else (5 if example_count>=1 else 0)
+    # CTA
+    p9 = 10 if re.search(r'tkjtools\.io', t) else 0
+    # disclaimer
+    p10 = 10 if re.search(r'(disclaimer|independently written|not endorsed|不代表.*官方)', t, re.I) else 0
+
+    total = p1+p2+p3+p4+p5+p6+p7+p8+p9+p10
+    details = {
+        'avg_len': round(avg,1), 'burstiness': round(ev,1), 'contractions': contr,
+        'punctuation': dash+excl+qmark, 'vocal_markers': vocal_count,
+        'banned_format': has_banned_format, 'word_count': word_count,
+        'examples': example_count, 'cta': p9>0, 'disclaimer': p10>0,
+    }
+    return total, ('PASS' if total>=75 else 'WARN'), details
+
+
+def strip_banned_formatting(text):
+    """Strip banned markdown formatting from article body (preserves frontmatter)."""
+    fm, body = split_fm(text)
+    lines = body.split('\n')
+    out = []
+    fixes = 0
+    for line in lines:
+        orig = line
+        # strip heading markers
+        line = re.sub(r'^#{1,6}\s+', '', line)
+        # strip horizontal rules
+        if re.match(r'^[_*-]{3,}\s*$', line):
+            fixes += 1
+            continue
+        # strip table rows
+        if re.match(r'^\s*\|.*\|\s*$', line):
+            fixes += 1
+            continue
+        # strip bullet markers at line start
+        line = re.sub(r'^\s*[-*]\s+', '', line)
+        if line != orig:
+            fixes += 1
+        out.append(line)
+    return fm + '\n'.join(out), fixes
+
 
 def split_fm(t):
     m = re.match(r'^---\n.*?\n---\n', t, re.S)
@@ -156,6 +229,11 @@ def extract_slug(content):
             return ln.split('slug:')[1].strip().strip("'\"")
     return None
 
+def pick_template(atype):
+    """Pick a random template letter (A-H) for the given article type."""
+    import random
+    return random.choice("ABCDEFGH")
+
 def wc(t):
     return len(re.findall(r'[A-Za-z一-鿿]+', t.split('---')[-1] if t.startswith('---') else t))
 
@@ -166,6 +244,24 @@ def write_output(content, slug, out_dir):
     p.write_text(content, encoding='utf-8')
     return p
 
+def ensure_cta_and_disclaimer(article, atype):
+    """Append CTA and disclaimer if missing from the article."""
+    import re as _re
+    has_cta = bool(_re.search(r'tkjtools\.io', article))
+    has_disclaimer = bool(_re.search(r'(disclaimer|independently written|not endorsed|不代表.*官方)', article, _re.I))
+    tail = ""
+    if not has_cta:
+        if atype == "exam":
+            tail += "\n\nReady to put this into practice? Try the free timed quizzes at https://exam.tkjtools.io to lock in these strategies before test day.\n"
+        else:
+            tail += "\n\nWant to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.\n"
+    if not has_disclaimer:
+        tail += "\n> Disclaimer: This is independently written educational content. Not endorsed by any exam body or vendor. Example questions are rewritten for teaching purposes.\n"
+    if tail:
+        article = article.rstrip() + tail
+    return article
+
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('--type', required=True, choices=['exam','ai'])
@@ -175,8 +271,10 @@ def main():
     vars_data = read_json(args.vars)
     vars_data["current_date"] = datetime.now().strftime("%Y-%m-%d")
     up = inj(tpl, vars_data)
-    # Random format seed for article variability
+    # Random format seed for article variability + template rotation
+    tpl_letter = pick_template(args.type)
     up = up + "\n\n--- FORMAT INSTRUCTION ---\nStart with a relatable student mistake or confusion. Mix short sections and long deep-dives. No numbered lists.\n"
+    up = up + f"\nYOU MUST FOLLOW Template {tpl_letter} from the Structure Rotation section. Do not deviate from that skeleton.\n"
     print('[INFO] generating [%s]...' % args.type)
     article = call_api(sys_prompt(args.type), up)
     # Clean stray frontmatter / YAML / JSON leaking into body
@@ -189,35 +287,57 @@ def main():
     except Exception as _e:
         print(f"[WARN] _clean_body failed: {_e}")
 
-    sc, verdict = score(article)
-    print("[OK]   Score: %d/100 verdict=%s" % (sc, verdict))
+    min_w = vars_data.get("min_words", 1500)
+    max_w = vars_data.get("max_words", 2500)
+    sc, verdict, det = score(article, min_w, max_w)
+    print("[OK]   Score: %d/100 verdict=%s | %s" % (sc, verdict, det))
     # Layer 2e: GPT paragraph rewrite (ONLY other instance adds contractions)
     if verdict == 'WARN':
         article = force_casual(article, n=6)
-        sc, verdict = score(article)
-        print('[OK]   Layer-2e casual rewrite: %d/100' % sc)
+        sc, verdict, det = score(article, min_w, max_w)
+        print('[OK]   Layer-2e casual rewrite: %d/100 | %s' % (sc, det))
     # Layer 2bcd: programmatic fallbacks
     if verdict == 'WARN':
         article, c1 = force_contr(article, target=18)
         article = force_dashes(article, n=5)
         article = force_merge(article)
         article = force_markers(article)
-        sc, verdict = score(article)
-        print('[OK]   Layer-2bcd: %d contractions injected; new score: %d/100' % (c1, sc))
+        sc, verdict, det = score(article, min_w, max_w)
+        print('[OK]   Layer-2bcd: %d contractions injected; new score: %d/100 | %s' % (c1, sc, det))
+    # Layer 2f: strip banned formatting that survived (#, *, ---, |)
+    if verdict == 'WARN' and det.get('banned_format'):
+        article, n_fix = strip_banned_formatting(article)
+        sc, verdict, det = score(article, min_w, max_w)
+        print('[OK]   Layer-2f formatting strip: %d fixes; new score: %d/100' % (n_fix, sc))
     if verdict == 'WARN':
-        print('[WARN] still WARN; 5-min human polish pushes >90')
+        missing = [k for k, v in {'examples': det.get('examples',0)>=2, 'cta': det.get('cta'), 'disclaimer': det.get('disclaimer'), 'word_count': det.get('word_count',0)>=min_w} .items() if not v]
+        print('[WARN] still WARN; missing or weak: %s; needs ' % ', '.join(missing) if missing else '[WARN] still WARN; needs 5-min human polish')
     # Force-rewrite banned opening lines (Most students think...)
     try:
         from _force_opener import has_banned_opener, rewrite_opening
         if has_banned_opener(article):
             article = rewrite_opening(article, call_api)
-            sc_after, _ = score(article)
+            sc_after, _, _ = score(article, min_w, max_w)
             print("[OK]   opener rewritten; new score:", sc_after)
     except Exception as e_op:
         print("[WARN] opener fix failed:", e_op)
 
-    slug = extract_slug(article) or 'untitled-'+datetime.now().strftime('%Y%m%d-%H%M%S')
+    # Auto-append CTA + disclaimer if missing
+    article = ensure_cta_and_disclaimer(article, args.type)
+
+    # Similarity check BEFORE writing (avoid content self-cannibalization)
     cur_out = EXAM_OUT if args.type == "exam" else AI_OUT
+    try:
+        from check_similarity import check_new_article
+        too_sim, sim_name, sim_score = check_new_article(article, str(cur_out))
+        if too_sim:
+            print(f"[WARN] too similar to {sim_name} ({sim_score:.0%}); consider different vars")
+        else:
+            print(f"[OK]   similarity OK (max {sim_score:.0%} vs existing)")
+    except Exception as e:
+        print(f"[WARN] similarity check failed: {e}")
+
+    slug = extract_slug(article) or 'untitled-'+datetime.now().strftime('%Y%m%d-%H%M%S')
     ensure_dir(cur_out)
     out = write_output(article, slug, cur_out)
     print('[OK]   written: %s (~%d words)' % (out, wc(article)))

@@ -36,7 +36,7 @@ def file_text(path: Path) -> str:
     return content.lower()
 
 
-def ngrams(text: str, n: int = 3) -> Counter:
+def _ngrams(text: str, n: int = 3) -> Counter:
     return Counter(text[i:i+n] for i in range(len(text) - n + 1))
 
 
@@ -66,7 +66,7 @@ def main():
                         help="n-gram 大小（默认 3）")
     args = parser.parse_args()
 
-    md_files = list(OUTPUT_DIR.glob("*.md"))
+    md_files = list(OUTPUT_DIR.rglob("*.md"))
     if len(md_files) < 2:
         print(f"[OK]  目录下只有 {len(md_files)} 篇文章，跳过检测")
         return
@@ -74,7 +74,7 @@ def main():
     print(f"[INFO] 读取到 {len(md_files)} 篇文章，使用 {args.ngram}-gram 对比")
     print()
 
-    fingerprints = {f: ngrams(file_text(f), args.ngram) for f in md_files}
+    fingerprints = {f: _ngrams(file_text(f), args.ngram) for f in md_files}
 
     alerts = []
     for fa, fb in combinations(md_files, 2):
@@ -94,6 +94,25 @@ def main():
         sys.exit(1)
     else:
         print(f"[OK]  所有文章对相似度均在 {args.threshold:.0%} 以下")
+
+
+def check_new_article(new_text, existing_dir, threshold=0.30):
+    """Check if new_text is too similar to any existing .md file in existing_dir.
+
+    Returns (is_too_similar, most_similar_name, max_similarity).
+    """
+    new_clean = re.sub(r"[^一-鿿a-zA-Z0-9]", "", re.sub(r"^---\n.*?\n---\n", "", new_text, flags=re.DOTALL)).lower()
+    new_fp = Counter(_ngrams(new_clean, 3))
+    max_sim = 0.0
+    max_name = None
+    for f in Path(existing_dir).glob("*.md"):
+        other = file_text(f)
+        other_fp = Counter(_ngrams(other, 3))
+        sim = max(jaccard(new_fp, other_fp), cosine(new_fp, other_fp))
+        if sim > max_sim:
+            max_sim = sim
+            max_name = f.name
+    return max_sim >= threshold, max_name, max_sim
 
 
 if __name__ == "__main__":

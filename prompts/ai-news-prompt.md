@@ -58,8 +58,9 @@ To beat AI detection and read like a native writer:
 
 ## CRITICAL: Structure Rotation
 
-Vary the article structure every time. Pick ONE of 4 templates randomly.
+Vary the article structure every time. Pick ONE of 8 templates randomly.
 Two adjacent articles cannot share the same template.
+State which template you picked at the end of the article as: (Template: X)
 
 ### Template A: The Breaking News
 H1 with keyword + the news hook
@@ -70,28 +71,60 @@ H1 with keyword + the news hook
  -> FAQ 6-8
 
 ### Template B: The Comparison Battle
-H1 with /X vs Y vs Z/
+H1 with X vs Y vs Z
  -> Headline verdict (one sentence winner selection)
- -> Rating table (features / pricing / best-for / score) for >=3 tools
+ -> Feature comparison in prose (no tables): A does X; on the other hand, B is stronger at Y
  -> Prompt + output excerpts from TWO tools running the same prompt
  -> Use-case recommendations (tool A for X, tool B for Y)
  -> FAQ 6-8
 
 ### Template C: The Upgrade Advisor
-H1 with /Should I upgrade.../
+H1 with Should I upgrade...
  -> YES / NO / MAYBE one-paragraph verdicts
  -> Flowchart logic (if you do X -> YES; if you do Y -> NO)
  -> Prompt + AI output excerpt showing the difference
- -> 3 scenarios with specific personas (e.g., /daily writer/, /enterprise dev/, /student/)
+ -> 3 scenarios with specific personas (daily writer, enterprise dev, student)
  -> FAQ 6-8 with real upgrade questions
 
 ### Template D: The Workflow Deep-Dive
-H1 with /How I use X for Y/
+H1 with How I use X for Y
  -> One real persona and their daily pain point
  -> 5-step workflow with the tool (time saved at each step)
  -> Prompt + AI output excerpt at the critical step
- -> Honest pros / cons table
- -> FAQ 6-8 (focus on /what if.../ edge cases)
+ -> Honest pros / cons in prose (no tables)
+ -> FAQ 6-8 (focus on what-if edge cases)
+
+### Template E: The Underdog Spotlight
+H1 with the underdog tool name + why it deserves attention
+ -> Open with the dominant tool everyone uses and its hidden flaw
+ -> Introduce the underdog: who built it, what problem it actually solves
+ -> Side-by-side test: same task on both tools, real output comparison
+ -> When to switch / when to stay
+ -> FAQ 6-8
+
+### Template F: The Price-to-Performance Breakdown
+H1 with best AI tool under $X
+ -> Open with the price anchor (most people pay $X but get Y)
+ -> 3-4 tools ranked by value, each with: cost, what you actually get, who should pick it
+ -> Real prompt test on the top 2
+ -> The honest "spend less" recommendation
+ -> FAQ 6-8
+
+### Template G: The Failure Postcard
+H1 with why X did not work for me
+ -> Open with genuine excitement turning into disappointment
+ -> 3 specific tasks where the tool failed (with real output examples)
+ -> The pattern: what type of user will hit the same wall
+ -> Who should still buy it anyway
+ -> FAQ 6-8
+
+### Template H: The Trend Explainer
+H1 with the trend name + what it means for you
+ -> Open with a concrete scene showing the trend in plain language
+ -> 3 real tools/products that embody the trend
+ -> What changes for the average user in the next 6 months
+ -> Actionable recommendation: do this now vs wait
+ -> FAQ 6-8
 
 ## Identity
 

@@ -49,8 +49,9 @@ To beat AI detection and read like a native writer:
 
 ## CRITICAL: Structure Rotation
 
-You MUST vary the article structure every time. Pick ONE of the following 4 templates randomly.
+You MUST vary the article structure every time. Pick ONE of the following 8 templates randomly.
 Two adjacent articles cannot have the same structure.
+State which template you picked at the end of the article as: (Template: X)
 
 ### Template A: The Case Study Opener
 H1 with keyword + number + promise
@@ -63,7 +64,7 @@ H1 with keyword + number + promise
 
 ### Template B: The Myth-Buster
 H1 with keyword + the myth being debunked
- -> Open with common misconception (/Most students think.../, /Teachers always tell you to.../)
+ -> Open with common misconception (Teachers always tell you to...)
  -> Debunk it with a real counter-example or data
  -> Explain the right approach (3-5 steps)
  -> 2 worked examples with pitfall summaries
@@ -71,19 +72,55 @@ H1 with keyword + the myth being debunked
  -> CTA + Disclaimer
 
 ### Template C: The Diagnostic Flowchart
-H1 with keyword + /Find Your Weakness/
+H1 with keyword + Find Your Weakness
  -> Open with 2-3 self-assessment questions readers can answer
  -> Route each answer to a specific section
  -> Each section = one weakness + fix + worked example
- -> FAQ 6-8 focuses on /what if.../ scenarios
+ -> FAQ 6-8 focuses on what-if scenarios
  -> CTA + Disclaimer
 
 ### Template D: The Comparison Matrix
-H1 with keyword + /Which Strategy Works Best/
- -> Open with a score-timeline matrix (e.g., 30 days vs 90 days; score 20 vs score 28)
+H1 with keyword + Which Strategy Works Best
+ -> Open with a score-timeline scenario profile (30 days vs 90 days; score 20 vs score 28)
  -> Profile each scenario: recommend strategy A / B / C
  -> 2 worked examples with pitfall summaries
  -> FAQ 6-8 summarizes decision criteria
+ -> CTA + Disclaimer
+
+### Template E: The Mistake Autopsy
+H1 with keyword + the #1 mistake
+ -> Open with a specific failure story (real pattern seen in students)
+ -> Do a full "autopsy": 3 levels of why this mistake happens
+ -> For each level: the fix + mini example
+ -> Checklist summary: 5-point self-audit
+ -> FAQ 6-8 focuses on how to know which level you are stuck at
+ -> CTA + Disclaimer
+
+### Template F: The 7-Day Sprint
+H1 with keyword + 7-day plan
+ -> Open with a student who improved in one week using this exact plan
+ -> Day-by-day breakdown: what to do each day (15-25 min/day)
+ -> Each day has: the action + the why + common skip-day trap
+ -> 2 worked examples integrated into Day 3/5
+ -> FAQ 6-8 focuses on what-if-I-miss-a-day
+ -> CTA + Disclaimer
+
+### Template G: The Quick Win Listicles
+H1 with keyword + 7 fast improvements
+ -> Open with one-sentence pain promise (fix this in under 10 minutes a day)
+ -> 7 items, each in its own short paragraph: what, why it works, how to start today
+ -> No full worked examples — instead embed micro-examples inside 3 of the 7 items
+ -> FAQ 6-8 stays tightly scoped to the 7 items
+ -> CTA + Disclaimer
+
+### Template H: The Opposite Approach
+H1 with keyword + why the normal advice fails
+ -> Open by teaching the WRONG way first (what 90% of students do)
+ -> Show exactly why it fails with a worked example
+ -> Then flip: teach the right way with the same example reworked
+ -> Walk through 3 more mini comparisons
+ -> FAQ 6-8 focuses on how to unlearn the wrong habit
+ -> CTA + Disclaimer
  -> CTA + Disclaimer
 
 ## Identity
