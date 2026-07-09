@@ -271,6 +271,45 @@ def log_event(entry):
     with NEWS_LOG.open("a", encoding="utf-8") as f:
         f.write(_json.dumps(entry, ensure_ascii=False) + "\n")
 
+def _is_recent(item, cutoff):
+    """Check if an RSS item was published after the cutoff datetime."""
+    pub = item.get("pubDate", "")
+    if not pub:
+        return True
+    for fmt in [
+        "%a, %d %b %Y %H:%M:%S %z",
+        "%a, %d %b %Y %H:%M:%S %Z",
+        "%Y-%m-%dT%H:%M:%S%z",
+        "%Y-%m-%dT%H:%M:%S",
+        "%Y-%m-%d",
+    ]:
+        try:
+            from datetime import datetime as _dt2
+            parsed = _dt2.strptime(pub.strip(), fmt)
+            if parsed.tzinfo is None:
+                parsed = parsed.replace(tzinfo=_dt.timezone.utc)
+            return parsed >= cutoff
+        except ValueError:
+            continue
+    return True
+
+def last_ai_article_date():
+    """Return YYYY-MM-DD of the most recent AI article in output/ai/, or None."""
+    dates = []
+    for f in OUTPUT_AI.glob("*.md"):
+        m = _re.match(r"(\d{4}-\d{2}-\d{2})", f.name)
+        if m:
+            dates.append(m.group(1))
+    return max(dates) if dates else None
+
+def days_since(date_str):
+    if not date_str:
+        return 999
+    from datetime import datetime as _dt2, timezone as _tz2
+    last = _dt2.strptime(date_str, "%Y-%m-%d").replace(tzinfo=_tz2.utc)
+    now = _dt2.now(_tz2.utc)
+    return (now - last).days
+
 def main():
     print(f"=== daily_ai_news.py — {_today()} ===")
     style_rules_path = ENGINE_DIR / "rules" / "WRITING_RULES.md"
@@ -287,9 +326,25 @@ def main():
         if not already_seen(it, db):
             target = it
             break
+    # Enforce minimum frequency: at least 1 AI article every 2 days
+    days_since_last = days_since(last_ai_article_date())
+    if target is None and days_since_last >= 2:
+        # Lower threshold: pick top available story regardless of big-news score
+        print(f"  [freq] {days_since_last} days since last AI article — forcing generation")
+        available = [it for it in items if is_today(it) and not already_seen(it, db)]
+        if not available:
+            # Fallback: allow any recent story (last 3 days) regardless of seen status
+            # (LLM will take a different angle than previous article)
+            print(f"  [freq] All today-stories seen — picking top recent for fresh angle")
+            from datetime import timedelta as _td
+            cutoff = _dt.datetime.now(_dt.timezone.utc) - _td(days=3)
+            available = [it for it in items if _is_recent(it, cutoff)]
+        if available:
+            target = sorted(available, key=score_item, reverse=True)[0]
+            print(f"  [freq] Forced pick (score {score_item(target)}): {target['title']}")
     if target is None:
-        print("[end] No new big-news AI story today — nothing written.")
-        log_event({"date": _today(), "action": "skipped", "reason": "no-new-big-news"})
+        print("[end] No new AI story today — nothing written.")
+        log_event({"date": _today(), "action": "skipped", "reason": "no-new-story"})
         return 0
     print(f"[3/5] Selected: {target['title']}  ({target['source']})")
     print("[4/5] Generating article via LLM...")
@@ -311,15 +366,10 @@ def main():
             ws = "  [warn] LLM returned JSON metadata instead of article; using fallback"
             print(ws)
             body = (
-                " + target["title"] + "
-
-"
+                target["title"] + "\n\n"
                 + "This story broke today via " + target["source"] + ". "
-                + "Details are still emerging "
-                + chr(8212)
-                + " check the source: "
-                + target["link"] + ".
-"
+                + "Details are still emerging \u2014 check the source: "
+                + target["link"] + ".\n"
             )
         except Exception:
             pass
