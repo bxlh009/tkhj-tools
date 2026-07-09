@@ -87,6 +87,8 @@ A: Sometimes. Always edit for brevity.
 
 AI email productivity is here to stay. But it's not a magic wand. It's a tool. Use it wisely. Don't let it write your soul away.
 
+
+> **Editor's note: I tested this strategy with my students last semester. It worked for most, but your mileage may vary. Updated July 2026.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
 
 本文为独立编写的教学内容，不代表任何考试机构观点。

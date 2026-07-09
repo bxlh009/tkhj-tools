@@ -123,5 +123,7 @@ A: Break it down. Identify the subject and verb. Ignore the modifiers. Focus on 
 **Q8: Is it okay to guess on difficult questions?**
 A: Yes. Eliminate obviously wrong answers, then guess from the remaining options. Blind guessing is worse than strategic guessing.
 
+
+> **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**
 > Disclaimer: This is independently written educational content. Not endorsed by MCAT or any official body. Example questions are rewritten for teaching. Always refer to official guides.
 

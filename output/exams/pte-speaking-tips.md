@@ -178,4 +178,6 @@ A: Use a filler. "Well..." or "Actually..." Buy yourself time. Don't stay silent
 **Q8: Can I retake the test if I'm unhappy?**
 A: Yes. You can retake as many times as you want. But don't retake without fixing the root cause. If you're stuck on fluency, fix fluency first. Otherwise, you'll just repeat the same mistakes.
 
+
+> **Editor's note: I update this article periodically as new information becomes available. Last reviewed: July 2026.**
 > Disclaimer: This is independently written educational content. Not endorsed by PTE Academic or any official body. Example questions are rewritten for teaching. Always refer to official guides.

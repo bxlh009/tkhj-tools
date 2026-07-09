@@ -176,6 +176,8 @@ A) Obviously not. But practicing with apps that explain *why* an answer is wrong
 **Q6: How many questions are in the ACT English section?**
 A) 75 questions in 45 minutes. That's roughly 36 seconds per question. Fast. Very fast. Practice under timed conditions. Speed comes from familiarity. The more you see the patterns, the faster you get.
 
+
+> **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
 > Disclaimer: This is independently written educational content. Not endorsed by ACT or any official body. Example questions are rewritten for teaching. Always refer to official guides.
 
 God, I hope this helps. You've got this. Just remember: concise, clear, correct. Nothing else matters.

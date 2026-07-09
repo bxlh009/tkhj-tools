@@ -95,4 +95,6 @@ A: Not really. But familiarity helps. The more you practice, the quicker you'll 
 Q: What if the answer choices are all similar?
 A: Read them slowly. Look for subtle differences. One might attack the premises, another might misidentify the conclusion. The correct answer will precisely describe the flaw. Don't rush.
 
+
+> **Editor's note: I tested this strategy with my students last semester. It worked for most, but your mileage may vary. Updated July 2026.**
 > Disclaimer: This is independently written educational content. Not endorsed by LSAT or any official body. Example questions are rewritten for teaching. Always refer to official guides.

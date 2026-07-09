@@ -34,3 +34,5 @@ I will be running GPT-5.6 through my own standard test suite this week. That mea
 Until then, if you want to stay grounded about how AI tools actually perform (versus how their creators claim they perform), check out the hands-on tool reviews and head-to-head comparisons at https://ai.tkjtools.io. I test everything myself on real tasks so you can make informed calls without burning your own development budget on guesswork.
 
 This article is independently written based on publicly available information. AI products evolve fast; verify technical claims against official documentation. No vendor sponsorship.
+
+> **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**

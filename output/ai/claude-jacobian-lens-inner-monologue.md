@@ -107,6 +107,8 @@ A: OpenAI has been slower to expose internal states. The Jacobian Lens offers a 
 **Q8: Can I export the trace data for analysis?**
 A: Yes, the API returns the trace in JSON format. You can parse it and build custom dashboards. This is great for teams that want to track model performance over time.
 
+
+> **Editor's note: Prices and features mentioned were verified at publication time. AI tools change fast ? always check the official site.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
 
 本文为独立编写的教学内容，不代表任何考试机构观点。

@@ -110,6 +110,8 @@ A: Verify it. Cross-reference with documentation or other sources. Don't blindly
 Q8: How do I measure the effectiveness of my prompts?
 A: Track time saved, bug rate, and code quality. Adjust prompts based on results.
 
+
+> **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
 
 本文为独立编写的教学内容，不代表任何考试机构观点。

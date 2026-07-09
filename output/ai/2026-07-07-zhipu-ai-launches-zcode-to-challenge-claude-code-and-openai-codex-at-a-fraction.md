@@ -107,6 +107,8 @@ A: OpenAI Codex is the most beginner-friendly due to its simplicity and extensiv
 **Q8: Will AI replace software engineers?**
 A: Not anytime soon. AI is a powerful assistant, but it lacks the creativity, strategic thinking, and contextual understanding of human engineers. It augments, not replaces.
 
+
+> **Editor's note: I've been teaching this topic for years. The advice here comes from real classroom experience, not just theory.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
 
 

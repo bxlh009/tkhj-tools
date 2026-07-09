@@ -88,4 +88,6 @@ A: Absolutely. It can draft personalized connection requests. It can suggest top
 **Q: What if I'm not tech-savvy?**
 A: Start small. Use AI to rewrite one bullet point. Then another. Build up. It's not about mastering code. It's about leveraging leverage.
 
+
+> **Editor's note: I update this article periodically as new information becomes available. Last reviewed: July 2026.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。

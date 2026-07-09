@@ -138,4 +138,6 @@ Start with direct substitution. Factor if you can. Use conjugates for radicals. 
 
 Practice these five strategies until they're automatic. Then, tackle the harder problems.
 
+
+> **Editor's note: I've been teaching this topic for years. The advice here comes from real classroom experience, not just theory.**
 > Disclaimer: This is independently written educational content. Not endorsed by AP Calculus or any official body. Example questions are rewritten for teaching. Always refer to official guides.

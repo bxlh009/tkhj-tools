@@ -122,6 +122,8 @@ A: No. It augments them. Humans provide context, ethics, and creativity. AI prov
 Q6: How long does it take to set up?
 A: Initial setup takes about an hour. Daily usage takes minutes. Once you build the habit, it feels effortless. The learning curve is steep but short.
 
+
+> **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
 
 本文为独立编写的教学内容，不代表任何考试机构观点。

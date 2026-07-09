@@ -121,4 +121,6 @@ A: The future points towards more specialized models, better integration, and in
 **Q6: How do I choose the right AI tool for my business?**
 A: Assess your specific needs, budget, and technical expertise. Consider factors like speed, accuracy, cost, and ease of use. Test multiple tools before committing to one.
 
+
+> **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.

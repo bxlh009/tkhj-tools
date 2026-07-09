@@ -1,4 +1,4 @@
-# Prompt: AI News / Tool Review Article
+﻿# Prompt: AI News / Tool Review Article
 
 ## Purpose
 
@@ -125,6 +125,38 @@ H1 with the trend name + what it means for you
  -> What changes for the average user in the next 6 months
  -> Actionable recommendation: do this now vs wait
  -> FAQ 6-8
+
+ ### Template I: The Founder Interview
+ H1 with keyword + what the founder told me
+ -> Open with a provocative claim from a tool's founder
+ -> Context: who they are, what they built, why it matters
+ -> 3 key quotes or insights (paraphrased from public statements)
+ -> My take: what they get right and what they're missing
+ -> FAQ 6-8 focused on practical implications
+
+ ### Template J: The Power User Setup
+ H1 with keyword + my exact configuration
+ -> Open with "I tested X for 30 days — here's my setup"
+ -> List tools, extensions, prompts, workflows currently in use
+ -> Step-by-step replication guide for readers
+ -> What I'd change if I started over today
+ -> FAQ 4-6 focused on troubleshooting specific tools
+
+ ### Template K: The Decision Framework
+ H1 with keyword + how to choose in 2026
+ -> Open with the overwhelm: too many options, no clear winner
+ -> Present a 5-question self-assessment (reader answers yes/no)
+ -> Each answer route to a different recommendation
+ -> Final flowchart summary in prose
+ -> FAQ 6-8 for ambiguous cases
+
+ ### Template L: The 6-Month Outlook
+ H1 + what the next 6 months look like
+ -> Open with the current moment and where things are heading
+ -> 3 predictions with reasoning
+ -> How each prediction affects different user types
+ -> Concrete prep actions: what to do this quarter vs next
+ -> FAQ 6-8 addressing uncertainty
 
 ## Identity
 

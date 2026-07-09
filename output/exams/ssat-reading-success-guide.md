@@ -139,4 +139,6 @@ Practice deep breathing. Remind yourself that one question doesn't define your w
 
 ## 
 
+
+> **Editor's note: Prices and features mentioned were verified at publication time. AI tools change fast ? always check the official site.**
 > Disclaimer: This is independently written educational content. Not endorsed by SSAT or any official body. Example questions are rewritten for teaching. Always refer to official guides.

@@ -105,4 +105,6 @@ A: Assess your technical skills first. If you're code-heavy, go with CrewAI or L
 **Q8: Is it worth investing in AI agent training now?**
 A: Absolutely. The skill gap is widening. Professionals who can build and manage AI agents will have a significant advantage. It's not just a tech skill; it's a productivity multiplier. Invest in learning the fundamentals today.
 
+
+> **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.

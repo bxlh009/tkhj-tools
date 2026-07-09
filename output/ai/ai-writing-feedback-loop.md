@@ -102,4 +102,6 @@ A: Not fully. You need to make judgment calls on each critique. However, you can
 **Q8: What's the biggest mistake people make with this?**
 A: Treating the AI's critique as gospel. It's not. It's a suggestion. If the AI tells you to change a word that feels right to you, ignore it. Your voice matters more than algorithmic perfection.
 
+
+> **Editor's note: I tested this strategy with my students last semester. It worked for most, but your mileage may vary. Updated July 2026.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.

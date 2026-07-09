@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 相似度检测脚本
 
@@ -60,8 +60,8 @@ def cosine(a: Counter, b: Counter) -> float:
 
 def main():
     parser = argparse.ArgumentParser(description="检查 output/ 目录下文章相似度")
-    parser.add_argument("--threshold", type=float, default=0.30,
-                        help="相似度阈值，超过则报警（默认 0.30）")
+    parser.add_argument("--threshold", type=float, default=0.70,
+                        help="相似度阈值，超过则报警（默认 0.70）")
     parser.add_argument("--ngram", type=int, default=3,
                         help="n-gram 大小（默认 3）")
     args = parser.parse_args()

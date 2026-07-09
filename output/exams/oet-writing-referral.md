@@ -104,4 +104,6 @@ Practice this filter-first approach. Take a clinical note. Highlight the referra
 
 Good luck. You've got this.
 
+
+> **Editor's note: Prices and features mentioned were verified at publication time. AI tools change fast ? always check the official site.**
 > Disclaimer: This is independently written educational content. Not endorsed by OET or any official body. Example questions are rewritten for teaching. Always refer to official guides.

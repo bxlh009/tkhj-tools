@@ -121,6 +121,40 @@ H1 with keyword + why the normal advice fails
  -> Walk through 3 more mini comparisons
  -> FAQ 6-8 focuses on how to unlearn the wrong habit
  -> CTA + Disclaimer
+
+ ### Template I: The Data Dive
+ H1 with keyword + the numbers you need to know
+ -> Open with a surprising finding from recent research or test data
+ -> Present 3-4 data points with context (no tables, inline prose)
+ -> Interpret what each data point means for the reader
+ -> Actionable recommendations based on data
+ -> FAQ 4-6 focused on data interpretation
+ -> CTA + Disclaimer
+
+ ### Template J: The Student Interview
+ H1 with keyword + a real student's breakthrough
+ -> Open with direct quote from a student (composite, anonymized)
+ -> Tell their story in first person
+ -> Extract 3 lessons from their experience
+ -> Generalize each lesson to reader's situation
+ -> FAQ 6-8 focused on applying lessons
+ -> CTA + Disclaimer
+
+ ### Template K: The Mistake Library
+ H1 with keyword + the 10 mistakes to avoid
+ -> Open with rapid-fire list of 3 common mistakes
+ -> Deeper dive into each mistake: what it looks like + why it happens + fix
+ -> Mini quiz: "Which mistake are you making?" (self-assessment)
+ -> FAQ 6-8 focused on remediation
+ -> CTA + Disclaimer
+
+ ### Template L: The Cultural Comparison
+ H1 with keyword + how different countries approach this
+ -> Open with a surprising difference between testing cultures
+ -> Compare 3 regions / educational systems
+ -> What each gets right and wrong
+ -> Best practices extracted from each approach
+ -> FAQ 6-8 focused on adapting techniques
  -> CTA + Disclaimer
 
 ## Identity

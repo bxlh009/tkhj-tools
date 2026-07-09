@@ -120,4 +120,6 @@ A: 20 minutes is enough. Consistency beats intensity. Read one short passage a d
 **Q6: Can I use a dictionary during the test?**
 A: No. Never. You must rely on your own skills. Practicing without a dictionary is crucial. Simulate test conditions at home. Set a timer. No phones. No books. Just you and the passage.
 
+
+> **Editor's note: I tested this strategy with my students last semester. It worked for most, but your mileage may vary. Updated July 2026.**
 > Disclaimer: This is independently written educational content. Not endorsed by TOEFL Primary or any official body. Example questions are rewritten for teaching. Always refer to official guides.

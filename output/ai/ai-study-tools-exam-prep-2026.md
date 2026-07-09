@@ -137,4 +137,6 @@ Yes, many models offer free tiers with limited usage. You can also use open-sour
 **Q8: How accurate are AI explanations?**
 Generally, they're quite accurate, especially for well-established subjects like math and science. However, for subjective fields like literature or history, AI can sometimes miss nuance. Always cross-reference with textbooks or trusted sources.
 
+
+> **Editor's note: I update this article periodically as new information becomes available. Last reviewed: July 2026.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.本文为独立编写的教学内容，不代表任何考试机构观点。

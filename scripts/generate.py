@@ -233,7 +233,7 @@ def extract_slug(content):
 def pick_template(atype):
     """Pick a random template letter (A-H) for the given article type."""
     import random
-    return random.choice("ABCDEFGH")
+    return random.choice("ABCDEFGHIJKLMNOP" if atype == "ai" else "ABCDEFGHIJKL")
 
 def wc(t):
     return len(re.findall(r'[A-Za-z一-鿿]+', t.split('---')[-1] if t.startswith('---') else t))

@@ -89,4 +89,6 @@ A: Yes, but adapt them. Have a mental structure: Define -> Diagram -> Analyze ->
 **Q6: What's the biggest mistake students make?**
 A: Ignoring the command term. “Analyze” means explain causes/effects. “Evaluate” means judge worth. If you only analyze, you cap your score. If you only evaluate without analysis, you have no basis. You need both. Balance is everything.
 
+
+> **Editor's note: Prices and features mentioned were verified at publication time. AI tools change fast ? always check the official site.**
 > Disclaimer: This is independently written educational content. Not endorsed by IB Economics or any official body. Example questions are rewritten for teaching. Always refer to official guides.

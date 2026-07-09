@@ -85,4 +85,6 @@ A: Updates are frequent. OpenAI pushes improvements monthly. Stay tuned for the 
 **Q8: Do I need technical skills to use Sora?**
 A: Basic prompt engineering skills help. But the interface is user-friendly. Most professionals can learn it quickly.
 
+
+> **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 

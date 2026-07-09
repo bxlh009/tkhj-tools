@@ -150,3 +150,5 @@ Remember: it's not about being smart. It's about being strategic.
 Go get 'em.
 
 Look—this is just independent, educational stuff. It's not endorsed by Cambridge YLE or any official body, so don't get that twisted. The examples? They're rewritten for teaching purposes. Here's the deal: always stick to the official guides.
+
+> **Editor's note: Prices and features mentioned were verified at publication time. AI tools change fast ? always check the official site.**

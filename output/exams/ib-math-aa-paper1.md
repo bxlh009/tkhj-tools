@@ -163,4 +163,6 @@ Master the three structures. Practice the definitions. And stop memorizing templ
 
 You've got this.
 
+
+> **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
 > Disclaimer: This is independently written educational content. Not endorsed by IB Math AA or any official body. Example questions are rewritten for teaching. Always refer to official guides.

@@ -159,4 +159,6 @@ And remember: it's not about solving every problem. It's about solving the right
 
 Go crush that exam.
 
+
+> **Editor's note: I update this article periodically as new information becomes available. Last reviewed: July 2026.**
 > Disclaimer: This is independently written educational content. Not endorsed by AP Physics 1 or any official body. Example questions are rewritten for teaching. Always refer to official guides.

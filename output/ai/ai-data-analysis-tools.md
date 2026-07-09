@@ -113,4 +113,6 @@ A: Yes, some advanced agents connect to live databases or APIs. They can monitor
 Q8: How do I measure ROI from AI data analysis?
 A: Track time saved per report. Measure reduction in errors. Assess faster decision-making cycles. Calculate the value of insights uncovered that were previously too costly to find.
 
+
+> **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。

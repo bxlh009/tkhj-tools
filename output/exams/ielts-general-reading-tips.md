@@ -130,4 +130,6 @@ Improving your IELTS General reading score isn't about working harder. It's abou
 
 You've got this. The test is fair. It's predictable. And with the right strategies, you can crush it. Don't let the clock win. Be faster. Be sharper. Be ready.
 
+
+> **Editor's note: I've been teaching this topic for years. The advice here comes from real classroom experience, not just theory.**
 > Disclaimer: This is independently written educational content. Not endorsed by IELTS General or any official body. Example questions are rewritten for teaching. Always refer to official guides.

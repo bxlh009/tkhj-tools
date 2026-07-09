@@ -160,4 +160,6 @@ A: No. The CAE is a closed-book exam. You must rely on your own knowledge. Pract
 **Q8: What's the passing score for CAE?**
 A: You need 160-170 points to achieve a C1 grade. Scores below 160 are B2. Above 170 is C2. Aim for 170+ to be safe.
 
+
+> **Editor's note: I update this article periodically as new information becomes available. Last reviewed: July 2026.**
 > Disclaimer: This is independently written educational content. Not endorsed by Cambridge CAE or any official body. Example questions are rewritten for teaching. Always refer to official guides.

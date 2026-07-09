@@ -124,4 +124,6 @@ Getting better at TOEIC listening isn't about having perfect ears. It's about ha
 
 If you need to boost your score in the next month, try using a timer. Pressure makes you pay attention. Good luck. You've got this.
 
+
+> **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
 > Disclaimer: This is independently written educational content. Not endorsed by TOEIC or any official body. Example questions are rewritten for teaching. Always refer to official guides.

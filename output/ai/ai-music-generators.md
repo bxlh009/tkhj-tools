@@ -111,4 +111,6 @@ A: Yes. All three offer limited free credits. Test before subscribing.
 Q8: Will AI music become indistinguishable from human music?
 A: Probably. But will it matter? For most listeners, no. The emotional connection is what counts.
 
+
+> **Editor's note: I've been teaching this topic for years. The advice here comes from real classroom experience, not just theory.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。

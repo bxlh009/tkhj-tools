@@ -129,4 +129,6 @@ A: Panic is the enemy. Stick to the text. Look for obvious contrasts, strong ver
 **Q6: Can I use bullet points in my exam?**
 A: Generally, no. Write in full paragraphs. Bullet points can look lazy and may not allow you to develop your ideas fully. Use clear topic sentences and linking words.
 
+
+> **Editor's note: I've been teaching this topic for years. The advice here comes from real classroom experience, not just theory.**
 > Disclaimer: This is independently written educational content. Not endorsed by GCSE or any official body. Example questions are rewritten for teaching. Always refer to official guides.

@@ -89,4 +89,6 @@ For most busy professionals, the friction of setting up Notion isn't worth the m
 
 So, stop organizing. Start connecting. Your future self will thank you.
 
+
+> **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。
