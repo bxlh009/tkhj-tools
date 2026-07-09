@@ -125,9 +125,10 @@ def strip_banned_formatting(text):
         orig = line
         # strip heading markers
         line = re.sub(r'^#{1,6}\s+', '', line)
-        # strip horizontal rules
+        # convert horizontal rules to paragraph breaks (don't delete — avoids blank gaps)
         if re.match(r'^[_*-]{3,}\s*$', line):
             fixes += 1
+            out.append('')
             continue
         # strip table rows
         if re.match(r'^\s*\|.*\|\s*$', line):

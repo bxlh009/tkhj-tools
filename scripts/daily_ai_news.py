@@ -224,7 +224,7 @@ def call_llm(system, user):
     payload = _json.dumps({
         "model": model,
         "messages": messages,
-        "temperature": CONFIG["api"].get("temperature", 0.4),
+        "temperature": CONFIG["api"].get("temperature", 0.65),
         "max_tokens": CONFIG["api"].get("max_tokens", 16384),
     }).encode("utf-8")
     req = _urllib_request.Request(endpoint, data=payload, headers={
