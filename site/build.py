@@ -58,24 +58,45 @@ def fm(md):
 def clean_md(text):
     out = []
     for line in text.split(chr(10)):
-        if re.match(r"^\s*\|", line): continue
         line = re.sub(r"^#{1,6}\s+", "", line)
         if re.match(r"^\s*[-*]\s+", line):
             line = re.sub(r"^\s*[-*]\s+", "", line)
         out.append(line)
     return chr(10).join(out)
 
+def table_to_html(rows):
+    html_rows = []
+    for i, row in enumerate(rows):
+        cells = [esc(c.strip()) for c in row.split("|")]
+        if all(re.match(r"^[\s\-:]+$", c) for c in cells):
+            continue  # skip separator row
+        tag = "th" if i == 0 else "td"
+        html_rows.append("<tr>" + "".join(f"<{tag}>{c}</{tag}>" for c in cells) + "</tr>")
+    return '<div style="overflow-x:auto;margin:24px 0"><table>' + "".join(html_rows) + "</table></div>"
+
 def md2html(text):
     text = re.sub(r"^---\n.*?\n---\n", "", text, flags=re.S)
     text = clean_md(text)
     out = []
+    in_table = False
+    table_rows = []
     for line in text.split(chr(10)):
+        if re.match(r"^\s*\|", line):
+            table_rows.append(line.strip().strip("|"))
+            in_table = True
+            continue
+        if in_table and table_rows:
+            out.append(table_to_html(table_rows))
+            table_rows = []
+            in_table = False
         t = line.strip()
         if not t: continue
         if t.startswith("> "):
             out.append("<blockquote><p>" + esc(t[2:]) + "</p></blockquote>")
             continue
         out.append("<p>" + esc(t) + "</p>")
+    if in_table and table_rows:
+        out.append(table_to_html(table_rows))
     body = chr(10).join(out)
     body = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", body)
     body = re.sub(r"\*(.+?)\*", r"<em>\1</em>", body)
