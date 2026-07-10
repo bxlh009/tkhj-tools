@@ -37,3 +37,5 @@ GPT-3.5 gave a decent answer but got slightly confused with the analogy. GPT-4 n
 
 Want to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.
 > **Editor's note: I update this article periodically as new information becomes available. Last reviewed: July 2026.**
+
+> Disclaimer: This is independently written educational content. Not endorsed by any exam body or vendor. Example questions are rewritten for teaching purposes.

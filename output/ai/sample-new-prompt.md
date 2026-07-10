@@ -78,3 +78,5 @@ You can do this. It takes 6 weeks. Not 7 days. 6 weeks.
 ---
 
 **Editor's note:** Maria's story is real. Her name is not. I have 12 more like her in my database. Updated July 2026.
+
+> Disclaimer: This is independently written educational content. Not endorsed by any exam body or vendor. Example questions are rewritten for teaching purposes.

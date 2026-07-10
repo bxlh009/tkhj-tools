@@ -53,3 +53,5 @@ A: Not yet. AI can schedule. It can't negotiate. It can't sense office politics.
 
 Want to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.
 > **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
+
+> Disclaimer: This is independently written educational content. Not endorsed by any exam body or vendor. Example questions are rewritten for teaching purposes.
