@@ -35,3 +35,5 @@
 {"type": "build", "status": "ok", "_time": "2026-07-10T13:06:49.310241"}
 {"type": "ai", "status": "ok", "output": "ing + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-10-bun-ditches-zig-for-rust-with-help-from-claude-fable-5-writes-over-a-million-lin.md\n  rebuilt site: True\n", "_time": "2026-07-10T14:02:14.777768"}
 {"type": "build", "status": "ok", "_time": "2026-07-10T14:02:14.871308"}
+{"type": "ai", "status": "ok", "output": "ing + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-10-openai-kills-its-atlas-browser-after-just-eight-months-and-folds-everything-into.md\n  rebuilt site: True\n", "_time": "2026-07-10T14:03:50.206800"}
+{"type": "build", "status": "ok", "_time": "2026-07-10T14:03:50.300686"}
