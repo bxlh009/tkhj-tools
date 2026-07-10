@@ -331,14 +331,14 @@ def main():
         slug = a["_slug"]
         meta, body = fm(a["_body"])
         rel = related_html(slug, all_arts)
-        html = page(a["title"], '<article class="article"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>' + rel, "exam")
+        html = page(a["title"], '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>' + rel, "exam")
         wp("exam/article/" + slug + ".html", html)
 
     for a in ai_arts:
         slug = a["_slug"]
         meta, body = fm(a["_body"])
         rel = related_html(slug, all_arts)
-        html = page(a["title"], '<article class="article"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>' + rel, "ai")
+        html = page(a["title"], '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>' + rel, "ai")
         wp("ai/article/" + slug + ".html", html)
 
     gen_sitemap(all_arts)
