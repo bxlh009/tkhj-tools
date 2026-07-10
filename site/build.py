@@ -1,4 +1,4 @@
-﻿import pathlib, re, shutil
+import pathlib, re, shutil
 from datetime import datetime
 import os, json
 
@@ -41,7 +41,7 @@ def esc(s):
 
 def read(p): return pathlib.Path(p).read_text("utf-8")
 def fm(md):
-    md = md.lstrip("﻿")
+    md = md.lstrip("\ufeff")
     m = re.match(r"^---\n(.*?)\n---\n(.*)$", md, re.S)
     if not m: return {}, md
     meta = {}
@@ -100,7 +100,7 @@ def card(a, is_exam=True):
     date = a.get("date", "")[:10]
     keywords = a.get("_keywords", [])
     keywords_json = esc(json.dumps(keywords, ensure_ascii=False) if keywords else "[]")
-    cover = '<div class="card-cover">' + esc(cat) + ' &middot; ' + esc(m) + ' min</div>'
+    cover = '<div class="card-cover">' + esc(cat) + " &middot; " + esc(m) + " min</div>"
     data_kw = ' data-keywords="' + keywords_json + '"'
     body = '<div class="card-body">'
     body += '<span class="card-cat ' + cls + '">' + esc(cat) + "</span>"
@@ -211,6 +211,52 @@ def wp(path, content):
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(content, encoding="utf-8")
 
+# ---- SEO: sitemap + robots ----
+def gen_sitemap(articles):
+    urls = []
+    # static pages
+    for path, prio, changefreq in [
+        ("/", "1.0", "daily"),
+        ("/exam/", "0.9", "daily"),
+        ("/ai/", "0.9", "daily"),
+        ("/about.html", "0.3", "monthly"),
+        ("/search.html", "0.3", "monthly"),
+    ]:
+        urls.append(f"""  <url>
+    <loc>https://{DOM}{path}</loc>
+    <priority>{prio}</priority>
+    <changefreq>{changefreq}</changefreq>
+  </url>""")
+    for a in articles:
+        section = "exam" if a.get("exam") else "ai"
+        url = f"https://{DOM}/{section}/article/{a['_slug']}.html"
+        d = (a.get("date") or "")[:10]
+        prio = "0.8" if section == "exam" else "0.7"
+        urls.append(f"""  <url>
+    <loc>{url}</loc>
+    <lastmod>{d}</lastmod>
+    <priority>{prio}</priority>
+    <changefreq>weekly</changefreq>
+  </url>""")
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    xml += "\n".join(urls)
+    xml += "\n</urlset>"
+    wp("sitemap.xml", xml)
+    wp("robots.txt", f"User-agent: *\nAllow: /\nSitemap: https://{DOM}/sitemap.xml\n")
+
+# ---- SEO: related articles ----
+def related_html(current_slug, all_articles, n=4):
+    related = [a for a in all_articles if a["_slug"] != current_slug]
+    related = related[:n]
+    if not related:
+        return ""
+    items = []
+    for a in related:
+        section = "exam" if a.get("exam") else "ai"
+        url = f"/{section}/article/{a['_slug']}.html"
+        items.append('<li><a href="' + url + '">' + esc(a["title"]) + "</a></li>")
+    return '<section class="related-articles"><h2>Related Articles</h2><ul>' + "\n".join(items) + "</ul></section>"
+
 def about_page():
     hero = '<section class="section-hero" style="padding:64px 0 48px;text-align:left">'
     hero += '<div class="container">'
@@ -239,6 +285,7 @@ def search_page():
 def main():
     exam_arts = load_articles(EXAM, True)
     ai_arts = load_articles(AI, False)
+    all_arts = exam_arts + ai_arts
     exam_html = NL.join(card(a, True) for a in exam_arts)
     ai_html = NL.join(card(a, False) for a in ai_arts)
 
@@ -267,7 +314,7 @@ def main():
     wp("about.html", about_page())
     wp("search.html", search_page())
 
-    idx = [{"title": a["title"], "url": ("/exam/" if a.get("exam") else "/ai/") + "article/" + a["_slug"] + ".html", "cat": a["_display_cat"], "kw": a["_keywords"], "date": a.get("date","")[:10]} for a in exam_arts + ai_arts]
+    idx = [{"title": a["title"], "url": ("/exam/" if a.get("exam") else "/ai/") + "article/" + a["_slug"] + ".html", "cat": a["_display_cat"], "kw": a["_keywords"], "date": a.get("date","")[:10]} for a in all_arts]
     wp("search_index.json", json.dumps(idx, ensure_ascii=False))
 
     exam_listing = section_hero("Exam Prep Articles","IELTS, TOEFL, GRE, SAT study guides.","Exam")
@@ -283,14 +330,19 @@ def main():
     for a in exam_arts:
         slug = a["_slug"]
         meta, body = fm(a["_body"])
-        html = page(a["title"], '<article class="article"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>', "exam")
+        rel = related_html(slug, all_arts)
+        html = page(a["title"], '<article class="article"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>' + rel, "exam")
         wp("exam/article/" + slug + ".html", html)
 
     for a in ai_arts:
         slug = a["_slug"]
         meta, body = fm(a["_body"])
-        html = page(a["title"], '<article class="article"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>', "ai")
+        rel = related_html(slug, all_arts)
+        html = page(a["title"], '<article class="article"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>' + rel, "ai")
         wp("ai/article/" + slug + ".html", html)
+
+    # SEO
+    gen_sitemap(all_arts)
 
     print("Built:", len(exam_arts), "exams +", len(ai_arts), "ai")
     print("Ready for deployment.")
