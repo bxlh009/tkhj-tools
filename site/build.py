@@ -230,11 +230,18 @@ def gen_sitemap(articles):
     for a in articles:
         section = "exam" if a.get("exam") else "ai"
         url = f"https://{DOM}/{section}/article/{a['_slug']}.html"
-        d = (a.get("date") or "")[:10]
+        d = (a.get("date") or "").strip()[:10]
         prio = "0.8" if section == "exam" else "0.7"
-        urls.append(f"""  <url>
+        if d:
+            urls.append(f"""  <url>
     <loc>{url}</loc>
     <lastmod>{d}</lastmod>
+    <priority>{prio}</priority>
+    <changefreq>weekly</changefreq>
+  </url>""")
+        else:
+            urls.append(f"""  <url>
+    <loc>{url}</loc>
     <priority>{prio}</priority>
     <changefreq>weekly</changefreq>
   </url>""")
