@@ -30,3 +30,6 @@
 {"type": "build", "status": "ok", "_time": "2026-07-09T06:03:27.217827"}
 {"type": "ai", "status": "ok", "output": "ing + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-09-grok-45-is-so-cheap-compared-to-fable-5-and-gpt-55-that-benchmark-gaps-may-not-m.md\n  rebuilt site: True\n", "_time": "2026-07-09T14:36:32.910884"}
 {"type": "build", "status": "ok", "_time": "2026-07-09T14:36:33.000043"}
+{"type": "exam", "var": "ai-presentation-makers.json", "status": "ok", "output": "opener'\n[WARN] too similar to duolingo-english-test-tips.md (85%); consider different vars\n[OK]   written: /home/runner/work/tkhj-tools/tkhj-tools/output/exams/ai-presentation-makers.md (~1184 words)\n", "_time": "2026-07-10T13:05:44.883589"}
+{"type": "ai", "status": "ok", "output": "ing + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-10-openai-says-gpt-56-is-the-preferred-model-for-microsoft-copilot-365-amid-breakup.md\n  rebuilt site: True\n", "_time": "2026-07-10T13:06:49.232546"}
+{"type": "build", "status": "ok", "_time": "2026-07-10T13:06:49.310241"}
