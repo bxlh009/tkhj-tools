@@ -1,0 +1,15 @@
+{
+  "exam_name": "TOEFL",
+  "section_name": "Reading",
+  "years": 5,
+  "bottleneck_score": "stuck at 20",
+  "min_words": 1800,
+  "max_words": 2500,
+  "primary_keyword": "toefl reading vocabulary context clues",
+  "long_tail_keywords": [
+    "toefl reading vocabulary strategies",
+    "toefl reading context clues practice",
+    "toefl reading passage vocabulary"
+  ],
+  "slug": "toefl-reading-vocabulary-context-clues"
+}

@@ -1,0 +1,15 @@
+{
+  "exam_name": "TOEFL",
+  "section_name": "Reading",
+  "years": 6,
+  "bottleneck_score": "stuck at 23",
+  "min_words": 1800,
+  "max_words": 2500,
+  "primary_keyword": "toefl reading time management strategy",
+  "long_tail_keywords": [
+    "toefl reading time management tips",
+    "toefl reading speed",
+    "toefl reading passage timing"
+  ],
+  "slug": "toefl-reading-time-management"
+}

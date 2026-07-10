@@ -1,0 +1,15 @@
+{
+  "exam_name": "TOEFL",
+  "section_name": "Reading",
+  "years": 8,
+  "bottleneck_score": "stuck at 24",
+  "min_words": 1800,
+  "max_words": 2500,
+  "primary_keyword": "toefl reading fact negative fact questions",
+  "long_tail_keywords": [
+    "toefl reading factual information",
+    "toefl reading negative factual",
+    "toefl reading detail questions"
+  ],
+  "slug": "toefl-reading-fact-negative-fact"
+}

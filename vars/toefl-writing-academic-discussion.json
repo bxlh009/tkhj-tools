@@ -1,0 +1,15 @@
+{
+  "exam_name": "TOEFL",
+  "section_name": "Writing",
+  "years": 5,
+  "bottleneck_score": "stuck at 22",
+  "min_words": 1800,
+  "max_words": 2500,
+  "primary_keyword": "toefl writing academic discussion task",
+  "long_tail_keywords": [
+    "toefl writing academic discussion",
+    "toefl writing new task",
+    "toefl writing discussion board"
+  ],
+  "slug": "toefl-writing-academic-discussion"
+}

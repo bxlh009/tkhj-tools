@@ -1,0 +1,15 @@
+{
+  "exam_name": "TOEFL",
+  "section_name": "Writing",
+  "years": 6,
+  "bottleneck_score": "stuck at 23",
+  "min_words": 1800,
+  "max_words": 2500,
+  "primary_keyword": "toefl writing independent task structure",
+  "long_tail_keywords": [
+    "toefl writing independent essay",
+    "toefl writing task 2",
+    "toefl writing opinion essay"
+  ],
+  "slug": "toefl-writing-independent-task"
+}
