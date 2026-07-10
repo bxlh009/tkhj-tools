@@ -318,6 +318,7 @@ ul{list-style:none;padding:0;margin:0}
 
 
 /* BACK TO TOP BUTTON - Uiverse.io by vinodjangid07 */
+/* 如果按钮不显示，检查 position/bottom/right/z-index */
 .back-to-top {
   position: fixed;
   bottom: 24px;
