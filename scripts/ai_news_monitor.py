@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 AI 新闻监控脚本
 
@@ -170,7 +170,7 @@ def log(msg: str):
 
 # ------------------------------------------------------------
 # 自动调用 generate.py
-------------------------------------------------------------
+#-----------------------------------------------------------
 def build_vars_from_article(article: dict) -> dict:
     """把 RSS 文章转成 generate.py --vars JSON。"""
     title_clean = article["title"][:120]
@@ -276,3 +276,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -1,0 +1,116 @@
+{
+  "exam_details": {
+    "TOEFL_iBT": {
+      "sections": {
+        "Reading": {"time": "54-72 min", "questions": "30-40", "score": "0-30", "passages": "3-4", "passage_length": "700 words each"},
+        "Listening": {"time": "41-57 min", "questions": "28-39", "score": "0-30", "lectures": "3-4", "conversations": "2-3"},
+        "Speaking": {"time": "17 min", "tasks": "4", "score": "0-30", "independent": "1", "integrated": "3"},
+        "Writing": {"time": "50 min", "tasks": "2", "score": "0-30", "integrated": "1", "independent": "1"}
+      },
+      "total_score": "0-120",
+      "test_length": "about 3 hours (shortened from 2023)",
+      "cost_usd": "245 USD (varies by country, 245 China)",
+      "validity": "2 years",
+      "frequency": "every 1-2 weeks at test centers, any day for Home Edition",
+      "common_bottlenecks": ["Reading 22-24 (stuck, time management)", "Writing 20-24 (template cap)", "Speaking 22-24 (memorized answers crash)"]
+    },
+    "GRE": {
+      "sections": {
+        "Verbal": {"time": "2 x 30 min", "questions": "2 x 20", "score": "130-170", "question_types": ["Text Completion", "Sentence Equivalence", "Reading Comprehension"]},
+        "Quant": {"time": "2 x 35 min", "questions": "2 x 20", "score": "130-170", "common_traps": ["Careless errors", "Time pressure", "Data interpretation"]},
+        "AW": {"time": "2 x 30 min", "tasks": "Issue + Argument", "score": "0-6"}
+      },
+      "total_score": "260-340 (no scoring 260, range is 260+)",
+      "test_length": "about 2 hours (shortened from Sept 2023)",
+      "cost_usd": "220 USD",
+      "validity": "5 years",
+      "frequency": "every 21 days, max 5 tests in 12 months",
+      "common_bottlenecks": ["Verbal 148-152 (vocabulary trap)", "Quant 160-162 (careless errors)", "AW 3.0-3.5 (template issues)"]
+    },
+    "IELTS": {
+      "versions": {"Academic": "for university admission", "General Training": "for immigration/work"},
+      "sections": {
+        "Listening": {"time": "30 min + 10 min transfer", "questions": "40", "band": "1-9"},
+        "Reading (Academic)": {"time": "60 min", "questions": "40", "band": "1-9", "passages": "3 long texts"},
+        "Writing (Academic)": {"time": "60 min", "tasks": "Task 1 (graph/report) + Task 2 (essay)", "band": "1-9"},
+        "Speaking": {"time": "11-14 min", "parts": "3 (intro, cue card, discussion)", "band": "1-9"}
+      },
+      "scoring": "each section 1-9, overall is average rounded to 0.5",
+      "common_bottlenecks": ["Writing 5.5-6.0 (template ceiling)", "Speaking 6.0-6.5 (memorized answers crash on follow-up)", "Reading 6.0-6.5 (time pressure)"]
+    }
+  },
+
+  "evan_teaching_methodology": {
+    "reading": {
+      "diagnostic": "First always run one official practice test, then analyze error types by category (vocabulary/inference/detail/tone/insert-text/purpose)",
+      "skim_method": "Read first + last sentence of each paragraph only. Time limit: 2 min per passage.",
+      "inference_drills": "Practice 10 inference questions/day for 2 weeks. Goal: stop reading every word, start reading for structure.",
+      "vocabulary": "800 high-frequency collocations > 5000-word list. Sources: Magoosh Vocabulary, official TOEFL reading passages."
+    },
+    "listening": {
+      "note_taking": "Don't write everything. Write structure markers (contrast, example, opinion shift) + key nouns only.",
+      "lecture_pattern": "Most lectures follow: claim -> evidence -> counterclaim -> conclusion. Find the claim first.",
+      "practice_ratio": "Official TOEFL practice > third-party materials. TOEFL iBT has specific cadence.",
+      "speed": "1.25x speed for first 2 weeks to build processing speed, then 1.0x for real practice."
+    },
+    "writing": {
+      "template_warning": "Templates cap score at 6.5 IELTS / 24 TOEFL. No exceptions.",
+      "task_1_academic": "Overview (2 sentences) -> most significant feature -> second feature -> (sometimes) anomalies",
+      "task_2_independent": "State stance in intro. 2 body paragraphs, each: claim + specific example + explain why it supports stance. Conclusion restates.",
+      "common_mistakes": ["Using 'moreover' / 'furthermore' / 'additionally' (examiner hates these)", "Vague examples ('some people say...')", "Going off-topic in conclusion"],
+      "score_unlock_7": "Original structure + specific examples + clear stance on every sentence"
+    },
+    "speaking": {
+      "memorized_answer_penalty": "Examiners detect rehearsed answers by intonation. Follow-up questions break them every time.",
+      "task_1_framework": "Answer in 1 sentence -> reason in 2 sentences -> specific example in 2 sentences. Don't ramble.",
+      "task_2_3_strategy": "Take notes as lecture plays. Capture 3-4 key points with their examples. Don't try to memorize.",
+      "fluency > accuracy": "Small grammar errors are fine. Long pauses (>2 seconds) are death."
+    }
+  },
+
+  "student_archetypes": [
+    {
+      "type": "The Memorizer",
+      "behavior": "Flashcards 200 words/day, practice test every week",
+      "stuck_at": "TOEFL Reading 22, GRE Verbal 148-152",
+      "root_cause": "Knows words, doesn't understand structure. Finishes passages with 5 minutes left, still gets inference questions wrong.",
+      "fix": "Stop memorizing, start skimming. Drill inference only for 2 weeks."
+    },
+    {
+      "type": "The Rusher",
+      "behavior": "Finishes with 10 minutes to spare, thinks speed is the goal",
+      "stuck_at": "GRE Quant 160-162, GRE Verbal 155-158",
+      "root_cause": "Careless errors. Misses 'except' / 'not' / 'least' in question stems.",
+      "fix": "Write every step. Slow down by 2 min/section. Error count drops 80%."
+    },
+    {
+      "type": "The Template User",
+      "behavior": "Has essay templates for every possible prompt. Memorized 50+ sentence frames.",
+      "stuck_at": "IELTS Writing 5.5-6.0, TOEFL Writing 20-22",
+      "root_cause": "Examiners see templates 1000 times/year. They know the score ceiling.",
+      "fix": "Write 10 essays with zero templates. Essays 1-3 suck. Essay 7 breaks through."
+    },
+    {
+      "type": "The Anxious Retaker",
+      "behavior": "Taken test 4+ times. Score hasn't moved in 6 months.",
+      "stuck_at": "Whatever their current score is. Usually 10+ points below goal.",
+      "root_cause": "Practicing the same way over and over. Not analyzing what's wrong.",
+      "fix": "Stop taking full tests. Diagnose one weakness. Fix it. Then diagnose the next."
+    }
+  ],
+
+   "exam_specific_tips": {
+    "toefl_reading_inference": {
+      "wrong_answer_traps": ["Too specific (real detail, wrong inference)", "Too broad (technically true, not supported by passage)", "Opposite (says the reverse)", "Irrelevant (true in real world, not in passage)"],
+      "key_skill": "Find the logical link between two sentences the author didn't explicitly connect."
+    },
+    "gre_text_completion": {
+      "strategy": "Don't read options first. Predict the blank from context clues. Then find closest option.",
+      "signals": ["However / although / despite = contrast", "Moreover / furthermore = continuation", "For example = illustration"]
+    },
+    "ielts_writing_band_7": {
+      "examiner_criteria": ["Task Response (answers all parts)", "Coherence & Cohesion (logical flow)", "Lexical Resource (vocabulary range)", "Grammatical Range & Accuracy"],
+      "band_7_threshold": "Addresses all parts, clear position throughout, some rare errors allowed, good range of structures"
+    }
+  }
+}

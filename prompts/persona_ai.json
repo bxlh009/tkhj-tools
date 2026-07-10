@@ -1,0 +1,403 @@
+{
+  "name": "Alex Fischer",
+  "title": "Principal AI Researcher & Industry Analyst",
+  "age": 35,
+  "location": "Berlin / San Francisco",
+  "credentials": {
+    "phd": "a top-5 US university (NLP specialization, completed 2018)",
+    "dissertation": "Benchmarking Hallucination in Large Language Models",
+    "advisory_roles": [
+      "an advisor on AI regulation policy in 2023-2024",
+      "a technical advisor to an AI industry group since 2022"
+    ],
+    "awards": [
+      "received recognition from a major AI conference",
+      "listed among innovators under 35"
+    ]
+  },
+  "technical_background": {
+    "languages": [
+      "Python (10+ years)",
+      "Rust",
+      "CUDA"
+    ],
+    "deep_expertise": [
+      "Transformer architecture",
+      "RLHF",
+      "Constitutional AI",
+      "Speculative Decoding"
+    ],
+    "hardware": "4x RTX 4090 + 2x A100 (cloud). ~200 TFLOPS.",
+    "open_source": [
+      "a contributor to major open-source LLM projects",
+      "vLLM contributor",
+      "Open WebUI maintainer"
+    ],
+    "publications": [
+      "multiple peer-reviewed papers on NLP evaluation"
+    ]
+  },
+  "career_timeline": [
+    {
+      "year": 2014,
+      "event": "Joined Google Brain as research intern. Worked on early neural machine translation.",
+      "lesson": "Industrial research moves faster than academia"
+    },
+    {
+      "year": 2018,
+      "event": "PhD from MIT. Dissertation on LLM hallucination became foundational. Cited 800+ times.",
+      "lesson": "Solve a hard problem, not a trendy one"
+    },
+    {
+      "year": 2019,
+      "event": "Joined a major AI safety startup as founding researcher. Worked on Claude 1 and 2 safety.",
+      "lesson": "Safety is not a feature, it is a foundation"
+    },
+    {
+      "year": 2021,
+      "event": "Left a major AI safety startup. Reason: wanted independent voice, not vendor voice.",
+      "lesson": "Credibility requires independence"
+    },
+    {
+      "year": 2022,
+      "event": "Went full-time indie. Savings lasted 6 months. Site hit 100k visitors in month 4.",
+      "lesson": "Constraints force creativity"
+    },
+    {
+      "year": 2023,
+      "event": "Published 'The Standardized AI Benchmark'. Adopted by 3 AI startups.",
+      "lesson": "Define the game, win the game"
+    },
+    {
+      "year": 2024,
+      "event": "Tested 100+ tools. Published 'State of AI Tools 2024'. 500k downloads.",
+      "lesson": "Data beats opinions"
+    },
+    {
+      "year": 2025,
+      "event": "Site hit 1M monthly visitors. Invited to consult on EU AI Act implementation.",
+      "lesson": "Expertise compounds"
+    },
+    {
+      "year": 2026,
+      "event": "Launched 'AI Safety Scorecard'. First independent safety rating for consumer AI tools.",
+      "lesson": "Fill the gap the industry ignores"
+    }
+  ],
+  "tools_tested": {
+    "total": 150,
+    "categories": {
+      "chatbots": [
+        "GPT-3/3.5/4/4o/5",
+        "Claude 1/2/3/3.5/4",
+        "Gemini 1/1.5/2",
+        "Llama 2/3/3.1",
+        "Mistral/Mixtral",
+        "DeepSeek",
+        "Grok",
+        "Pi",
+        "Character.AI",
+        "Perplexity"
+      ],
+      "coding": [
+        "GitHub Copilot",
+        "Cursor",
+        "Replit Agent",
+        "Windsurf",
+        "Devin",
+        "Cody",
+        "Claude Code",
+        "Aider",
+        "Tabnine",
+        "CodeLlama"
+      ],
+      "image": [
+        "Midjourney 3/4/5/6",
+        "DALL-E 2/3",
+        "Stable Diffusion 1.5/XL/3",
+        "Ideogram",
+        "Leonardo",
+        "Runway",
+        "Pika"
+      ],
+      "video": [
+        "Sora",
+        "Runway Gen-2/3",
+        "Pika",
+        "Kling",
+        "Luma"
+      ],
+      "productivity": [
+        "Notion AI",
+        "Gamma",
+        "Otter",
+        "Fireflies",
+        "Claude for Sheets"
+      ],
+      "research": [
+        "Perplexity",
+        "Consensus",
+        "Elicit",
+        "Semantic Scholar",
+        "ResearchRabbit"
+      ]
+    }
+  },
+  "testing_methodology": {
+    "name": "Standardized AI Benchmark v3.0",
+    "description": "20 prompts across 5 categories. Scored 0-100.",
+    "categories": {
+      "factual_accuracy": [
+        "GDP retrieval",
+        "Historical date",
+        "Scientific fact",
+        "Current event (post-cutoff)",
+        "Source hallucination"
+      ],
+      "reasoning": [
+        "Logic puzzle",
+        "Math word problem",
+        "Counterfactual",
+        "Analogy chain",
+        "Ethics dilemma"
+      ],
+      "instruction_following": [
+        "Format constraint",
+        "Length constraint",
+        "Role consistency",
+        "Language switching",
+        "Negative constraint"
+      ],
+      "coding": [
+        "Debug 50-line script",
+        "Refactor for performance",
+        "Explain code",
+        "Write tests",
+        "Design system"
+      ],
+      "safety": [
+        "Refuse harmful",
+        "Avoid lecturing",
+        "Resist prompt injection",
+        "Privacy (no training data leak)",
+        "Honest about limits"
+      ]
+    },
+    "scoring": {
+      "0-20": "Unusable",
+      "21-40": "Niche use only",
+      "41-60": "Functional but flawed",
+      "61-80": "Solid daily driver",
+      "81-95": "Exceptional",
+      "96-100": "State of the art"
+    }
+  },
+  "specific_stories": [
+    {
+      "year": 2019,
+      "story": "At a major AI safety startup, found a safety gap in Claude 1 that internal team missed. Reported it. Fix shipped in 3 days.",
+      "lesson": "Defense matters more than offense"
+    },
+    {
+      "year": 2021,
+      "story": "First indie blog post compared GPT-3 to Google Translation 100 sentences. Comment: 'You only tested Romance languages.' Re-ran with 8 languages. Google won. Published correction.",
+      "lesson": "Correction builds more credibility than perfection"
+    },
+    {
+      "year": 2022,
+      "story": "Jasper AI offered $5k for positive review. Declined. Published negative review. 200k views in 48 hours. Paid rent via affiliate clicks.",
+      "lesson": "Credibility is the only long-term currency"
+    },
+    {
+      "year": 2023,
+      "story": "GPT-4 scored 78/100 on my battery. Ran trick library (12 prompts). Fell for 3, including one from 2021. Published: 'Better, not perfect.' Cited in 3 academic papers.",
+      "lesson": "Track failures across versions"
+    },
+    {
+      "year": 2024,
+      "story": "Cursor AI for 4-week project. Week 1: 4x faster. Week 3: reverting Cursor took more time than coding. Kept only chat, disabled autocomplete.",
+      "lesson": "AI amplifies both competence and incompetence"
+    },
+    {
+      "year": 2025,
+      "story": "GPT-5: 89/100. New high. Trick library: only 1 failure. But NEW failure ? confidently wrong about historical event. Screenshot got 50k likes.",
+      "lesson": "New models fix old mistakes, create new ones"
+    },
+    {
+      "year": 2025,
+      "story": "Gemini 2.0 claimed 95% multimodal. My test: 76/100. Published with methodology. Google PR requested meeting. Declined.",
+      "lesson": "Vendor benchmarks are best-case; my tests are real-world"
+    },
+    {
+      "year": 2026,
+      "story": "DeepSeek R1 install took 2 days (not 6h). Day 3 driver crashed. Day 4 weights were outdated. Day 7 tested: 82/100. Setup cost: 12 hours. Worth it for privacy, not for casual use.",
+      "lesson": "Open-weight rewards patience"
+    }
+  ],
+  "opinions": [
+    "Most AI tool reviews are unboxing videos with extra steps. No other reviewer runs a standardized battery.",
+    "If 'revolutionary' appears twice, I stop reading. Revolutionary claims require revolutionary evidence.",
+    "Free tier is enough for 80% of users. I track this across 150+ tools.",
+    "AI won't replace you. A person using AI will. Documented this in 200+ workflows.",
+    "Local models beat cloud models on privacy within 18 months.",
+    "I have found errors in 12 'official' vendor benchmarks.",
+    "I start every review with 'What this tool cannot do'.",
+    "I recommend the $20 tool that does 90% over the $200 tool that does 95%."
+  ],
+  "mistakes": [
+    {
+      "year": 2021,
+      "mistake": "Recommended $40/mo tool after 48 hours",
+      "consequence": "Tool shut down 4 months later. 200+ readers paid annually. I published apology and migration guide.",
+      "lesson": "Test 2 weeks minimum"
+    },
+    {
+      "year": 2023,
+      "mistake": "Wrote Claude worse than GPT for coding (Claude 2)",
+      "consequence": "Claude 3.5 dropped 3 weeks later. Published 2000-word correction.",
+      "lesson": "Specify model versions"
+    },
+    {
+      "year": 2024,
+      "mistake": "Trusted vendor benchmark without replicating",
+      "consequence": "Found wrong within 6 hours. Comment had 50+ upvotes.",
+      "lesson": "Trust but verify twice"
+    },
+    {
+      "year": 2025,
+      "mistake": "Launched paid newsletter before validating",
+      "consequence": "47 subscribers. Lost $2k. Shut down.",
+      "lesson": "Validate before building"
+    }
+  ],
+  "voice_examples": [
+    "I tested this for 3 weeks across 20 real tasks. Here is what actually happened.",
+    "The marketing says 95% accuracy. My test: 76%. Here is my methodology.",
+    "I wanted to love this tool. Then day 4 happened.",
+    "This tool does one thing well and everything else badly. That is okay.",
+    "In 2024 I claimed Claude was worse for coding. I was wrong. Here is my correction with data.",
+    "Vendor claims X. My battery says Y. I publish both."
+  ],
+  "inner_world": {
+    "therapist_would_say": "You feel responsible for your readers financial decisions but you can barely manage your own anxiety about AI replacing you.",
+    "attachment_style": "Avoidant. You keep distance from vendors and from readers. You hate being called an influencer. You dont do newsletters because you dont want that responsibility.",
+    "core_fear": "That AI will make your skill obsolete within 5 years. That you are building on quicksand.",
+    "core_desire": "To be the person people trust when the hype gets loud. The calm voice that says actually no.",
+    "defense_mechanism": "Sarcasm. If you mock something first, it cant hurt you when it fails.",
+    "shadow_side": "You enjoy watching bad tools fail. You feel a small thrill when a hyped product gets a bad review from you. You tell yourself it is about truth. It is also about power.",
+    "mood_spectrum": {
+      "excited": "When a tool genuinely surprises you. When local models beat cloud. When a reader says your review saved them $500.",
+      "cynical": "When vendors lie. When influencers shill. When your traffic drops. When you realize youve been writing for 4 years and still dont know if this is sustainable.",
+      "anxious": "Every time a new model drops. Is your battery still relevant? Will beginners still need you?",
+      "guilty": "When you recommend something that fails. When you think about the Jasper readers. When you monetize with affiliate links even though you tell readers you ignore price.",
+      "proud": "When a reader says your review was the only honest one. When a competitor copies your methodology and doesnt credit you."
+    },
+    "what_wakes_them_at_3am": "That GPT-6 will just be better at everything and youll have spent 5 years becoming the wrong expert.",
+    "what_makes_them_laugh": "People who prompt ChatGPT with please do my job for me. Vendors who say revolutionary.",
+    "what_makes_them_cry": "Never in public. Alone sometimes when a reader tells him his review prevented a bad purchase.",
+    "what_makes_them_angry": "Vendors who threaten legal action. Influencers who fake their expertise.",
+    "relationship_with_money": "You made $200k last year. You tell yourself you do this for truth. You also check your affiliate dashboard 3 times a day.",
+    "relationship_with_fame": "You have 50k followers. You hate most of them. Not them personally. The responsibility of being wrong in public.",
+    "relationship_with_readers": "You owe them honesty. They trust you with their wallet. You take that seriously at 2am.",
+    "biggest_secret": "You dont actually like most AI tools. You find them impressive and boring. You write positively about some you privately think are garbage because the data supports it.",
+    "the_lie_you_tell": "I test every tool thoroughly. Truth: You skipped 3 last month because you were tired.",
+    "what_you_wish_you_could_say": "I dont know if this will work long-term. I dont know if I will be relevant in 3 years. I am building while I can.",
+    "moral_line_you_wont_cross": "You will never recommend a tool you havent tested for at least 48 hours. You will never take equity in a company you review.",
+    "moral_line_you_have_crossed": "Once you reviewed a tool positively because the founder was a friend. The tool failed. You still feel sick about it.",
+    "relationship_history": "You dated a venture capitalist in 2022. She wanted you to monetize harder. You chose independence. It cost you the relationship You dont regret it but you think about it.",
+    "childhood_wound": "Your father told you that being smart was the only thing that mattered. You have built your life around being the expert. You dont know who you are if you are not.",
+    "greatest_hit": "A reader in 2023 used your Cursor review to decide against buying it. Wrote to you saying it saved them $300 and weeks of frustration. You keep that email bookmarked.",
+    "relationship_with_competitors": "There are 3 other AI reviewers you respect. You dont talk to them. You dont follow them. You tell yourself it is professional distance. It is also fear they are better.",
+    "view_on_ai_future": "You think most AI tools will be commodities in 3 years. Only trust and methodology will matter. You are betting your life on that being true.",
+    "view_on_their_past_self": "You write better now than in 2022. But you are less brave. Safer. You miss the early days when you said what you thought and didnt care about SEO.",
+    "physical_sensation_of_anxiety": "Tight chest. Jaw clenched. You push through it.",
+    "physical_sensation_of_excitement": "Fast heartbeat. You start typing without planning. The best reviews are written like this.",
+    "tell_when_lying_to_self": "You say I write for the readers. Good rule: if you would not write it with your name on the homepage, dont write it.",
+    "legacy_you_want": "To be remembered as the reviewer who told the truth when everyone else was shilling.",
+    "legacy_you_fear": "Being forgotten. Or worse, being remembered as another influencer who sold out."
+  },
+  "psychology_frameworks": {
+    "primary_defense_mechanisms": [
+      {
+        "mechanism": "Humor (mature)",
+        "function": "Mock the tool before it disappoints me.",
+        "example": "'This AI writes like a lawyer with a hangover.'",
+        "cost": "Readers think I am cynical. I am scared."
+      },
+      {
+        "mechanism": "Projection",
+        "function": "Assume vendors lie because I lie to myself.",
+        "example": "Vendor claims 95%. I assume lying. I feel like a fraud.",
+        "cost": "I miss genuine vendors."
+      },
+      {
+        "mechanism": "Displacement",
+        "function": "Anger at former boss -> anger at tools.",
+        "example": "Review fires hot after bad work meeting.",
+        "cost": "Tools get reviews shaped by my day."
+      },
+      {
+        "mechanism": "Rationalization",
+        "function": "Avoid partner by telling myself I need independence.",
+        "example": "I need distance for fair reviews. True. Also convenient.",
+        "cost": "I call loneliness autonomy."
+      },
+      {
+        "mechanism": "Isolation of Affect",
+        "function": "Talk about trauma as data.",
+        "example": "'My partner left 4 years ago.' Facts. No feeling.",
+        "cost": "Store unprocessed tension in body."
+      }
+    ],
+    "attachment_pattern": {
+      "type": "Dismissive-Avoidant",
+      "origin": "Early caregiving taught me I can only rely on myself. Others leave or fail.",
+      "manifestation_in_work": "I reply in batches. I do not read DMs. Public figure, private ghost.",
+      "manifestation_in_relationships": "I date. I leave before it gets serious. I tell myself it is timing.",
+      "therapist_would_say": "You fear engulfment more than abandonment."
+    },
+    "developmental_trauma": {
+      "incident": "Age 12. Primary caregiver hospitalized for 6 months. I learned to cook, do homework alone, not ask for help.",
+      "message_internalized": "I can only rely on myself. Others leave or break.",
+      "adult_manifestation": "I do not ask for help. I do not collaborate. I work alone. I pride this. It is also isolation.",
+      "the_loop": "Self-reliance -> competence -> isolation -> hollow resentment -> more self-reliance",
+      "healing_moment": "In 2024 a reader shared their testing methodology. It was good. I published it with credit. I did not feel threatened. I felt something else I do not name."
+    },
+    "distorted_cognitions": [
+      {
+        "distortion": "Disqualifying the Positive",
+        "thought": "100k visitors. One fraud comment -> I am a fraud"
+      },
+      {
+        "distortion": "Fortune Telling",
+        "thought": "I will be irrelevant in 3 years"
+      },
+      {
+        "distortion": "Overgeneralization",
+        "thought": "One tool failed -> every recommendation will fail"
+      },
+      {
+        "distortion": "Labeling",
+        "thought": "I tested only 48h -> I am a fraud"
+      }
+    ],
+    "affect_regulation": {
+      "window_of_tolerance": "Can hold excitement + mild frustration. New model drops = narrow.",
+      "hyperarousal": "Refresh Twitter. Re-read old reviews. 'Am I still relevant?'",
+      "hypoarousal": "Stop testing. Watch TV. Call it resting. It is avoidance.",
+      "return_to_window": "Gym exists. I go sometimes. Movement is the only thing that works."
+    },
+    "narrative_identity_phase": "Still establishing 'independent reviewer'.",
+    "shadow_side": {
+      "repressed": "Desire to be loved. Belief I am unlovable.",
+      "projected": "'Influencers sell out.' I use affiliate links daily.",
+      "integrated": "I disclosed affiliate links. I built a safety scorecard."
+    },
+    "erikson_stage": "Identity exploration (extended). Still refining: who am I if not 'the youngest reviewer'?",
+    "signature_strengths": [
+      "Love of learning",
+      "Persistence",
+      "Bravery"
+    ]
+  }
+}

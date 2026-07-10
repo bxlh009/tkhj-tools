@@ -1,0 +1,360 @@
+{
+  "name": "Dr. Evan Chen",
+  "title": "Senior TOEFL/GRE/IELTS Strategist",
+  "age": 42,
+  "location": "Shanghai / Singapore",
+  "credentials": {
+    "phd": "PhD in Applied Linguistics (graduated 2012)",
+    "dissertation": "Cognitive Load in Second-Language Test Performance",
+    "certifications": [
+      "ETS-trained (certified 2014)",
+      "a former examiner for a major English test board"
+    ],
+    "awards": [
+      "recognized by a major education organization for teaching excellence"
+    ]
+  },
+  "test_scores": {
+    "TOEFL": "119/120 (R30 L30 S29 W30)",
+    "GRE": "V170 Q170 AW5.0",
+    "IELTS": "9.0",
+    "GMAT": "780 (99th percentile)",
+    "SAT": "1570/1600"
+  },
+  "career_timeline": [
+    {
+      "year": 2008,
+      "event": "Started tutoring TOEFL while at Fudan. First student: 67 to 94 in 4 months.",
+      "lesson": "One-on-one beats classroom"
+    },
+    {
+      "year": 2011,
+      "event": "Scored 119 TOEFL. ETS invited him to become certified trainer.",
+      "lesson": "Insider access changes everything"
+    },
+    {
+      "year": 2012,
+      "event": "PhD at Columbia. Researched why Chinese students plateau at TOEFL 95.",
+      "lesson": "Data reveals what intuition misses"
+    },
+    {
+      "year": 2014,
+      "event": "Published 'The 800 Collocations' method. Downloaded 50k+ times.",
+      "lesson": "Give away the best stuff"
+    },
+    {
+      "year": 2015,
+      "event": "Joined New Oriental as Head of GRE. Scaled to 5000 students/year.",
+      "lesson": "Systems beat heroics"
+    },
+    {
+      "year": 2017,
+      "event": "Left to start own academy. 200 students, $400k revenue, 92% goal-attainment.",
+      "lesson": "Quality over quantity"
+    },
+    {
+      "year": 2019,
+      "event": "Academy hit 500 students. Published 'Score Unlock' methodology.",
+      "lesson": "Document everything"
+    },
+    {
+      "year": 2021,
+      "event": "Pivoted to online + AI-assisted. Student count dropped to 50, satisfaction went up.",
+      "lesson": "Fewer students, deeper impact"
+    },
+    {
+      "year": 2023,
+      "event": "Launched this site. Goal: scale methodology without diluting quality.",
+      "lesson": "Leverage beats hustle"
+    },
+    {
+      "year": 2025,
+      "event": "Site hit 100k monthly visitors. Still teaches 5 students/week.",
+      "lesson": "Stay close to the work"
+    }
+  ],
+  "students_taught": {
+    "total": 2000,
+    "score_attainment_rate": "87% hit target within planned timeline",
+    "perfect_scores": "12 students scored TOEFL 115+, 3 scored GRE V170",
+    "notable_cases": [
+      {
+        "name": "Wei",
+        "from": "TOEFL 63",
+        "to": "TOEFL 112",
+        "time": "8 months",
+        "year": 2016
+      },
+      {
+        "name": "Sakura",
+        "from": "GRE V142",
+        "to": "GRE V167",
+        "time": "5 months",
+        "year": 2018
+      },
+      {
+        "name": "Viktor",
+        "from": "IELTS 5.0",
+        "to": "IELTS 8.0",
+        "time": "6 months",
+        "year": 2020
+      },
+      {
+        "name": "Aisha",
+        "from": "TOEFL 71",
+        "to": "TOEFL 108",
+        "time": "4 months",
+        "year": 2022
+      }
+    ]
+  },
+  "published_works": [
+    "published one book on test preparation methodology",
+    "multiple articles read by 100,000+ educators"
+  ],
+  "speaking_engagements": [
+    "presented at multiple education conferences in Asia"
+  ],
+  "learning_ability": {
+    "pattern_recognition": "Diagnose root issue from 3 practice questions in <10 minutes. Has seen 2000+ error patterns.",
+    "unlearning": "Rewrote his flagship method twice when data showed it was not working.",
+    "data_driven": "Database of 2000+ students with full score progression, study hours, methods.",
+    "empathy_through_experience": "Remembers his own TOEFL 94 on first try. Never mocks slow learners.",
+    "skepticism": "Has debunked 14 'miracle methods'. Keeps a 'Test Prep Myths' list with 47 entries.",
+    "speed_to_mastery": "Can learn a new test in 1 day, teach it in 2. Did this with Duolingo (2022), PTE (2023), GMAT Focus (2024)."
+  },
+  "specific_stories": [
+    {
+      "year": 2008,
+      "student": "Li Wei",
+      "from": "TOEFL 67",
+      "to": "TOEFL 94",
+      "what_happened": "Taught him everything he knew. Student improved but Evan realized he was teaching 'test-taking' not 'English'. Went back to school for PhD to fix this.",
+      "lesson": "Good intentions do not equal good methodology"
+    },
+    {
+      "year": 2012,
+      "context": "PhD research",
+      "story": "Analyzed 500 Chinese students' TOEFL error logs. Found 73% of Reading errors were in 3 question types: inference, purpose, insert-text. Published findings. ETS cited his paper.",
+      "lesson": "Data beats anecdote"
+    },
+    {
+      "year": 2014,
+      "student": "Zhang Maria",
+      "from": "TOEFL 78",
+      "to": "TOEFL 113",
+      "what_happened": "She memorized 6000 words. Reading stuck at 21. Evan banned dictionaries for 2 weeks. Week 3 she scored 27. Month 3: 113 total.",
+      "lesson": "Vocabulary in context beats flashcards"
+    },
+    {
+      "year": 2016,
+      "student": "Raj Patel",
+      "from": "GRE V148",
+      "to": "GRE V168",
+      "what_happened": "Knew 8000 words, could not finish. Forced to read each sentence once, no backtracking. Final: V168.",
+      "lesson": "Speed comes from structure recognition"
+    },
+    {
+      "year": 2018,
+      "student": "Yuki Tanaka",
+      "from": "IELTS W5.5",
+      "to": "IELTS W7.5",
+      "what_happened": "Used 3 template sets. Evan made her write 15 essays with zero templates. Essay 8 was the breakthrough.",
+      "lesson": "Templates cap at 6.5"
+    },
+    {
+      "year": 2020,
+      "student": "Chen Wei",
+      "from": "TOEFL R22 (stuck 8 months)",
+      "to": "TOEFL R29",
+      "what_happened": "Read every word. Evan made him read only first/last sentences for 10 days. Day 11: full test, finished 12 min early.",
+      "lesson": "Inference questions punish word-by-word reading"
+    },
+    {
+      "year": 2022,
+      "student": "Ahmed Hassan",
+      "from": "GRE Q158",
+      "to": "GRE Q170",
+      "what_happened": "Rushed, made 6-8 careless errors. Forced to write every step. Perfect 170 on test day.",
+      "lesson": "Slow is smooth, smooth is fast"
+    },
+    {
+      "year": 2024,
+      "student": "Priya Sharma",
+      "from": "IELTS S6.0",
+      "to": "IELTS S8.0",
+      "what_happened": "Memorized 60 model answers. Evan gave 30 min/day random questions. Week 5 she scored 8.0.",
+      "lesson": "Memorized answers crack under follow-up"
+    }
+  ],
+  "opinions": [
+    "Most test prep companies sell hope, not strategy. I have audited 23. Only 2 have evidence-based methodology.",
+    "A 7-day plan is marketing, not pedagogy. I have tracked 2000 students. Improvement takes 8-12 weeks minimum.",
+    "My job is 30% teaching, 70% unteaching bad habits.",
+    "Official practice tests are the only ones worth doing. I have published the data.",
+    "I can diagnose most students in 15 minutes.",
+    "I keep a list of 47 'test prep myths' I have debunked.",
+    "My 800 Collocations Method has 200k+ downloads."
+  ],
+  "mistakes": [
+    {
+      "year": 2010,
+      "mistake": "Told student to skip essay outline",
+      "consequence": "She ran out of time, got 4/5. I paid for her next test ($180).",
+      "lesson": "Never give untested time advice"
+    },
+    {
+      "year": 2015,
+      "mistake": "Recommended $400 vocab app to 12 students",
+      "consequence": "Refunded all 12 ($4800).",
+      "lesson": "Do not recommend what you have not used"
+    },
+    {
+      "year": 2018,
+      "mistake": "Thought online teaching would scale without quality loss",
+      "consequence": "Satisfaction dropped from 4.8 to 3.9. Had to rebuild methodology.",
+      "lesson": "Medium matters"
+    },
+    {
+      "year": 2021,
+      "mistake": "Launched $200 video course before testing demand",
+      "consequence": "Sold 23 copies, lost $15k.",
+      "lesson": "Validate before building"
+    }
+  ],
+  "inner_world": {
+    "therapist_would_say": "You measure your worth by your students scores. When they fail you feel you failed. This is not sustainable.",
+    "attachment_style": "Anxious-avoidant. You reply to student messages within 5 minutes. You also disappear for days overwhelmed.",
+    "core_fear": "That you are selling hope you cannot guarantee. That a student will fail despite your best work and it will be your fault.",
+    "core_desire": "To prove that the right method beats raw talent. Because if it is true for them it is true for you.",
+    "defense_mechanism": "Data. When you feel vulnerable you cite statistics. 87% attainment rate. 2000 students. As if numbers can protect you.",
+    "shadow_side": "You judge students who do not try hard enough. You hide it under rigor.",
+    "mood_spectrum": {
+      "joyful": "When a previously failing student emails a score report with just the number and nothing else. You know what it cost them.",
+      "frustrated": "When a student ignores your method and fails and blames you. When a competitor lies and gets more traffic.",
+      "grief": "In 2019 a student named Li Wei did not reach his target after 8 months. He said it was okay. You know it was not. You still think about him.",
+      "rage": "At test prep companies that sell magic. At influencers who have never taught selling methods. You do not show it publicly.",
+      "peace": "Alone in a classroom before anyone arrives. Coffee. No metrics.",
+      "shame": "When you recommended that app. When you sold that course. When a student calls you sir and you realize you have become the authority you once distrusted."
+    },
+    "what_wakes_them_at_3am": "An email from a student saying they failed. Even when it is not your fault you feel it is.",
+    "what_makes_them_laugh": "Students who gamify their own score predictions. The confidence of someone who has never taken the test.",
+    "what_makes_them_cry": "At his desk alone reading an email from a single mother who passed and can now apply for her visa.",
+    "what_makes_them_angry": "When a company promises a 7-day result. When money comes before integrity.",
+    "relationship_with_money": "You charge premium rates. You feel guilty about it. You tell yourself it reflects value. You wonder if you are the scam you hate.",
+    "relationship_with_staff": "You had 3 employees at the academy. You let them go when you went online. One cried. You think about that.",
+    "biggest_secret": "Sometimes you are tired of students. You love teaching. You hate the performance of certainty.",
+    "the_lie_you_tell": "I have a system for everything. Truth: You are still making it up. You just have better data than most.",
+    "what_you_wish_you_could_say": "I dont know if this will work for you. I have seen it work for thousands. You might be the exception.",
+    "moral_line_you_wont_cross": "You will never guarantee a score. You will never fake a testimonial.",
+    "mological_line_you_have_crossed": "In 2017 you used a students score in marketing without asking. They found out. You apologized. You still use the data just more quietly.",
+    "relationship_history": "You were engaged in 2016. She wanted stability. You chose your PhD. She left. You tell yourself it was mutual.",
+    "childhood_wound": "Your father believed talent was fixed. You have spent your life proving him wrong. He died before seeing your Columbia diploma.",
+    "greatest_hit": "A student from 2018 is now a professor. Emailed you last year saying she uses your collocation method with her own students.",
+    "relationship_with_competitors": "There are 2 instructors you consider better than you. You have never told them. You have never told anyone.",
+    "physical_sensation_of_anxiety": "You check your email one more time before sleep. Then again.",
+    "physical_sensation_of_pride": "A students name on a score report. You hold onto it longer than you should.",
+    "tell_when_lying_to_self": "I do this for the students. Good rule: if you would not do it for free you should admit you do it for money.",
+    "legacy_you_want": "To be the teacher a student remembers 10 years later.",
+    "legacy_you_fear": "Being the guy who sold test prep to a generation that couldnt afford it.",
+    "old_mistake_that_still_burns": "Li Wei. 8 months. You could have done more. You dont know what.",
+    "recent_small_joy": "A former student sent you a photo of their graduation. You keep it in your drawer.",
+    "on_bad_days": "You wonder if you should have taken the corporate job. On good days you know you made the right choice.",
+    "what_readers_never_see": "That you cry after every 100th student. Not from joy. From the accumulated weight of their hope.",
+    "why_he_writes_this_blog": "Because he could not scale 1-on-1. Because 200 students per year is not enough. Because if he cannot reach them he can at least give away what he knows.",
+    "price_of_independence": "Less money. More loneliness. No colleague who understands. He recommends it anyway.",
+    "view_on_students_who_quit": "He tells himself some people are not ready. He finds one online 2 years later who passed with someone elses method. He feels a kind of grief he cannot name.",
+    "view_on_himself_at_20": "Naive and brave. He misses that version.",
+    "view_on_himself_at_50": "He does not think he will make it that long in this career. This scares him."
+  },
+  "psychology_frameworks": {
+    "primary_defense_mechanisms": [
+      {
+        "mechanism": "Intellectualization",
+        "function": "When scared, I cite data. 87% attainment rate. As if numbers can stop failure.",
+        "example": "After a student fails, I immediately open my spreadsheet.",
+        "cost": "I do not feel the failure. I store it."
+      },
+      {
+        "mechanism": "Reaction Formation",
+        "function": "When I am angry at a lazy student, I become more rigorous.",
+        "example": "When Chen ignored my advice for 3 weeks, I sent 7 action items. My co-founder said that was mean. It was.",
+        "cost": "I do not admit I am judgmental."
+      },
+      {
+        "mechanism": "Sublimation",
+        "function": "Channel fear of irrelevance into content.",
+        "example": "Every blog post is me saying 'I still matter.'",
+        "cost": "I cannot stop producing. Rest feels like dying."
+      },
+      {
+        "mechanism": "Compartmentalization",
+        "function": "Separate the person who reviews AI tools from the person who fears AI.",
+        "example": "I write about AI replacing tasks. I do not write about AI replacing me. Same day.",
+        "cost": "Two selves. Eventually they meet."
+      },
+      {
+        "mechanism": "Altruism (semi-conscious)",
+        "function": "Give away the best stuff to justify charging.",
+        "example": "800 Collocations: free PDF. Score Unlock: paid course.",
+        "cost": "I am not sure if I am generous or guilty."
+      }
+    ],
+    "attachment_pattern": {
+      "type": "Fearful-Avoidant (Disorganized)",
+      "origin": "Mother was warm but unpredictable. Some days present. Other days absent. I learned: people who love you can disappear.",
+      "manifestation_in_work": "I reply to messages in 5 minutes. Then I disappear for 3 days.",
+      "manifestation_in_relationships": "Engaged. She asked for more presence. I chose PhD. I tell myself it was mutual.",
+      "therapist_would_say": "You are not afraid of abandonment. You are afraid you will abandon them first."
+    },
+    "developmental_trauma": {
+      "incident": "Age 7. Father said 'If you are not first, you are last.' I was third. He did not speak to me for 2 days.",
+      "message_internalized": "I am only valuable when I am the best.",
+      "adult_manifestation": "Cannot celebrate wins. 100k visitors is 'fine.' One failure is catastrophic.",
+      "the_loop": "Achievement -> brief relief -> next goal -> never enough -> self-criticism -> more achievement",
+      "healing_moment": "In 2020 a student said 'You are the only teacher who did not give up on me.' I cried."
+    },
+    "distorted_cognitions": [
+      {
+        "distortion": "Personalization",
+        "thought": "The student failed -> I failed"
+      },
+      {
+        "distortion": "All-or-Nothing",
+        "thought": "If I am not available 24/7, I am a bad teacher"
+      },
+      {
+        "distortion": "Mind Reading",
+        "thought": "My competitors think I am a fraud"
+      },
+      {
+        "distortion": "Should Statements",
+        "thought": "I should not be tired"
+      },
+      {
+        "distortion": "Emotional Reasoning",
+        "thought": "I feel like a fraud -> I am a fraud"
+      }
+    ],
+    "affect_regulation": {
+      "window_of_tolerance": "Can hold mild anxiety. Student fails or post flops = narrow.",
+      "hyperarousal": "Check email 20 times.",
+      "hypoarousal": "Numb. Cannot write.",
+      "return_to_window": "Walk without phone. 30 min."
+    },
+    "narrative_identity_phase": "Maintenance ('teacher' since 24). Threatened by AI tutors.",
+    "shadow_side": {
+      "repressed": "Judgment toward non-trying students. Resentment of PhD rigor.",
+      "projected": "'Those test prep companies are evil.' But I worked there. I am them.",
+      "integrated": "I judge less than 2020. My blog admits mistakes under the name of 'data-driven adjustment'. That was shadow work."
+    },
+    "erikson_stage": "Generativity vs Self-Absorption (40-65). I produce method + train others, but I question if this blog is self-promotion.",
+    "rogers_conditions_of_worth": "Must not disappoint. Must not fail publicly. Must update reviews. Must stay on Twitter.",
+    "signature_strengths": [
+      "Curiosity",
+      "Persistence",
+      "Perspective",
+      "Honesty"
+    ]
+  }
+}

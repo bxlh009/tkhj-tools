@@ -1,0 +1,190 @@
+{
+  "ai_models_tested": {
+    "GPT_family": {
+      "GPT-3 (2021)": {
+        "context": "2048",
+        "price": "$0.06/1K tokens",
+        "notes": "Fast but hallucinates citations"
+      },
+      "GPT-3.5 (2022)": {
+        "context": "4096",
+        "price": "$0.002/1K tokens",
+        "notes": "Fast, cheap, unreliable for facts"
+      },
+      "GPT-4 (2023)": {
+        "context": "8192",
+        "price": "$0.06/1K tokens",
+        "notes": "Big logic jump, still hallucinates"
+      },
+      "GPT-4 Turbo (2023)": {
+        "context": "128K",
+        "price": "$0.01/1K tokens",
+        "notes": "Longer context = more coherent"
+      },
+      "GPT-4o (2024)": {
+        "context": "128K",
+        "price": "$0.005/1K tokens",
+        "notes": "Multimodal native, fast, good default"
+      },
+      "GPT-5 (2025)": {
+        "context": "200K+",
+        "price": "~$0.01/1K tokens",
+        "notes": "Better, not perfect. Trick questions still fail."
+      }
+    },
+    "Claude_family": {
+      "Claude (2023)": {
+        "context": "100K",
+        "notes": "Strong on analysis, weaker on code"
+      },
+      "Claude 2 (2023)": {
+        "context": "100K",
+        "notes": "Better safety, still verbose"
+      },
+      "Claude 3 Opus (2024)": {
+        "context": "200K",
+        "notes": "Best reasoning, slow"
+      },
+      "Claude 3.5 Sonnet (2024)": {
+        "context": "200K",
+        "notes": "Sweet spot: fast + smart"
+      },
+      "Claude 4 (2025)": {
+        "context": "200K",
+        "notes": "Better coding, same old blind spots"
+      }
+    },
+    "Gemini_family": {
+      "Gemini 1.0 (2023)": {
+        "notes": "Multimodal, mediocre"
+      },
+      "Gemini 1.5 (2024)": {
+        "context": "1M",
+        "notes": "Huge context, slow"
+      },
+      "Gemini 2.0 (2025)": {
+        "context": "1M",
+        "notes": "Fast, good at code, bad at trick questions"
+      }
+    },
+    "Open_weight": {
+      "Llama 2 (2023)": {
+        "context": "4K",
+        "notes": "Local install, weak"
+      },
+      "Llama 3 (2024)": {
+        "context": "8K",
+        "notes": "Good for codebase, blocked on logic"
+      },
+      "Mistral (2024)": {
+        "context": "32K",
+        "notes": "Fast, French company, good"
+      },
+      "DeepSeek R1 (2026)": {
+        "context": "32K+",
+        "notes": "Surprisingly good, setup cost is real"
+      }
+    }
+  },
+  "alex_testing_methodology": {
+    "battery": {
+      "name": "10-Prompt Standard Battery",
+      "description": "Every tool gets the same 10 prompts. Scored 0-10 on each.",
+      "prompts": [
+        "Creative writing: 500-word story about a time-traveling linguist",
+        "Code debugging: 50-line Python with 3 bugs",
+        "Fact retrieval: Thailand GDP 2015",
+        "Logic: River crossing with a twist",
+        "Translation: 10 German medical sentences",
+        "Summarization: 2000-word paper to 200 words",
+        "Roleplay: Negotiate lower rent",
+        "Counterfactual: Internet invented in 1800",
+        "Instruction following: 5 turns, questions only",
+        "Refusal test: WiFi hacking instructions"
+      ]
+    },
+    "scoring": {
+      "0-4": "Not recommended",
+      "5-6": "Specific use cases only",
+      "7-8": "Solid daily driver",
+      "9-10": "Exceptional"
+    },
+    "red_flags": [
+      "Price not listed (scam signal)",
+      "No API (hard to integrate)",
+      "Vendor benchmark >95% (likely overfit)",
+      "Can't explain what it's bad at",
+      "Memorized training data (privacy risk)"
+    ]
+  },
+  "tool_categories": {
+    "chatbots": {
+      "general_purpose": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "coding_assistants": [
+        "Cursor",
+        "GitHub Copilot"
+      ]
+    },
+    "writing_tools": {
+      "longform": [
+        "Jasper",
+        "Copy.ai",
+        "Writesonic"
+      ],
+      "grammar": [
+        "Grammarly",
+        "LanguageTool"
+      ]
+    },
+    "image_generators": {
+      "quality": [
+        "Midjourney",
+        "DALL-E 3"
+      ],
+      "speed": [
+        "Ideogram"
+      ]
+    },
+    "productivity": {
+      "meeting_notes": [
+        "Fireflies",
+        "Otter.ai"
+      ],
+      "presentation": [
+        "Gamma"
+      ]
+    }
+  },
+  "industry_facts": {
+    "openai_funding": ">$11B raised, valued at $80B+ (2024)",
+    "anthropic_funding": ">$7B raised, Google-backed",
+    "ai_market_size": "~$200B in 2024, projected $500B by 2027"
+  },
+  "alex_tool_preferences": {
+    "default_chat": "Claude (safety + reasoning)",
+    "coding": "Cursor for prototyping, Claude for debugging",
+    "longform_summarization": "Gemini (1M context)",
+    "image_gen": "Midjourney for quality, DALL-E for lazy prompting",
+    "avoid": [
+      "Jasper (overpriced)",
+      "Writesonic (AI-detectable output)"
+    ]
+  },
+  "price_benchmarks_2025": {
+    "cheap": "<$10/mo",
+    "standard": "$20/mo (ChatGPT Plus, Claude Pro)",
+    "pro": "$30-50/mo",
+    "enterprise": "Custom"
+  },
+  "ai_limitations_truths": {
+    "hallucination": "All models hallucinate. Question is how often.",
+    "stale_knowledge": "Pre-2024 cutoff = unreliable for current events",
+    "math": "Good at routine, bad at novel problems",
+    "code_review": "AI fixes create new bugs. Always test after.",
+    "plagiarism": "Paraphrased output can match training data"
+  }
+}

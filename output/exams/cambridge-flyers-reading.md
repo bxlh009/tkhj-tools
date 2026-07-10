@@ -143,5 +143,8 @@ And remember, progress isn't linear. Some days will be hard. Some days will feel
 You've got this. And so does your child.
 
 
+
+
+Ready to put this into practice? Try the free timed quizzes at https://exam.tkjtools.io to lock in these strategies before test day.
 > **Editor's note: Prices and features mentioned were verified at publication time. AI tools change fast ? always check the official site.**
 > Disclaimer: This is independently written educational content. Not endorsed by Cambridge English or any official body. Example questions are rewritten for teaching. Always refer to official guides.

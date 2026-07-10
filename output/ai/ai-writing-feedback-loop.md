@@ -103,5 +103,8 @@ A: Not fully. You need to make judgment calls on each critique. However, you can
 A: Treating the AI's critique as gospel. It's not. It's a suggestion. If the AI tells you to change a word that feels right to you, ignore it. Your voice matters more than algorithmic perfection.
 
 
+
+
+Want to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.
 > **Editor's note: I tested this strategy with my students last semester. It worked for most, but your mileage may vary. Updated July 2026.**
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.

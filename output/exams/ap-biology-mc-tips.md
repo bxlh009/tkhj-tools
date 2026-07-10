@@ -126,5 +126,8 @@ A: Only if it supports the passage. The passage is king. If the passage says "Pr
 A: Keep an error log. Write down why you got it wrong. Was it a concept gap? A reading error? A calculation mistake? Fix the root cause. Don't just note the right answer.
 
 
+
+
+Ready to put this into practice? Try the free timed quizzes at https://exam.tkjtools.io to lock in these strategies before test day.
 > **Editor's note: I update this article periodically as new information becomes available. Last reviewed: July 2026.**
 > Disclaimer: This is independently written educational content. Not endorsed by AP Biology or any official body. Example questions are rewritten for teaching. Always refer to official guides.

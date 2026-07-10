@@ -151,4 +151,7 @@ Go get 'em.
 
 Look—this is just independent, educational stuff. It's not endorsed by Cambridge YLE or any official body, so don't get that twisted. The examples? They're rewritten for teaching purposes. Here's the deal: always stick to the official guides.
 
+
+
+Ready to put this into practice? Try the free timed quizzes at https://exam.tkjtools.io to lock in these strategies before test day.
 > **Editor's note: Prices and features mentioned were verified at publication time. AI tools change fast ? always check the official site.**

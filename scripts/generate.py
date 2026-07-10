@@ -248,7 +248,7 @@ def write_output(content, slug, out_dir):
 def ensure_cta_and_disclaimer(article, atype):
     """Append CTA and disclaimer if missing from the article."""
     import re as _re
-    has_cta = bool(_re.search(r'tkjtools\.io', article))
+    has_cta = bool(_re.search(r'tkjtools', article))
     has_disclaimer = bool(_re.search(r'(disclaimer|independently written|not endorsed|不代表.*官方)', article, _re.I))
     tail = ""
     if not has_cta:
