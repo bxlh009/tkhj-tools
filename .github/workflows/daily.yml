@@ -21,7 +21,7 @@ jobs:
           python-version: '3.12'
 
       - name: Set API key
-        run: echo "OPENAI_API_KEY=${{ secrets.AGNES_API_KEY }}" >> $GITHUB_ENV
+        run: echo "AGNES_API_KEY=${{ secrets.AGNES_API_KEY }}" >> $GITHUB_ENV
 
       - name: Generate daily content
         run: python scripts/daily_generate.py

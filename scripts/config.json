@@ -1,7 +1,7 @@
 {
   "api": {
     "base_url": "https://apihub.agnes-ai.com/v1/chat/completions",
-    "api_key_env": "OPENAI_API_KEY",
+    "api_key_env": "AGNES_API_KEY",
     "model": "agnes-2.0-flash",
     "temperature": 0.4,
     "max_tokens": 16384,

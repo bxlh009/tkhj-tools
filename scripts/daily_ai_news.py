@@ -419,12 +419,11 @@ def main():
     out_path = save_article(target, body)
     mark_seen(target, db)
     _save_seen(db)
-    ok = rebuild_site()
-    log_event({"date": _today(), "action": "published" if ok else "save-only",
+    log_event({"date": _today(), "action": "published",
                "file": str(out_path), "title": target["title"],
                "source": target["source"], "score": score_item(target)})
     print(f"  saved: {out_path}")
-    print(f"  rebuilt site: {ok}")
+    print("  ok (site rebuild handled by daily_generate.py)")
     return 0
 
 if __name__ == "__main__":

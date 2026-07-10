@@ -188,15 +188,13 @@ sources: ["https://...", "https://..."]
 structure_template: "A" | "B" | "C" | "D"
 ---
 
-# H1 (primary keyword + news hook / verdict)
-
 Lead paragraph...
 
 ## [Section headlines vary per template]
 
 ...
 
-## FAQ
+**FAQ**
 Q1: ...?
 A: (50-80 words)
 

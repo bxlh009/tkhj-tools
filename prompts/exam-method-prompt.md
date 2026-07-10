@@ -188,25 +188,23 @@ estimated_read_min: 0
 structure_template: "A" | "B" | "C" | "D"
 ---
 
-# H1 Title (with primary keyword + number + promise)
-
 Student-story / Myth / Diagnosis / Matrix opening...
 
-## [Methodology Section Headlines vary by template]
+**[Methodology Section Headlines vary by template]**
 
 ...
 
-## Worked Example 1: [Type Name]
+**Worked Example 1: [Type Name]**
 [Rewritten passage - not official text]
 Question: ...
 Options: A) ... B) ... C) ...
 Solution: Step 1 -> Step 2 -> Step 3
 **Pitfall Summary**: What 80% of students miss here
 
-## Worked Example 2: [Type Name]
+**Worked Example 2: [Type Name]**
 ... (same shape as above)
 
-## Frequently Asked Questions
+**Frequently Asked Questions**
 
 Q1: ...?
 A: (50-80 words)
