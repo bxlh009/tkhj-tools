@@ -175,7 +175,7 @@ def footer():
     y = str(datetime.now().year)
     cols = [
         '<h4 style="margin:0 0 8px;font-size:1.05rem;color:var(--text-1)">' + NAME + '</h4><p>Student-first study guides for English exams and AI tools. Most articles are AI-assisted and reviewed by human editor.</p>',
-        '<h4>Articles</h4><a href="/exam/">All Exam Articles</a><a href="/exam/tools/">Exam Tools</a><a href="/ai/">All AI Articles</a><a href="/ai/tools/">AI Tools</a>',
+        '<h4>Articles</h4><a href="/exam/">All Exam Articles</a><a href="/exam/tools/">Exam Tools</a><a href="/ai/">All AI Articles</a><a href="/ai/tools/">AI Tools</a><a href="/privacy.html">Privacy Policy</a>',
         '<h4>Popular Guides</h4><a href="/exam/article/ielts-writing-band-7-strategy.html">IELTS Writing Band 7</a><a href="/exam/article/toefl-reading-inference-strategy.html">TOEFL Reading</a><a href="/exam/article/gre-text-completion-master-plan.html">GRE Text</a><a href="/ai/article/gpt-5-vs-claude-4-comparison.html">GPT-5 vs Claude 4</a>',
     ]
     grid = ""
@@ -202,6 +202,7 @@ def page(title, body_str, active="home"):
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width,initial-scale=1">',
         '<link rel="icon" href="/favicon.png">',
+        '<meta name="description" content="' + title + ' - TKHJ Tools study guides and AI coverage">',
         '<meta name="theme-color" content="#3B82F6" media="(prefers-color-scheme:light)">',
         '<link rel="stylesheet" href="/' + CSL + '">',
     ]
@@ -221,6 +222,7 @@ def gen_sitemap(articles):
         ("/ai/", "0.9", "daily"),
         ("/about.html", "0.3", "monthly"),
         ("/search.html", "0.3", "monthly"),
+        ("/privacy.html", "0.3", "monthly"),
     ]:
         urls.append(f"""  <url>
     <loc>https://{DOM}{path}</loc>
@@ -289,6 +291,27 @@ def search_page():
     body += '<script src="/static/search.js"></script>'
     return page("Search", body, "search")
 
+def privacy_page():
+    hero = '<section class="section-hero" style="padding:64px 0 48px;text-align:left">'
+    hero += '<div class="container">'
+    hero += '<h1 style="font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;margin:0 0 16px;color:var(--text-1);font-weight:800">Privacy Policy</h1>'
+    hero += '</div></section>'
+    body = '<section class="section"><div class="container"><div style="max-width:680px;margin:0 auto">'
+    body += '<p><strong>Last updated:</strong> July 11, 2026</p>'
+    body += '<h2 style="font-weight:700;margin:32px 0 12px">Information We Collect</h2>'
+    body += '<p>We use Google AdSense to display advertisements. Google uses cookies to serve ads based on prior visits to this site and other websites. You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads">Google Ads Settings</a>.</p>'
+    body += '<p>We collect standard web server logs (IP address, browser type, referring pages) for analytics and security purposes. This data is anonymized and not linked to any personal identity.</p>'
+    body += '<h2 style="font-weight:700;margin:32px 0 12px">Cookies</h2>'
+    body += '<p>This site uses cookies for: (1) Google AdSense personalized ads, (2) Cloudflare security and performance, (3) Local storage for theme preferences. No cookies are used for tracking individual users across sites beyond standard ad network practices.</p>'
+    body += '<h2 style="font-weight:700;margin:32px 0 12px">Third-Party Services</h2>'
+    body += '<p>We use the following third-party services: Google AdSense (advertising), Cloudflare (CDN and security), GitHub (hosting and deployment). Each service has its own privacy policy governing data collection.</p>'
+    body += '<h2 style="font-weight:700;margin:32px 0 12px">Content Disclaimer</h2>'
+    body += '<p>This site contains AI-assisted content that is reviewed by human editors before publication. Exam strategies are based on general teaching experience and may not guarantee specific test results. AI tool reviews reflect personal testing and should not be taken as professional endorsements.</p>'
+    body += '<h2 style="font-weight:700;margin:32px 0 12px">Contact</h2>'
+    body += '<p>For privacy-related inquiries, contact the site administrator via GitHub at <a href="https://github.com/bxlh009">github.com/bxlh009</a>.</p>'
+    body += '</div></div></section>'
+    return page("Privacy Policy", hero + body, "privacy")
+
 def main():
     exam_arts = load_articles(EXAM, True)
     ai_arts = load_articles(AI, False)
@@ -348,6 +371,7 @@ def main():
         html = page(a["title"], '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>' + rel, "ai")
         wp("ai/article/" + slug + ".html", html)
 
+    wp("privacy.html", privacy_page())
     gen_sitemap(all_arts)
 
     print("Built:", len(exam_arts), "exams +", len(ai_arts), "ai")
