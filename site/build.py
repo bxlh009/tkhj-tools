@@ -201,6 +201,7 @@ def page(title, body_str, active="home"):
     meta = [
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width,initial-scale=1">',
+        '<link rel="icon" href="/favicon.png">',
         '<meta name="theme-color" content="#3B82F6" media="(prefers-color-scheme:light)">',
         '<link rel="stylesheet" href="/' + CSL + '">',
     ]
@@ -214,7 +215,6 @@ def wp(path, content):
 # ---- SEO: sitemap + robots ----
 def gen_sitemap(articles):
     urls = []
-    # static pages
     for path, prio, changefreq in [
         ("/", "1.0", "daily"),
         ("/exam/", "0.9", "daily"),
@@ -341,7 +341,6 @@ def main():
         html = page(a["title"], '<article class="article"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>' + rel, "ai")
         wp("ai/article/" + slug + ".html", html)
 
-    # SEO
     gen_sitemap(all_arts)
 
     print("Built:", len(exam_arts), "exams +", len(ai_arts), "ai")
