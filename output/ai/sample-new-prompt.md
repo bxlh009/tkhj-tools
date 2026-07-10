@@ -1,3 +1,10 @@
+---
+title: "TOEFL Reading: Why 80% Plateau at 22"
+date: "2026-07-11"
+slug: "sample-new-prompt"
+category: "exam"
+---
+
 ﻿## Why 80% of TOEFL Students Plateau at Reading 22 (And the 3-Minute Fix)
 
 I have been teaching TOEFL for 17 years. I have seen 2000+ students. And every year, the same pattern: students stuck at Reading 22, sometimes for 6 months, sometimes for a year.
