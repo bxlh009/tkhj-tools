@@ -135,7 +135,7 @@ function debounce(fn, ms){
 // BACK TO TOP BUTTON
 (function(){
   var btn = document.createElement("button");
-  btn.innerHTML = "?";
+  btn.innerHTML = "▲";
   btn.setAttribute("aria-label", "Back to top");
   btn.style.cssText = "position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--brand);color:#fff;border:none;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);opacity:0;transition:opacity .2s;z-index:999";
   document.body.appendChild(btn);
