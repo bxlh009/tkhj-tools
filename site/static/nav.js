@@ -135,9 +135,9 @@ function debounce(fn, ms){
 // BACK TO TOP BUTTON
 (function(){
   var btn = document.createElement("button");
-  btn.innerHTML = "▲";
+  btn.className = "back-to-top";
   btn.setAttribute("aria-label", "Back to top");
-  btn.style.cssText = "position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--brand);color:#fff;border:none;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);opacity:0;transition:opacity .2s;z-index:999";
+  btn.innerHTML = '<svg class="svgIcon" viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>';
   document.body.appendChild(btn);
   window.addEventListener("scroll", function(){
     btn.style.opacity = window.scrollY > 300 ? "1" : "0";
