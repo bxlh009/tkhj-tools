@@ -415,7 +415,7 @@ def main():
         meta, body = fm(a["_body"])
         rel = related_html(slug, all_arts)
         article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>';
-        html = page(a["title"], insert_ads(article_inner) + rel, "exam")
+        html = page(a["title"], article_inner + rel + AD_UNIT, "exam")
         wp("exam/article/" + slug + ".html", html)
 
     for a in ai_arts:
@@ -423,7 +423,7 @@ def main():
         meta, body = fm(a["_body"])
         rel = related_html(slug, all_arts)
         article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>';
-        html = page(a["title"], insert_ads(article_inner) + rel, "ai")
+        html = page(a["title"], article_inner + rel + AD_UNIT, "ai")
         wp("ai/article/" + slug + ".html", html)
 
     wp("privacy.html", privacy_page())
