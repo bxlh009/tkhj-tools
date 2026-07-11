@@ -1,0 +1,21 @@
+{
+  "type": "ai-news",
+  "min_words": 1800,
+  "max_words": 2500,
+  "target_audience": "AI researchers and enthusiasts following world models",
+  "primary_keyword": "BAAI Orca world model",
+  "long_tail_keywords": [
+    "?? RoboBrain Orca",
+    "next-state prediction",
+    "multimodal world model"
+  ],
+  "slug": "baai-orca-world-model-next-state-prediction",
+  "category": "ai-news",
+  "language": "English",
+  "multi_sources": [
+    "https://www.163.com/dy/article/L1B29MNC0511DSSR.html",
+    "https://zhuanlan.zhihu.com/p/2058251867298255910",
+    "https://www.163.com/dy/article/L1B7VMLC0511ABV6.html"
+  ],
+  "editor_note": "MUST use ONLY facts from these 3+ sources. Orca is a research project, not yet a commercial product."
+}

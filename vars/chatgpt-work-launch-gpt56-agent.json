@@ -1,0 +1,21 @@
+{
+  "type": "ai-news",
+  "min_words": 1800,
+  "max_words": 2500,
+  "target_audience": "AI tools researchers watching enterprise agent platforms",
+  "primary_keyword": "ChatGPT Work agent platform",
+  "long_tail_keywords": [
+    "ChatGPT GPT-5.6 pricing",
+    "ChatGPT Codex merged",
+    "OpenAI agent enterprise"
+  ],
+  "slug": "chatgpt-work-launch-gpt56-agent",
+  "category": "ai-news",
+  "language": "English",
+  "multi_sources": [
+    "https://blog.csdn.net/JJJennie777/article/details/162762197",
+    "https://www.163.com/dy/article/L1FG3G8F051180F7.html",
+    "https://view.inews.qq.com/a/20260323A07F6000"
+  ],
+  "editor_note": "MUST use ONLY facts from these 3+ original sources. Do not copy sentences. Cross-verify all numbers."
+}
