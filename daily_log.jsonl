@@ -37,3 +37,6 @@
 {"type": "build", "status": "ok", "_time": "2026-07-10T14:02:14.871308"}
 {"type": "ai", "status": "ok", "output": "ing + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-10-openai-kills-its-atlas-browser-after-just-eight-months-and-folds-everything-into.md\n  rebuilt site: True\n", "_time": "2026-07-10T14:03:50.206800"}
 {"type": "build", "status": "ok", "_time": "2026-07-10T14:03:50.300686"}
+{"type": "exam", "var": "toefl-reading-question-types.json", "status": "ok", "output": "] too similar to toefl-reading-inference-strategy-2.md (91%); consider different vars\n[OK]   written: /home/runner/work/tkhj-tools/tkhj-tools/output/exams/toefl-reading-question-types.md (~110 words)\n", "_time": "2026-07-11T11:10:52.329936"}
+{"type": "ai", "status": "ok", "output": "aved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-11-openai-admits-it-didnt-get-everything-quite-right-with-chatgpt-work-launch-and-s.md\n  ok (site rebuild handled by daily_generate.py)\n", "_time": "2026-07-11T11:11:29.994647"}
+{"type": "build", "status": "ok", "_time": "2026-07-11T11:11:30.068547"}
