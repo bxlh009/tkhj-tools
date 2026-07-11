@@ -15,8 +15,8 @@ TAG  = "Free study guides for every level, and honest AI news coverage."
 CSL  = "static/style.css"
 JSL  = "static/nav.js"
 
-AD_HEAD = ""
-AD_UNIT = ""
+AD_HEAD = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8913718352251239" crossorigin="anonymous"></script>'
+AD_UNIT = '<div class="ad-unit"><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8913718352251239" data-ad-slot="4470604333"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>'
 
 EXAM_TABS = ["All Exams","IELTS","TOEFL","GRE","SAT","More"]
 AI_TABS   = ["All","AI","Tools","Prompts","Workflows","Productivity"]
@@ -196,7 +196,7 @@ def footer():
     y = str(datetime.now().year)
     cols = [
         '<h4 style="margin:0 0 8px;font-size:1.05rem;color:var(--text-1)">' + NAME + '</h4><p>Student-first study guides for English exams and AI tools. Most articles are AI-assisted and reviewed by human editor.</p>',
-        '<h4>Articles</h4><a href="/exam/">All Exam Articles</a><a href="/exam/tools/">Exam Tools</a><a href="/ai/">All AI Articles</a><a href="/ai/tools/">AI Tools</a><a href="/privacy.html">Privacy Policy</a>',
+        '<h4>Articles</h4><a href="/exam/">All Exam Articles</a><a href="/ai/">All AI Articles</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy Policy</a>',
         '<h4>Popular Guides</h4><a href="/exam/article/ielts-writing-band-7-strategy.html">IELTS Writing Band 7</a><a href="/exam/article/toefl-reading-inference-strategy.html">TOEFL Reading</a><a href="/exam/article/gre-text-completion-master-plan.html">GRE Text</a><a href="/ai/article/gpt-5-vs-claude-4-comparison.html">GPT-5 vs Claude 4</a>',
     ]
     grid = ""
@@ -223,6 +223,7 @@ def page(title, body_str, active="home"):
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width,initial-scale=1">',
         '<link rel="icon" href="/favicon.png">',
+        AD_HEAD,
         '<meta name="description" content="' + title + ' - TKHJ Tools study guides and AI coverage">',
         '<meta name="theme-color" content="#3B82F6" media="(prefers-color-scheme:light)">',
         '<link rel="stylesheet" href="/' + CSL + '">',
@@ -244,6 +245,7 @@ def gen_sitemap(articles):
         ("/about.html", "0.3", "monthly"),
         ("/search.html", "0.3", "monthly"),
         ("/privacy.html", "0.3", "monthly"),
+        ("/contact.html", "0.3", "monthly"),
     ]:
         urls.append(f"""  <url>
     <loc>https://{DOM}{path}</loc>
@@ -312,6 +314,34 @@ def search_page():
     body += '<script src="/static/search.js"></script>'
     return page("Search", body, "search")
 
+def insert_ads(html_body):
+    close_p = '</p>'
+    half = len(html_body) // 2
+    mid = html_body.rfind(close_p, 0, half)
+    if mid != -1:
+        mid += len(close_p)
+        html_body = html_body[:mid] + AD_UNIT + html_body[mid:]
+    return html_body + AD_UNIT
+
+def contact_page():
+    hero = '<section class="section-hero" style="padding:64px 0 48px;text-align:left">'
+    hero += '<div class="container">'
+    hero += '<h1 style="font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;margin:0 0 16px;color:var(--text-1);font-weight:800">Contact Us</h1>'
+    hero += '<p style="margin:0;color:var(--text-2);max-width:640px;font-size:1.05rem">Have a question, found an error, or want to collaborate? We read every message.</p>'
+    hero += '</div></section>'
+    body = '<section class="section"><div class="container"><div style="max-width:680px;margin:0 auto">'
+    body += '<h2 style="font-weight:700;margin:0 0 12px">Get in Touch</h2>'
+    body += '<p>Email us directly at <a href="mailto:hi@tkhjtools.top">hi@tkhjtools.top</a>. We typically respond within 24 hours on business days.</p>'
+    body += '<h2 style="font-weight:700;margin:32px 0 12px">Report an Issue</h2>'
+    body += '<p>Spot a factual error, broken link, or outdated information? Send us the URL and what you expected to see. Your correction helps thousands of students.</p>'
+    body += '<h2 style="font-weight:700;margin:32px 0 12px">Collaboration</h2>'
+    body += '<p>We welcome guest posts from verified educators and AI researchers. Include your credentials and a brief pitch.</p>'
+    body += '<h2 style="font-weight:700;margin:32px 0 12px">Elsewhere</h2>'
+    body += '<p>GitHub: <a href="https://github.com/bxlh009">github.com/bxlh009</a></p>'
+    body += '</div></div></section>'
+    return page("Contact", hero + body, "contact")
+
+
 def privacy_page():
     hero = '<section class="section-hero" style="padding:64px 0 48px;text-align:left">'
     hero += '<div class="container">'
@@ -364,6 +394,7 @@ def main():
     wp("index.html", page("Study guides & AI coverage", hero + exam_sect + ai_sect))
     wp("about.html", about_page())
     wp("search.html", search_page())
+    wp("contact.html", contact_page())
 
     idx = [{"title": a["title"], "url": ("/exam/" if a.get("exam") else "/ai/") + "article/" + a["_slug"] + ".html", "cat": a["_display_cat"], "kw": a["_keywords"], "date": a.get("date","")[:10]} for a in all_arts]
     wp("search_index.json", json.dumps(idx, ensure_ascii=False))
@@ -382,14 +413,16 @@ def main():
         slug = a["_slug"]
         meta, body = fm(a["_body"])
         rel = related_html(slug, all_arts)
-        html = page(a["title"], '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>' + rel, "exam")
+        article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>';
+        html = page(a["title"], insert_ads(article_inner) + rel, "exam")
         wp("exam/article/" + slug + ".html", html)
 
     for a in ai_arts:
         slug = a["_slug"]
         meta, body = fm(a["_body"])
         rel = related_html(slug, all_arts)
-        html = page(a["title"], '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>' + rel, "ai")
+        article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>';
+        html = page(a["title"], insert_ads(article_inner) + rel, "ai")
         wp("ai/article/" + slug + ".html", html)
 
     wp("privacy.html", privacy_page())
