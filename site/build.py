@@ -170,6 +170,7 @@ def load_articles(folder, is_exam=True):
             "category":raw_cat or "AI",
             "date":meta.get("date",""),
             "primary_keyword":meta.get("primary_keyword",""),
+            "_isexam": is_exam,
         })
     arts.sort(key=lambda a: a.get("date",""), reverse=True)
     return arts
@@ -253,7 +254,7 @@ def gen_sitemap(articles):
     <changefreq>{changefreq}</changefreq>
   </url>""")
     for a in articles:
-        section = "exam" if a.get("exam") else "ai"
+        section = "exam" if a.get("_isexam") else "ai"
         url = f"https://{DOM}/{section}/article/{a['_slug']}.html"
         d = (a.get("date") or "").strip()[:10]
         prio = "0.8" if section == "exam" else "0.7"
@@ -284,7 +285,7 @@ def related_html(current_slug, all_articles, n=4):
         return ""
     items = []
     for a in related:
-        section = "exam" if a.get("exam") else "ai"
+        section = "exam" if a.get("_isexam") else "ai"
         url = f"/{section}/article/{a['_slug']}.html"
         items.append('<li><a href="' + url + '">' + esc(a["title"]) + "</a></li>")
     return '<section class="related-articles"><h2>Related Articles</h2><ul>' + "\n".join(items) + "</ul></section>"
@@ -396,7 +397,7 @@ def main():
     wp("search.html", search_page())
     wp("contact.html", contact_page())
 
-    idx = [{"title": a["title"], "url": ("/exam/" if a.get("exam") else "/ai/") + "article/" + a["_slug"] + ".html", "cat": a["_display_cat"], "kw": a["_keywords"], "date": a.get("date","")[:10]} for a in all_arts]
+    idx = [{"title": a["title"], "url": ("/exam/" if a.get("_isexam") else "/ai/") + "article/" + a["_slug"] + ".html", "cat": a["_display_cat"], "kw": a["_keywords"], "date": a.get("date","")[:10]} for a in all_arts]
     wp("search_index.json", json.dumps(idx, ensure_ascii=False))
 
     exam_listing = section_hero("Exam Prep Articles","IELTS, TOEFL, GRE, SAT study guides.","Exam")
