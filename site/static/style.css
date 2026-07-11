@@ -75,7 +75,7 @@ img{display:block;max-width:100%}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
 input{font-family:inherit}
 ul{list-style:none;padding:0;margin:0}
-.container{width:100%;max-width:1400px;margin:0 auto;padding:0 28px}
+.container{width:100%;max-width:min(1600px,92vw);margin:0 auto;padding:0 28px}
 
 /* THEME TOGGLE BUTTON */
 .theme-toggle{
@@ -272,7 +272,7 @@ ul{list-style:none;padding:0;margin:0}
 .article-hero h1{font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.2;margin:0 0 14px;color:var(--text-1);letter-spacing:-.02em;font-weight:800}
 .article-hero .meta{display:flex;gap:16px;color:var(--text-2);font-size:.88rem;flex-wrap:wrap}
 .article-hero .meta span+span::before{content:"•";margin-right:12px;color:var(--text-3)}
-.article-body{max-width:1200px;margin:0 auto;padding:40px 28px 24px}
+.article-body{max-width:min(1400px,90vw);margin:0 auto;padding:40px 28px 24px}
 .article-body h2{margin:28px 0 12px;font-weight:800;color:var(--text-1);font-size:1.4rem;letter-spacing:-.01em}
 .article-body h3{margin:32px 0 12px;font-weight:700;color:var(--text-1);font-size:1.15rem}
 .article-body p{margin:0 0 20px;line-height:1.75}
