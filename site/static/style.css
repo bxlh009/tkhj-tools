@@ -292,7 +292,7 @@ ul{list-style:none;padding:0;margin:0}
 .ttip{position:relative}
 .hidden{display:none!important}
 
-[data-theme="dark"] .brand img{filter:invert(1) hue-rotate(180deg)}
+[data-theme="dark"] .brand img{filter:invert(1) hue-rotate(180deg);opacity:.9}
 
 /* Theme toggle icons: sun shown in light, moon shown in dark */
 .theme-toggle .icon-sun{display:inline}
@@ -419,4 +419,9 @@ html,body{overflow-x:hidden}
   .nav-row{flex-wrap:wrap;height:auto;padding:12px 0;gap:12px}
   .nav-links{order:2;width:100%;justify-content:center;flex-wrap:wrap;gap:8px}
   .nav-right{margin-left:auto}
+}
+
+@media(max-width:380px){
+  .brand{font-size:1rem;gap:2px}
+  .brand img{height:20px;max-width:100px}
 }
