@@ -415,7 +415,8 @@ def main():
         meta, body = fm(a["_body"])
         rel = related_html(slug, all_arts)
         article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>';
-        html = page(a["title"], article_inner + rel + AD_UNIT, "exam")
+        disclaimer = '<div class=\"article-disclaimer\">Disclaimer: Independently written analysis based on publicly available information. No vendor sponsorship. Verify with official sources.</div>'
+        html = page(a["title"], article_inner + rel + AD_UNIT + disclaimer, "exam")
         wp("exam/article/" + slug + ".html", html)
 
     for a in ai_arts:
@@ -423,7 +424,8 @@ def main():
         meta, body = fm(a["_body"])
         rel = related_html(slug, all_arts)
         article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>';
-        html = page(a["title"], article_inner + rel + AD_UNIT, "ai")
+        disclaimer = '<div class=\"article-disclaimer\">Disclaimer: Independently written analysis based on publicly available information. No vendor sponsorship. Verify with official sources.</div>'
+        html = page(a["title"], article_inner + rel + AD_UNIT + disclaimer, "ai")
         wp("ai/article/" + slug + ".html", html)
 
     wp("privacy.html", privacy_page())

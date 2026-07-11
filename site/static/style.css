@@ -370,3 +370,14 @@ ul{list-style:none;padding:0;margin:0}
   bottom: unset;
   transition-duration: 0.3s;
 }
+
+/* Article disclaimer - subtle footer */
+.article-disclaimer{
+  max-width:880px;margin:24px auto 0;padding:16px 24px;
+  font-size:.82rem;line-height:1.5;
+  color:var(--text-3);
+  background:transparent;
+  border-top:1px solid var(--line);
+  border-left:none;
+  border-radius:0;
+}
