@@ -52,8 +52,6 @@ The case will develop over the coming months. Several things to track. First, wh
 
 The talent wars in AI are just getting started, and Apple's lawsuit is the most high-profile shot across the bow so far. How it plays out will influence how aggressively companies use litigation to protect proprietary knowledge as the AI industry grows. Whether you see this as a legitimate defense of trade secret rights or an attempt to slow down a competitor may depend on where you stand on employee mobility. But the legal consequences will be real regardless of how the case is viewed.
 
-> Disclaimer: Independently written analysis based on multiple public sources. All allegations are claims made by Apple in a legal complaint. They have not been proven in court. OpenAI denies the allegations. No vendor sponsorship.
-
 ## References
 
 - https://baijiahao.baidu.com/s?id=1870412390336364689

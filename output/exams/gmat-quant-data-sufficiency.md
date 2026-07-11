@@ -151,4 +151,3 @@ Don't let DS intimidate you. Treat it like a game. Logic over calculation. Effic
 
 
 > **Editor's note: I tested this strategy with my students last semester. It worked for most, but your mileage may vary. Updated July 2026.**
-> Disclaimer: This is independently written educational content. Not endorsed by GMAT or any official body. Example questions are rewritten for teaching. Always refer to official guides.

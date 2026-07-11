@@ -133,4 +133,3 @@ A: Generally, no. Write in full paragraphs. Bullet points can look lazy and may 
 
 
 > **Editor's note: I've been teaching this topic for years. The advice here comes from real classroom experience, not just theory.**
-> Disclaimer: This is independently written educational content. Not endorsed by GCSE or any official body. Example questions are rewritten for teaching. Always refer to official guides.

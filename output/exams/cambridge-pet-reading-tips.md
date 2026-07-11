@@ -144,4 +144,3 @@ If you need to improve your reading speed in 30 days, try our timed practice mod
 
 
 > **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**
-> Disclaimer: This is independently written educational content. Not endorsed by Cambridge PET or any official body. Example questions are rewritten for teaching. Always refer to official guides.

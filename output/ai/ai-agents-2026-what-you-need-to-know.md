@@ -114,5 +114,3 @@ A: Absolutely. The skill gap is widening. Professionals who can build and manage
 - https://www.anthropic.com/news/claude-sonnet-4",
 - https://openai.com/blog/gpt-4o-mini-2026",
 - https://docs.crewai.com/latest"
-
-> Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.

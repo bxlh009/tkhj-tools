@@ -114,6 +114,4 @@ The GPT-5 vs Claude 4 comparison isn't about declaring a universal winner. It's 
 - https://openai.com/blog/gpt-5-release",
 - https://www.anthropic.com/news/claude-4-family"
 
-> Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
-
 本文为独立编写的教学内容，不代表任何考试机构观点。

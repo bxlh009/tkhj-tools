@@ -129,6 +129,4 @@ A: No. It will replace writers who refuse to adapt. Humans bring empathy, nuance
 - https://anthropic.com/news",
 - https://blog.google/technology/ai"
 
-> Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
-
 本文为独立编写的教学内容，不代表任何考试机构观点。

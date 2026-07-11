@@ -42,8 +42,6 @@ FutureSense is not operating in a vacuum. The enterprise AI agent space is getti
 
 Lingda is a real product with real clients in the most conservative industries you can name. That alone separates it from 90% of AI agent pitches. What remains unproven is whether the marketplace model for agent distribution actually works at scale, and whether the L4 research pivot dilutes focus or multiplies value. For now, FutureSense is executing on a real trajectory, and if you are tracking where enterprise AI agents land in industry-not-demo contexts, this is one to include on your list. Watch for three signals over the next six months: whether the customer list expands beyond energy, whether the Profy marketplace shows real transaction volume, and whether the L4 research produces anything that survives peer review.
 
-> Disclaimer: Independently written analysis based on public reporting from the 2026 Shell Finance Annual Conference. No sponsorship or affiliation. Verify claims with official sources.
-
 ## References
 
 - https://baijiahao.baidu.com/s?id=1870390855929448929

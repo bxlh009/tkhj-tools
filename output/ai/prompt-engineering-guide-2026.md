@@ -110,5 +110,3 @@ A: Unlikely. AI will automate basic prompting, but strategic, nuanced communicat
 
 - https://blog.openai.com",
 - https://www.anthropic.com/research"
-
-> Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.本文为独立编写的教学内容，不代表任何考试机构观点。

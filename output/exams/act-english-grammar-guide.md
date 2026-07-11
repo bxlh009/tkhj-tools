@@ -180,6 +180,4 @@ A) 75 questions in 45 minutes. That's roughly 36 seconds per question. Fast. Ver
 
 
 > **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
-> Disclaimer: This is independently written educational content. Not endorsed by ACT or any official body. Example questions are rewritten for teaching. Always refer to official guides.
-
 God, I hope this helps. You've got this. Just remember: concise, clear, correct. Nothing else matters.

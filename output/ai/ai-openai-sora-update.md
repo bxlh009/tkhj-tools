@@ -93,5 +93,3 @@ A: Basic prompt engineering skills help. But the interface is user-friendly. Mos
 
 - https://openai.com/sora",
 - https://techcrunch.com/2026/07/openai-sora-update"
-
-> Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 

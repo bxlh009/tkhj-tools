@@ -147,4 +147,3 @@ Good luck. You've got this.
 
 
 > **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**
-> Disclaimer: This is independently written educational content. Not endorsed by Cambridge FCE or any official body. Example questions are rewritten for teaching. Always refer to official guides.

@@ -159,5 +159,3 @@ Stop trying to be clever. Start trying to be precise. The TOEFL doesn't care how
 If you need a structured way to practice this, try using a timed environment that forces you to make quick decisions. [exam.tkjtools.io](http://exam.tkjtools.io) offers adaptive drills that focus specifically on inference patterns. It's not magic. It's just consistent, targeted practice.
 
 Don't let the Literal Trap define your score. Break the cycle. Fix the logic. Get the 28.
-
-> Disclaimer: This is independently written educational content. Not endorsed by TOEFL or any official body. Example questions are rewritten for teaching. Always refer to official guides.

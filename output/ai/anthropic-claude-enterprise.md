@@ -127,5 +127,3 @@ A: Contact sales for a customized demo. They often provide limited trials for qu
 
 - https://www.anthropic.com/news/claude-3-5-sonnet",
 - https://www.anthropic.com/enterprise"
-
-> Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。

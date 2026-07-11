@@ -122,5 +122,3 @@ A: Track time saved per report. Measure reduction in errors. Assess faster decis
 - https://docs.anthropic.com/en/docs/agents",
 - https://openai.com/index/introducing-gpt-4o-mini-and-gpt-4o-audio-preview/",
 - https://www.perplexity.ai/blog/perplexity-enterprise"
-
-> Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。

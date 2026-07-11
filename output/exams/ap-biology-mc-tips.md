@@ -129,4 +129,3 @@ A: Keep an error log. Write down why you got it wrong. Was it a concept gap? A r
 
 
 > **Editor's note: I update this article periodically as new information becomes available. Last reviewed: July 2026.**
-> Disclaimer: This is independently written educational content. Not endorsed by AP Biology or any official body. Example questions are rewritten for teaching. Always refer to official guides.

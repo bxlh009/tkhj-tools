@@ -181,4 +181,3 @@ You've got this. Now go read something interesting.
 
 
 > **Editor's note: I've been teaching this topic for years. The advice here comes from real classroom experience, not just theory.**
-> Disclaimer: This is independently written educational content. Not endorsed by MAP Growth or any official body. Example questions are rewritten for teaching. Always refer to official guides.

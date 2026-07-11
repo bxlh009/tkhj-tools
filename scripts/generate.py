@@ -246,19 +246,14 @@ def write_output(content, slug, out_dir):
     return p
 
 def ensure_cta_and_disclaimer(article, atype):
-    """Append CTA and disclaimer if missing from the article."""
+    """Disclaimer is now added at the bottom of every article by build.py as a subtle footer.
+    This function only cleans up self-promotional CTAs."""
     import re as _re
-    has_cta = bool(_re.search(r'tkjtools', article))
-    has_disclaimer = bool(_re.search(r'(disclaimer|independently written|not endorsed|不代表.*官方)', article, _re.I))
-    tail = ""
-    # CTA links removed per user request - no tkjtools.io self-promotion
-    if not has_disclaimer:
-        tail += "\n> Disclaimer: This is independently written educational content. Not endorsed by any exam body or vendor. Example questions are rewritten for teaching purposes.\n"
-    if tail:
-        article = article.rstrip() + tail
+    # Remove old-style blockquote disclaimers (build.py adds a cleaner one at bottom)
+    article = _re.sub(r"\n?>\s*[*>]*\s*Disclaimer[:?].*?\n", "\n", article, flags=re.I)
+    # Remove tkjtools.io self-promotion
+    article = _re.sub(r"[^.\n]*https?://(exam\.|ai\.)?tkjtools\.io[^.\n]*\.?\n?", "", article)
     return article
-
-
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('--type', required=True, choices=['exam','ai'])

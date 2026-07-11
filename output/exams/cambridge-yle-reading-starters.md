@@ -154,5 +154,3 @@ Look—this is just independent, educational stuff. It's not endorsed by Cambrid
 
 
 > **Editor's note: Prices and features mentioned were verified at publication time. AI tools change fast ? always check the official site.**
-
-> Disclaimer: This is independently written educational content. Not endorsed by any exam body or vendor. Example questions are rewritten for teaching purposes.

@@ -120,6 +120,4 @@ A: Track time saved, bug rate, and code quality. Adjust prompts based on results
 - https://claude.ai",
 - https://gemini.google.com"
 
-> Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
-
 本文为独立编写的教学内容，不代表任何考试机构观点。

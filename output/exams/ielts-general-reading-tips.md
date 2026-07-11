@@ -134,4 +134,3 @@ You've got this. The test is fair. It's predictable. And with the right strategi
 
 
 > **Editor's note: I've been teaching this topic for years. The advice here comes from real classroom experience, not just theory.**
-> Disclaimer: This is independently written educational content. Not endorsed by IELTS General or any official body. Example questions are rewritten for teaching. Always refer to official guides.
