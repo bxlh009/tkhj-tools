@@ -7,7 +7,6 @@ primary_keyword: "OpenAI Sora latest update"
 long_tail: ["OpenAI Sora latest update"]
 word_count: 1150
 estimated_read_min: 6
-sources: ["https://openai.com/sora", "https://techcrunch.com/2026/07/openai-sora-update"]
 structure_template: "A"
 ---
 
@@ -90,4 +89,10 @@ A: Basic prompt engineering skills help. But the interface is user-friendly. Mos
 
 Want to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.
 > **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
+
+## References
+
+- https://openai.com/sora",
+- https://techcrunch.com/2026/07/openai-sora-update"
+
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 

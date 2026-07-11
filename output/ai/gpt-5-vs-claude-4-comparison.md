@@ -7,7 +7,6 @@ primary_keyword: "GPT-5 vs Claude 4 comparison"
 long_tail: ["best AI model 2026", "GPT-5 pricing", "Claude 4 features"]
 word_count: 2150
 estimated_read_min: 9
-sources: ["https://openai.com/blog/gpt-5-release", "https://www.anthropic.com/news/claude-4-family"]
 structure_template: "B"
 ---
 
@@ -110,6 +109,12 @@ The GPT-5 vs Claude 4 comparison isn't about declaring a universal winner. It's 
 
 Want to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.
 > **Editor's note: I've been teaching this topic for years. The advice here comes from real classroom experience, not just theory.**
+
+## References
+
+- https://openai.com/blog/gpt-5-release",
+- https://www.anthropic.com/news/claude-4-family"
+
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
 
 本文为独立编写的教学内容，不代表任何考试机构观点。

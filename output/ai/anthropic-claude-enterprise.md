@@ -7,7 +7,6 @@ primary_keyword: "Claude enterprise features"
 long_tail: ["Claude enterprise features", "Anthropic enterprise security", "Claude vs GPT-4o enterprise"]
 word_count: 1150
 estimated_read_min: 5
-sources: ["https://www.anthropic.com/news/claude-3-5-sonnet", "https://www.anthropic.com/enterprise"]
 structure_template: "B"
 ---
 
@@ -124,4 +123,10 @@ A: Contact sales for a customized demo. They often provide limited trials for qu
 
 Want to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.
 > **Editor's note: Prices and features mentioned were verified at publication time. AI tools change fast ? always check the official site.**
+
+## References
+
+- https://www.anthropic.com/news/claude-3-5-sonnet",
+- https://www.anthropic.com/enterprise"
+
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。

@@ -7,7 +7,6 @@ primary_keyword: "best AI coding tools 2026"
 long_tail: ["GitHub Copilot vs Cursor", "AI code assistant"]
 word_count: 1850
 estimated_read_min: 8
-sources: ["https://github.com/features/copilot", "https://www.cursor.com", "https://www.windsurf.com"]
 structure_template: "B"
 ---
 
@@ -118,6 +117,13 @@ I've seen students struggle with GRE writing because they tried to memorize temp
 
 Want to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.
 > **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
+
+## References
+
+- https://github.com/features/copilot",
+- https://www.cursor.com",
+- https://www.windsurf.com"
+
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
 
 本文为独立编写的教学内容，不代表任何考试机构观点。

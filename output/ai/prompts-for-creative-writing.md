@@ -7,7 +7,6 @@ primary_keyword: "creative writing prompts AI"
 long_tail: ["creative writing prompts AI", "AI writing assistants for professionals", "how to use AI for creative writing"]
 word_count: 1050
 estimated_read_min: 5
-sources: ["https://openai.com/blog", "https://anthropic.com/news", "https://blog.google/technology/ai"]
 structure_template: "D"
 ---
 
@@ -124,6 +123,13 @@ A: No. It will replace writers who refuse to adapt. Humans bring empathy, nuance
 
 Want to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.
 > **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**
+
+## References
+
+- https://openai.com/blog",
+- https://anthropic.com/news",
+- https://blog.google/technology/ai"
+
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
 
 本文为独立编写的教学内容，不代表任何考试机构观点。

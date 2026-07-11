@@ -7,7 +7,6 @@ primary_keyword: "AI agents 2026 trends"
 long_tail: ["AI agent frameworks", "autonomous AI agents"]
 word_count: 1850
 estimated_read_min: 8
-sources: ["https://www.anthropic.com/news/claude-sonnet-4", "https://openai.com/blog/gpt-4o-mini-2026", "https://docs.crewai.com/latest"]
 structure_template: "B"
 ---
 
@@ -110,4 +109,11 @@ A: Absolutely. The skill gap is widening. Professionals who can build and manage
 
 Want to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.
 > **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**
+
+## References
+
+- https://www.anthropic.com/news/claude-sonnet-4",
+- https://openai.com/blog/gpt-4o-mini-2026",
+- https://docs.crewai.com/latest"
+
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.

@@ -7,7 +7,6 @@ primary_keyword: "AI for data analysis"
 long_tail: ["AI for data analysis", "agentic workflows", "data science automation"]
 word_count: 1150
 estimated_read_min: 5
-sources: ["https://docs.anthropic.com/en/docs/agents", "https://openai.com/index/introducing-gpt-4o-mini-and-gpt-4o-audio-preview/", "https://www.perplexity.ai/blog/perplexity-enterprise"]
 structure_template: "D"
 ---
 
@@ -118,4 +117,11 @@ A: Track time saved per report. Measure reduction in errors. Assess faster decis
 
 Want to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.
 > **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**
+
+## References
+
+- https://docs.anthropic.com/en/docs/agents",
+- https://openai.com/index/introducing-gpt-4o-mini-and-gpt-4o-audio-preview/",
+- https://www.perplexity.ai/blog/perplexity-enterprise"
+
 > Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship. 本文为独立编写的教学内容，不代表任何考试机构观点。
