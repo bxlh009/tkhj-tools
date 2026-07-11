@@ -7,7 +7,6 @@ primary_keyword: "BAAI Orca world model"
 long_tail_keywords: ["?? RoboBrain Orca", "next-state prediction world model", "multimodal BAAI research 2026"]
 word_count: 883
 estimated_read_min: 10
-sources: ["https://www.163.com/dy/article/L1B29MNC0511DSSR.html", "https://zhuanlan.zhihu.com/p/2058218672982559110", "https://www.163.com/dy/article/L1B7VMLC0511ABV6.html"]
 structure_template: "D"
 ---
 
@@ -52,3 +51,9 @@ Orca is not the only world model in development. Several research groups, includ
 Orca represents a practical bet that world models will become the foundation for next-generation robotics. The technical approach, predicting next states rather than next tokens, is sound and aligns with where the broader research community believes the field is heading. Whether the specific implementation lives up to the promise will depend on independent verification, real-world robot deployments, and how the model scales beyond its current parameter sizes. For researchers and companies tracking the convergence of AI and robotics, Orca is a project to watch.
 
 > Disclaimer: Independently written analysis based on multiple public sources. This covers a research project, not a commercial product. All technical claims come from published research materials and have not been independently verified. No vendor sponsorship.
+
+## References
+
+- https://www.163.com/dy/article/L1B29MNC0511DSSR.html
+- https://zhuanlan.zhihu.com/p/2058218672982559110
+- https://www.163.com/dy/article/L1B7VMLC0511ABV6.html

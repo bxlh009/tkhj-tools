@@ -7,7 +7,6 @@ primary_keyword: "GPT-5.6 release"
 long_tail_keywords: ["GPT-5.6 pricing", "GPT-5.6 vs GPT-4o", "ChatGPT Work agent", "Codex merged"]
 word_count: 820
 estimated_read_min: 9
-sources: ["https://venturebeat.com/", "https://techcrunch.com/", "https://www.36kr.com/"]
 structure_template: "B"
 ---
 
@@ -28,3 +27,8 @@ Where does this leave the rest of us? If you are a solo practitioner or small te
 The GPT-5.6 launch is a solid engineering release wrapped in a pricing story. OpenAI admitted, in their own way, that raw performance is table stakes. The thing they are actually selling now is efficiency. Whether that efficiency survives contact with real enterprise budgets is the story I will be watching for the next quarter.
 
 > Disclaimer: This is independently written analysis based on publicly available information current at July 10, 2026. I have no sponsorship or affiliation with any vendor mentioned. Verify all pricing and claims against official sources.
+
+## References
+
+- https://www.ithome.com/0/891/213.htm
+- https://www.ithome.com/0/891/201.htm

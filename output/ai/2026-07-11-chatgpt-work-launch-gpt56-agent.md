@@ -7,7 +7,6 @@ primary_keyword: "ChatGPT Work agent platform"
 long_tail_keywords: ["ChatGPT GPT-5.6 pricing", "ChatGPT Codex merged desktop", "OpenAI agent enterprise 2026"]
 word_count: 1438
 estimated_read_min: 10
-sources: ["https://blog.csdn.net/JJJennie777/article/details/162762197", "https://www.163.com/dy/article/L1FG3G8F051180F7.html", "https://view.inews.qq.com/a/20260323A07F6000"]
 structure_template: "D"
 ---
 
@@ -60,3 +59,9 @@ Three things to track over the next two quarters. First, whether OpenAI expands 
 The technology is real. The value proposition is clear. The question is whether the execution survives contact with how messy actual work tends to be, and whether OpenAI can ship fast enough to stay ahead of the competition that is making the same push into agents. ChatGPT Work is the most ambitious release from OpenAI this year. Whether it becomes the platform enterprises standardize on or a stepping stone to something better depends on what happens next.
 
 > Disclaimer: Independently written analysis based on multiple public sources. No vendor sponsorship. Verify all claims with official documentation.
+
+## References
+
+- https://blog.csdn.net/JJJennie777/article/details/162762197
+- https://www.163.com/dy/article/L1FG3G8F051180F7.html
+- https://view.inews.qq.com/a/20260323A07F6000
