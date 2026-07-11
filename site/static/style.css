@@ -396,3 +396,20 @@ ul{list-style:none;padding:0;margin:0}
   color:var(--brand);text-decoration:none;font-size:.95rem;
 }
 .related-articles a:hover{text-decoration:underline}
+
+/* MOBILE: prevent right-side empty space on small screens */
+@media(max-width:600px){
+  .nav-search{display:none}
+  .article-body{padding:24px 16px 20px}
+  .container{padding:0 16px}
+  .hero{padding:40px 0}
+  .hero h1{font-size:1.6rem}
+  .section,.section-ai{padding:40px 0}
+  .foot-grid{grid-template-columns:1fr;gap:24px}
+}
+
+/* Make nav wrap instead of overflow on medium screens */
+@media(max-width:800px){
+  .nav-row{flex-wrap:wrap;height:auto;padding:12px 0;gap:12px}
+  .nav-links{order:2;width:100%;justify-content:center}
+}
