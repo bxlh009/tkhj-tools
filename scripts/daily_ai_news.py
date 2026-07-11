@@ -180,7 +180,7 @@ def score_item(item):
     text = (item["title"] + " " + item["summary"]).lower()
     return sum(w for k, w in KEYWORD_WEIGHTS.items() if k in text)
 
-def is_big_news(item, threshold=8):
+def is_big_news(item, threshold=5):
     return score_item(item) >= threshold
 
 def is_today(item):
