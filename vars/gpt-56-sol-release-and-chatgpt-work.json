@@ -1,0 +1,17 @@
+{
+  "type": "ai-news",
+  "min_words": 1800,
+  "max_words": 2500,
+  "target_audience": "AI tools researchers and early adopters watching model releases",
+  "primary_keyword": "GPT-5.6 release",
+  "long_tail_keywords": [
+    "GPT-5.6 pricing",
+    "GPT-5.6 vs GPT-4o",
+    "ChatGPT Work agent",
+    "Codex merged into ChatGPT"
+  ],
+  "slug": "gpt-56-sol-release-and-chatgpt-work",
+  "category": "ai-news",
+  "language": "English",
+  "notes": "Based on OpenAI July 2026 announcements. All facts verifiable from VentureBeat/TechCrunch coverage. NO fabricated user testing claims. NO unverifiable data. Published within 48 hours for news relevance."
+}
