@@ -143,6 +143,5 @@ If you need to improve your reading speed in 30 days, try our timed practice mod
 
 
 
-Ready to put this into practice? Try the free timed quizzes at https://exam.tkjtools.io to lock in these strategies before test day.
 > **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**
 > Disclaimer: This is independently written educational content. Not endorsed by Cambridge PET or any official body. Example questions are rewritten for teaching. Always refer to official guides.

@@ -87,7 +87,6 @@ A: Basic prompt engineering skills help. But the interface is user-friendly. Mos
 
 
 
-Want to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.
 > **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
 
 ## References

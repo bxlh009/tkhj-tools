@@ -60,7 +60,6 @@ To beat AI detection and read like a native writer:
 
 Vary the article structure every time. Pick ONE of 8 templates randomly.
 Two adjacent articles cannot share the same template.
-State which template you picked at the end of the article as: (Template: X)
 
 ### Template A: The Breaking News
 H1 with keyword + the news hook

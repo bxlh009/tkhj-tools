@@ -163,6 +163,5 @@ A: You need 160-170 points to achieve a C1 grade. Scores below 160 are B2. Above
 
 
 
-Ready to put this into practice? Try the free timed quizzes at https://exam.tkjtools.io to lock in these strategies before test day.
 > **Editor's note: I update this article periodically as new information becomes available. Last reviewed: July 2026.**
 > Disclaimer: This is independently written educational content. Not endorsed by Cambridge CAE or any official body. Example questions are rewritten for teaching. Always refer to official guides.

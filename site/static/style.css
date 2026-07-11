@@ -381,3 +381,18 @@ ul{list-style:none;padding:0;margin:0}
   border-left:none;
   border-radius:0;
 }
+/* Related Articles - centered */
+.related-articles{
+  max-width:880px;margin:32px auto 0;padding:0 24px;text-align:center;
+}
+.related-articles h2{
+  font-size:1.1rem;font-weight:700;color:var(--text-1);margin:0 0 16px;
+}
+.related-articles ul{
+  list-style:none;padding:0;margin:0;display:inline-block;text-align:left;
+}
+.related-articles li{margin-bottom:8px}
+.related-articles a{
+  color:var(--brand);text-decoration:none;font-size:.95rem;
+}
+.related-articles a:hover{text-decoration:underline}

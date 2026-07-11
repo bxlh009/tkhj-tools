@@ -161,5 +161,3 @@ If you need a structured way to practice this, try using a timed environment tha
 Don't let the Literal Trap define your score. Break the cycle. Fix the logic. Get the 28.
 
 > Disclaimer: This is independently written educational content. Not endorsed by TOEFL or any official body. Example questions are rewritten for teaching. Always refer to official guides.
-
-(Template: E)

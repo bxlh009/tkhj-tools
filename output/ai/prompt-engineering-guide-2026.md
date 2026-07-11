@@ -104,7 +104,6 @@ A: Unlikely. AI will automate basic prompting, but strategic, nuanced communicat
 
 
 
-Want to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.
 > **Editor's note: I've been teaching this topic for years. The advice here comes from real classroom experience, not just theory.**
 
 ## References

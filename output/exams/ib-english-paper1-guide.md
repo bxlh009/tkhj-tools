@@ -149,7 +149,6 @@ A: Finish your conclusion. Even a rushed conclusion is better than none. Priorit
 
 
 
-Ready to put this into practice? Try the free timed quizzes at https://exam.tkjtools.io to lock in these strategies before test day.
 > **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**
 > Disclaimer: This is independently written educational content. Not endorsed by IB English or any official body. Example questions are rewritten for teaching. Always refer to official guides.
 

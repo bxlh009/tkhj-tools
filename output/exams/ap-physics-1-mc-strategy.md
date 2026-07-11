@@ -162,6 +162,5 @@ Go crush that exam.
 
 
 
-Ready to put this into practice? Try the free timed quizzes at https://exam.tkjtools.io to lock in these strategies before test day.
 > **Editor's note: I update this article periodically as new information becomes available. Last reviewed: July 2026.**
 > Disclaimer: This is independently written educational content. Not endorsed by AP Physics 1 or any official body. Example questions are rewritten for teaching. Always refer to official guides.

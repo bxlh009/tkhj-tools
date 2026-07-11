@@ -51,7 +51,6 @@ To beat AI detection and read like a native writer:
 
 You MUST vary the article structure every time. Pick ONE of the following 8 templates randomly.
 Two adjacent articles cannot have the same structure.
-State which template you picked at the end of the article as: (Template: X)
 
 ### Template A: The Case Study Opener
 H1 with keyword + number + promise

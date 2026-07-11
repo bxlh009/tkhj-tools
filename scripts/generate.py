@@ -251,11 +251,7 @@ def ensure_cta_and_disclaimer(article, atype):
     has_cta = bool(_re.search(r'tkjtools', article))
     has_disclaimer = bool(_re.search(r'(disclaimer|independently written|not endorsed|不代表.*官方)', article, _re.I))
     tail = ""
-    if not has_cta:
-        if atype == "exam":
-            tail += "\n\nReady to put this into practice? Try the free timed quizzes at https://exam.tkjtools.io to lock in these strategies before test day.\n"
-        else:
-            tail += "\n\nWant to stay on top of AI tools that actually save time? Browse the latest reviews at https://ai.tkjtools.io.\n"
+    # CTA links removed per user request - no tkjtools.io self-promotion
     if not has_disclaimer:
         tail += "\n> Disclaimer: This is independently written educational content. Not endorsed by any exam body or vendor. Example questions are rewritten for teaching purposes.\n"
     if tail:

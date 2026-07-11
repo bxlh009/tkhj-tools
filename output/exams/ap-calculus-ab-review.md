@@ -141,6 +141,5 @@ Practice these five strategies until they're automatic. Then, tackle the harder 
 
 
 
-Ready to put this into practice? Try the free timed quizzes at https://exam.tkjtools.io to lock in these strategies before test day.
 > **Editor's note: I've been teaching this topic for years. The advice here comes from real classroom experience, not just theory.**
 > Disclaimer: This is independently written educational content. Not endorsed by AP Calculus or any official body. Example questions are rewritten for teaching. Always refer to official guides.

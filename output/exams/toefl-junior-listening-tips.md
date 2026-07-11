@@ -145,6 +145,5 @@ A: Both matter. But speed helps you keep up. Accuracy comes from practice. Don't
 
 
 
-Ready to put this into practice? Try the free timed quizzes at https://exam.tkjtools.io to lock in these strategies before test day.
 > **Editor's note: I tested this strategy with my students last semester. It worked for most, but your mileage may vary. Updated July 2026.**
 > Disclaimer: This is independently written educational content. Not endorsed by TOEFL Junior or any official body. Example questions are rewritten for teaching. Always refer to official guides.
