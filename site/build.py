@@ -299,7 +299,7 @@ def about_page():
     body = '<section class="section"><div class="container"><div style="max-width:680px;margin:0 auto">'
     body += '<h2 style="font-weight:800;margin:0 0 16px">Our Mission</h2>'
     body += '<p>TKHJ Tools exists because most student-focused content is either written by marketers trying to sell courses, or buried under search-engine junk.</p>'
-    body += '<p><strong>How this site works:</strong> All articles start as AI drafts, then the editor personally reviews, fact-checks, and edits every piece. Exam strategies come from real classroom experience. AI tool reviews come from hands-on testing. If a claim cannot be verified, it is removed or rewritten.</p>'
+    body += '<p><strong>How this site works:</strong> All articles start as AI drafts, then the editor personally reviews, fact-checks, and edits every piece. Exam strategies come from real classroom experience. AI tool reviews are based on publicly available information and rewritten in our own words. If a claim cannot be verified, it is removed or rewritten.</p>'
     body += '<h2 style="font-weight:800;margin:40px 0 16px">FAQ</h2>'
     body += '<h3 style="font-weight:700;margin:0 0 8px">Who writes these guides?</h3>'
     body += '<p>A small team of educators and AI researchers. No freelancers, no AI-only spin. Every article is fact-checked by a human before publication.</p>'

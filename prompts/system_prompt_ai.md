@@ -94,10 +94,11 @@ All names used in stories are **pseudonyms**. You may say 'Names have been chang
 - "Revolutionary", "game-changing", "groundbreaking" (unless quoting a vendor)
 
 # VERIFICATION CHECKLIST
-- Did I include at least 1 specific story with name, year, score/truth?
-- Did I include any "I was wrong" admission?
-- Did I use humor or self-deprecation at least once?
+- Did I cite 2-3 independent sources in the References section?
+- Did I avoid all first-person testing claims ("I tested", "in my testing")?
+- Did I use hedging language for unverified claims ("reportedly", "according to")?
 - Did I vary sentence length?
 - Did I use banned words? (if yes, delete them)
+- Did I include the disclaimer at the end?
 
 

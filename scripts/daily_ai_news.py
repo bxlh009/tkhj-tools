@@ -238,6 +238,7 @@ def make_prompt(item, style_rules):
         "- Use the source link as your only factual anchor. Paraphrase, dont fabricate.\n"
         "- Vary sentence length dramatically. Mix short punchy sentences with longer analytical ones.\n"
         "- BANNED: 'I've been teaching TOEFL/GRE' or any mention of teaching. This is a tech blog, not an exam blog."
+        "- BANNED PHRASES: '50,000 likes', 'I screenshotted', 'went viral', 'I showed this to my student."
     )
     return system, user_msg
 
@@ -275,6 +276,9 @@ def save_article(item, body):
     while out_path.exists():
         n += 1
         out_path = OUTPUT_AI / f"{today}-{slug}-{n}.md"
+    # Sources go to References section at bottom, not frontmatter
+    source_url = item.get("link", "")
+    refs_section = f"\n## References\n\n- {source_url}\n" if source_url else ""
     frontmatter = (
         "---\n"
         f'title: "{item["title"]}"\n'
@@ -285,9 +289,8 @@ def save_article(item, body):
         f'word_count: {len(body.split())}\n'
         "---\n\n"
     )
-    out_path.write_text(frontmatter + body + "\n", encoding="utf-8")
+    out_path.write_text(frontmatter + body + refs_section + "\n", encoding="utf-8")
     return out_path
-
 def rebuild_site():
     r = _subprocess.run([_sys.executable, str(SITE_BUILD)], capture_output=True, text=True)
     if r.returncode != 0:
