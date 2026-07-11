@@ -200,5 +200,5 @@ A: (50-80 words)
 (repeat x 6-8)
 
 
-> Disclaimer: Written based on publicly available info current at publication. AI products evolve fast; check official docs for the latest. No vendor sponsorship.
+> Disclaimer: Independently written analysis based on publicly available information. No vendor sponsorship. Verify with official sources.
 
