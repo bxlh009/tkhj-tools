@@ -167,8 +167,11 @@ def load_articles(folder, is_exam=True):
         else:
             cat_map = {"comparison":"AI Comparison","tools":"AI Tools","prompts":"Prompts","workflow":"Workflows","productivity":"Productivity"}
             display = cat_map.get(raw_cat.lower().strip(), "AI")
+        wc = len(body.split())
+        if wc < 100:
+            continue
         arts.append({
-            "_slug":slug, "_body":body, "_wc":len(body.split()),
+            "_slug":slug, "_body":body, "_wc":wc,
             "title":title, "_keywords":keywords,
             "_display_cat":display,
             "exam":raw_exam or "Exam",
@@ -224,17 +227,29 @@ def nav(active="home"):
     out.append('</div></div></header>')
     return NL.join(out)
 
-def page(title, body_str, active="home"):
+def page(title, body_str, active="home", desc="", canonical="", schema=""):
+    description = esc(desc[:160]) if desc else esc(title) + " - TKHJ Tools study guides and AI coverage"
     meta = [
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width,initial-scale=1">',
         '<link rel="icon" href="/favicon.png">',
         AD_HEAD,
-        '<meta name="description" content="' + title + ' - TKHJ Tools study guides and AI coverage">',
+        '<meta name="description" content="' + description + '">',
         '<meta name="theme-color" content="#3B82F6" media="(prefers-color-scheme:light)">',
         '<link rel="stylesheet" href="/' + CSL + '">',
+        '<meta property="og:title" content="' + esc(title) + '">',
+        '<meta property="og:description" content="' + description + '">',
+        '<meta property="og:type" content="article">',
+        '<meta name="twitter:card" content="summary_large_text">',
     ]
-    return "<!doctype html><html lang=\"en\" data-theme=\"light\"><head>" + NL.join(meta) + "</head><body><script>try{var t=localStorage.getItem('tkhj-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>" + nav(active) + "<main>" + body_str + "</main>" + footer() + '<script src="/' + JSL + '"></script></body></html>'
+    if canonical:
+        meta.append('<link rel="canonical" href="' + canonical + '">')
+    head = "<!doctype html><html lang=\"en\" data-theme=\"light\"><head>" + NL.join(meta)
+    if schema:
+        head += '<script type="application/ld+json">' + schema + '</script>'
+    head += "</head><body>"
+    body_open = "<script>try{var t=localStorage.getItem('tkhj-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>"
+    return head + body_open + nav(active) + "<main>" + body_str + "</main>" + footer() + '<script src="/' + JSL + '"></script></body></html>'
 
 def wp(path, content):
     p = OUT / path
@@ -428,7 +443,21 @@ def main():
         rel = related_html(slug, all_arts)
         article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>';
         disclaimer = '<div class=\"article-disclaimer\">Disclaimer: Independently written analysis based on publicly available information. No vendor sponsorship. Verify with official sources.</div>'
-        html = page(a["title"], article_inner + rel + AD_UNIT + disclaimer, "exam")
+        # description: first body line
+        _, body_text = fm(a["_body"])
+        first = next((l.strip().lstrip("#").strip() for l in body_text.strip().split("\n") if l.strip() and len(l.strip()) > 20), "")
+        desc = first[:160] if first else a.get("title", "")
+        canonical = "https://" + DOM + "/exam/article/" + slug + ".html"
+        pub_date = a.get("date", "")[:10]
+        schema = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": a["title"],
+            "description": desc[:200],
+            "datePublished": pub_date if pub_date else None,
+            "author": {"@type": "Organization", "name": NAME},
+        }, ensure_ascii=False)
+        html = page(a["title"], article_inner + rel + AD_UNIT + disclaimer, "exam", desc=desc, canonical=canonical, schema=schema)
         wp("exam/article/" + slug + ".html", html)
 
     for a in ai_arts:
@@ -437,7 +466,20 @@ def main():
         rel = related_html(slug, all_arts)
         article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>';
         disclaimer = '<div class=\"article-disclaimer\">Disclaimer: Independently written analysis based on publicly available information. No vendor sponsorship. Verify with official sources.</div>'
-        html = page(a["title"], article_inner + rel + AD_UNIT + disclaimer, "ai")
+        _, body_text = fm(a["_body"])
+        first = next((l.strip().lstrip("#").strip() for l in body_text.strip().split("\n") if l.strip() and len(l.strip()) > 20), "")
+        desc = first[:160] if first else a.get("title", "")
+        canonical = "https://" + DOM + "/ai/article/" + slug + ".html"
+        pub_date = a.get("date", "")[:10]
+        schema = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": a["title"],
+            "description": desc[:200],
+            "datePublished": pub_date if pub_date else None,
+            "author": {"@type": "Organization", "name": NAME},
+        }, ensure_ascii=False)
+        html = page(a["title"], article_inner + rel + AD_UNIT + disclaimer, "ai", desc=desc, canonical=canonical, schema=schema)
         wp("ai/article/" + slug + ".html", html)
 
     wp("privacy.html", privacy_page())
