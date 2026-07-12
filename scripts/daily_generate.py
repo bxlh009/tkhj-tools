@@ -61,8 +61,12 @@ def pick_exam_topic():
     # Get list of already-generated topics (slugs)
     generated = set(f.stem for f in OUT_EXAM.glob("*.md"))
     available = [f for f in EXAM_VARS if f.stem not in generated]
+    # Skip var files marked as non-exam type (e.g. ai-news vars in the wrong folder)
+    available = [f for f in available if json.loads(f.read_text('utf-8')).get('type', 'exam') == 'exam']
     if not available:
-        available = EXAM_VARS  # cycle back
+        available = [f for f in EXAM_VARS if json.loads(f.read_text('utf-8')).get('type', 'exam') == 'exam']
+        if not available:
+            available = EXAM_VARS  # last resort
     pick = random.choice(available)
     seen["date"] = today
     seen["last"] = pick.stem
