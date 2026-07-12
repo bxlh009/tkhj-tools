@@ -107,7 +107,9 @@ def ctag(tag):
     t = (tag or "").lower()
     for k,v in [("ielts","cat-ielts"),("toefl","cat-toefl"),("gre","cat-gre"),("sat","cat-sat"),("chatgpt","cat-chatgpt"),("notion","cat-notion"),("gemini","cat-gemini"),("prompt","cat-prompt"),("workflow","cat-workflow")]:
         if k in t: return v
-    return "cat-ai"
+    for k,v in [("act","cat-act"),("ap ","cat-ap"),("cambridge","cat-cambridge"),("duolingo","cat-duo"),("gcse","cat-gcse"),("gmat","cat-gmat"),("ib ","cat-ib"),("isee","cat-isee"),("map ","cat-map"),("mcat","cat-mcat"),("oet","cat-oet"),("pte","cat-pte"),("toeic","cat-toeic")]:
+        if k in t: return v
+    return "cat-other"
 
 def card(a, is_exam=True):
     slug = a["_slug"]
@@ -282,10 +284,17 @@ def gen_sitemap(articles):
 
 # ---- SEO: related articles ----
 def related_html(current_slug, all_articles, n=4):
-    related = [a for a in all_articles if a["_slug"] != current_slug]
-    related = related[:n]
-    if not related:
-        return ""
+    current = next((a for a in all_articles if a["_slug"] == current_slug), None)
+    if not current: return ""
+    is_exam = current.get("_isexam", True)
+    current_exam = (current.get("exam","") or "").lower()
+    current_cat = (current.get("category","") or "").lower()
+    cands = [a for a in all_articles if a["_slug"] != current_slug and a.get("_isexam") == is_exam]
+    same_exam = [a for a in cands if current_exam in (a.get("exam","") or "").lower()]
+    same_cat  = [a for a in cands if current_cat in (a.get("category","") or "").lower() and a not in same_exam]
+    other = [a for a in cands if a not in same_exam and a not in same_cat]
+    related = (same_exam + same_cat + other)[:n]
+    if not related: return ""
     items = []
     for a in related:
         section = "exam" if a.get("_isexam") else "ai"
