@@ -210,7 +210,7 @@ def force_merge(text):
     return fm+' '.join(out)
 
 def force_markers(text):
-    MARKERS=['honestly,', 'look,', 'I mean,', 'basically,', 'turns out,']
+    MARKERS=['honestly,', 'look,', 'I mean,']
     fm, body = split_fm(text)
     paras=body.split('\n\n')
     n_target=max(4, len(paras)//4)
