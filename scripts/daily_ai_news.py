@@ -239,6 +239,7 @@ def make_prompt(item, style_rules):
         "- Vary sentence length dramatically. Mix short punchy sentences with longer analytical ones.\n"
         "- BANNED: 'I've been teaching TOEFL/GRE' or any mention of teaching. This is a tech blog, not an exam blog."
         "- BANNED PHRASES: '50,000 likes', 'I screenshotted', 'went viral', 'I showed this to my student."
+        "- CRITICAL: Do NOT invent any reference links. The SOURCE link above is your only reference. Never create a \"References\" section or add links the system did not provide.\n"
     )
     return system, user_msg
 
