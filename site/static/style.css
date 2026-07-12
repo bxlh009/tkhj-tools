@@ -54,6 +54,14 @@
 .cat-pte{background:#F0FDF4;color:#166534}
 .cat-toeic{background:#FFF7ED;color:#C2410C}
 .cat-other{background:#F3F4F6;color:#6B7280}
+
+/* === Article ToC === */
+.article-toc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:24px 0}
+.article-toc ul li{margin:4px 0}
+.article-toc ul li a{color:var(--brand);text-decoration:none;font-size:0.9rem}
+.article-toc ul li a:hover{text-decoration:underline}
+/* === Reading progress bar === */
+#reading-progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:999;width:0;transition:width 0.1s linear}
 [data-theme="dark"]{
   --bg:#0B0F19;
   --surface:#131826;

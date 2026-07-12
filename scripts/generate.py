@@ -272,7 +272,23 @@ def main():
     up = inj(tpl, vars_data)
     # Random format seed for article variability + template rotation
     tpl_letter = pick_template(args.type)
-    up = up + "\n\n--- FORMAT INSTRUCTION ---\nStart with a relatable student mistake or confusion. Mix short sections and long deep-dives. No numbered lists.\n"
+        # Template-specific openers for structural variety
+    TEMPLATE_OPENERS = {
+        "A": "Start with ONE specific student story (name + score + struggle). Make it feel real, not generic.",
+        "B": "Open with a common misconception or bad advice students often hear. Then immediately debunk it.",
+        "C": "Start with 2\u20133 self-assessment questions readers can answer. Route each answer to a specific section.",
+        "D": "Open with a comparison framing \u2014 why most students are torn between two approaches.",
+        "E": "Start with a surprising statistic or research finding that challenges common assumptions.",
+        "F": "Open with a direct address to the reader: \"If you are struggling with X, this is for you.\"",
+        "G": "Start with a short quiz or diagnostic test. Then score it and direct to the right section.",
+        "H": "Open with a before/after comparison. Show a bad approach then the good approach immediately.",
+        "I": "Start with an analogy or metaphor that reframes how the reader should think about this topic.",
+        "J": "Open with the most common question students ask about this topic, then answer it directly.",
+        "K": "Start with a timeline or progression story of a student over weeks or months.",
+        "L": "Open with a bold counter-intuitive claim that grabs attention, then justify it.",
+    }
+    opener = TEMPLATE_OPENERS.get(tpl_letter, "Start with a relatable student mistake or confusion.")
+    up = up + "\n\n--- FORMAT INSTRUCTION ---\n" + opener + "\nMix short sections and long deep-dives.\n"
     up = up + f"\nYOU MUST FOLLOW Template {tpl_letter} from the Structure Rotation section. Do not deviate from that skeleton.\n"
     print('[INFO] generating [%s]...' % args.type)
     article = call_api(sys_prompt(args.type), up)

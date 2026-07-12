@@ -94,6 +94,16 @@ def md2html(text):
         if t.startswith("> "):
             out.append("<blockquote><p>" + esc(t[2:]) + "</p></blockquote>")
             continue
+        if re.match(r"^#{3}\s+", t):
+            h3_text = esc(re.sub(r"^#{3}\s+", "", t))
+            h3_id = re.sub(r"[^a-zA-Z0-9]+", "-", h3_text.lower()).strip("-")
+            out.append('<h3 id="' + h3_id + '">' + h3_text + "</h3>")
+            continue
+        if re.match(r"^#{2}\s+", t):
+            h2_text = esc(re.sub(r"^#{2}\s+", "", t))
+            h2_id = re.sub(r"[^a-zA-Z0-9]+", "-", h2_text.lower()).strip("-")
+            out.append('<h2 id="' + h2_id + '">' + h2_text + "</h2>")
+            continue
         out.append("<p>" + esc(t) + "</p>")
     if in_table and table_rows:
         out.append(table_to_html(table_rows))
@@ -110,6 +120,22 @@ def ctag(tag):
     for k,v in [("act","cat-act"),("ap ","cat-ap"),("cambridge","cat-cambridge"),("duolingo","cat-duo"),("gcse","cat-gcse"),("gmat","cat-gmat"),("ib ","cat-ib"),("isee","cat-isee"),("map ","cat-map"),("mcat","cat-mcat"),("oet","cat-oet"),("pte","cat-pte"),("toeic","cat-toeic")]:
         if k in t: return v
     return "cat-other"
+
+
+def toc_html(body_html):
+    """Extract h2 and h3 headings and build a Table of Contents HTML string."""
+    import re as _re
+    h2s = _re.findall(r'<h2[^>]*>(.*?)</h2>', body_html)
+    h3s = _re.findall(r'<h3[^>]*>(.*?)</h3>', body_html)
+    all_h = [(h, 2) for h in h2s] + [(h, 3) for h in h3s]
+    if len(all_h) < 2:
+        return ""
+    items = []
+    for heading, level in all_h[:12]:
+        h_id = _re.sub(r"[^a-zA-Z0-9]+", "-", heading.lower()).strip("-")
+        indent = "" if level == 2 else ' style="padding-left:16px;font-size:0.85rem"'
+        items.append(f'<li{indent}><a href="#{h_id}">{heading}</a></li>')
+    return f'<nav class="article-toc"><strong style="display:block;margin-bottom:8px;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-3)">Contents</strong><ul style="list-style:none;padding:0;margin:0">{"".join(items)}</ul></nav>:0">{items}</ul></nav>'
 
 def card(a, is_exam=True):
     slug = a["_slug"]
@@ -249,7 +275,7 @@ def page(title, body_str, active="home", desc="", canonical="", schema=""):
         head += '<script type="application/ld+json">' + schema + '</script>'
     head += "</head><body>"
     body_open = "<script>try{var t=localStorage.getItem('tkhj-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>"
-    return head + body_open + nav(active) + "<main>" + body_str + "</main>" + footer() + '<script src="/' + JSL + '"></script></body></html>'
+    return head + body_open + nav(active) + '<div id="reading-progress"></div><main>' + body_str + "</main>" + footer() + '<script src="/' + JSL + '"></script><script>document.addEventListener("scroll",function(){var e=document.getElementById("reading-progress");if(e){var t=document.documentElement.scrollTop,n=document.documentElement.scrollHeight-document.documentElement.clientHeight;e.style.width=Math.min(t/n*100,100)+"%"}});</script></body></html>'
 
 def wp(path, content):
     p = OUT / path
@@ -456,7 +482,11 @@ def main():
         slug = a["_slug"]
         meta, body = fm(a["_body"])
         rel = related_html(slug, all_arts)
-        article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>';
+        article_html = md2html(body)
+        toc = toc_html(article_html)
+                # Add anchor IDs to h2 tags for ToC navigation
+        article_html = re.sub(r'<h3(?!s+id=)>', lambda m: '<h3 id="' + re.sub(r'[^a-zA-Z0-9]+', '-', m.string[m.start()+4:m.start()+4+40].split('<')[0]).lower().strip('-') + '">', article_html)
+        article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + toc + article_html + '</article>';
         disclaimer = '<div style="font-size:0.8rem;color:var(--text-3);margin-top:32px;padding-top:16px;border-top:1px solid var(--line)">This guide is independently written and not affiliated with or endorsed by ETS, the College Board, or any other testing organization. It is based on general teaching experience and publicly available test information.</div>'
         # description: first body line
         _, body_text = fm(a["_body"])
@@ -479,7 +509,9 @@ def main():
         slug = a["_slug"]
         meta, body = fm(a["_body"])
         rel = related_html(slug, all_arts)
-        article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>';
+        article_html = md2html(body)
+        toc = toc_html(article_html)
+        article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + toc + article_html + '</article>';
         disclaimer = '<div style="font-size:0.8rem;color:var(--text-3);margin-top:32px;padding-top:16px;border-top:1px solid var(--line)">This article is independently written based on publicly available information. AI products evolve quickly; verify with official sources. No vendor sponsorship or affiliate relationship.</div>'
         _, body_text = fm(a["_body"])
         first = next((l.strip().lstrip("#").strip() for l in body_text.strip().split("\n") if l.strip() and len(l.strip()) > 20), "")
