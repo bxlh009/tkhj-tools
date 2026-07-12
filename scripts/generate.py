@@ -50,7 +50,14 @@ def call_api(system, user, retries=3, base_delay=5):
 # Layer 1 system prompt (loaded fresh per call with rules baked in)
 def sys_prompt(atype):
     rules = read(RULES_F) if RULES_F.exists() else ''
-    base = read(SYSP_F)
+    if atype == 'exam':
+        # Randomly pick one of 3 personas for variety (layer1=old teacher, layer2=young peer, layer3=analyst)
+        import random as _rand
+        layer = _rand.choice(['1', '2', '3'])
+        sys_f = PROMPTS / f'system_prompt_layer{layer}.md'
+    else:
+        sys_f = SYSP_F
+    base = read(sys_f)
     return base.replace('{atype}', atype).replace('{rules}', rules)
 
 def score(t, min_words=None, max_words=None):
