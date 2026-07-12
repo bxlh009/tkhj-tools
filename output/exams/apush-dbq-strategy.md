@@ -25,7 +25,7 @@ I used to think the secret was to quote every document. Turns out I was wrong. T
 
 So, how do you build that wall? Here's the 5-step apush dbq strategy that actually works.
 
-### Step 1: The 5-Minute Silence (Don't Skip This)
+Step 1: The 5-Minute Silence (Don't Skip This)
 
 Most students dive in. They read Doc 1, then Doc 2, then panic. Stop. Take five minutes. Read the prompt. Underline the verbs. Is it asking you to *analyze*? *Compare*? *Evaluate*?
 
@@ -35,7 +35,7 @@ For example, if you're looking at documents about the Industrial Revolution, not
 
 Honestly, this step takes discipline. But it saves you twenty minutes of rewriting later.
 
-### Step 2: Thesis That Actually Argues
+Step 2: Thesis That Actually Argues
 
 Your thesis needs to be defensible. It can't just say “The Civil War had many causes.” That's weak. That's filler.
 
@@ -43,7 +43,7 @@ A strong thesis says: “While economic differences played a role, the Civil War
 
 See the difference? One is a statement. The other is an argument. It tells the reader exactly what you're going to prove. And it sets up your grouping strategy.
 
-### Step 3: Grouping Documents (The 6-Point Engine)
+Step 3: Grouping Documents (The 6-Point Engine)
 
 This is where most students lose points. They don't group. They list.
 
@@ -53,7 +53,7 @@ Why? Because the rubric rewards complexity. You get a point for grouping. But yo
 
 Look, grouping isn't just about organization. It's about synthesis. It's about showing the reader that you see the big picture.
 
-### Step 4: Sourcing (HIPP) Without Being Robotic
+Step 4: Sourcing (HIPP) Without Being Robotic
 
 You've heard of HIPP. Historical Context, Intended Audience, Point of View, Purpose. Everyone knows it. But everyone does it badly.
 
@@ -65,7 +65,7 @@ Do you see the nuance? You're connecting the source to the historical moment. Yo
 
 And here's a pro tip: you don't need to do HIPP for every single document. Do it for 6. Pick the ones that matter most to your argument. Save time.
 
-### Step 5: Outside Evidence (The Cherry on Top)
+Step 5: Outside Evidence (The Cherry on Top)
 
 This is the hardest point to earn. You need one piece of specific, relevant outside information that isn't in the documents.
 
@@ -75,7 +75,7 @@ That's gold. That shows you know the material beyond the prompt.
 
 Now, let's look at two examples. These are rewritten for teaching purposes. They are not official College Board questions.
 
-## Worked Example 1: The Progressive Era
+Worked Example 1: The Progressive Era
 
 **Prompt:** Evaluate the extent to which the Progressive Movement addressed the problems caused by industrialization in the late 19th century.
 
@@ -99,7 +99,7 @@ Step 3: Select C. This allows you to discuss the tension between social welfare 
 
 **Pitfall Summary:** Students often group by “Pro-Progressive” vs “Anti-Progressive.” But Doc B is still a Progressive voice—he just believes in laissez-faire. Grouping by *theme* (social vs economic) is more nuanced and earns higher complexity points.
 
-## Worked Example 2: The Cold War Origins
+Worked Example 2: The Cold War Origins
 
 **Prompt:** Analyze the primary causes of the Cold War between 1945 and 1950.
 
@@ -124,7 +124,7 @@ Step 4: Select D. Both the format (audience) and the timing (context) deepen our
 
 **Pitfall Summary:** Students often ignore the *format* of the document. A public speech is different from a private memo. Ignoring this misses a layer of analysis.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: Can I use the same document twice?**
 A: Yes, but don't. It looks lazy. Use each document to support a different part of your argument. If you reuse one, make sure it serves a distinct purpose.

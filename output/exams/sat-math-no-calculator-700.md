@@ -11,7 +11,7 @@ estimated_read_min: 8
 structure_template: "B"
 ---
 
-# SAT Math No Calculator Tips: 5 Proven Strategies to Break 700
+SAT Math No Calculator Tips: 5 Proven Strategies to Break 700
 
 Teachers always tell you to memorize formulas. They say, "Just learn the quadratic formula and you'll be fine." I used to think that too --- turns out I was wrong.
 
@@ -25,7 +25,7 @@ Let me be direct: the College Board designs the No Calculator section to reward 
 
 So, how do you break 700? You need to shift your mindset. Here are the five strategies that actually move the needle.
 
-## Strategy 1: Reverse Engineer the Answer Choices
+Strategy 1: Reverse Engineer the Answer Choices
 
 This is the single most effective "sat math no calculator tips" technique for multiple-choice questions. Most students read the question, set up an equation, solve for $x$, and then pick the answer. That is slow. That is dangerous.
 
@@ -33,7 +33,7 @@ Instead, look at the choices first. Are they nice round numbers? Are they far ap
 
 Let's look at a classic "problem solving" scenario.
 
-## Worked Example 1: The "Plug-In" Trap
+Worked Example 1: The "Plug-In" Trap
 
 **Question:**
 If $3(x + 4) = 27$, what is the value of $x$?
@@ -56,7 +56,7 @@ The answer must be B. Done. 15 seconds.
 
 **Pitfall Summary**: What 80% of students miss here is that they assume the question *requires* algebraic manipulation. It doesn't. The SAT wants to see if you can verify solutions efficiently. Only use algebra if the numbers are ugly or the variables are complex.
 
-## Strategy 2: Factor Before You Expand
+Strategy 2: Factor Before You Expand
 
 In the "heart of algebra" section, you will see expressions like $(x^2 - 9) / (x - 3)$. Your instinct might be to multiply out the numerator or to divide polynomials. Stop.
 
@@ -73,7 +73,7 @@ Much easier. Much faster.
 
 I cannot stress this enough: if you see a square minus a square, factor it immediately. If you see a common term in the numerator and denominator, cancel it. Don't multiply. Multiplication creates bigger numbers. Bigger numbers create errors. Errors create lower scores.
 
-## Strategy 3: Estimate to Eliminate
+Strategy 3: Estimate to Eliminate
 
 Sometimes, you don't need the exact answer. You just need to eliminate the wrong ones.
 
@@ -105,7 +105,7 @@ The answer is C. You didn't need precision. You needed range.
 
 **Pitfall Summary**: Students often estimate poorly because they don't memorize perfect squares. Memorize squares up to 15 ($1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225$). This alone cuts your calculation time in half.
 
-## Strategy 4: Visualize the Geome
+Strategy 4: Visualize the Geome
 Geome questions in the No Calculator section are almost always drawn to scale. Yes, really.
 
 If a triangle looks equilateral, it probably is. If a line looks straight, it is. Use your eyes.
@@ -116,7 +116,7 @@ If you see a circle inscribed in a square, the diameter equals the side length. 
 
 God I've seen this mistake a THOUSAND times: students ing to calculate angles when the diagram gives them the answer visually. Trust the diagram. But be careful --- if the question says "not drawn to scale," then you must calculate. Usually, though, it's drawn to scale.
 
-## Strategy 5: Simplify the Language
+Strategy 5: Simplify the Language
 
 Word problems are just translations. The hardest part isn't the math; it's the English.
 
@@ -138,7 +138,7 @@ Subtract 5: $x = -15$.
 
 Simple. But only if you translate step-by-step. Don't to hold the whole sentence in your working memory. Write the equation as you read.
 
-## Why You're Stuck at 600
+Why You're Stuck at 600
 
 If you are scoring around 600, it's likely because you are rushing. You think speed comes from doing more math faster. It doesn't. Speed comes from doing *less* math.
 
@@ -150,7 +150,7 @@ Once she identified the type, she applied the right tool. No calculator. No pani
 
 You can do this too. But you have to stop trusting the calculator. The calculator is crutch. And crutches break when you run.
 
-## Common Mistakes in the No Calculator Section
+Common Mistakes in the No Calculator Section
 
 1. **Ignoring Units**: If the question asks for hours and gives minutes, convert first. Or convert at the end. Don't mix them.
 2. **Forgetting Negative Signs**: $(-3)^2$ is 9. $-3^2$ is -9. Parentheses matter.
@@ -158,7 +158,7 @@ You can do this too. But you have to stop trusting the calculator. The calculato
 4. **Not Checking Constraints**: "If $x > 0$..." means you can ignore negative solutions. Don't waste time finding them.
 5. **Assuming Diagrams Are Accurate**: Wait, I said trust the diagram earlier. But if it says "not to scale," don't trust it. Read the fine print.
 
-## How to Practice This
+How to Practice This
 
 You can't just read these tips. You have to apply them.
 
@@ -170,7 +170,7 @@ Finally, tackle geome. Draw diagrams. Label everything. Look for similar triangl
 
 And remember: practice without a calculator. Literally hide your calculator. Force your brain to adapt. It will feel slow at first. But once it clicks, you will fly.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: Is it really okay to plug in answer choices for every question?**
 A: No, not every question. But for multiple-choice questions with numeric answers, it's often faster than algebra. Use this tip when the numbers are simple and the variables are isolated. If the equation is complex or involves irrational numbers, stick to algebraic manipulation. The goal is efficiency, not laziness.
@@ -195,10 +195,5 @@ A: Focus on linear equations and inequalities. Practice translating words to equ
 
 **Q8: Does the order of operations matter without a calculator?**
 A: Crucially. PEMDAS (Parentheses, Exponents, Multiplication/Division, Addition/Subtraction) is non-negotiable. Many students fail because they add before multiplying. Always follow the hierarchy. It's the foundation of all manual calculation.
-
-## 
-
-
-
 
 > **Editor's note: I update this article periodically as new information becomes available. Last reviewed: July 2026.**

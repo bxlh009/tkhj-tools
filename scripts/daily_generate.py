@@ -106,9 +106,6 @@ def main():
     # 2. AI: check news, generate if big story
     generate_ai_news()
     
-    # 3. Rebuild site
-    rebuild_site()
-    
     print("=== done ===")
     return 0
 

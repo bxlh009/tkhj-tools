@@ -14,43 +14,43 @@ I watched a student try to write a novel opening yesterday. He typed "write a sa
 
 Here is the truth: most people treat AI as a replacement for thinking. It isn't. It's a sparring partner. If you want to actually improve your craft, you need to stop asking for "stories" and start asking for "constraints."
 
-### The Pain Point
+The Pain Point
 
 You sit down to write. You stare at a blank page. The cursor blinks. It mocks you. So you turn to AI. You ask for a prompt. You get a cliché. You copy-paste. You feel productive. But did you learn anything? No. You just generated noise.
 
 I've been teaching professionals how to use these tools for over five years. The ones who succeed aren't the ones who buy the most expensive subscriptions. They're the ones who understand that AI is a mirror, not a muse. It reflects your intent. If your intent is vague, your output is garbage.
 
-### My Workflow: From Blank Page to First Draft
+My Workflow: From Blank Page to First Draft
 
 Let me walk you through how I actually use creative writing prompts AI tools in my daily routine. This isn't theory. This is what I do when I'm stuck on a blog post or a client email that needs more punch.
 
 1. **The Constraint Phase**
 
-   Instead of asking "write a story," I define the boundaries. I tell the AI: "Write a 200-word scene where two characters argue about a lost key, but neither can say the word 'key' or 'lost.'"
+ Instead of asking "write a story," I define the boundaries. I tell the AI: "Write a 200-word scene where two characters argue about a lost key, but neither can say the word 'key' or 'lost.'"
 
-   Why? Because constraints force creativity. Without limits, AI defaults to its training data averages. With limits, it has to work harder. And when it works harder, so do you.
+ Why? Because constraints force creativity. Without limits, AI defaults to its training data averages. With limits, it has to work harder. And when it works harder, so do you.
 
-   Try it. See what happens. You'll be surprised by the weird metaphors it generates.
+ Try it. See what happens. You'll be surprised by the weird metaphors it generates.
 
 2. **The Tone Shift**
 
-   Once you have a draft, change the voice. Ask the AI to rewrite the same scene in the style of Hemingway. Then ask it again in the style of Oscar Wilde.
+ Once you have a draft, change the voice. Ask the AI to rewrite the same scene in the style of Hemingway. Then ask it again in the style of Oscar Wilde.
 
-   Compare the outputs. Which one feels more authentic to *your* voice? Neither, probably. But you'll see the differences in rhythm, vocabulary, and sentence structure. That's the learning moment.
+ Compare the outputs. Which one feels more authentic to *your* voice? Neither, probably. But you'll see the differences in rhythm, vocabulary, and sentence structure. That's the learning moment.
 
-   I mean, literally, you're reverse-engineering style. It's like watching a chef chop onions. You don't learn by eating the onion; you learn by watching the knife work.
+ I mean, literally, you're reverse-engineering style. It's like watching a chef chop onions. You don't learn by eating the onion; you learn by watching the knife work.
 
 3. **The Critique Loop**
 
-   This is the part most people skip. Paste your own writing back into the AI. Ask it: "What are three weaknesses in this paragraph?"
+ This is the part most people skip. Paste your own writing back into the AI. Ask it: "What are three weaknesses in this paragraph?"
 
-   Be specific. Ask about pacing. Ask about clarity. Ask about emotional resonance.
+ Be specific. Ask about pacing. Ask about clarity. Ask about emotional resonance.
 
-   The AI will often give you generic advice. Ignore the fluff. Look for patterns. Does it keep saying "show, don't tell"? Good. Write that down. Does it mention "passive voice"? Check your verbs.
+ The AI will often give you generic advice. Ignore the fluff. Look for patterns. Does it keep saying "show, don't tell"? Good. Write that down. Does it mention "passive voice"? Check your verbs.
 
-   This feedback loop is faster than waiting for a human editor. And it's cheaper. Much cheaper.
+ This feedback loop is faster than waiting for a human editor. And it's cheaper. Much cheaper.
 
-### Why This Works (And Why Most Fail)
+Why This Works (And Why Most Fail)
 
 Most people fail because they want the AI to do the heavy lifting. They want a finished product. But writing *is* the heavy lifting. The struggle is where the growth happens.
 
@@ -60,7 +60,7 @@ Think about it. If you always let someone else carry your groceries, your arms g
 
 I used to think AI would replace writers. Turns out I was wrong. It replaces *lazy* writers. The rest of us? We're just getting better tools.
 
-### Real-World Example: The Blog Post
+Real-World Example: The Blog Post
 
 Last week, I had to write a piece on "the future of remote work." I didn't start with a blank page. I started with a list of ten controversial opinions. I fed those opinions to the AI. I asked it to expand each one into a 50-word paragraph.
 
@@ -70,7 +70,7 @@ The result? A post that took me 45 minutes to produce, instead of four hours. An
 
 That's the secret. You're the director. AI is the crew. Don't let the crew write the script.
 
-### When to Skip AI
+When to Skip AI
 
 Not everything needs AI. If you're writing a personal letter to your mom, don't use it. If you're drafting a quick Slack message, skip it. AI adds friction when the task is simple.
 
@@ -82,7 +82,7 @@ Use it when:
 
 But remember: the output is never final. It's always a draft. Always edit. Always inject your humanity.
 
-### The Bottom Line
+The Bottom Line
 
 Creative writing prompts AI tools are powerful. But they're only as good as the questions you ask. Stop asking for "help." Start asking for "challenges."
 
@@ -92,7 +92,7 @@ So next time you're stuck, don't ask for a story. Ask for a constraint. Ask for 
 
 You might just find your voice again.
 
-### FAQ
+FAQ
 
 Q1: Can AI help me overcome writer's block?
 A: Yes, but not by writing for you. Use it to generate random scenarios, character traits, or plot twists. Pick one element and build from there. The key is interaction, not delegation.
@@ -123,7 +123,7 @@ A: No. It will replace writers who refuse to adapt. Humans bring empathy, nuance
 
 > **Editor's note: Every example question in this article is rewritten for teaching purposes. They are not official exam questions.**
 
-## References
+References
 
 - https://openai.com/blog",
 - https://anthropic.com/news",

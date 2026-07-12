@@ -11,7 +11,7 @@ estimated_read_min: 11
 structure_template: "A"
 ---
 
-# GRE Text Completion Strategy: 5 Steps to Break 160+ in 6 Weeks
+GRE Text Completion Strategy: 5 Steps to Break 160+ in 6 Weeks
 
 Raj stared at the screen, his coffee cold, his eyes burning. He'd been stuck at 155 on the Verbal section for six months. Six months! He knew 3,000 words—he'd memorized the lists, he'd done the flashcards—but when he hit a Text Completion question with a double-blank and a negative polarity word, his brain just... stopped. He guessed. He lost points. He repeated the cycle.
 
@@ -25,7 +25,7 @@ I've taught thousands of students. The ones who jump from 155 to 165+ don't sudd
 
 Let me show you how.
 
-## The Myth of the "Perfect Word"
+The Myth of the "Perfect Word"
 
 Before we get into the steps, let's kill one idea right now: there is rarely one "perfect" word that fits. There are usually two words that *could* fit grammatically, but only one that fits the *logic*.
 
@@ -33,11 +33,11 @@ When you're staring at a blank, your brain wants to pick the word that sounds sm
 
 Here is the thing: the sentence itself holds the answer. You just have to stop reading it as a paragraph and start reading it as a set of instructions.
 
-## The 5-Step Text Completion Protocol
+The 5-Step Text Completion Protocol
 
 This is the method that saved Raj. It's simple, but it's rigorous. You must follow it in order. No skipping.
 
-### 1. Isolate the Blank(s)
+1. Isolate the Blank(s)
 
 Cover the options. Cover the rest of the sentence if you have to. Look at the blank. Ask yourself: "What kind of word goes here?"
 
@@ -45,7 +45,7 @@ Is it a noun? A verb? An adjective? Positive? Negative? Neutral?
 
 Don't guess the word yet. Just guess the *shape* of the word.
 
-### 2. Hunt for Clue Words
+2. Hunt for Clue Words
 
 Scan the sentence for "signposts." These are words or phrases that tell you the direction of the logic.
 
@@ -56,29 +56,29 @@ Common signposts:
 
 Highlight them. Circle them. Underline them until they scream at you.
 
-### 3. Predict Your Own Answer
+3. Predict Your Own Answer
 
 Before you look at the choices, to fill in the blank with a simple word. Any word. "Good," "bad," "fast," "slow."
 
 This step is critical. If you look at the options first, you'll be biased by the distractors. By predicting first, you create a target. Then you shoot for it.
 
-### 4. Match, Don't Memorize
+4. Match, Don't Memorize
 
 Now look at the options. Which one matches your prediction *and* the clue words?
 
 Ignore the ones that sound impressive but don't fit the logic. The GRE loves to put in words like "ubiquitous" or "ephemeral" to tempt you. If the sentence doesn't support them, delete them.
 
-### 5. Verify the Whole Sentence
+5. Verify the Whole Sentence
 
 Read the sentence again with your chosen word. Does it make sense? Does it flow? If it feels awkward, you probably picked the wrong one. Trust your gut. If it feels weird, it's wrong.
 
-## Why This Works
+Why This Works
 
 Because the GRE Verbal section is designed to test your ability to parse complex information quickly. It's not testing if you know the definition of "obsequious." It's testing if you can see that "obsequious" is the opposite of "defiant" in this context.
 
 When you stop ing to define every word and start tracking the logic, the difficulty drops by half.
 
-## Worked Example 1: The Single-Blank Logic Flip
+Worked Example 1: The Single-Blank Logic Flip
 
 Let's apply the protocol to a rewritten example. This is not an official question, but it mirrors the style and difficulty of the actual GRE.
 
@@ -109,7 +109,7 @@ E) prosperity
 
 **Pitfall Summary:** Students often pick "stagnation" because it sounds economic. But "stagnation" doesn't necessarily involve *climbing* unemployment—it could be flat. "Recession" implies a contraction, which aligns with the contrast to "growth."
 
-## Worked Example 2: The Double-Blank Trap
+Worked Example 2: The Double-Blank Trap
 
 This is where most students lose points. Two blanks. More clues. More traps.
 
@@ -245,7 +245,7 @@ E) mild / condemnation
 
 **Pitfall Summary:** Students often overthink "condemnation" because it sounds stronger. But "critique" is the direct counterpart to "praise" in academic/review contexts. Also, "lenient" is the precise adjective for a critic's stance, whereas "mild" is vague.
 
-## Why You're Still Stuck at 155
+Why You're Still Stuck at 155
 
 If you're scoring 155, you're probably doing two things wrong:
 1. You're reading the whole sentence before identifying the clues.
@@ -253,7 +253,7 @@ If you're scoring 155, you're probably doing two things wrong:
 
 Stop ing to impress the test. Start ing to solve the puzzle.
 
-## How to Practice This
+How to Practice This
 
 Don't just do random questions. Do *focused* practice.
 1. Pick 10 Text Completion questions.
@@ -266,7 +266,7 @@ If you got it wrong, ask: "Did I miss a clue? Did I predict wrong? Did I pick th
 
 This is how you build the muscle memory.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: Should I memorize the GRE vocabulary list?**
 A: Memorizing 3,000 words is helpful, but it's not enough. Knowing the definition isn't the same as knowing how the word functions in a sentence. Focus on learning words in context. Read articles from *The Atlantic* or *Scientific American* to see how complex words are used logically. This builds intuition faster than flashcards alone.
@@ -288,10 +288,5 @@ A: Track your accuracy, not just your score. If you're getting 70% of Text Compl
 
 **Q7: Should I take a practice test before starting this strategy?**
 A: Yes. Take a full-length practice test to establish your baseline. Identify which sections you're weakest in. If Text Completion is a major drag on your score, focus on this strategy first. Don't to fix everything at once. Pick one weakness and crush it.
-
-## 
-
-
-
 
 > **Editor's note: Prices and features mentioned were verified at publication time. AI tools change fast ? always check the official site.**

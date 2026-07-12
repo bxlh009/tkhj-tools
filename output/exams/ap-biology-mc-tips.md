@@ -11,7 +11,7 @@ estimated_read_min: 6
 structure_template: "A"
 ---
 
-# AP Biology MC Tips: 3 Cell Biology Hacks to Boost Your Score Fast
+AP Biology MC Tips: 3 Cell Biology Hacks to Boost Your Score Fast
 
 Raj stared at Question 14. His pen hovered. The diagram showed a mitochondrion, but the question asked about ATP synthase orientation. He knew the Krebs cycle. He knew glycolysis. But this? This was a maze. He guessed B. He got it wrong.
 
@@ -21,7 +21,7 @@ He didn't study more. He studied *differently*. Most students think AP Biology i
 
 Here is the truth: you can't brute-force your way through these questions. You need to see the logic. Let's break down the three hacks that actually work.
 
-## Hack 1: The "Where" Dictates the "What"
+Hack 1: The "Where" Dictates the "What"
 
 Look. If you can't locate the molecule, you can't answer the question. Simple as that.
 
@@ -33,7 +33,7 @@ I used to think location was secondary to function --- turns out I was wrong. Lo
 
 So, when you read a question, ask yourself: Where is this happening? Draw a quick mental map. If the map doesn't match the options, eliminate.
 
-## Hack 2: Energy Is the Currency
+Hack 2: Energy Is the Currency
 
 Every cell biology question boils down to energy. ATP. NADH. Proton motive force. It's all about cost and return.
 
@@ -47,7 +47,7 @@ Let me be direct: if a question mentions "gradient," think energy. Steep gradien
 
 You know what kills me? Seeing students calculate Gibbs free energy for simple multiple-choice questions. Don't do that. Just ask: Is this spontaneous? If yes, no ATP needed. If no, ATP required. Simple.
 
-## Hack 3: Signal Transduction Is a Story, Not a List
+Hack 3: Signal Transduction Is a Story, Not a List
 
 Signal transduction pathways are long. They're complex. And they're easy to forget.
 
@@ -64,7 +64,7 @@ But here is the trap: negative feedback. The story doesn't end with the action. 
 
 I mean, literally, if you can't draw the loop, you don't understand it. Draw the ligand binding, the conformational change, the cascade, and the feedback arrow. If the feedback arrow is missing, your answer is probably wrong.
 
-## Worked Example 1: Membrane Permeability
+Worked Example 1: Membrane Permeability
 
 **Passage:** A researcher places red blood cells in a solution containing urea. Urea is a small, uncharged molecule. The cells initially shrink, then gradually return to their original volume.
 
@@ -83,7 +83,7 @@ Step 4: Connect. As urea enters, intracellular solute concentration rises. Water
 
 **Pitfall Summary:** Students pick A because they see "shrink." But water isn't actively transported. It's passive. Also, C is wrong because salt isn't mentioned. D is absurd for RBCs. The key is realizing urea crosses the membrane, changing the osmotic balance.
 
-## Worked Example 2: Mitochondrial Dysfunction
+Worked Example 2: Mitochondrial Dysfunction
 
 **Passage:** A drug inhibits Complex I of the electron transport chain in human muscle cells. Oxygen levels remain normal.
 
@@ -102,7 +102,7 @@ Step 4: Check other options. ATP decreases (not A). Proton gradient decreases be
 
 **Pitfall Summary:** Students often confuse matrix pH with intermembrane space pH. Protons are pumped *out* of the matrix. So if pumping stops, the matrix becomes *less* acidic (higher pH). But the direct substrate backup is NADH. Always track the substrate first.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: Do I need to memorize every enzyme in glycolysis?**
 A: No. You need to know the inputs and outputs. Glucose -> 2 Pyruvate + 2 ATP + 2 NADH. If a question asks about a specific step, look for clues in the passage. Don't panic if you forget hexokinase. Focus on the energy yield.

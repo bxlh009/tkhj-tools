@@ -11,7 +11,7 @@ estimated_read_min: 8
 structure_template: "C"
 ---
 
-# GMAT Quant Data Sufficiency: 5 Proven Strategies to Stop Guessing
+GMAT Quant Data Sufficiency: 5 Proven Strategies to Stop Guessing
 
 Let's cut to the chase. You're staring at a question that asks for the value of $x$. Statement 1 gives you an equation. Statement 2 gives you another. You plug them in, solve for $x$, and pick C. Then you get it wrong. Why? Because you solved it too fast. You didn't check if the statements were *actually* sufficient on their own. Or maybe you missed a constraint like “$x$ is an integer.”
 
@@ -27,7 +27,7 @@ Are you ignoring constraints like “positive integers” or “distinct values�
 
 If you said yes to any of these, you're leaking points. Here's how to stop.
 
-## Diagnosis 1: The “Solve It” Reflex
+Diagnosis 1: The “Solve It” Reflex
 
 Most students try to solve the problem immediately. This is fatal. In DS, solving is often unnecessary work.
 
@@ -39,7 +39,7 @@ I mean, literally, stop calculating. It's a waste of time. You're not being test
 
 Let me be direct: if you can't isolate the variable, the statement is probably insufficient. Unless... there's a trick. Like $x^2 = 4$. Is $x$ sufficient? No. It could be 2 or -2. But if the statement says $x > 0$, then yes. Always check for hidden constraints.
 
-## Diagnosis 2: Ignoring the Constraints
+Diagnosis 2: Ignoring the Constraints
 
 Constraints are the silent killers. “$x$ is an integer.” “$y$ is positive.” “$a, b, c$ are distinct primes.”
 
@@ -49,7 +49,7 @@ If you ignore these, you'll pick C when the answer is D. Or you'll pick D when t
 
 Take this example.
 
-## Worked Example 1: The Integer Trap
+Worked Example 1: The Integer Trap
 
 **Question:** What is the value of $n$?
 
@@ -68,7 +68,7 @@ Together: $n$ is prime AND $-5 < n < 5$. The only primes in that range are 2 and
 
 **Pitfall Summary:** 80% of students assume $n$ is an integer because it's a variable in a math problem. But in GMAT DS, you must stick to what's written. If it doesn't say “integer,” it's not an integer. This is a common error. Don't let it happen to you.
 
-## Diagnosis 3: The “Both Together” Fallacy
+Diagnosis 3: The “Both Together” Fallacy
 
 Students love to combine statements. It feels safe. But often, the statements contradict each other, or they still leave ambiguity.
 
@@ -76,7 +76,7 @@ Students love to combine statements. It feels safe. But often, the statements co
 
 If Statement 1 says $x = 5$ and Statement 2 says $x = 6$, they contradict. The answer is C (because the question is flawed, but technically you can't have both true). Wait, no. If they contradict, the answer is usually C because the premises are inconsistent. But realistically, on the GMAT, statements are consistent. So focus on whether they narrow down to one value.
 
-## Worked Example 2: The Contradiction Check
+Worked Example 2: The Contradiction Check
 
 **Question:** Is $x > y$?
 
@@ -92,7 +92,7 @@ Statement 2: $x - y > 0$. Add $y$ to both sides. $x > y$. This is exactly what w
 
 **Pitfall Summary:** Students often overthink Statement 1. They try to pair it with Statement 2. But Statement 2 alone gives the answer. Don't waste time. Look for the direct path.
 
-## Diagnosis 4: The “Number Property” Blind Spot
+Diagnosis 4: The “Number Property” Blind Spot
 
 DS questions often rely on number properties. Even/Odd, Positive/Negative, Integers/Fractions.
 
@@ -105,7 +105,7 @@ DS questions often rely on number properties. Even/Odd, Positive/Negative, Integ
 
 If you don't know these, you're flying blind.
 
-## Diagnosis 5: The “Time Management” Disaster
+Diagnosis 5: The “Time Management” Disaster
 
 You spend 3 minutes on Question 15. You rush Question 20. You get it wrong because you didn't read carefully.
 
@@ -113,7 +113,7 @@ You spend 3 minutes on Question 15. You rush Question 20. You get it wrong becau
 
 I've seen students lose 10 points just because they were perfectionists. Perfection is the enemy of done. Get the easy ones right. Guess the hard ones. Move on.
 
-## How to Practice Smart
+How to Practice Smart
 
 Don't just do random problems. Focus on your weak areas.
 
@@ -121,7 +121,7 @@ Don't just do random problems. Focus on your weak areas.
 2. **Review mistakes:** Why did you get it wrong? Was it a math error or a logic error?
 3. **Simulate test conditions:** Use a timer. No calculator.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 Q1: Should I always plug in numbers for DS questions?
 A: Plugging in numbers is a great strategy, especially for algebra questions. But be careful. Plug in different types of numbers: positives, negatives, zero, fractions, integers. If you get different answers, the statement is insufficient. If you get the same answer consistently, it might be sufficient, but verify with algebra if possible.
@@ -141,7 +141,7 @@ A: It depends. Algebra is faster for linear equations. Arithmetic is better for 
 Q6: What if I'm running out of time?
 A: Skip hard questions. Guess and move on. Don't let one question ruin your entire section. Prioritize accuracy on easier questions.
 
-## Final Thoughts
+Final Thoughts
 
 Data sufficiency is a skill. It takes practice. But once you get it, it's your biggest advantage. You'll save time. You'll reduce errors. You'll boost your score.
 

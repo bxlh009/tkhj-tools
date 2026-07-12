@@ -11,7 +11,7 @@ estimated_read_min: 8
 structure_template: "A"
 ---
 
-# Cambridge PET Reading Tips: 3 Strategies to Fix Slow Comprehension Fast
+Cambridge PET Reading Tips: 3 Strategies to Fix Slow Comprehension Fast
 
 Raj stared at the clock. 14 minutes left. He had read the entire text twice, yet he still couldn't figure out why the answer wasn't "C". His hands were sweating. He'd been studying for six months, doing practice tests every weekend, but his score was stuck at 55/60. He was fast at scanning, but slow at understanding. Sound familiar?
 
@@ -21,7 +21,7 @@ Here is the truth: the Cambridge PET Reading paper isn't a test of how much you 
 
 Let me be direct. You don't need to read faster. You need to read smarter.
 
-## The Diagnosis: Why You're Stuck
+The Diagnosis: Why You're Stuck
 
 Turns out, the problem isn't your eyes. It's your brain's habit of seeking perfection. You want to understand 100% of the text before answering the question. But the PET exam doesn't work that way. It's designed to trick you into wasting time on irrelevant details.
 
@@ -29,7 +29,7 @@ When I graded Raj's mock tests, I noticed a pattern. He spent 45 seconds on Ques
 
 We need to change your workflow. Here are the three core strategies that will unlock your reading speed.
 
-## Strategy 1: The "Skim-First" Rule
+Strategy 1: The "Skim-First" Rule
 
 Stop reading the text first! This is the biggest mistake I see. You read the passage, then look at the questions. Wrong.
 
@@ -39,7 +39,7 @@ This primes your brain. It's like putting on sunglasses before stepping into bri
 
 Honestly, it feels weird at first. You'll want to read every word. Don't. Trust the process. The questions are your map. The text is just the territory.
 
-## Strategy 2: Keyword Matching, Not Translation
+Strategy 2: Keyword Matching, Not Translation
 
 You don't need to understand every word. You need to find the keywords.
 
@@ -66,7 +66,7 @@ Answer: B.
 
 See what happened? I didn't translate "guided tour" or "expensive". I just matched "didn't bring a tent" to "didn't like sleeping outdoors". That's keyword matching. It's faster. It's accurate. And it's what you need to do.
 
-## Strategy 3: The "Gist" Paragraphing
+Strategy 3: The "Gist" Paragraphing
 
 For longer texts (Part 3 and 4), don't read line by line. Read paragraph by paragraph.
 
@@ -76,7 +76,7 @@ Imagine you're reading a news article. Do you care about every adjective? No. Yo
 
 Here's a quick tip: underline the subject and verb of each sentence. Ignore the rest. This forces your brain to focus on structure, not decoration.
 
-## Worked Example 2: Sentence Completion (Part 1)
+Worked Example 2: Sentence Completion (Part 1)
 
 This part tests your ability to fit words into gaps. It's not just grammar. It's logic.
 
@@ -96,13 +96,13 @@ Answer: A.
 
 **Pitfall Summary:** Students often pick C because it's grammatically correct. But the question asks for the best fit. "Must" matches the advice tone of the text. Don't just pick what's grammatically right. Pick what's logically right.
 
-## Common Mistakes to Avoid
+Common Mistakes to Avoid
 
 1. **Overthinking:** You're not a philosopher. You're a test-taker. Keep it simple.
 2. **Ignoring Time:** If you're stuck, guess and move on. You can come back later.
 3. **Skipping Instructions:** Read the instructions carefully. Sometimes they tell you exactly what to do.
 
-## Final Thoughts
+Final Thoughts
 
 Reading slowly isn't a lack of skill. It's a lack of strategy. Once you start using these tips, you'll see a difference. Fast.
 
@@ -110,7 +110,7 @@ Try this: take one practice test. Use only the "Skim-First" rule. See how much t
 
 You've got this. Really.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: How many minutes should I spend on each part?**
 A: Roughly 15 minutes per part. But adjust based on difficulty. If Part 1 is easy, spend less time. If Part 3 is hard, spend more. Don't stick to a rigid schedule. Be flexible.
@@ -136,7 +136,7 @@ A: Part 3 and 4. They require more inference. Practice these specifically.
 **Q8: How long does it take to improve?**
 A: 2-4 weeks with consistent practice. Don't rush. Steady progress is better than sudden bursts.
 
-## Next Steps
+Next Steps
 
 If you need to improve your reading speed in 30 days, try our timed practice modules. They're designed to mimic the real exam pressure.
 

@@ -11,7 +11,7 @@ estimated_read_min: 8
 structure_template: "A"
 ---
 
-# ACT English Grammar Guide: 5 Fixes to Boost Your Score Fast
+ACT English Grammar Guide: 5 Fixes to Boost Your Score Fast
 
 Raj stared at his practice test, pen hovering over question 14. He'd gotten 38 out of 40 right on the math section, but the English test? He bombed it. Hard. He kept thinking, "It's just grammar. I speak English. How hard can it be?" Turns out, really hard. Because ACT English isn't testing whether you *can* speak; it's testing whether you can follow a rigid set of arbitrary rules faster than you can think.
 
@@ -19,7 +19,7 @@ I've watched thousands of students make this exact mistake. They treat the ACT E
 
 So, let's fix this. Here is the thing: you don't need to memorize a dictionary. You need a system. A simple, brutal, effective system. I'm going to walk you through five core fixes that cover 90% of the questions you'll see. Master these, and you'll stop guessing. You'll start knowing.
 
-## Fix 1: The Comma Splice Trap
+Fix 1: The Comma Splice Trap
 
 This is the most common error I see. Students love commas. They use them everywhere. But on the ACT, a comma alone cannot join two independent clauses. That's a rule. A hard rule. If you have two complete sentences, you need a period, a semicolon, or a conjunction (FANBOYS: For, And, Nor, But, Or, Yet, So).
 
@@ -38,7 +38,7 @@ If the answer choices offer a period or a semicolon, pick one. If they offer a c
 
 Don't @ me on this one. It's basic syntax. But students miss it because they're rushing. Slow down. Check for two subjects and two verbs. If you find them, run away from the comma.
 
-## Fix 2: The Redundancy Rule
+Fix 2: The Redundancy Rule
 
 The ACT loves conciseness. If a word doesn't add new information, it's probably wrong. This is huge. You'll see questions where an answer choice repeats something already stated in the sentence.
 
@@ -55,7 +55,7 @@ See the difference? It's tighter. It's clearer. The ACT rewards clarity. If you 
 
 I used to think redundancy was just a style preference --- turns out I was wrong. It's a scoring criterion. Every extra word that doesn't add meaning is a potential trap.
 
-## Fix 3: Subject-Verb Agreement (The Distance Trick)
+Fix 3: Subject-Verb Agreement (The Distance Trick)
 
 Sometimes the subject and verb are far apart. Really far apart. And students get distracted by the stuff in between. They hear the plural noun near the verb and pick the plural verb. Wrong.
 
@@ -73,7 +73,7 @@ If you see "along with," "as well as," "together with," or "in addition to," ign
 
 It's tricky. But once you spot the pattern, it's easy.
 
-## Fix 4: Pronoun Clarity
+Fix 4: Pronoun Clarity
 
 Pronouns are lazy. They replace nouns. But on the ACT, they must be crystal clear. If a pronoun could refer to two different things, it's ambiguous. And ambiguous pronouns are wrong.
 
@@ -92,7 +92,7 @@ Also, watch out for vague "it" or "this." "This" must refer to a specific noun, 
 
 If you see a pronoun and you have to squint to figure out what it refers to, that's your clue. The answer is likely wrong.
 
-## Fix 5: Apostrophes vs. Plurals
+Fix 5: Apostrophes vs. Plurals
 
 This one is simple, but people mess it up. Apostrophes show possession. They do *not* show plurals.
 
@@ -107,7 +107,7 @@ This one is simple, but people mess it up. Apostrophes show possession. They do 
 
 Keep it simple. Possession needs an apostrophe. Plurals do not. Ever.
 
-## Worked Example 1: Punctuation Logic
+Worked Example 1: Punctuation Logic
 
 **Passage:**
 "The experiment yielded unexpected results; however, the team remained optimistic. They knew that further analysis was necessary."
@@ -130,7 +130,7 @@ Step 4: Verify. The second sentence is separate. No issue there.
 
 **Pitfall Summary:** Students often try to "fix" correct punctuation because they're paranoid. If it looks weird, check the rule. Semicolon + however + comma is a classic correct structure. Don't touch it.
 
-## Worked Example 2: Conciseness & Redundancy
+Worked Example 2: Conciseness & Redundancy
 
 **Passage:**
 "In my opinion, I think that the book is quite good."
@@ -156,7 +156,7 @@ Step 3: Evaluate options.
 
 **Pitfall Summary:** Students cling to "I think" because it feels polite. But the ACT hates politeness. It wants efficiency. Cut the filler.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: Should I memorize all the grammar rules?**
 A) No. You don't need to memorize obscure rules like "use 'whom' correctly in archaic contexts." Focus on the big five: punctuation, subject-verb agreement, pronouns, conciseness, and usage. These cover 95% of questions. Memorizing random rules will just confuse you. Stick to the patterns.

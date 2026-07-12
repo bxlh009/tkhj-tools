@@ -11,7 +11,7 @@ estimated_read_min: 7
 structure_template: "A"
 ---
 
-# AP Chemistry FRQ Stoichiometry Mastery: 5 Steps to Full Credit
+AP Chemistry FRQ Stoichiometry Mastery: 5 Steps to Full Credit
 
 Raj stared at his calculator. The screen blinked back zero. He'd been staring at the same AP Chemistry FRQ for twenty minutes, sweat prickling his hairline. He knew the formula. He'd memorized the mole ratios. But when it came to the actual free response question — the one that counted for half his grade — his brain just... froze.
 
@@ -25,7 +25,7 @@ Here is the thing: AP Chemistry FRQs are designed to reward *thinking*, not just
 
 So, let's fix that. Here's the 5-step method that turned Raj into a 5.
 
-## Step 1: Translate the Narrative into Chemical Reality
+Step 1: Translate the Narrative into Chemical Reality
 
 The first trap? Reading the problem like a novel. Don't. Read it like a chemist.
 
@@ -35,7 +35,7 @@ I used to think students missed these because they were careless. Turns out I wa
 
 **Action:** Underline every number. Circle every unit. Write the chemical equation *before* you do any math. Even if they give it to you. Especially if they give it to you. Why? Because if you copy-paste their typo, you're doomed.
 
-## Step 2: Identify the Limiting Reactant (Always)
+Step 2: Identify the Limiting Reactant (Always)
 
 Stoichiometry is a lie if you ignore the limiting reactant.
 
@@ -45,7 +45,7 @@ You have 5 moles of A and 1 mole of B. The reaction needs 1:1. Who runs out firs
 
 Let me be direct: If you don't identify the limiting reactant in the first minute, you're already behind.
 
-## Step 3: Dimensional Analysis is Your Best Friend
+Step 3: Dimensional Analysis is Your Best Friend
 
 Forget formulas. Formulas fail when conditions change. Dimensional analysis (factor-label method) never fails.
 
@@ -57,7 +57,7 @@ Why? Because it tracks units. If your units cancel out to give you moles, you're
 
 You get 1 point just for that. Even if your final multiplication is wrong. That's how the rubric works. Play the game.
 
-## Step 4: Watch the Significant Figures
+Step 4: Watch the Significant Figures
 
 This is where smart students lose easy points.
 
@@ -67,7 +67,7 @@ I've seen students write 12.3456 g and lose the entire point. It's brutal. But i
 
 **Self-Correction:** I used to tell students to round at the end. That's dangerous. Round *intermediate* steps only if you're carrying extra digits in your calculator. But your *final* answer? Must match the least precise input. Period.
 
-## Step 5: Explain Your Reasoning (Even If You're Wrong)
+Step 5: Explain Your Reasoning (Even If You're Wrong)
 
 This is the secret weapon.
 
@@ -77,7 +77,7 @@ But if you just write the answer? Zero.
 
 **How to explain:** Use phrases like “Because the mole ratio is 1:2...” or “Since oxygen is in excess...” This shows the grader you understand the *concept*, not just the calculator buttons.
 
-## Worked Example 1: The Classic Limiting Reactant
+Worked Example 1: The Classic Limiting Reactant
 
 **Scenario:** 10.0 g of Mg reacts with 5.0 L of 2.0 M HCl. How many liters of H₂ gas are produced at STP?
 
@@ -111,7 +111,7 @@ Okay, let's pivot. What if the reaction was `2Al + 6HCl -> 2AlCl₃ + 3H₂`? Di
 
 **Pitfall Summary:** Students often forget to convert mass to moles before comparing. Or they assume HCl is limiting because it's a liquid volume. It's not. It's moles that matter.
 
-## Worked Example 2: The Gas Law Twist
+Worked Example 2: The Gas Law Twist
 
 **Scenario:** 0.50 mol of NaHCO₃ decomposes. `2NaHCO₃ -> Na₂CO₃ + H₂O + CO₂`. The CO₂ is collected at 25°C and 1.0 atm. What volume?
 
@@ -144,7 +144,7 @@ So the pitfall is forgetting the stoichiometric coefficient. You have 0.50 mol o
 
 **Pitfall Summary:** Always check the balanced equation coefficients. The mole ratio is the bridge. Skip it, and you're swimming upstream.
 
-## Final Thoughts
+Final Thoughts
 
 You don't need to be a genius. You need to be systematic.
 

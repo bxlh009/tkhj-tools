@@ -26,7 +26,7 @@ Where does this leave the rest of us? If you are a solo practitioner or small te
 
 The GPT-5.6 launch is a solid engineering release wrapped in a pricing story. OpenAI admitted, in their own way, that raw performance is table stakes. The thing they are actually selling now is efficiency. Whether that efficiency survives contact with real enterprise budgets is the story I will be watching for the next quarter.
 
-## References
+References
 
 - https://www.ithome.com/0/891/213.htm
 - https://www.ithome.com/0/891/201.htm

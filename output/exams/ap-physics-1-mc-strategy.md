@@ -21,7 +21,7 @@ Here's the truth: you don't need to calculate everything. You need to *recognize
 
 If you're stuck around a 3, it's likely because you're spending too much time on the hard stuff and missing the easy points. Let's fix that.
 
-## The "No-Calc" Mindset Shift
+The "No-Calc" Mindset Shift
 
 The biggest mistake students make is assuming every problem requires a formula. It doesn't.
 
@@ -31,9 +31,9 @@ Most of the time, there is.
 
 You need to shift your brain from "solver" to "analyzer." Analyze the setup. Analyze the units. Analyze the limits. That's where the points are.
 
-## 5 Strategies to Break Your Plateau
+5 Strategies to Break Your Plateau
 
-### 1. Dimensional Analysis is Your Best Friend
+1. Dimensional Analysis is Your Best Friend
 
 You can't calculate force without knowing the units. But you *can* eliminate wrong answers just by looking at them.
 
@@ -41,7 +41,7 @@ If a question asks for velocity, and one option has units of $kg \cdot m/s^2$, c
 
 I've seen students lose points because they didn't check the dimensions. Don't be that student. It's frustrating.
 
-### 2. Extreme Case Testing
+2. Extreme Case Testing
 
 What happens if mass goes to zero? What if friction is infinite?
 
@@ -51,7 +51,7 @@ For example, if you have a block on an incline, what happens if the angle is 90 
 
 This is a shortcut. Use it.
 
-### 3. Graph Reading > Equation Memorization
+3. Graph Reading > Equation Memorization
 
 You'll see graphs. Lots of them. Position-time, velocity-time, force-displacement.
 
@@ -63,7 +63,7 @@ Don't panic. Just remember:
 
 If you can read these instantly, you save minutes. Minutes turn into scores.
 
-### 4. Elimination is 80% of the Battle
+4. Elimination is 80% of the Battle
 
 You rarely need to find the *right* answer. You just need to find the *wrong* ones.
 
@@ -71,7 +71,7 @@ Cross out anything that violates conservation laws. Energy can't be created. Mom
 
 I mean, literally garbage. Throw it away.
 
-### 5. Trust Your First Instinct (Usually)
+5. Trust Your First Instinct (Usually)
 
 Students change their answers too often. Why? Because they second-guess themselves.
 
@@ -79,7 +79,7 @@ Data shows that first instincts are correct 60-70% of the time. Only change if y
 
 Nervousness is a liar.
 
-## Worked Example 1: Conservation of Energy
+Worked Example 1: Conservation of Energy
 
 **Scenario:** A ball of mass $m$ is dropped from height $h$. Air resistance is negligible. What is its speed just before impact?
 
@@ -96,7 +96,7 @@ Step 3: Solve for $v$. Cancel $m$. Multiply by 2. Divide by $g$? No, isolate $v^
 
 **Pitfall Summary:** Students often forget the factor of 2 or square root. They pick C or D. Don't. Check your algebra.
 
-## Worked Example 2: Newton's Third Law
+Worked Example 2: Newton's Third Law
 
 **Scenario:** A large truck hits a small car. Which experiences greater force?
 
@@ -113,7 +113,7 @@ Step 3: The force the truck exerts on the car is equal to the force the car exer
 
 **Pitfall Summary:** Intuition says the car gets hurt more, so it must feel more force. Wrong. Damage depends on mass and acceleration ($F=ma$), but the *force* is identical. This is a classic trap.
 
-## Why You're Stuck at a 3
+Why You're Stuck at a 3
 
 You're probably trying to prove you know physics. You're showing off.
 
@@ -123,7 +123,7 @@ The exam doesn't care if you know the derivation of the parallel axis theorem. I
 
 Be practical. Be efficient. Be ruthless with elimination.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: Should I guess on questions I don't know?**
 A: Yes! There's no penalty for wrong answers on the AP Physics 1 multiple-choice section. If you have no idea, pick the most reasonable option. You might get lucky. Better than leaving it blank.
@@ -149,7 +149,7 @@ A: Yes, but only for basic arithmetic. Complex calculations suggest you're overc
 **Q8: What's the best resource for practice?**
 A: Past exams. Official College Board questions. They set the standard. Don't rely solely on third-party books. They sometimes miss the nuance.
 
-## Final Thoughts
+Final Thoughts
 
 You don't need to be a genius. You need to be smart.
 

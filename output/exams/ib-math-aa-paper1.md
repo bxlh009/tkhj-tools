@@ -11,7 +11,7 @@ estimated_read_min: 7
 structure_template: "B"
 ---
 
-# IB Math AA Paper 1: 3 Proofs That Actually Work (Stop Memorizing)
+IB Math AA Paper 1: 3 Proofs That Actually Work (Stop Memorizing)
 
 God, I hate seeing students stare at a limit proof like it's alien hieroglyphics.
 
@@ -31,7 +31,7 @@ The kicker? These structures aren't taught in class. They're inferred from exami
 
 Turns out, the difference between a 5 and a 7 isn't intelligence. It's structure.
 
-## The Myth: “Proofs Are About Being Clever”
+The Myth: “Proofs Are About Being Clever”
 
 Teachers always tell you to “be creative” with proofs.
 
@@ -50,7 +50,7 @@ I used to think proofs were about finding the “trick” — like spotting a hi
 
 Let's break down the three structures that actually work.
 
-## Structure 1: The Definition-First Approach
+Structure 1: The Definition-First Approach
 
 This is the bread and butter of Paper 1.
 
@@ -67,7 +67,7 @@ Simple? Yes. Effective? Absolutely.
 
 Most students skip the definition and jump straight into algebra. That's like trying to build a house without a foundation. It might stand for a minute, but it'll collapse under pressure.
 
-## Structure 2: The Contradiction Shortcut
+Structure 2: The Contradiction Shortcut
 
 Sometimes, direct proof is messy. Too many cases. Too much algebra.
 
@@ -83,7 +83,7 @@ But here's the trap: You must clearly state your assumption and clearly show the
 
 Be explicit. Be brutal. Show the examiner exactly where the logic breaks.
 
-## Structure 3: The Induction Frame
+Structure 3: The Induction Frame
 
 Mathematical induction is usually reserved for discrete math, but in IB Math AA, you'll sometimes see it applied to sequences or recursive functions.
 
@@ -98,7 +98,7 @@ And that's a common mistake. Students forget to link the steps. They treat them 
 
 Don't do that. Link them. Show the chain.
 
-## Worked Example 1: Continuity Proof
+Worked Example 1: Continuity Proof
 
 **Rewritten Passage**: Consider the function $f(x) = \begin{cases} x^2 & \text{if } x < 2 \\ 4 & \text{if } x \ge 2 \end{cases}$. Prove whether $f(x)$ is continuous at $x=2$.
 
@@ -114,7 +114,7 @@ Step 4: Compare. Since both limits equal 4, and $f(2)=4$, the function is contin
 
 **Pitfall Summary**: 80% of students forget to check the right-hand limit separately. They just plug in $x=2$ and call it a day. Don't do that. Show the work.
 
-## Worked Example 2: Limit Proof via Contradiction
+Worked Example 2: Limit Proof via Contradiction
 
 **Rewritten Passage**: Prove that $\lim_{x \to 0} \frac{\sin x}{x} = 1$ using the squeeze theorem.
 
@@ -129,7 +129,7 @@ Step 3: Conclude. Therefore, $\lim_{x \to 0} \frac{\sin x}{x} = 1$.
 
 **Pitfall Summary**: Students often misremember the inequality. Make sure you know which side is which. $\cos x$ is the lower bound, not the upper.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 Q1: Do I need to memorize all the formal definitions?
 A: Yes. IB exams frequently ask you to use definitions directly. If you don't know the definition of continuity or differentiability, you can't prove anything. Memorize them. Write them out. Use them.
@@ -155,7 +155,7 @@ A: Check if the derivative exists at that point. If the left-hand derivative equ
 Q8: What's the biggest mistake students make in proofs?
 A: Assuming things. Don't assume a limit exists. Don't assume a function is continuous. Prove it. Show your work. That's the golden rule.
 
-## Final Thoughts
+Final Thoughts
 
 Proofs aren't magic. They're just logic.
 

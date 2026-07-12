@@ -33,7 +33,7 @@ Answer these three questions honestly. Don't overthink them.
 
 Your answers tell me exactly what's wrong. And more importantly, they tell me how to fix it.
 
-## The "Vocabulary in Context" Trap
+The "Vocabulary in Context" Trap
 
 If you hesitated on question #2, this is your bottleneck.
 
@@ -47,7 +47,7 @@ The word might be used ironically. Or it might be modified by a negative clause.
 
 Let's look at a rewritten example. This isn't from an old test. I wrote it to show you the trap.
 
-## Worked Example 1: Vocabulary in Context
+Worked Example 1: Vocabulary in Context
 
 **Passage:**
 "The manager's praise was not warm, but rather calculated. He offered a benevolent smile to the intern, knowing full well that the intern had made a critical error in the spreadsheet. It was a smile that said, 'I will forgive you now, but I will not forget.'"
@@ -70,7 +70,7 @@ Step 5: Choose B. The smile was a tool for manipulation, not genuine goodwill.
 **Pitfall Summary:**
 80% of students pick A. They see a positive word and assume a positive meaning. They don't read the *contrast* ("not warm"). Don't @ me on this one — context is king. Literal definitions are traps.
 
-## The "Inference" Black Hole
+The "Inference" Black Hole
 
 If you struggled with question #1, you're likely failing at inference.
 
@@ -84,7 +84,7 @@ How do you do that? By looking for evidence that *supports* a conclusion, not ju
 
 Let's try another example.
 
-## Worked Example 2: Inference
+Worked Example 2: Inference
 
 **Passage:**
 "Elara stared at the cracked pavement. The weeds pushing through the concrete were vibrant green, thriving despite the lack of soil. She remembered her grandmother's garden, how everything seemed to grow wilder when left alone. 'Maybe,' Elara thought, 'some things don't need tending to survive.'"
@@ -107,7 +107,7 @@ Step 5: Choose B. The inference is that nature thrives without human interventio
 **Pitfall Summary:**
 Students often pick D because it's true. But the question asks about her *attitude*, not the pavement. Don't confuse detail with theme.
 
-## The "Rush" Factor
+The "Rush" Factor
 
 If you answered yes to question #3, you have a pacing problem.
 
@@ -123,7 +123,7 @@ Wait, what?
 
 Yes. If a question seems too easy, double-check your answer. There's usually a trick. If a question is hard, spend more time. It's worth the points.
 
-## How to Fix Your Plateau
+How to Fix Your Plateau
 
 Now that we've identified the leaks, let's plug them.
 
@@ -131,7 +131,7 @@ Now that we've identified the leaks, let's plug them.
 2. Practice "evidence hunting." When you answer a question, force yourself to point to the exact word in the text that supports your choice. If you can't point to it, you're guessing. And guessing doesn't raise RIT scores.
 3. Simulate test conditions. Take a practice test with a timer. But here's the twist: pause after every five questions. Ask yourself, "Did I understand the main idea?" If not, go back and re-read. This builds metacognition. You're thinking about your thinking.
 
-## Why Sixth Grade Matters
+Why Sixth Grade Matters
 
 You might be wondering, "Is this really that important?"
 
@@ -143,7 +143,7 @@ They stopped trying to "get the right answer" and started trying to "understand 
 
 That shift changes everything.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 Q1: How many RIT points can I realistically gain in a month?
 A: It depends on your starting point. If you're below 210, gains are faster. If you're above 230, every point is harder to earn. Generally, 5-10 points is a solid goal for dedicated practice. Don't expect miracles overnight. Consistency beats intensity.
@@ -169,7 +169,7 @@ A: Not always. Skim the passage first. Get the gist. Then read the question. Go 
 Q8: How do I know if I'm improving?
 A: Check your RIT score trends. Look at the skill breakdowns. Are you getting better at "Vocabulary" or "Inference"? Specific feedback is more useful than a single number. Track your weak spots.
 
-## Final Thoughts
+Final Thoughts
 
 Breaking your plateau isn't about working harder. It's about working smarter.
 

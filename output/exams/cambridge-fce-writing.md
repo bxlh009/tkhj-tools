@@ -11,7 +11,7 @@ estimated_read_min: 6
 structure_template: "A"
 ---
 
-# Cambridge FCE Writing Mastery: 5 Structural Fixes for Band C
+Cambridge FCE Writing Mastery: 5 Structural Fixes for Band C
 
 Raj stared at his blank page. He had exactly forty-five minutes left. His heart hammered against his ribs like a trapped bird. He knew the grammar. He knew the vocabulary. But the essay looked like a wall of text. A gray, impenetrable brick of anxiety.
 
@@ -23,11 +23,11 @@ Here is the truth: examiners are tired. They read hundreds of papers in a day. I
 
 Let's fix this.
 
-## The Anatomy of a High-Scoring FCE Essay
+The Anatomy of a High-Scoring FCE Essay
 
 Most students treat the essay like a diary entry. They dump thoughts onto the page. That's a mistake. An essay is an argument. It needs a skeleton.
 
-### 1. The Intro Must Be Invisible
+1. The Intro Must Be Invisible
 
 Your introduction shouldn't shout. It should whisper. State the topic. Give your opinion. Outline the main points. Done.
 
@@ -37,7 +37,7 @@ Don't use clichés like "In today's society..." or "Since the dawn of time..." T
 
 See? Clear. Concise. No fluff.
 
-### 2. Paragraphs Are Containers
+2. Paragraphs Are Containers
 
 Each body paragraph must hold exactly ONE idea. If you try to cram two ideas into one paragraph, the structure collapses. The examiner gets lost. You lose points.
 
@@ -48,7 +48,7 @@ For example:
 
 That's your anchor. Everything else in that paragraph supports that anchor. If you start talking about "better work-life balance," you're drifting. Stay on track.
 
-### 3. Linking Words Are Bridges, Not Decorations
+3. Linking Words Are Bridges, Not Decorations
 
 Students love linking words. They think using "Furthermore" and "Moreover" makes them sound smart. It doesn't. It just makes them sound like a thesaurus.
 
@@ -60,7 +60,7 @@ If you're concluding? Use "Therefore."
 
 Don't force them. If the logic doesn't need a linker, leave it out. Natural flow beats artificial complexity every time.
 
-### 4. The Conclusion Is a Mirror
+4. The Conclusion Is a Mirror
 
 Your conclusion should reflect your introduction. Restate your opinion. Summarize your main points. But don't introduce new ideas. Ever.
 
@@ -70,13 +70,13 @@ New ideas in the conclusion confuse the reader. They make the essay feel unfinis
 
 Boom. Done.
 
-### 5. Proofreading Is Non-Negotiable
+5. Proofreading Is Non-Negotiable
 
 You have ten minutes left. Use them. Read your essay backwards. Yes, backwards. This breaks the narrative flow and forces you to see each word individually. You'll spot typos you'd otherwise miss.
 
 Spelling errors don't cost you as much as structural errors. But they add up. And nobody likes a messy final product.
 
-## Worked Example 1: The "Opinion Essay" Trap
+Worked Example 1: The "Opinion Essay" Trap
 
 **Prompt:**
 "Some people believe that university education is the key to success, while others argue that practical experience is more valuable. Discuss both views and give your own opinion."
@@ -108,7 +108,7 @@ This is a disaster. Why?
 **Pitfall Summary:**
 Notice how each paragraph has a clear topic sentence? And how the conclusion mirrors the intro? That's structure. That's Band C.
 
-## Worked Example 2: The "Advantages/Disadvantages" Mistake
+Worked Example 2: The "Advantages/Disadvantages" Mistake
 
 **Prompt:**
 "Some people think that the advantages of living in large cities outweigh the disadvantages. To what extent do you agree or disagree?"
@@ -133,7 +133,7 @@ Students list advantages. Then list disadvantages. Then forget to give an opinio
 **Pitfall Summary:**
 Did you see the rebuttal in Body 2? That's advanced structuring. It shows nuance. Examiners love nuance.
 
-## Final Thoughts
+Final Thoughts
 
 Structure isn't about rigidity. It's about clarity. When your reader knows where you're going, they'll follow you anywhere.
 

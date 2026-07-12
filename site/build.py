@@ -22,7 +22,7 @@ EXAM_TABS = ["All Exams","IELTS","TOEFL","GRE","SAT","More"]
 AI_TABS   = ["All","AI","Tools","Prompts","Workflows","Productivity"]
 
 EXAM_ICON = {"IELTS":"","TOEFL":"","GRE":"","SAT":"","More":""}
-AI_ICON   = {"AI":"","Tools":"\xf0\x9f\x94\xa7","Prompts":"\xf0\x9f\x93\x9c","Workflows":"\xe2\x9a\x99\xef\xb8\x8f","Productivity":"\xf0\x9f\x9a\x80"}
+AI_ICON   = {"AI":"","Tools":"🔧","Prompts":"📜","Workflows":"⚙️","Productivity":"🚀"}
 
 if OUT.exists(): shutil.rmtree(OUT)
 OUT.mkdir(parents=True, exist_ok=True)
@@ -117,7 +117,10 @@ def card(a, is_exam=True):
     cls = ctag(cat)
     m = max(1, a["_wc"] // 220)
     title = esc(a.get("title", "Untitled"))
-    kw = esc(a.get("primary_keyword", ""))
+    # card description: first meaningful line from body, not just repeated keyword
+    _, body_text = fm(a.get("_body", ""))
+    first_line = next((l.lstrip('#').strip() for l in body_text.strip().split('\n') if l.strip() and len(l.strip()) > 20), '')
+    kw = esc(first_line[:120] + '…' if len(first_line) > 120 else first_line)
     date = a.get("date", "")[:10]
     keywords = a.get("_keywords", [])
     keywords_json = esc(json.dumps(keywords, ensure_ascii=False) if keywords else "[]")

@@ -16,7 +16,7 @@ I've been teaching TOEFL and GRE strategies for over a decade, but lately, my re
 
 Let me be direct. The era of "write me a blog post" is dead. That's why your results are mediocre.
 
-### The Workflow That Actually Saves Time
+The Workflow That Actually Saves Time
 
 Most professionals waste hours on iteration. Here's the five-step workflow I use daily to cut that down to minutes.
 
@@ -42,13 +42,13 @@ Do you want a bullet list? A JSON object? A markdown table? Tell it. Explicitly.
 5. Iterate with Feedback Loops
 Never accept the first draft. Treat it like a junior intern. "That's good, but make it more concise. Remove the jargon." This feedback loop refines the output significantly. It's not about getting it right the first time; it's about steering the ship.
 
-### Why This Matters for Busy Professionals
+Why This Matters for Busy Professionals
 
 You're not here to play with toys. You're here to ship work. The difference between a good prompt and a great one is often just ten extra seconds of typing. But that ten seconds saves you ten minutes of editing.
 
 I used to think more complex prompts were better. Turns out, simpler is often sharper. Clarity is the ultimate sophistication.
 
-### Real-World Example: The Email Rewrite
+Real-World Example: The Email Rewrite
 
 Let's look at a concrete case. A student named Raj wanted to send a difficult email to his boss about a missed deadline. His original prompt was: "Write an email apologizing for being late."
 
@@ -58,7 +58,7 @@ My revised prompt: "Act as a professional project manager. Write a concise email
 
 Result: Strong, professional, actionable. Raj got his bonus.
 
-### Common Mistakes to Avoid
+Common Mistakes to Avoid
 
 1. Vague Adjectives
 Words like "creative," "professional," or "funny" are subjective. The AI interprets them differently than you do. Instead, describe the desired effect. "Use short sentences and active voice" is better than "be engaging."
@@ -69,13 +69,13 @@ LLMs love to ramble. Set strict limits. "No more than 200 words." "Do not use bu
 3. Assuming One-Shot Magic
 Rarely is the first output perfect. Always review. Always tweak. The AI is a tool, not a oracle.
 
-### The Bottom Line
+The Bottom Line
 
 Prompt engineering isn't about memorizing syntax. It's about communication. It's about understanding how machines think. And once you crack that code, you unlock a superpower.
 
 Don't let bad prompts hold you back. Start applying these best practices today. Your future self will thank you.
 
-### FAQ
+FAQ
 
 Q1: Is prompt engineering still relevant in 2026?
 A: Absolutely. While models are smarter, they're also more capable of misunderstanding vague instructions. Better prompts yield better results. It's not about tricking the AI; it's about guiding it.
@@ -106,7 +106,7 @@ A: Unlikely. AI will automate basic prompting, but strategic, nuanced communicat
 
 > **Editor's note: I've been teaching this topic for years. The advice here comes from real classroom experience, not just theory.**
 
-## References
+References
 
 - https://blog.openai.com",
 - https://www.anthropic.com/research"

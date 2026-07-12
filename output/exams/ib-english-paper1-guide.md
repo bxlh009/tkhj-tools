@@ -11,7 +11,7 @@ estimated_read_min: 7
 structure_template: "A"
 ---
 
-# IB English Paper 1 Guide: 5 Textual Analysis Strategies to Boost Your Score
+IB English Paper 1 Guide: 5 Textual Analysis Strategies to Boost Your Score
 
 Raj stared at the prompt. *Analyze how the author uses tone to convey meaning.* He'd read the text three times. He knew what it said. But when he started writing, his essay was just... summary. Paragraph after paragraph of "he said this, then she did that." He got a 3. A 3! For someone who could quote Shakespeare backward.
 
@@ -21,7 +21,7 @@ I've taught thousands of students. The ones who break out of the 4-5 range aren'
 
 Here's the thing. Paper 1 isn't a test of your taste. It's a test of your ability to find evidence for a claim. Let's fix that.
 
-## The Myth of the "Good Read"
+The Myth of the "Good Read"
 
 You know what kills me? Students who think they need to love the text to analyze it well. No. You don't need to love it. You need to hate it enough to tear it apart. Or love it enough to understand why it works.
 
@@ -29,7 +29,7 @@ Turns out, the best essays come from students who treat the text as a machine. E
 
 So, how do we build that machine? Here are five strategies that actually work. Not the fluffy advice you get from generic blogs. Real, gritty, actionable steps.
 
-## Strategy 1: The "So What?" Test
+Strategy 1: The "So What?" Test
 
 Every time you make a claim, ask yourself: "So what?"
 
@@ -43,7 +43,7 @@ See the difference? One is observation. The other is argument.
 
 I mean, literally, stop writing observations. Start writing arguments. If you can't answer "so what?", delete the sentence.
 
-## Strategy 2: Tone is Not Adjective Soup
+Strategy 2: Tone is Not Adjective Soup
 
 Students love listing adjectives. "The tone is melancholic, somber, and reflective." Wow. Groundbreaking.
 
@@ -53,7 +53,7 @@ Here's the kicker? Tone shifts. Always. Find the shift. That's where the gold is
 
 When the tone changes, ask: Why now? What triggered it? Usually, it's a revelation. A memory. A realization. Pinpoint that moment. Analyze the language around it. Boom. Insight.
 
-## Strategy 3: Context is King (But Don't Worship It)
+Strategy 3: Context is King (But Don't Worship It)
 
 Yes, context matters. But Paper 1 is about the text itself. Not the biography of the author. Not the historical era. Unless the text explicitly references it.
 
@@ -61,7 +61,7 @@ Don't waste time researching the author's childhood. Focus on the words on the p
 
 This is where most students lose points. They bring in outside knowledge. Bad move. Stick to the text. Always.
 
-## Strategy 4: Structure Reveals Meaning
+Strategy 4: Structure Reveals Meaning
 
 How the text is organized tells you everything. Is it chronological? Flashbacks? Stream of consciousness? Fragmented?
 
@@ -69,7 +69,7 @@ Structure isn't accidental. It's intentional. If the narrative jumps around, why
 
 Analyze the structure. Connect it to the theme. That's a high-level insight.
 
-## Strategy 5: The "Big Three" Devices
+Strategy 5: The "Big Three" Devices
 
 You don't need to know every literary device. Just master the big three: imagery, syntax, and diction.
 
@@ -81,7 +81,7 @@ Diction: Word choice. Connotation vs. denotation. Why this word and not another?
 
 Focus on these. Master them. Everything else is decoration.
 
-## Worked Example 1: The Shift in Tone
+Worked Example 1: The Shift in Tone
 
 **Passage:**
 "The garden was overgrown, weeds choking the roses. She walked through the gate, her heart heavy. For a moment, she remembered the laughter, the sunlight, the life. Then the wind picked up, scattering leaves like confetti. She turned away. The gate clicked shut."
@@ -102,7 +102,7 @@ Answer: B.
 
 **Pitfall Summary:** Students often pick A because they focus only on the beginning. They miss the shift. The shift is key. Always look for changes.
 
-## Worked Example 2: Syntax and Tension
+Worked Example 2: Syntax and Tension
 
 **Passage:**
 "He waited. Minutes passed. Hours. The door remained closed. Silence. Then, a creak. A footstep. Another. Closer. He held his breath. The handle turned."
@@ -123,7 +123,7 @@ Answer: B.
 
 **Pitfall Summary:** Students might think "repetitive structures" means D. But repetition here is for effect, not boredom. Look at the content. "Closer." "Turned." It's building threat. Not boredom.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: How much time should I spend planning?**
 A: Ten minutes. Max. Sketch your thesis. List three pieces of evidence. Outline your paragraphs. Don't overthink. You can adjust as you write. Planning too long steals time from writing.

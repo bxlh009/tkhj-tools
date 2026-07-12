@@ -11,7 +11,7 @@ estimated_read_min: 11
 structure_template: "A"
 ---
 
-# TOEFL Reading Tips: 5 Inference Strategies to Break the 22 Ceiling
+TOEFL Reading Tips: 5 Inference Strategies to Break the 22 Ceiling
 
 Raj sat in my office, staring at his practice test printout like it was written in ancient Sumerian. He'd been stuck at 22 for six months. Six months! He told me he read every word twice. He highlighted everything. He even bought the expensive prep book with the glossy cover. But when I asked him to explain *why* he chose option C on question 14, he froze. "It sounded right," he said. That's the problem. It didn't sound right because it was correct; it sounded right because it was plausible. And in TOEFL Reading, plausible is a trap.
 
@@ -19,7 +19,7 @@ I've graded thousands of essays and watched hundreds of students hit that 22 wal
 
 Here is the truth: most students fail inference questions because they treat them like detail questions. They look for a synonym match. They don't. Let's fix that.
 
-## The Core Problem: Why You're Stuck at 22
+The Core Problem: Why You're Stuck at 22
 
 You know the basics. You can find main ideas. You can locate vocabulary definitions. But when the question asks, "What can be inferred about the author's attitude?" or "Which of the following is supported by the passage?", your brain short-circuits.
 
@@ -27,7 +27,7 @@ Why? Because you're looking for explicit statements. There aren't any. The answe
 
 I had a student named Maria in 2019. She was brilliant but anxious. She'd spend 12 minutes on a 7-minute passage. She missed three inference questions because she overthought them. She wanted the text to say exactly what she was thinking. It never does. Once we stopped ing to "prove" the answer and started looking for "implications," her score jumped to 26. Just like that. No magic. Just structure.
 
-## 5 Steps to Master Inference Questions
+5 Steps to Master Inference Questions
 
 Here is the methodology. It's not complicated, but it requires discipline. You have to train your brain to stop hunting for words and start hunting for logic.
 
@@ -46,7 +46,7 @@ Here is the methodology. It's not complicated, but it requires discipline. You h
 5. **Eliminate Extreme Options**
  Inference answers are rarely absolute. Avoid options with words like "always," "never," "completely," or "proves." The correct answer will usually be moderate: "likely," "suggests," "may," or "partially." If an option sounds too strong, it's probably wrong.
 
-## Worked Example 1: The "Attitude" Inference
+Worked Example 1: The "Attitude" Inference
 
 Let's look at a rewritten example based on common TOEFL themes. This is not an official question. It's designed to show you the trap.
 
@@ -73,7 +73,7 @@ Step 5: Eliminate extremes. Option A ignores the negatives. Option C is factuall
 **Pitfall Summary:**
 80% of students pick A because they see "celebrated" and "advancements." They stop reading. Don't do that. Look at the contrast word "While." It signals a shift in opinion. The real argument comes after the comma. Also, avoid C and D because they are absurdly extreme or opposite. Inference questions punish lazy reading.
 
-## Worked Example 2: The "Cause and Effect" Inference
+Worked Example 2: The "Cause and Effect" Inference
 
 This one is tricky. It requires connecting two separate sentences.
 
@@ -100,7 +100,7 @@ Step 5: Eliminate extremes. A is wrong ("sole cause"). C is wrong (opposite effe
 **Pitfall Summary:**
 Students often pick A because they want a simple answer. "Deforestation caused it!" No. The text says it "exacerbated" (made worse) existing issues. Inference requires precision. If the text says "combined with," look for the interaction, not just one factor. Also, notice the word "likely" in B. It's a safe, moderate inference.
 
-## Time Management: The Silent Killer
+Time Management: The Silent Killer
 
 You know the tips. You know the strategies. But you still run out of time. Why? Because you're rereading.
 
@@ -108,7 +108,7 @@ When you get stuck on an inference question, you go back to the text. You read t
 
 I've seen students lose 5 points on their entire section because they refused to let go of one hard question. That's not dedication. That's poor strategy. Your goal is to maximize points, not to prove you're smart. Smart people know when to quit.
 
-## FAQ: Common Inference Mistakes
+FAQ: Common Inference Mistakes
 
 **Q1: How do I know if an answer is "too extreme"?**
 Look for absolute words like "all," "none," "always," "never," "only," or "proves." Inference questions deal with probabilities, not certainties. The correct answer will usually use softer language like "suggests," "likely," "may," or "often." If an option claims something is 100% true without explicit evidence, it's probably wrong. Be skeptical of absolutes. They rarely survive close scrutiny in standardized tests.
@@ -128,7 +128,7 @@ Generally, yes. Detail questions ask for explicit information. Inference questio
 **Q6: Should I read the whole passage before answering questions?**
 It depends on your strategy. Some students prefer to skim the passage first to get the gist. Others prefer to read deeply as they go. For inference questions, having a general map of the passage helps. If you know where the author discusses "attitude" or "cause," you can locate it faster. But don't waste time analyzing every sentence. Focus on structure: introduction, arguments, evidence, conclusion. That's enough to navigate.
 
-## Final Thoughts
+Final Thoughts
 
 Breaking the 22 ceiling isn't about reading more. It's about thinking differently. Stop looking for quotes. Start looking for logic. Practice these steps. Drill inference questions until they feel natural. And for god's sake, manage your time.
 

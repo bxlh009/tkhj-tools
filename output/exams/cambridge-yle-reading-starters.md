@@ -11,7 +11,7 @@ estimated_read_min: 7
 structure_template: "A"
 ---
 
-# Cambridge YLE Reading Starters: 5 Proven Fixes for Vocabulary Struggles
+Cambridge YLE Reading Starters: 5 Proven Fixes for Vocabulary Struggles
 
 Leo was seven—just seven—and he was drowning in my office chair, which was way too big for him, staring at a worksheet with these wide, terrified eyes. It's 2019, right? He'd just bombed his first mock test for the Cambridge YLE Starters. Not 'cause he couldn't read, though. But 'cause he didn't know the word “purple.” He knew the color! He could see it. But when it popped up in a sentence about a cat? His brain just short-circuited.
 
@@ -23,7 +23,7 @@ I spent the next six months working with Leo. We didn't do flashcards. We didn't
 
 Turns out, the gap between "knowing the word" and "using the word" is where most parents waste their time. Let me break down exactly how we fixed it.
 
-## The Mistake: Treating Words Like Data
+The Mistake: Treating Words Like Data
 
 Most parents think vocabulary is storage. You put a word in, you take it out later. But language isn't a database. It's a web. When Leo saw "purple," his brain searched for a definition. When he didn't find one, he froze.
 
@@ -31,7 +31,7 @@ The real problem? They're learning words in isolation.
 
 Here's what I did. I stopped treating the Reading paper like a test. I started treating it like a puzzle. And I gave Leo five specific tools to solve it.
 
-## Fix 1: The "Picture First" Rule
+Fix 1: The "Picture First" Rule
 
 In the Starters exam, the texts are short. Usually one or two sentences. The key is to visualize before you translate.
 
@@ -39,7 +39,7 @@ When Leo saw "The cat is purple," I told him to close his eyes. Imagine a cat. N
 
 I mean, literally, if you can draw it, you can remember it.
 
-## Fix 2: Context Clues Are Your Best Friend
+Fix 2: Context Clues Are Your Best Friend
 
 Sometimes, you don't need to know every word. You just need to guess.
 
@@ -49,7 +49,7 @@ Do you know what "late" means? Maybe. Maybe not. But look at "ran fast." Why wou
 
 This is called inference. And it's the superpower of top scorers.
 
-## Fix 3: The "Three-Word Trap"
+Fix 3: The "Three-Word Trap"
 
 Kids often get stuck on one word and miss the whole sentence. I call this the "Three-Word Trap." They see "big," "red," "apple." They stop. They panic.
 
@@ -57,7 +57,7 @@ The fix? Read the whole sentence first. Ignore the hard words. Get the gist. The
 
 It's like driving. You don't stare at the license plate of the car in front of you. You watch the road.
 
-## Fix 4: Gamify the Grind
+Fix 4: Gamify the Grind
 
 Boredom kills retention. If Leo was bored, he wasn't learning. So we turned vocabulary into a game.
 
@@ -65,7 +65,7 @@ We played "Simon Says" with verbs. We drew pictures with adjectives. We made sil
 
 Honestly, I used to think fun activities were a waste of study time --- turns out I was wrong. Fun *is* the study time.
 
-## Fix 5: Spaced Repetition, Not Cramming
+Fix 5: Spaced Repetition, Not Cramming
 
 Cramming works for a day. It fails for a lifetime.
 
@@ -73,7 +73,7 @@ We reviewed new words every three days. Monday: learn. Wednesday: review. Friday
 
 No wait, let me be direct. Don't study for five hours on Saturday. Study for twenty minutes every day. Consistency beats intensity. Every. Single. Time.
 
-## Worked Example 1: Matching Words to Pictures
+Worked Example 1: Matching Words to Pictures
 
 **Passage:**
 "Look at the picture. The bird is blue. The tree is green. The sun is yellow."
@@ -91,7 +91,7 @@ Step 3: Match. Done.
 
 Here's the pitfall—80% of students miss it. They see the green tree, but the question's about the bird. Don't rush! Read the prompt *first*, before you even glance at the pics. If you look first, you'll match the wrong thing. I've seen kids lose points matching “green” to “bird” just 'cause they saw green first. Slow down. Speed comes from accuracy, not haste.
 
-## Worked Example 2: Fill in the Blank
+Worked Example 2: Fill in the Blank
 
 **Passage:**
 "The girl is ___ her homework. She uses a pencil."
@@ -106,13 +106,13 @@ Here's the fix: Step one? Just read the context—"She uses a pencil." Step two,
 **Pitfall Summary:**
 Students often overthink. They try to translate every word. Instead, use logic. If you see "pencil," think "write" or "do." If you see "bed," think "sleep." Connect the dots. Don't get lost in the weeds.
 
-## Why This Works
+Why This Works
 
 Leo's brain changed. He stopped fearing unknown words. He started hunting for clues. He realized that he didn't need to know *everything*. He just needed to know *enough*.
 
 And that's the secret. You don't need a perfect score on the vocab list. You need a strategic mind.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 Q1: How many words should my kid know for Starters? A: It's around 500-600 core words. But don't get me wrong—it's not just about quantity. It's about quality. Knowing “happy” deeply? That's way better than knowing “joyful” vaguely. So focus on high-frequency words first.
 
@@ -137,7 +137,7 @@ A: Take a mock test. Not a full one. Just the reading section. See where they st
 **Q8: Is the Starters exam hard?**
 A: It's meant for beginners—but “beginner” is tricky. For some? Easy. For others? Tough. Don't compare. Compare your kid to themselves yesterday. Progress, not perfection.
 
-## Final Thoughts
+Final Thoughts
 
 Leo passed. He smiled. He ran out of the exam center. And I smiled too.
 

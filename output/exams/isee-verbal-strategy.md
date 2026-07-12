@@ -11,7 +11,7 @@ estimated_read_min: 8
 structure_template: "A"
 ---
 
-# ISEE Verbal Strategy: 3 Proven Steps to Boost Synonyms & Reading Comprehension Scores
+ISEE Verbal Strategy: 3 Proven Steps to Boost Synonyms & Reading Comprehension Scores
 
 Raj stared at the word "obsequious" and panicked. He'd studied for three weeks, memorized flashcards until his eyes burned, but when the clock started ticking, his brain went blank. He guessed B. He got it wrong. His verbal score stayed stuck at the 60th percentile.
 
@@ -29,7 +29,7 @@ I used to think rote memorization was the key --- turns out I was wrong. Data fr
 
 So, what's the fix?
 
-## Step 1: Stop Memorizing Definitions. Start Mapping Connotations.
+Step 1: Stop Memorizing Definitions. Start Mapping Connotations.
 
 Most students look up a word and write down its dictionary definition. That's lazy. And it doesn't work for the ISEE.
 
@@ -47,7 +47,7 @@ This method forces you to think about the *weight* of the word, not just its bas
 
 Honestly, this takes more effort upfront. But it pays off massively on test day. You're not guessing anymore. You're analyzing.
 
-## Step 2: Read Like a Detective, Not a Tourist.
+Step 2: Read Like a Detective, Not a Tourist.
 
 The Reading Comprehension section is where most students lose points. They read the passage quickly, skim the questions, and then try to find answers in the text.
 
@@ -71,7 +71,7 @@ This is called "structural reading." It's a skill. And like any skill, it gets b
 
 Don't just read for facts. Read for structure.
 
-## Step 3: Practice with Purpose. Not Quantity.
+Step 3: Practice with Purpose. Not Quantity.
 
 Many students do 10 practice tests. They get bored. They guess. They don't learn.
 
@@ -89,7 +89,7 @@ This is how you break through plateaus.
 
 God, I've seen so many students burn out because they're grinding tests without reflection. It's tragic. Don't be one of them.
 
-## Worked Example 1: Synonyms (Connotation Focus)
+Worked Example 1: Synonyms (Connotation Focus)
 
 **Passage:** None. Just the word.
 
@@ -108,7 +108,7 @@ Step 3: Match. "Thrifty" is the closest synonym in tone and meaning.
 
 **Pitfall Summary:** Students often pick "cheap" because it's related to money. But "frugal" implies wisdom, not stinginess. Tone matters!
 
-## Worked Example 2: Reading Comprehension (Inference)
+Worked Example 2: Reading Comprehension (Inference)
 
 **Passage:**
 "The industrial revolution brought unprecedented economic growth, but it also introduced severe environmental challenges. Factories belched smoke into the skies, and rivers ran thick with chemical waste. While proponents argued that progress required sacrifice, critics pointed to the long-term health costs borne by local communities. Today, we face similar dilemmas as we expand renewable energy infrastructure."
@@ -128,7 +128,7 @@ Step 3: Infer the purpose. The author is saying, "We had problems before, and we
 
 **Pitfall Summary:** Students might pick A or C because they focus on "costs" or "pollution." But the key word is "similar dilemmas." The author isn't criticizing green energy; he's comparing eras.
 
-## Why This Works
+Why This Works
 
 You're not just learning words. You're learning how to think like the test-maker.
 
@@ -136,7 +136,7 @@ The ISEE Verbal section is designed to filter out students who rely on surface-l
 
 And that's a skill that will serve you well in high school, college, and beyond.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: How many synonyms should I memorize for the ISEE?**
 A: Don't memorize a fixed number. Focus on high-frequency academic words. Aim for 200-300 core words with strong connotation maps. Quality beats quantity every time.
@@ -162,7 +162,7 @@ A: Yes. 20 minutes for Synonyms, 35 minutes for Reading. Pace yourself. Practice
 **Q8: Can I improve my score in two weeks?**
 A: Yes, if you focus on error logs and targeted practice. Don't try to learn new words. Fix old mistakes.
 
-## Final Thoughts
+Final Thoughts
 
 The ISEE Verbal section isn't about being a genius. It's about being strategic.
 

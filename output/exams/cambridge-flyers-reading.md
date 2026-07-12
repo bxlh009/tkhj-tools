@@ -21,7 +21,7 @@ So, how do we fix it? We don't. We play.
 
 But before we get to the fun part, let's diagnose the problem. Because if you don't know *why* your child is stuck, you'll keep throwing darts in the dark.
 
-### The Diagnostic Check
+The Diagnostic Check
 
 Ask yourself these three questions. Be honest.
 
@@ -31,7 +31,7 @@ Ask yourself these three questions. Be honest.
 
 If you answered "no" to any of these, you've found the leak. Let's plug it.
 
-### Fix 1: Stop Translating, Start Visualizing
+Fix 1: Stop Translating, Start Visualizing
 
 The biggest mistake parents make is translating everything into their native language. "Apple is 'pingguo'." "Dog is 'gou'." This creates a mental bottleneck. The brain has to process English -> Native Language -> Meaning. That's too slow for a timed exam.
 
@@ -43,7 +43,7 @@ Try this game: "The Silent Picture." Pick a random object in the house. Give you
 
 Honestly, this feels silly. It really does. But kids learn through play, not lectures.
 
-### Fix 2: Context Clues Are Your Best Friend
+Fix 2: Context Clues Are Your Best Friend
 
 In the Cambridge Flyers reading test, your child won't have a dictionary. They'll have context. And most kids ignore it.
 
@@ -55,7 +55,7 @@ Teach them to be detectives. When they see a weird word, they shouldn't panic. T
 
 Here is a quick exercise: Read a short story together. Pause at every third word. Ask, "What do you think this word means based on what just happened?" Don't correct them immediately. Let them guess. If they're wrong, gently guide them. If they're right, celebrate! High five. Seriously. Dopamine helps memory.
 
-### Fix 3: The "Word Family" Hack
+Fix 3: The "Word Family" Hack
 
 Vocabulary isn't just about single words. It's about families.
 
@@ -65,7 +65,7 @@ In the reading test, they might see "The runner was fast." If they only know "ru
 
 Make a "Word Tree." Write the root word in the middle. Branch out with related words. Use colors. Red for verbs. Blue for nouns. Green for adjectives. It's visual. It's organized. And it's way more fun than a list.
 
-### Worked Example 1: The Missing Word
+Worked Example 1: The Missing Word
 
 Let's look at a typical Flyers-style question. Note: This is a rewritten example for teaching purposes, not official Cambridge material.
 
@@ -87,7 +87,7 @@ Step 3: Match with options. Option B says "Because he thought it would rain." Pe
 **Pitfall Summary:**
 80% of students pick A because umbrellas are often used for sun. But the text says "dark and cloudy." Context is king. Don't use outside knowledge. Use the text.
 
-### Worked Example 2: True, False, or Not Given
+Worked Example 2: True, False, or Not Given
 
 **Passage:**
 "Lily loves animals. She has a cat named Whiskers and a fish named Bubbles. Yesterday, she went to the park and saw a dog. The dog was brown and fluffy. Lily wanted to pet it, but her mom said no."
@@ -108,7 +108,7 @@ Step 4: Answer is B) False. Wait, is it False or Not Given? The text lists her p
 **Pitfall Summary:**
 Students often confuse "Not Given" with "False." False means the text contradicts the statement. Not Given means the text doesn't say. Here, the text lists her pets. A dog is not on the list. Therefore, she doesn't have one. False.
 
-### Fix 4: Daily Micro-Habits
+Fix 4: Daily Micro-Habits
 
 You don't need an hour. You need five minutes.
 
@@ -120,7 +120,7 @@ Consistency beats intensity. Every. Single. Time.
 
 I've had students who studied for 10 hours a week and failed. And students who studied for 10 minutes a day and passed with flying colors. Why? Because their brains were constantly primed. They weren't cramming. They were living the language.
 
-### Fix 5: Embrace Mistakes
+Fix 5: Embrace Mistakes
 
 Your child will get things wrong. They will mix up "he" and "she." They will forget the plural "s." Good.
 
@@ -130,7 +130,7 @@ Create a "Mistake Jar." Every time they make a mistake, write it on a slip of pa
 
 This changes the mindset. From "I'm bad at English" to "I'm collecting data."
 
-### Final Thoughts
+Final Thoughts
 
 The Cambridge Flyers reading test isn't about knowing every word in the dictionary. It's about understanding the story. It's about connecting the dots.
 

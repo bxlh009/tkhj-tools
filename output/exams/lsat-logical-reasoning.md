@@ -11,17 +11,17 @@ estimated_read_min: 7
 structure_template: "A"
 ---
 
-# LSAT Logical Reasoning: 5 Flaw Question Hacks to Boost Your Score Fast
+LSAT Logical Reasoning: 5 Flaw Question Hacks to Boost Your Score Fast
 
 Raj stared at his practice test, pen hovering over the paper like a hawk that forgot how to dive. He'd just bombed another set of flaw questions. Again. His score hadn't budged from 162 in three months. He told me, “I get the argument. I see the conclusion. But the answer choices look like they're all written in alien.” I nodded. I've seen this a thousand times. It's not that Raj is bad at logic. It's that he's trying to *evaluate* the argument instead of *describing* its failure. Big difference. Let me be clear: LSAT logical reasoning isn't about whether the conclusion is true. It's about spotting the exact moment the premises stop supporting it. Here's how to fix it.
 
-## The Core Mistake: Evaluation vs. Description
+The Core Mistake: Evaluation vs. Description
 
 Most students treat flaw questions like mini-essays. They read the stimulus, form an opinion on the argument's strength, then hunt for an answer choice that matches their opinion. Wrong. The correct answer doesn't need to agree with you. It needs to *accurately describe* the gap between premise and conclusion. Think of it like a mechanic diagnosing a car. You don't care if the engine is “good” or “bad.” You care *why* it's making that noise. The answer choice is the diagnosis. If it misidentifies the noise, it's wrong—even if the car is actually broken.
 
 Honestly, this shift in mindset changes everything. Stop asking, “Is this argument valid?” Start asking, “What specific error did the author commit?” The LSAT rewards precision, not intuition.
 
-## Five Hacks to Crush Flaw Questions
+Five Hacks to Crush Flaw Questions
 
 1. Identify the conclusion first. Always. If you don't know what the author is trying to prove, you can't spot how they failed. Look for indicator words like “therefore,” “thus,” or “must be true.” Sometimes the conclusion is implied. That's when you ask yourself, “What is the author trying to convince me of?”
 
@@ -33,7 +33,7 @@ Honestly, this shift in mindset changes everything. Stop asking, “Is this argu
 
 5. Eliminate aggressively. Flaw questions have five answer choices. Four are distractors. They might sound plausible, but they don't accurately describe the flaw. Watch out for answers that attack the truth of the premises (wrong! we assume premises are true), answers that offer alternative explanations (irrelevant!), or answers that are too broad (“the argument is weak”). The correct answer will be surgically precise.
 
-## Worked Example 1: The Correlation-Causation Trap
+Worked Example 1: The Correlation-Causation Trap
 
 Stimulus: A recent study found that cities with higher ice cream sales also have higher rates of drowning. Therefore, eating ice cream causes drowning.
 
@@ -49,7 +49,7 @@ Solution: Step 1: Conclusion is “eating ice cream causes drowning.” Step 2: 
 
 **Pitfall Summary**: Students often pick E because it sounds reasonable. But the question asks for the *flaw in the reasoning*, not a counter-argument. The flaw is the leap from correlation to causation. E doesn't describe that leap. B does.
 
-## Worked Example 2: The Hasty Generalization
+Worked Example 2: The Hasty Generalization
 
 Stimulus: My two friends from New York City are rude. Therefore, people from NYC are generally rude.
 
@@ -65,11 +65,11 @@ Solution: Step 1: Conclusion is “people from NYC are generally rude.” Step 2
 
 **Pitfall Summary**: Don't fall for B or C. They sound smart but don't address the logical error. The error is sampling bias. A names it directly.
 
-## Why This Matters for Your Score
+Why This Matters for Your Score
 
 Flaw questions are the backbone of LSAT logical reasoning. They appear in nearly every section. Master them, and you boost your score across the board. Miss them, and you waste time second-guessing. The key is discipline. Stick to the process. Identify conclusion. Find premises. Spot the gap. Prephrase. Eliminate. Repeat.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 Q: Should I worry about whether the premises are true?
 A: No. Assume all premises are true. The LSAT tests your ability to evaluate the *logic*, not the *facts*. If an answer choice attacks the truth of a premise, it's wrong.

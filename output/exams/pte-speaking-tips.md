@@ -21,7 +21,7 @@ So, we stripped everything back. We focused on five specific, actionable tweaks.
 
 If you're stuck in the 50-60 range, or you're hovering at 65 but can't push to 79+, this is for you. Let's get into it.
 
-## The Fluency Trap: Why You're Stalling
+The Fluency Trap: Why You're Stalling
 
 Fluency isn't just “speaking fast.” It's speaking *continuously*. The PTE algorithm penalizes hesitation. It penalizes self-correction. It penalizes silence longer than 0.5 seconds.
 
@@ -33,7 +33,7 @@ The machine doesn't care about your thought process. It cares about the audio wa
 
 So, how do you fix it?
 
-## Fix 1: The "Chunking" Mindset
+Fix 1: The "Chunking" Mindset
 
 Stop reading word-by-word. Start reading phrase-by-phrase.
 
@@ -47,7 +47,7 @@ This creates natural breath groups. It sounds human. It sounds fluent. It keeps 
 
 Try this exercise: Take any news article. Highlight the natural pauses. Read it aloud, focusing *only* on hitting those highlights. Don't worry about pronunciation yet. Just worry about the rhythm.
 
-## Fix 2: Embrace the "Good Enough" Word
+Fix 2: Embrace the "Good Enough" Word
 
 Perfection is the enemy of fluency.
 
@@ -57,7 +57,7 @@ I mean, literally dead. Your fluency score drops.
 
 Don't overthink. Just speak.
 
-## Fix 3: Master the "Filler" Sounds
+Fix 3: Master the "Filler" Sounds
 
 Silence is fatal. Filler sounds are survivable.
 
@@ -67,7 +67,7 @@ These aren't crutches. They're bridges. They keep the audio stream active while 
 
 Watch out though. Don't overdo it. "Um," "Uh," and "Like" are penalized heavily. Stick to clear, verbal fillers.
 
-## Fix 4: Record and Listen (The Painful Part)
+Fix 4: Record and Listen (The Painful Part)
 
 You hate hearing your own voice. I know. I hated it too.
 
@@ -81,7 +81,7 @@ Then record it again. Try to reduce the pauses by 50%.
 
 Do this daily for two weeks. You'll hear the improvement. I promise.
 
-## Fix 5: Breath Control
+Fix 5: Breath Control
 
 Runners know this. Singers know this. You need to know it too.
 
@@ -93,7 +93,7 @@ This simple trick stabilizes your voice. It reduces trembling. It gives you more
 
 Try it now. Go ahead. Take a breath. Feel that? That's control.
 
-## Worked Example 1: Read Aloud
+Worked Example 1: Read Aloud
 
 **Passage:**
 "The economic landscape of the twenty-first century is characterized by rapid technological advancements and shifting global markets. Companies must adapt quickly to survive."
@@ -109,7 +109,7 @@ Reading too fast, leading to mispronunciation of "characterized" and "advancemen
 
 **Pitfall Summary:** 80% of students rush the middle. Slow down. Clarity beats speed every time.
 
-## Worked Example 2: Describe Image
+Worked Example 2: Describe Image
 
 **Prompt:**
 (Bar chart showing internet usage growth from 2010 to 2025)
@@ -124,7 +124,7 @@ Listing numbers without context. "2010 was 20%. 2015 was 40%. 2025 is 60%."
 
 **Pitfall Summary:** Don't just read the axes. Tell the story. The algorithm wants narrative, not data dumping.
 
-## Why This Works (And Why Other Methods Fail)
+Why This Works (And Why Other Methods Fail)
 
 Most prep courses teach you grammar. They teach you vocabulary lists. They teach you "how to answer."
 
@@ -140,7 +140,7 @@ Keep going.
 
 The breakthrough comes when you stop thinking about the words and start feeling the rhythm.
 
-## Final Thoughts
+Final Thoughts
 
 You've got this.
 
@@ -152,7 +152,7 @@ And remember: Raj went from 58 to 79 in three months. He didn't change his life.
 
 What's stopping you?
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: Is it better to speak fast or slow?**
 A: Neither. Speed is irrelevant if you're stumbling. Aim for a moderate, steady pace. Consistency is key. If you rush, you'll make errors. If you drag, you'll lose points for fluency. Find the middle ground.

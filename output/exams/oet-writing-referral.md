@@ -25,13 +25,13 @@ Let's look at the diagnostic flow. Before we dive into the five-step method, ask
 
 If you answered “no” to all of these, you're already ahead of 60% of candidates. But if you answered “yes” to even one, we need to talk. Specifically, we need to talk about filtering.
 
-### The Filter First Principle
+The Filter First Principle
 
 Most students think they need to write everything they know. That's a trap. The recipient doctor doesn't care about your patient's childhood measles unless it impacts the current treatment plan. They care about the problem, the context, and the request.
 
 Start by highlighting the referral reason. Then, highlight only the facts that support that reason. Everything else? Delete it. Or move it to a brief background sentence. This is where most people fail. They lack the courage to cut.
 
-### The Three-Paragraph Architecture
+The Three-Paragraph Architecture
 
 Your letter needs a spine. A clear, logical backbone. Don't try to be creative here. Creativity costs points in OET. Clarity wins.
 
@@ -44,7 +44,7 @@ This is the clinical narrative. But here's the kicker? It's not a chronological 
 **Paragraph 3: The Ask**
 What do you want the specialist to do? Review? Treat? Advise? Make it explicit. Ambiguity leads to delays. Delays lead to complaints.
 
-### Worked Example 1: The Cardiac Referral
+Worked Example 1: The Cardiac Referral
 
 Let's look at a common scenario. Mrs. Higgins, 68, presents with chest pain.
 
@@ -63,7 +63,7 @@ Step 3: Structure the narrative. Start with demographics and chief complaint. Mo
 
 **Pitfall Summary:** Notice how I didn't mention her job? Or her anxiety? Those details don't help the cardiologist decide on the next step. They just clutter the letter.
 
-### Worked Example 2: The Dermatology Referral
+Worked Example 2: The Dermatology Referral
 
 Now, let's try a different system. Skin lesions.
 
@@ -82,19 +82,19 @@ Step 3: Describe the lesion clinically. Size, location, appearance.
 
 **Pitfall Summary:** Did you catch the “urgent” part? In OET, tone matters. If it's suspicious, say so. Don't be passive. Passive language hides risk. Active language protects patients.
 
-### Why This Works
+Why This Works
 
 You might be thinking, “But Evan, what if I miss a detail?” Here's the truth. You will. And that's okay. The goal isn't perfection. It's prioritization. The examiner wants to see that you can distinguish between vital signs and trivial anecdotes.
 
 Also, check your word count. These snippets are around 100-120 words. Your full letter should be 180-200 words. Don't ramble. Rambling is the enemy of clarity.
 
-### Common Mistakes to Avoid
+Common Mistakes to Avoid
 
 1. **Over-describing social history.** Unless it affects treatment, skip the “he lives with his wife and two dogs” part.
 2. **Using bullet points.** OET requires prose. Paragraphs only.
 3. **Forgetting the closing.** Always end with a clear request. “I look forward to your advice” is weak. “I would appreciate your assessment regarding...” is strong.
 
-### Final Thoughts
+Final Thoughts
 
 Writing referral letters isn't about showing off your medical knowledge. It's about facilitating care. The recipient doctor is busy. Give them the keys to the lock. Don't hand them a bag of random tools.
 

@@ -11,7 +11,7 @@ estimated_read_min: 7
 structure_template: "B"
 ---
 
-# SSAT Reading Comprehension Tips: 5 Strategies to Master Timing & Boost Score
+SSAT Reading Comprehension Tips: 5 Strategies to Master Timing & Boost Score
 
 Look. Stop doing this. Seriously, just stop.
 
@@ -21,7 +21,7 @@ Here is the thing: the SSAT Reading section isn't testing how fast you can read.
 
 Most students think speed is the enemy of accuracy. Turns out, it's the other way around. Panic is the enemy. Rushing is just panic in motion.
 
-## The Myth of "Speed Reading"
+The Myth of "Speed Reading"
 
 Let me be direct. There is no such thing as "speed reading" that works for standardized tests. When people talk about skimming, they usually mean skipping details. But in the SSAT, the details *are* the question.
 
@@ -31,7 +31,7 @@ The data says otherwise. Students who slow down for complex passages actually fi
 
 So, how do we fix this? We don't to read faster. We to read smarter. Here are five strategies that actually work.
 
-## Strategy 1: Predict Before You Peek
+Strategy 1: Predict Before You Peek
 
 This is the single most effective ssat reading strategies technique I teach. Before you look at the answer choices, look at the question stem. Then, predict the answer in your own words.
 
@@ -39,7 +39,7 @@ Why does this matter? Because the test makers love distractors. They put in answ
 
 Let's say the question asks about the author's tone. Don't just scan for adjectives. Ask yourself: "Is the author angry? Sad? Neutral?" Write it down. Then find the option that matches. It's that simple.
 
-## Strategy 2: The Two-Pass System
+Strategy 2: The Two-Pass System
 
 You cannot spend more than 90 seconds on a single question. If you're stuck, move on. Seriously. Move on.
 
@@ -47,7 +47,7 @@ I use a two-pass system with all my students. First pass: answer the easy questi
 
 This ensures you secure the points you're guaranteed to get before wasting time on the ones you might not. It's basic economics. Maximize ROI. Minimize loss.
 
-## Strategy 3: Context Clues Over Vocabulary Memorization
+Strategy 3: Context Clues Over Vocabulary Memorization
 
 Yes, ssat vocabulary building is important. But memorizing 5,000 words won't help if you don't know how to use context clues. The SSAT loves testing words in isolation, but the real skill is inferring meaning from surrounding text.
 
@@ -55,7 +55,7 @@ If you see a word you don't know, don't panic. Look at the sentence before and a
 
 I mean, literally, the definition is often hidden in the syntax. Learn to spot it.
 
-## Strategy 4: Active Annotation
+Strategy 4: Active Annotation
 
 Don't just read. Interact with the text. Underline the main idea. Circle transition words like "however," "therefore," and "although." These words signal shifts in argument.
 
@@ -63,7 +63,7 @@ If you miss a shift, you miss the point. Simple as that.
 
 Annotation keeps your brain engaged. It prevents mind-wandering. And it gives you visual anchors when you go back to answer questions.
 
-## Strategy 5: Practice with Real Pressure
+Strategy 5: Practice with Real Pressure
 
 You can't simulate test-day anxiety in your bedroom. You need to practice under timed conditions. Use a timer. Set it for 30 minutes. Do a full passage. See where you lose time.
 
@@ -71,7 +71,7 @@ Is it reading? Is it decoding questions? Is it second-guessing yourself?
 
 Identify the leak. Plug it. Repeat.
 
-## Worked Example 1: Inference Question
+Worked Example 1: Inference Question
 
 **Passage:**
 "The industrial revolution brought unprecedented economic growth, but it also introduced severe environmental degradation. While factories powered cities, they also choked rivers with waste. Critics argued that progress came at too high a cost, yet proponents claimed that technological advancements would eventually solve these problems."
@@ -91,7 +91,7 @@ Step 3: Match with prediction. The critics are worried about the "cost" of progr
 
 **Pitfall Summary**: Students often pick A because they misread "eventually" as applying to the critics. It applies to the proponents. Watch who is speaking!
 
-## Worked Example 2: Tone Question
+Worked Example 2: Tone Question
 
 **Passage:**
 "While some historians praise the explorer's courage, others condemn his disregard for indigenous rights. The narrative remains polarized, reflecting deeper societal tensions about colonialism."
@@ -111,7 +111,7 @@ Step 3: Evaluate options. A is wrong (not biased). C is wrong (no sarcasm). D is
 
 **Pitfall Summary**: Don't confuse the subject matter (conflict) with the tone (neutral reporting). The topic is heated; the tone is calm.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: How many passages are on the SSAT Reading section?**
 There are typically four passages on the SSAT Reading section. Each passage is followed by several questions. You'll have 30 minutes to complete all four passages and their associated questions. This means you have roughly 7.5 minutes per passage. It's tight, but manageable if you stay focused. Don't linger on one passage too long. Keep moving.
@@ -136,10 +136,5 @@ No. Calculators are only allowed in the Math section. The Reading section tests 
 
 **Q8: What is the best way to manage anxiety during the test?**
 Practice deep breathing. Remind yourself that one question doesn't define your worth. Focus on the process, not the outcome. If you feel panic rising, take a second to reset. Look away from the page. Breathe. Then come back. You've got this. Trust your preparation.
-
-## 
-
-
-
 
 > **Editor's note: Prices and features mentioned were verified at publication time. AI tools change fast ? always check the official site.**

@@ -11,7 +11,7 @@ estimated_read_min: 7
 structure_template: "C"
 ---
 
-# TOEFL Junior Listening Tips: 5 Strategies to Master Lecture Speed
+TOEFL Junior Listening Tips: 5 Strategies to Master Lecture Speed
 
 Can you hear it? That slight panic rising in your chest when the audio starts playing? You're not alone. Most students hit a wall here. They think listening is just about hearing words. It's not. It's about processing meaning before the next sentence hits.
 
@@ -25,7 +25,7 @@ Let's diagnose your problem first. Answer these three questions honestly:
 
 If you answered yes to any of these, your issue isn't vocabulary. It's pacing. And structure. Let's fix that.
 
-## The "Chunking" Method for Fast Speakers
+The "Chunking" Method for Fast Speakers
 
 Here is the thing. Native speakers don't speak in words. They speak in chunks. A chunk is a group of words that form a single idea. If you listen for individual words, you'll drown. If you listen for chunks, you'll swim.
 
@@ -38,7 +38,7 @@ See the difference? You're grouping information. This reduces cognitive load. Yo
 
 Try this exercise. Listen to a podcast at 1.2x speed. Pause every time the speaker finishes a thought. Write down that thought. Not every word. Just the core idea. Do this daily for two weeks. You'll notice your brain starting to predict where the pauses will happen.
 
-## Note-Taking Without Writing Everything
+Note-Taking Without Writing Everything
 
 You can't write everything down. Trust me. I've graded thousands of tests. The students who write full sentences score lower than those who write keywords. Why? Because writing takes time. Listening happens in real-time. You're behind before you start.
 
@@ -54,7 +54,7 @@ This forces you to stay ahead of the audio. You're not transcribing. You're mapp
 
 Let me be direct. Your notes should look like a spider web, not a transcript. Connect ideas. Show relationships. If the speaker mentions a cause, draw a line to the effect. This visual aid helps you answer inference questions later.
 
-## Handling Unknown Vocabulary
+Handling Unknown Vocabulary
 
 What do you do when you hear a word you don't know? Stop. Don't freeze. Don't panic. Keep listening.
 
@@ -64,7 +64,7 @@ For instance, if the audio says: "The ecosystem faced a phenomenon known as eutr
 
 Practice this skill. Listen to news clips. When you hear a new word, guess its meaning from the surrounding sentences. Check the dictionary later. This builds resilience. You'll stop fearing unknown words. You'll start using them as clues.
 
-## The "Main Idea" Trap
+The "Main Idea" Trap
 
 Many students get distracted by details. They remember the color of the bird. They forget the bird is migrating. Details are traps. They're designed to test your focus.
 
@@ -76,13 +76,13 @@ If it's a description, what are the key features?
 
 This framework keeps you anchored. You're not just hearing sounds. You're categorizing information. This makes recall easier.
 
-## Practice with Realistic Speeds
+Practice with Realistic Speeds
 
 You need to train your ears. Start slow. Then speed up.
 
 Listen to educational videos for kids. Yes, really. The language is clear. The pace is moderate. Then move to teen documentaries. Finally, tackle adult lectures.
 
-## Worked Example 1: The Science Lecture
+Worked Example 1: The Science Lecture
 
 **Audio Transcript (Simulated):**
 "The coral reef, once a vibrant underwater city, is now facing a silent crisis. Scientists have observed a significant drop in fish populations over the last decade. This decline is largely attributed to rising ocean temperatures, which cause coral bleaching. Without the protective coral structures, many species lose their habitat. Conservation efforts are underway, but time is running out."
@@ -102,7 +102,7 @@ Step 3: Match with options. Option B matches perfectly.
 
 **Pitfall Summary:** Students often pick A or C because they assume human activity is always the answer. But the audio specifically links temperature to bleaching to habitat loss. Stick to what's said, not what you guess.
 
-## Worked Example 2: The History Narrative
+Worked Example 2: The History Narrative
 
 **Audio Transcript (Simulated):**
 "Marie Curie didn't just discover radium. She changed how we view energy itself. Before her work, atoms were thought to be indivisible. Her experiments proved otherwise. She spent years in a shed, processing tons of pitchblende. It was tedious. It was dangerous. But it led to a Nobel Prize. And a legacy."
@@ -122,7 +122,7 @@ Step 3: Infer the purpose. The shed represents hardship and dedication. Option B
 
 **Pitfall Summary:** Don't get distracted by "Nobel Prize." That's the result, not the reason for mentioning the shed. The shed illustrates the journey, not the destination.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: How much time should I spend on each listening question?**
 A: Aim for about 45 seconds per question. If you're stuck, guess and move on. You can't go back. Better to answer five questions correctly than to obsess over one.

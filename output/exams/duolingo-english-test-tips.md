@@ -11,7 +11,7 @@ estimated_read_min: 7
 structure_template: "C"
 ---
 
-# Duolingo English Test Tips: 7 Proven Strategies to Beat Adaptive Anxiety
+Duolingo English Test Tips: 7 Proven Strategies to Beat Adaptive Anxiety
 
 You're staring at the screen. The timer is ticking. The question just got harder. Why? Did you get the last one wrong? Or did you get it right, and now the test is punishing you for being too good?
 
@@ -29,7 +29,7 @@ Let's diagnose your specific weakness. Answer these three questions honestly. Do
 
 Your answers tell me exactly where you're leaking points. Let's fix them.
 
-## Diagnosis 1: The Speed Trap
+Diagnosis 1: The Speed Trap
 
 If you answered “I speed up” to question one, you're in danger.
 
@@ -43,7 +43,7 @@ Don't rush. Slow down. Seriously. Take a breath between questions. It feels weir
 
 The best approach --- and I mean truly the best --- is to treat every question as if it's the last one. Because in a way, it is. It's the last piece of data the AI has before it recalibrates your score.
 
-## Diagnosis 2: The Writing Imbalance
+Diagnosis 2: The Writing Imbalance
 
 If you answered “I spend more time on writing” to question two, you're misallocating your energy.
 
@@ -57,7 +57,7 @@ Here's a tip: practice writing under time pressure. Set a timer for two minutes.
 
 I used to think perfection was key --- turns out I was wrong. Consistency is key. The AI wants to see that you can produce language continuously, without long pauses or self-corrections. It's measuring your automaticity. Your ability to think in English, not translate it.
 
-## Diagnosis 3: The Idea Block
+Diagnosis 3: The Idea Block
 
 If you answered “I'm afraid of running out of ideas” to question three, you're suffering from creative paralysis.
 
@@ -80,7 +80,7 @@ Let me be direct: if you get stuck, pivot. Don't stare at the screen. Talk about
 
 The data says otherwise: students who pivot quickly recover their fluency scores faster than those who stall. Stalling looks like hesitation to the AI. And hesitation looks like low proficiency.
 
-## Worked Example 1: Read and Complete
+Worked Example 1: Read and Complete
 
 **Context:** You are in the middle of the adaptive reading section. The questions are getting harder. You feel the pressure rising.
 
@@ -101,7 +101,7 @@ Step 4: Select the best fit. “Conducted” (A) is the past tense verb.
 
 **Pitfall Summary:** 80% of students miss this because they rush. They see “scientist” and “experiment” and think “science words are hard.” They don't notice the tense clue in the next sentence. Don't let the topic distract you. Look for grammar cues. Tense. Subject-verb agreement. Articles. These are your anchors.
 
-## Worked Example 2: Speak About the Photo
+Worked Example 2: Speak About the Photo
 
 **Context:** You have 30 seconds to speak. The photo shows a crowded subway station.
 
@@ -118,7 +118,7 @@ Example response: “The image shows a busy subway station during rush hour. The
 
 **Pitfall Summary:** Students often describe static objects too long. “There is a bench. There is a trash can.” This wastes time. Focus on the *action* and the *atmosphere*. The AI listens for narrative flow, not just vocabulary. Use connectors: “while,” “as,” “because.” These show syntactic complexity.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: How does the Duolingo English Test adapt?**
 A: It uses item response theory. Each question's difficulty adjusts based on your previous answers. If you get it right, the next one is harder. If you get it wrong, it's easier. This happens in real-time for most sections.
@@ -144,7 +144,7 @@ A: Yes. Your audio is stored and analyzed for pronunciation, fluency, and intona
 **Q8: What's the best way to practice for the adaptive nature?**
 A: Use timed practice tests. Simulate the pressure. Get used to the feeling of questions getting harder. It reduces anxiety on test day.
 
-## Final Thoughts
+Final Thoughts
 
 Adaptive test anxiety is real. But it's manageable. You don't need to be perfect. You need to be consistent.
 

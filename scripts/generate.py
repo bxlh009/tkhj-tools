@@ -125,6 +125,8 @@ def strip_banned_formatting(text):
         orig = line
         # strip heading markers
         line = re.sub(r'^#{1,6}\s+', '', line)
+        # also strip inline heading markers (mid-sentence ### escaping the filter)
+        line = re.sub(r'\s*#{2,6}\s+', ' ', line)
         # convert horizontal rules to paragraph breaks (don't delete — avoids blank gaps)
         if re.match(r'^[_*-]{3,}\s*$', line):
             fixes += 1
@@ -210,7 +212,12 @@ def force_markers(text):
         if not p.strip() or p.strip().startswith(('#','-','*','|')): continue
         ss=re.split(r'(?<=[.!?])\s+', p)
         if len(ss)<2: continue
-        ss.insert(random.randint(1,len(ss)-1),random.choice(MARKERS))
+        pos = random.randint(1, len(ss)-1)
+        marker = random.choice(MARKERS)
+        ss.insert(pos, marker)
+        # lowercase the word after the marker to avoid "I mean, You're"
+        if pos+1 < len(ss) and ss[pos+1] and ss[pos+1][0].isupper() and ss[pos+1][0] != 'I':
+            ss[pos+1] = ss[pos+1][0].lower() + ss[pos+1][1:]
         paras[idx]=' '.join(ss)
     return fm+'\n\n'.join(paras)
 

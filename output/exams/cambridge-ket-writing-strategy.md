@@ -11,7 +11,7 @@ estimated_read_min: 7
 structure_template: "A"
 ---
 
-# Cambridge KET Writing Strategy: 3 Steps to Break Basic Sentences
+Cambridge KET Writing Strategy: 3 Steps to Break Basic Sentences
 
 Raj sat across from me, his KET writing draft trembling slightly in his hands. He was twenty-two, a software engineer from Bangalore, and he had been stuck at a B1 level for six months. "I just don't get it," he said, pointing to his third sentence. "I wrote 'The weather is good.' Is that wrong?"
 
@@ -23,7 +23,7 @@ Here is the truth: most students think KET writing is about being correct. It's 
 
 If you're stuck on basic sentences, you're likely playing it too safe. You're treating every word like a grenade that might explode if you use the wrong preposition. But the KET exam rewards risk-taking within reason. Let's fix that.
 
-## The "And" Trap
+The "And" Trap
 
 I've graded thousands of practice essays. The most common error isn't spelling. It's the "And" trap.
 
@@ -37,7 +37,7 @@ This is grammatically perfect. It's also boring as hell. Examiners see this patt
 
 So, how do you break out of this rut? You don't need advanced grammar. You need three specific connectors.
 
-## Step 1: The "Because" Bridge
+Step 1: The "Because" Bridge
 
 The easiest way to upgrade from basic to intermediate is cause and effect. Stop listing facts. Start explaining them.
 
@@ -56,7 +56,7 @@ For example, if you're writing an email to a friend about a party:
 
 Simple. Effective. High-scoring.
 
-## Step 2: The "When" Timeline
+Step 2: The "When" Timeline
 
 Next, you need to handle time. Basic writers list events in order. Intermediate writers weave them together.
 
@@ -76,7 +76,7 @@ Here is the kicker? Many students avoid "when" because they worry about tense ag
 
 Boom. Instant upgrade.
 
-## Step 3: The "Although" Twist
+Step 3: The "Although" Twist
 
 This is the advanced move. The "although" clause.
 
@@ -95,7 +95,7 @@ This shows nuance. It shows you can handle contradiction. Examiners love this. I
 
 Now, let's look at some real examples. I'll rewrite them to show you the transformation.
 
-## Worked Example 1: The Email Task
+Worked Example 1: The Email Task
 
 **Original Basic Version:**
 "Hi Tom. Thanks for your email. I am happy to hear from you. Last weekend I went to the cinema. The film was interesting. I liked it. Do you want to go next time? Yes. Bye."
@@ -116,7 +116,7 @@ This is a disaster of short sentences. It's choppy. It lacks personality. It rea
 **Pitfall Summary:**
 Don't overcomplicate it. You don't need perfect grammar. You just need to connect ideas. The upgraded version uses the same vocabulary but feels much more mature.
 
-## Worked Example 2: The Story Continuation
+Worked Example 2: The Story Continuation
 
 **Original Basic Version:**
 "The dog ran fast. He saw a cat. He chased it. The cat climbed a tree. The dog stopped. He was tired."
@@ -136,7 +136,7 @@ Again, too many short sentences. It's monotonous. It doesn't engage the reader.
 **Pitfall Summary:**
 Notice how we didn't add new words? We just rearranged the existing ones. This is key. You don't need to learn new vocabulary to improve your score. You need to improve your syntax.
 
-## Why This Works
+Why This Works
 
 I used to think students needed more vocabulary. Turns out I was wrong.
 
@@ -146,13 +146,13 @@ When you use "because," "when," and "although," you're showing the examiner that
 
 And honestly? That's what separates the B1s from the B2s.
 
-## Common Mistakes to Avoid
+Common Mistakes to Avoid
 
 1. **Overusing "and":** It's a lazy connector. Use it sparingly.
 2. **Ignoring punctuation:** Commas matter. "When I woke up, I brushed my teeth" needs that comma. Without it, it's a run-on.
 3. **Forgetting context:** If you're writing an email, keep it friendly. If you're writing a story, keep it descriptive. Don't mix tones.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: Can I use complex sentences if I make a mistake?**
 Yes. It's better to try a complex sentence and make a small error than to write a simple sentence perfectly. Examiners reward effort and range. Just don't go overboard. Keep it manageable.

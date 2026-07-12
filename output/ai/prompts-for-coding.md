@@ -24,7 +24,7 @@ I remember a student from 2019, let's call him Raj. He was stuck at a 7.5 in TOE
 
 So, how do we fix this? By treating prompts like API contracts.
 
-### The Anatomy of a Good Prompt
+The Anatomy of a Good Prompt
 
 A good prompt isn't a paragraph. It's a structured document. It needs:
 
@@ -45,7 +45,7 @@ Now, a good example.
 
 See the difference? One is a wish. The other is a specification.
 
-### Real-World Test: Agnes vs. Claude vs. Gemini
+Real-World Test: Agnes vs. Claude vs. Gemini
 
 I ran the same prompt across three major models. Here's what happened.
 
@@ -53,7 +53,7 @@ Agnes gave me clean, readable code but missed an edge case with empty inputs. Cl
 
 No wait, that's not entirely fair. Each model has strengths. Agnes is great for simple refactoring. Claude excels at complex logic. Gemini shines in speed and basic syntax. But none of them are perfect without precise prompting.
 
-### The Workflow That Actually Works
+The Workflow That Actually Works
 
 Here's the five-step workflow I use daily. It saves me at least two hours a week.
 
@@ -65,7 +65,7 @@ Here's the five-step workflow I use daily. It saves me at least two hours a week
 
 This process turns the AI from a code generator into a code reviewer. And that's infinitely more valuable.
 
-### Common Mistakes to Avoid
+Common Mistakes to Avoid
 
 Don't trust the first output. Ever. AI models are probabilistic, not deterministic. They can change their answer based on slight variations in your prompt.
 
@@ -73,7 +73,7 @@ Don't ignore security. Just because the code runs doesn't mean it's safe. SQL in
 
 Don't use AI for everything. Simple tasks? Fine. Complex architectural decisions? No. You still need to understand the system you're building. AI is a tool, not a replacement for thinking.
 
-### Why This Matters Now
+Why This Matters Now
 
 With the rise of agentic AI, the ability to write precise prompts is becoming a core skill. It's not just about coding anymore. It's about communication. Clear, concise, unambiguous communication.
 
@@ -83,7 +83,7 @@ So, stop saying "write code." Start saying "implement this function with these c
 
 Your future self will thank you.
 
-### FAQ
+FAQ
 
 Q1: Can AI replace human programmers?
 A: No. AI can automate routine tasks, but it can't replace creativity, judgment, or understanding of business context. Think of it as a powerful assistant, not a replacement.
@@ -114,7 +114,7 @@ A: Track time saved, bug rate, and code quality. Adjust prompts based on results
 
 > **Editor's note: This article was drafted with AI assistance, then fact-checked and edited by hand. If you spot an error, please let me know.**
 
-## References
+References
 
 - https://openai.com",
 - https://claude.ai",

@@ -11,7 +11,7 @@ estimated_read_min: 9
 structure_template: "B"
 ---
 
-# IELTS Writing Band 7 Tips: 4 Proven Strategies to Break the 6.5 Plateau
+IELTS Writing Band 7 Tips: 4 Proven Strategies to Break the 6.5 Plateau
 
 I used to think that learning 5,000 fancy words would magically boost my students' scores. Turns out, I was wrong.
 
@@ -21,7 +21,7 @@ Here's the thing. The difference between a 6.5 and a 7 isn't intelligence. It's 
 
 If you've been grinding practice tests for months without moving past 6.5, stop. You're reinforcing bad habits. Let me show you how to break out of this trap.
 
-## The Myth of the "Big Word"
+The Myth of the "Big Word"
 
 Most candidates believe that using complex, academic-sounding words will impress the examiner. They think, "If I use 'utilize' instead of 'use,' I'll get a higher lexical resource score."
 
@@ -37,7 +37,7 @@ Now, compare him to Maria. She writes simple sentences. But her grammar is flawl
 
 So, what's the real strategy?
 
-## Strategy 1: Master the Task 2 Structure
+Strategy 1: Master the Task 2 Structure
 
 You can't wing Task 2. It's a 40-minute essay. You need a skeleton. Without it, you'll ramble, repeat yourself, and run out of time.
 
@@ -62,7 +62,7 @@ See the difference? The second one has a clear topic sentence. It explains *why*
 
 And here's the kicker? You don't need to be original. You just need to be organized.
 
-## Strategy 2: Collocations Over Vocabulary
+Strategy 2: Collocations Over Vocabulary
 
 You asked for "ielts writing vocabulary" tips. Here's the truth: stop memorizing lists. Start memorizing chunks.
 
@@ -84,7 +84,7 @@ Instead of learning the word "environment," learn "protect the environment." Ins
 
 This reduces cognitive load. You're not thinking about grammar. You're retrieving whole chunks. That makes you faster. And faster means you have time to check your work.
 
-## Strategy 3: The "So What?" Test for Ideas
+Strategy 3: The "So What?" Test for Ideas
 
 Many students get stuck because they can't generate ideas. Or worse, they generate weak ideas.
 
@@ -106,7 +106,7 @@ You don't need deep philosophical insights. You need logical progression. Cause 
 
 If you can't answer "So what?", your idea is too vague. Cut it. Replace it with something concrete.
 
-## Strategy 4: Time Management Is Everything
+Strategy 4: Time Management Is Everything
 
 You have 40 minutes for Task 2. Most students spend 10 minutes planning, 25 minutes writing, and 5 minutes checking.
 
@@ -130,7 +130,7 @@ Then write. Don't edit as you go. Just get the ideas down. Edit in the final 5 m
 
 God, I've seen so many students lose points because they didn't proofread. Spelling errors. Subject-verb agreement. These are low-hanging fruit. Fix them, and you're instantly closer to a 7.
 
-## Worked Example 1: Opinion Essay
+Worked Example 1: Opinion Essay
 
 **Prompt:** Some people believe that university education should be free for all students. Others argue that students should pay for their own education. Discuss both views and give your opinion.
 
@@ -157,7 +157,7 @@ In conclusion, while paying for education may encourage individual accountabilit
 **Pitfall Summary:**
 Notice the improved version? It uses "tertiary education" instead of just "university." It uses "proponents" and "conversely." But more importantly, it develops each point. It gives a specific example (Germany). It addresses the counter-argument and refutes it. That's Band 7 logic.
 
-## Worked Example 2: Problem/Solution Essay
+Worked Example 2: Problem/Solution Essay
 
 **Prompt:** In many cities, traffic congestion is a major problem. What are the causes of this issue, and what solutions can be implemented?
 
@@ -188,7 +188,7 @@ Key improvements:
 - Gave a specific solution (BRT lanes, congestion charges).
 - Connected cause and effect clearly.
 
-## Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: How long should my IELTS Writing Task 2 essay be?**
 A: Aim for at least 250 words. Writing fewer than 250 words will result in a penalty for under-length. However, don't write too much either. If you exceed 350 words, you risk running out of time and making more grammatical errors. The sweet spot is usually around 270-290 words. This allows enough space to develop your ideas fully without becoming verbose. Focus on quality over quantity. One well-developed paragraph is better than three shallow ones.
@@ -213,11 +213,5 @@ A: Coherence means your ideas flow logically. Check if each paragraph has a clea
 
 **Q8: Is it better to agree or disagree in Task 2?**
 A: It doesn't matter which side you choose, as long as you maintain a consistent position throughout the essay. You can agree, disagree, or present a balanced view. The key is to clearly state your opinion in the introduction and stick to it. Don't flip-flop between paragraphs. If you say you agree, don't spend half the essay arguing against your own view. Clarity and consistency are more important than the specific stance you take.
-
-## 
-
- 
-
-
 
 > **Editor's note: I tested this strategy with my students last semester. It worked for most, but your mileage may vary. Updated July 2026.**

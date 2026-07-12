@@ -17,7 +17,7 @@ Here is the thing. Most students think speed comes from moving their eyes faster
 
 Let me be direct. Your problem isn't comprehension. It's anxiety-driven hyper-focus. You're terrified of missing a detail, so you dissect every clause. This kills your pace. You need a different approach. One that lets you skim the fat and chew the meat.
 
-### The Diagnostic: Where Are You Leaking Time?
+The Diagnostic: Where Are You Leaking Time?
 
 Before we fix anything, you need to know where you're bleeding seconds. Grab your last five practice tests. Look at the timing. Which passages took longer than seven minutes? Was it the dense philosophy texts? Or the historical narratives?
 
@@ -27,7 +27,7 @@ Before we fix anything, you need to know where you're bleeding seconds. Grab you
 
 Most people fall into category three. They wing it. That's a recipe for disaster. You need a system. A rigid, repeatable process. Something that works even when you're tired. Especially when you're tired.
 
-### Step 1: The "Skeleton First" Read
+Step 1: The "Skeleton First" Read
 
 Stop trying to understand every word. Seriously. Don't do it. Instead, read for the structure. Who is the author? What are they arguing? What's the tone?
 
@@ -35,7 +35,7 @@ When you encounter a dense paragraph, ask yourself: "What is the main point here
 
 I remember a student named Raj. He was stuck at a 128. He spent twenty minutes on a single passage. We changed his method. Now he reads for structure. He finishes in six minutes. His score jumped to 132. Why? Because he stopped trying to memorize the text. He started tracking the logic.
 
-### Step 2: Active Questioning
+Step 2: Active Questioning
 
 Passive reading is dead. Kill it. As you read, ask questions. Is the author agreeing or disagreeing? Is this evidence supporting a claim? Is there a counter-argument coming?
 
@@ -43,7 +43,7 @@ This keeps your brain engaged. It prevents mind-wandering. And it builds a menta
 
 Look. This feels unnatural at first. You want to just absorb the text. But absorption is slow. Navigation is fast. You need to become a detective, not a sponge. Find the clues. Follow the trail. Don't get distracted by the scenery.
 
-### Step 3: Strategic Skimming for Details
+Step 3: Strategic Skimming for Details
 
 Not all details are equal. Some are crucial. Others are filler. Learn to spot the difference. Crucial details include:
 
@@ -55,7 +55,7 @@ Everything else? Skim it. Glance at it. Let it pass. You don't need to remember 
 
 You know what kills me? Students who try to memorize the passage. It's impossible. And unnecessary. Trust your notes. Trust your mental map. Don't try to hold everything in your head. It's too much. You'll crash.
 
-### Worked Example 1: The Philosophical Argument
+Worked Example 1: The Philosophical Argument
 
 **Passage Snippet:**
 "The utilitarian framework, often criticized for its cold calculus, provides a surprisingly robust method for ethical decision-making. While critics argue that it ignores individual rights, proponents contend that the aggregate happiness it maximizes justifies such trade-offs. Indeed, the historical success of policy decisions based on cost-benefit analysis suggests that this approach, despite its flaws, remains indispensable."
@@ -76,7 +76,7 @@ Answer: B. The author acknowledges flaws but values the utility.
 
 **Pitfall Summary:** Students often pick A because they see positive words. But "cold calculus" and "flaws" indicate criticism. Don't ignore the negatives. Balance them.
 
-### Worked Example 2: The Historical Narrative
+Worked Example 2: The Historical Narrative
 
 **Passage Snippet:**
 "In 1893, the World's Columbian Exposition in Chicago showcased the latest in industrial innovation. Among the exhibits was Nikola Tesla's alternating current system, which promised to revolutionize power distribution. However, the fair's organizers favored Thomas Edison's direct current, leading to a public relations battle that would define the electrical age."
@@ -97,7 +97,7 @@ Answer: C. The text doesn't give a reason.
 
 **Pitfall Summary:** Test-takers love to infer. Don't. If it's not there, it's not there. Stick to the text. Literal interpretation is key.
 
-### Frequently Asked Questions
+Frequently Asked Questions
 
 **Q1: How can I improve my reading speed for CARS?**
 A: Practice the "skeleton first" method. Read passages quickly to identify structure, then re-read only the parts relevant to the questions. This reduces total reading time significantly.
