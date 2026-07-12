@@ -324,12 +324,27 @@ def about_page():
     hero += '<p style="margin:0;color:var(--text-2);max-width:640px;font-size:1.05rem">Independent study guides and honest AI tool comparisons. Built for students who deserve clarity.</p>'
     hero += '</div></section>'
     body = '<section class="section"><div class="container"><div style="max-width:680px;margin:0 auto">'
+
     body += '<h2 style="font-weight:800;margin:0 0 16px">Our Mission</h2>'
-    body += '<p>TKHJ Tools exists because most student-focused content is either written by marketers trying to sell courses, or buried under search-engine junk.</p>'
-    body += '<p><strong>How this site works:</strong> All articles start as AI drafts, then the editor personally reviews, fact-checks, and edits every piece. Exam strategies come from real classroom experience. AI tool reviews are based on publicly available information and rewritten in our own words. If a claim cannot be verified, it is removed or rewritten.</p>'
-    body += '<h2 style="font-weight:800;margin:40px 0 16px">FAQ</h2>'
-    body += '<h3 style="font-weight:700;margin:0 0 8px">Who writes these guides?</h3>'
-    body += '<p>A small team of educators and AI researchers. No freelancers, no AI-only spin. Every article is fact-checked by a human before publication.</p>'
+    body += '<p>Most exam-prep content falls into one of two traps: it is either a thinly veiled sales pitch for a course, or keyword-stuffed filler written for search engines, not students. TKHJ Tools starts from a different question: what would a good teacher write if they had the time to write everything they know? We build practical, honest study guides that help students prepare for the exams that matter to them. Along the way we also cover the AI tools reshaping how people work and learn.</p>'
+
+    body += '<h2 style="font-weight:800;margin:40px 0 16px">What We Cover</h2>'
+    body += '<p>Our exam section spans standardized tests across the full spectrum: TOEFL, IELTS, GRE, SAT, ACT, AP (Biology, Calculus, Chemistry, Physics, US History), GMAT, LSAT, MCAT, IB, Cambridge (YLE, KET, PET, FCE, CAE, Flyers), Duolingo English Test, PTE Academic, OET, TOEIC, GCSE, ISEE, SSAT, and MAP Growth. Each guide isolates the specific skill or question type that holds test takers back and gives a targeted fix.</p>'
+    body += '<p>The AI section tracks model releases, tool comparisons, and practical workflows. No clickbait predictions, no vendor fan mail. We explain what a tool does and whether it delivers.</p>'
+
+    body += '<h2 style="font-weight:800;margin:40px 0 16px">How We Work</h2>'
+    body += '<p>Articles start as AI-generated drafts using custom prompt templates that enforce strict quality rules: no markdown tables, no markdown headings, no bullet lists, conversational tone, and targeted word counts. Every draft then goes through human review before publication. The editor checks facts, removes claims that cannot be verified, rewrites weak passages, and ensures the article answers the question it promised to answer.</p>'
+    body += '<p>This workflow lets us cover more ground than a purely human operation while keeping the editorial bar higher than fully automated sites. We call it assisted authorship, not automation.</p>'
+
+    body += '<h2 style="font-weight:800;margin:40px 0 16px">Our Audience</h2>'
+    body += '<p>TKHJ Tools is built for self-directed learners: students who know the official resources exist but want a second opinion from someone who has taught these exams. Also for professionals curious about whether a new AI tool is worth their time. We do not chase virality, and we do not sell courses or coaching.</p>'
+
+    body += '<h2 style="font-weight:800;margin:40px 0 16px">Editorial Integrity</h2>'
+    body += '<p>We have no affiliate relationships with the testing organizations or AI companies we write about. We do not accept sponsored posts. AI tool reviews are based on publicly available information and rewritten in our own words, not copied from press releases. If a specific claim cannot be verified from the source, it is omitted or flagged with hedging language. When we make a factual error, we correct it publicly.</p>'
+
+    body += '<h2 style="font-weight:800;margin:40px 0 16px">Contact</h2>'
+    body += '<p>Found an error? Have a suggestion? We read every message. Email us at <a href="mailto:hi@tkhjtools.top">hi@tkhjtools.top</a>. We typically respond within 24 hours on business days.</p>'
+
     body += '</div></div></section>'
     return page("About", hero + body, "about")
 
@@ -414,7 +429,7 @@ def main():
     ai_tabs = tabs_html("ai", AI_TABS, 0, AI_ICON)
     ai_sect = '<section class="section-ai" data-section="ai">'
     ai_sect += '<div class="container">'
-    ai_sect += '<div class="section-head"><div class="title-wrap"><h2>AI Tools &amp; Guides</h2></div><a href="/ai/" class="view-all">Explore all &rarr;</a></div>'
+    ai_sect += '<div class="section-head"><div class="title-wrap"><h2>AI Tools &amp; Guides</h2><p style="margin:4px 0 0;font-size:0.9rem;color:var(--text-3)">Honest reviews and analysis — no hype, no vendor sponsorship</p></div><a href="/ai/" class="view-all">Explore all &rarr;</a></div>'
     ai_sect += ai_tabs
     ai_sect += '<div class="grid-4">' + ai_html + "</div>"
     ai_sect += '</div></section>'
@@ -442,7 +457,7 @@ def main():
         meta, body = fm(a["_body"])
         rel = related_html(slug, all_arts)
         article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>';
-        disclaimer = '<div class=\"article-disclaimer\">Disclaimer: Independently written analysis based on publicly available information. No vendor sponsorship. Verify with official sources.</div>'
+        disclaimer = '<div style="font-size:0.8rem;color:var(--text-3);margin-top:32px;padding-top:16px;border-top:1px solid var(--line)">This guide is independently written and not affiliated with or endorsed by ETS, the College Board, or any other testing organization. It is based on general teaching experience and publicly available test information.</div>'
         # description: first body line
         _, body_text = fm(a["_body"])
         first = next((l.strip().lstrip("#").strip() for l in body_text.strip().split("\n") if l.strip() and len(l.strip()) > 20), "")
@@ -465,7 +480,7 @@ def main():
         meta, body = fm(a["_body"])
         rel = related_html(slug, all_arts)
         article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + md2html(body) + '</article>';
-        disclaimer = '<div class=\"article-disclaimer\">Disclaimer: Independently written analysis based on publicly available information. No vendor sponsorship. Verify with official sources.</div>'
+        disclaimer = '<div style="font-size:0.8rem;color:var(--text-3);margin-top:32px;padding-top:16px;border-top:1px solid var(--line)">This article is independently written based on publicly available information. AI products evolve quickly; verify with official sources. No vendor sponsorship or affiliate relationship.</div>'
         _, body_text = fm(a["_body"])
         first = next((l.strip().lstrip("#").strip() for l in body_text.strip().split("\n") if l.strip() and len(l.strip()) > 20), "")
         desc = first[:160] if first else a.get("title", "")
