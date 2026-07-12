@@ -18,6 +18,10 @@ VARS = ENGINE / "vars"
 OUT_EXAM = ENGINE / "output" / "exams"
 OUT_AI = ENGINE / "output" / "ai"
 LOG = ENGINE / "daily_log.jsonl"
+
+# TOEFL focus mode: July 12-26, 2026
+TOEFL_MODE_END = datetime(2026, 7, 26)
+TOEFL_MODE = datetime.now() <= TOEFL_MODE_END
 SEEN_VARS = ENGINE / ".seen_exam_vars.json"
 
 # ---- Exam rotation ----
@@ -30,6 +34,12 @@ EXAM_VARS = sorted([
         "example-ai-gpt5.json", "example-ai-claude.json",
     ]
 ])
+
+if TOEFL_MODE:
+    toefl_only = [f for f in EXAM_VARS if "toefl" in f.stem.lower()]
+    if toefl_only:
+        EXAM_VARS = toefl_only
+        print(f"[TOEFL MODE] Focusing on TOEFL until {TOEFL_MODE_END.date()} ({len(EXAM_VARS)} topics available)")
 
 def log_event(entry):
     entry["_time"] = datetime.now().isoformat()
