@@ -36,6 +36,12 @@ _fav_src = HERE / "static" / "favicon.png"
 if _fav_src.exists():
     shutil.copy2(str(_fav_src), str(OUT / "favicon.png"))
 
+# copy ads.txt to site root
+_ads = HERE / "ads.txt"
+if _ads.exists():
+    shutil.copy2(str(_ads), str(OUT / "ads.txt"))
+    print("ads.txt: copied from site/")
+
 NL = chr(10)
 def esc(s):
     return str(s).replace("&","&amp;").replace("<","&lt;").replace('"',"&quot;")
