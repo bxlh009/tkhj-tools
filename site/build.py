@@ -461,7 +461,7 @@ def main():
     ai_sect += '<div class="grid-4">' + ai_html + "</div>"
     ai_sect += '</div></section>'
 
-    wp("index.html", page("Study guides & AI coverage", hero + exam_sect + ai_sect))
+    wp("index.html", page("Study guides & AI coverage", hero + exam_sect + AD_UNIT + ai_sect + AD_UNIT, "home", desc="Free TOEFL, IELTS, GRE, SAT study guides with battle-tested strategies. Honest AI tool reviews and comparisons with no vendor sponsorship."))
     wp("about.html", about_page())
     wp("search.html", search_page())
     wp("contact.html", contact_page())
@@ -472,12 +472,12 @@ def main():
     exam_listing = section_hero("Exam Prep Articles","IELTS, TOEFL, GRE, SAT study guides.","Exam")
     exam_listing += '<section class="section" data-section="exam"><div class="container">'
     exam_listing += '<div class="grid-4">' + exam_html + "</div></div></section>"
-    wp("exam/index.html", page("Exam Prep Articles", exam_listing, "exam"))
+    wp("exam/index.html", page("Exam Prep Articles", exam_listing + AD_UNIT + AD_UNIT, "exam", desc="Free TOEFL, IELTS, GRE, SAT study guides. Battle-tested strategies from an instructor who has taught 300+ students."))
 
     ai_listing = section_hero("AI Tools & Guides","Workflows, prompts, and honest comparisons.","AI")
     ai_listing += '<section class="section-ai" data-section="ai"><div class="container">'
     ai_listing += '<div class="grid-4">' + ai_html + "</div></div></section>"
-    wp("ai/index.html", page("AI Tools & Guides", ai_listing, "ai"))
+    wp("ai/index.html", page("AI Tools & Guides", ai_listing + AD_UNIT + AD_UNIT, "ai", desc="Honest AI tool reviews and comparisons. No hype, no vendor sponsorship. Just hands-on testing and transparent analysis."))
 
     for a in exam_arts:
         slug = a["_slug"]
