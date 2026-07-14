@@ -17,6 +17,7 @@ JSL  = "static/nav.js"
 
 AD_HEAD = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8913718352251239" crossorigin="anonymous"></script>'
 AD_UNIT = '<div class="ad-unit"><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8913718352251239" data-ad-slot="4470604333"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>'
+AD_UNIT_BOTTOM = '<div class="ad-unit" style="margin-top:32px"><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8913718352251239" data-ad-slot="9603594639" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>'
 
 EXAM_TABS = ["All Exams","IELTS","TOEFL","GRE","SAT","More"]
 AI_TABS   = ["All","AI","Tools","Prompts","Workflows","Productivity"]
@@ -503,7 +504,7 @@ def main():
             "datePublished": pub_date if pub_date else None,
             "author": {"@type": "Organization", "name": NAME},
         }, ensure_ascii=False)
-        html = page(a["title"], article_inner + rel + AD_UNIT + disclaimer, "exam", desc=desc, canonical=canonical, schema=schema)
+        html = page(a["title"], article_inner + AD_UNIT + rel + AD_UNIT_BOTTOM + disclaimer, "exam", desc=desc, canonical=canonical, schema=schema)
         wp("exam/article/" + slug + ".html", html)
 
     for a in ai_arts:
@@ -527,7 +528,7 @@ def main():
             "datePublished": pub_date if pub_date else None,
             "author": {"@type": "Organization", "name": NAME},
         }, ensure_ascii=False)
-        html = page(a["title"], article_inner + rel + AD_UNIT + disclaimer, "ai", desc=desc, canonical=canonical, schema=schema)
+        html = page(a["title"], article_inner + AD_UNIT + rel + AD_UNIT_BOTTOM + disclaimer, "ai", desc=desc, canonical=canonical, schema=schema)
         wp("ai/article/" + slug + ".html", html)
 
     wp("privacy.html", privacy_page())
