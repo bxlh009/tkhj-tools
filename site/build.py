@@ -533,6 +533,16 @@ def main():
     wp("privacy.html", privacy_page())
     gen_sitemap(all_arts)
 
+    # auto-generate ads.txt from AD_HEAD ca-pub ID
+    _pub_id = ""
+    if "ca-pub-" in AD_HEAD:
+        _pub_id = AD_HEAD.split("ca-pub-")[1].split('"')[0].strip()
+    if _pub_id:
+        wp("ads.txt", "google.com, pub-" + _pub_id + ", DIRECT, f08c47fec0942fa0" + chr(10))
+
+    print("sitemap:", len(all_arts) + 7, "urls")
+    print("ads.txt:", "auto-generated" if _pub_id else "MISSING")
+
     print("Built:", len(exam_arts), "exams +", len(ai_arts), "ai")
     print("Ready for deployment.")
 
