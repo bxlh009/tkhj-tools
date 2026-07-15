@@ -241,7 +241,7 @@ def extract_slug(content):
     if not m: return None
     for ln in m.group(0).splitlines():
         if 'slug:' in ln:
-            return ln.split('slug:')[1].strip().strip("'\"")
+            return ln.split('slug:')[1].strip()().strip("'\"")
     return None
 
 def pick_template(atype):

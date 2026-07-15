@@ -432,7 +432,7 @@ def main():
                "file": str(out_path), "title": target["title"],
                "source": target["source"], "score": score_item(target)})
     print(f"  saved: {out_path}")
-    print("  ok (site rebuild handled by daily_generate.py)")
+    rebuild_site()
     return 0
 
 if __name__ == "__main__":
