@@ -51,3 +51,5 @@
 {"type": "ai", "status": "ok", "output": "aved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-15-openais-codex-now-encrypts-instructions-between-ai-agents-leaving-developers-bli.md\n  ok (site rebuild handled by daily_generate.py)\n", "_time": "2026-07-15T12:24:14.818745"}
 {"type": "ai", "status": "ok", "output": "he Decoder)\n[5/5] Saving + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-15-openais-first-hardware-product-is-a-screenless-ai-speaker-designed-to-feel-alive.md\n", "_time": "2026-07-15T12:27:18.834580"}
 {"type": "build", "status": "ok", "_time": "2026-07-15T12:27:18.910617"}
+{"type": "ai", "status": "ok", "output": "arkTechPost)\n[5/5] Saving + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-15-google-releases-litertjs-a-javascript-binding-of-litert-that-runs-tflite-models.md\n", "_time": "2026-07-15T12:34:29.120396"}
+{"type": "build", "status": "ok", "_time": "2026-07-15T12:34:29.224542"}

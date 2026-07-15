@@ -28,5 +28,10 @@
     "title": "OpenAI's first hardware product is a screenless AI speaker designed to feel alive",
     "link": "https://the-decoder.com/openais-first-hardware-product-is-a-screenless-ai-speaker-designed-to-feel-alive/",
     "date": "2026-07-15"
+  },
+  "aa3902312ce8a4": {
+    "title": "Google Releases LiteRT.js: A JavaScript Binding of LiteRT That Runs .tflite Models in Browsers via WebGPU",
+    "link": "https://www.marktechpost.com/2026/07/15/google-releases-litert-js-a-javascript-binding-of-litert-that-runs-tflite-models-in-browsers-via-webgpu/",
+    "date": "2026-07-15"
   }
 }
