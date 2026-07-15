@@ -381,7 +381,7 @@ def about_page():
     body += '<p>We have no affiliate relationships with the testing organizations or AI companies we write about. We do not accept sponsored posts. AI tool reviews are based on publicly available information and rewritten in our own words, not copied from press releases. If a specific claim cannot be verified from the source, it is omitted or flagged with hedging language. When we make a factual error, we correct it publicly.</p>'
 
     body += '<h2 style="font-weight:800;margin:40px 0 16px">Contact</h2>'
-    body += '<p>If you find an error or have a suggestion, let us know. We read every message.</p>'
+    body += '<p>If you find an error or have a suggestion, <a href="https://github.com/bxlh009/tkhj-tools/issues">open an issue on GitHub</a>. We read every submission.</p>'
 
     body += '</div></div></section>'
     return page("About", hero + body, "about")
@@ -412,13 +412,13 @@ def contact_page():
     hero += '</div></section>'
     body = '<section class="section"><div class="container"><div style="max-width:680px;margin:0 auto">'
     body += '<h2 style="font-weight:700;margin:0 0 12px">Get in Touch</h2>'
-    body += '<p>Contact form coming soon.</p>'
+    body += '<p>Found an error or have a suggestion? <a href="https://github.com/bxlh009/tkhj-tools/issues">Open an issue on GitHub</a>. We review every submission.</p>'
     body += '<h2 style="font-weight:700;margin:32px 0 12px">Report an Issue</h2>'
     body += '<p>Spot a factual error, broken link, or outdated information? Send us the URL and what you expected to see. Your correction helps thousands of students.</p>'
     body += '<h2 style="font-weight:700;margin:32px 0 12px">Collaboration</h2>'
     body += '<p>We welcome guest posts from verified educators and AI researchers. Include your credentials and a brief pitch.</p>'
     body += '<h2 style="font-weight:700;margin:32px 0 12px">Elsewhere</h2>'
-    body += '<p>GitHub: <a href="https://github.com/bxlh009">github.com/bxlh009</a></p>'
+    body += '<p>GitHub Issues: <a href="https://github.com/bxlh009/tkhj-tools/issues">github.com/bxlh009/tkhj-tools/issues</a></p>'
     body += '</div></div></section>'
     return page("Contact", hero + body, "contact")
 
