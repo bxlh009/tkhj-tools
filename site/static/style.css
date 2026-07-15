@@ -1,4 +1,4 @@
-﻿/* =========================================================
+/* =========================================================
    TKHJ Tools - Light Editorial (SaaS Education)
    ========================================================= */
 
@@ -214,6 +214,7 @@ ul{list-style:none;padding:0;margin:0}
   overflow:hidden;display:flex;flex-direction:column;
   transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
   box-shadow:var(--shadow-1);
+  text-decoration:none
 }
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--line-strong)}
 
