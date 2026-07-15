@@ -77,7 +77,7 @@ def generate_exam(var_path):
     print(f"[exam] generating from {var_path.name}...")
     r = subprocess.run(
         [sys.executable, str(HERE / "generate.py"), "--type", "exam", "--vars", str(var_path)],
-        capture_output=True, text=True, timeout=300
+        capture_output=True, text=True, timeout=600
     )
     if r.returncode == 0:
         print(r.stdout[-300:])
