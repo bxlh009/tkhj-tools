@@ -53,3 +53,5 @@
 {"type": "build", "status": "ok", "_time": "2026-07-15T12:27:18.910617"}
 {"type": "ai", "status": "ok", "output": "arkTechPost)\n[5/5] Saving + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-15-google-releases-litertjs-a-javascript-binding-of-litert-that-runs-tflite-models.md\n", "_time": "2026-07-15T12:34:29.120396"}
 {"type": "build", "status": "ok", "_time": "2026-07-15T12:34:29.224542"}
+{"type": "ai", "status": "ok", "output": "; fallback stub saved\n[5/5] Saving + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-15-indian-ai-coding-startup-emergent-becomes-a-unicorn-with-130m-series-c.md\n", "_time": "2026-07-15T12:57:35.788701"}
+{"type": "build", "status": "ok", "_time": "2026-07-15T12:57:35.887770"}
