@@ -180,14 +180,14 @@ ul{list-style:none;padding:0;margin:0}
 
 /* View-all outline CTA */
 .view-all{
-  text-decoration:none
+  text-decoration:none;
   display:inline-flex;align-items:center;gap:6px;
   padding:10px 22px;border-radius:var(--radius-pill);
   border:1.5px solid var(--brand);color:var(--brand);
   background:transparent;font-size:.9rem;font-weight:600;
   transition:background .15s,color .15s;
 }
-.view-all:hover{background:var(--brand);color:#fff}
+.view-all:hover{background:var(--brand);color:#fff;text-decoration:none}
 [data-theme="dark"] .view-all:hover{color:#fff}
 
 /* Filter tabs */
