@@ -15,6 +15,9 @@ TAG  = "Free study guides for every level, and honest AI news coverage."
 CSL  = "static/style.css"
 JSL  = "static/nav.js"
 
+
+GA_ID = "G-QFNJLMGDXL"
+GA_HEAD = '<script async src="https://www.googletagmanager.com/gtag/js?id=G-QFNJLMGDXL"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-QFNJLMGDXL");</script>'
 AD_HEAD = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8913718352251239" crossorigin="anonymous"></script>'
 AD_UNIT = '<div class="ad-unit"><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8913718352251239" data-ad-slot="4470604333"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>'
 AD_UNIT_BOTTOM = '<div class="ad-unit" style="margin-top:32px"><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8913718352251239" data-ad-slot="9603594639" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>'
@@ -268,6 +271,7 @@ def page(title, body_str, active="home", desc="", canonical="", schema=""):
         '<title>' + esc(title) + ' | TKHJ Tools</title>',
         '<link rel="icon" href="/favicon.png">',
         AD_HEAD,
+        GA_HEAD,
         '<meta name="description" content="' + description + '">',
         '<meta name="theme-color" content="#3B82F6" media="(prefers-color-scheme:light)">',
         '<link rel="stylesheet" href="/' + CSL + '">',
