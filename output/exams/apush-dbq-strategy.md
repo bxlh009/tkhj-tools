@@ -6,9 +6,10 @@ exam: "AP US History"
 section: "DBQ"
 primary_keyword: "apush dbq strategy"
 long_tail: ["apush dbq strategy", "ap us history tips"]
-word_count: 0
-estimated_read_min: 0
+word_count: 1458
+estimated_read_min: 6
 structure_template: "A"
+
 ---
 
 "God, I hate seeing this mistake."

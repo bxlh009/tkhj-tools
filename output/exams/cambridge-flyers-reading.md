@@ -6,9 +6,10 @@ exam: "Cambridge Flyers"
 section: "Reading"
 primary_keyword: "cambridge flyers reading"
 long_tail: ["cambridge flyers reading", "cambridge flyers tips"]
-word_count: 0
-estimated_read_min: 8
+word_count: 1418
+estimated_read_min: 6
 structure_template: "C"
+
 ---
 
 Do you stare at the page and feel like the words are swimming?
