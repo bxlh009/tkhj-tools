@@ -33,7 +33,7 @@ def call_api(system, user, retries=3, base_delay=5):
     last_err = None
     for attempt in range(1, retries + 1):
         try:
-            with urllib.request.urlopen(req, timeout=180) as r:
+            with urllib.request.urlopen(req, timeout=300) as r:
                 body = json.loads(r.read().decode())
             print('[INFO] prompt='+str(body.get('usage',{}).get('prompt_tokens'))+' cmp='+str(body.get('usage',{}).get('completion_tokens')))
             return body['choices'][0]['message']['content']
