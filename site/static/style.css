@@ -93,7 +93,7 @@ body{
   -webkit-font-smoothing:antialiased;letter-spacing:-.003em;
   transition:background .25s,color .25s;
 }
-a{text-decoration:none;color:inherit}
+a{text-decoration:none;color:inherit}\nmain a{color:var(--brand);text-decoration:underline}\nmain a:hover{color:var(--brand-dark)}
 img{display:block;max-width:100%}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
 input{font-family:inherit}
