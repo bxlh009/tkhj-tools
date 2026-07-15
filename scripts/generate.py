@@ -241,7 +241,7 @@ def extract_slug(content):
     if not m: return None
     for ln in m.group(0).splitlines():
         if 'slug:' in ln:
-            return ln.split('slug:')[1].strip()().strip("'\"")
+            return ln.split('slug:')[1].strip().strip("'\"")
     return None
 
 def pick_template(atype):
@@ -335,14 +335,7 @@ def main():
         missing = [k for k, v in {'examples': det.get('examples',0)>=2, 'cta': det.get('cta'), 'disclaimer': det.get('disclaimer'), 'word_count': det.get('word_count',0)>=min_w} .items() if not v]
         print('[WARN] still WARN; missing or weak: %s; needs ' % ', '.join(missing) if missing else '[WARN] still WARN; needs 5-min human polish')
     # Force-rewrite banned opening lines (Most students think...)
-    try:
-        from _force_opener import has_banned_opener, rewrite_opening
-        if has_banned_opener(article):
-            article = rewrite_opening(article, call_api)
-            sc_after, _, _ = score(article, min_w, max_w)
-            print("[OK]   opener rewritten; new score:", sc_after)
-    except Exception as e_op:
-        print("[WARN] opener fix failed:", e_op)
+    # opener rewrite disabled (module not available)
 
     # Auto-append CTA + disclaimer if missing
     article = ensure_cta_and_disclaimer(article, args.type)
