@@ -359,7 +359,23 @@ def main():
     except Exception as e:
         print(f"[WARN] similarity check failed: {e}")
 
-    slug = extract_slug(article) or 'untitled-'+datetime.now().strftime('%Y%m%d-%H%M%S')
+    # Ensure article has frontmatter (model sometimes skips --- wrappers)
+    if not article.startswith('---'):
+        title_from_body = article.strip().split(chr(10))[0][:80]
+        fm_lines = [
+            '---',
+            'title: "' + vars_data.get('primary_keyword', title_from_body).strip('"') + '"',
+            'slug: "' + vars_data.get('slug', 'untitled') + '"',
+            'date: "' + datetime.now().strftime('%Y-%m-%d') + '"',
+            'exam: "' + vars_data.get('exam_name', '') + '"',
+            'section: "' + vars_data.get('section_name', '') + '"',
+            'primary_keyword: "' + vars_data.get('primary_keyword', '') + '"',
+            'word_count: ' + str(len(article.split())),
+            'estimated_read_min: ' + str(max(1, len(article.split()) // 220)),
+            '---',
+        ]
+        article = chr(10).join(fm_lines) + chr(10) + article
+    slug = extract_slug(article) or vars_data.get('slug', 'untitled-' + datetime.now().strftime('%Y%m%d-%H%M%S'))
     ensure_dir(cur_out)
     out = write_output(article, slug, cur_out)
     print('[OK]   written: %s (~%d words)' % (out, wc(article)))
