@@ -55,3 +55,6 @@
 {"type": "build", "status": "ok", "_time": "2026-07-15T12:34:29.224542"}
 {"type": "ai", "status": "ok", "output": "; fallback stub saved\n[5/5] Saving + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-15-indian-ai-coding-startup-emergent-becomes-a-unicorn-with-130m-series-c.md\n", "_time": "2026-07-15T12:57:35.788701"}
 {"type": "build", "status": "ok", "_time": "2026-07-15T12:57:35.887770"}
+{"type": "exam", "var": "toefl-writing-independent-task.json", "status": "ok", "output": "RN] too similar to ielts-writing-band-7-strategy.md (88%); consider different vars\n[OK]   written: /home/runner/work/tkhj-tools/tkhj-tools/output/exams/toefl-writing-independent-task.md (~1888 words)\n", "_time": "2026-07-16T11:49:15.888690"}
+{"type": "ai", "status": "ok", "output": "he Decoder)\n[5/5] Saving + rebuilding site...\n  saved: /home/runner/work/tkhj-tools/tkhj-tools/output/ai/2026-07-16-ex-openai-cto-muratis-thinking-machines-drops-inkling-a-975b-parameter-model-tha.md\n", "_time": "2026-07-16T11:50:29.410481"}
+{"type": "build", "status": "ok", "_time": "2026-07-16T11:50:29.512307"}
