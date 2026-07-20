@@ -58,5 +58,10 @@
     "title": "Moonshot's Kimi K3 outperforms Fable 5 in frontend code but lags far behind in complex math",
     "link": "https://the-decoder.com/moonshots-kimi-k3-outperforms-fable-5-in-frontend-code-but-lags-far-behind-in-complex-math/",
     "date": "2026-07-19"
+  },
+  "b536a7842ed929": {
+    "title": "Someone Fine-Tuned OpenBMB’s MiniCPM5-1B on Claude Fable 5 Traces to Ship a 657MB Local Thinking Model",
+    "link": "https://www.marktechpost.com/2026/07/19/someone-fine-tuned-openbmbs-minicpm5-1b-on-claude-fable-5-traces-to-ship-a-657mb-local-thinking-model/",
+    "date": "2026-07-20"
   }
 }
