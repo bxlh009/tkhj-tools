@@ -68,5 +68,10 @@
     "title": "NVIDIA Releases Cosmos 3 Edge: A 4B-Parameter Open World Model That Reasons and Generates Robot Actions On-Device",
     "link": "https://www.marktechpost.com/2026/07/21/nvidia-releases-cosmos-3-edge-a-4b-parameter-open-world-model-that-reasons-and-generates-robot-actions-on-device/",
     "date": "2026-07-21"
+  },
+  "a40770988ddce2": {
+    "title": "OpenAI claims responsibility for the Hugging Face hack after its own models escaped a test sandbox",
+    "link": "https://the-decoder.com/openai-claims-responsibility-for-the-hugging-face-hack-after-its-own-models-escaped-a-test-sandbox/",
+    "date": "2026-07-22"
   }
 }
