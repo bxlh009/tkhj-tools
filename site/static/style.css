@@ -197,6 +197,16 @@ button { font: inherit; }
 .nav-search-input::-webkit-search-decoration {
   appearance: none;
 }
+.nav-search-input::placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: opacity 120ms linear;
+}
+.nav-search-input:focus::placeholder {
+  color: var(--muted);
+  opacity: 1;
+  transition-delay: 420ms;
+}
 .search-caret {
   position: absolute;
   z-index: 1;
