@@ -16,13 +16,11 @@ Rules
 6. Append a one-line entry to ai_news_log.jsonl.
 
 Requires: requests (stdlib only — uses urllib).
-Optional: AGNES_API_KEY env var. Falls back to generating a
-           "research-only" placeholder file if no key is configured.
+Requires: AGNES_API_KEY. Empty responses and low-quality drafts are rejected.
 """
 from __future__ import annotations
 
 import datetime as _dt
-import random as _random
 import hashlib as _hashlib
 import json as _json
 import os as _os
@@ -33,6 +31,9 @@ import sys as _sys
 import urllib.error as _urllib_error
 import urllib.request as _urllib_request
 from xml.etree import ElementTree as _ET
+
+from content_quality import evaluate_article
+from publish_article import publish
 
 SCRIPTS_DIR = _pathlib.Path(__file__).resolve().parent
 ENGINE_DIR  = SCRIPTS_DIR.parent
@@ -64,6 +65,65 @@ RSS_FEEDS = [
     ("AI Business",                  "https://aibusiness.com/feed"),
     ("MIT AI News",                  "https://news.mit.edu/topic/artificial-intelligence2/rss"),
     ("Prompt Engineering Guide",     "https://www.promptingguide.ai/rss.xml"),
+]
+
+EVERGREEN_TOPICS = [
+    {
+        "title": "Debug an AI Prompt with a Small Test Set",
+        "source": "Google AI for Developers",
+        "link": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+        "summary": "Turn prompt iteration into a repeatable test process using clear instructions, varied examples, and observed failures.",
+        "kind": "evergreen",
+    },
+    {
+        "title": "Verify an AI Answer Before It Enters Your Notes",
+        "source": "NIST AI Resource Center",
+        "link": "https://airc.nist.gov/",
+        "summary": "A practical verification workflow inspired by testing, evaluation, verification, and validation practices.",
+        "kind": "evergreen",
+    },
+    {
+        "title": "When Few-Shot Examples Improve an AI Workflow",
+        "source": "Google AI for Developers",
+        "link": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+        "summary": "A decision guide for adding specific and varied examples without overfitting a prompt to one case.",
+        "kind": "evergreen",
+    },
+    {
+        "title": "Run a Reversible Pilot Before Automating Work with AI",
+        "source": "NIST AI Risk Management Framework",
+        "link": "https://www.nist.gov/itl/ai-risk-management-framework",
+        "summary": "Define scope, human checks, failure criteria, and rollback before expanding an AI-assisted workflow.",
+        "kind": "evergreen",
+    },
+    {
+        "title": "Break a Complex AI Task into Verifiable Steps",
+        "source": "Google AI for Developers",
+        "link": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+        "summary": "Use task decomposition and prompt chaining when one large instruction produces outputs that are hard to inspect.",
+        "kind": "evergreen",
+    },
+    {
+        "title": "Document Uncertainty in AI-Assisted Decisions",
+        "source": "NIST Generative AI Profile",
+        "link": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+        "summary": "Separate source evidence, model output, reviewer judgment, and unresolved uncertainty in a decision record.",
+        "kind": "evergreen",
+    },
+    {
+        "title": "Write Clear Output Constraints for an AI Prompt",
+        "source": "Google AI for Developers",
+        "link": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+        "summary": "Specify audience, fields, length, and completion format so an AI response can be checked automatically.",
+        "kind": "evergreen",
+    },
+    {
+        "title": "Create a Human Review Checkpoint for AI Content",
+        "source": "NIST AI Resource Center",
+        "link": "https://airc.nist.gov/",
+        "summary": "Place human review where an error becomes costly instead of adding vague approval to every step.",
+        "kind": "evergreen",
+    },
 ]
 
 
@@ -214,32 +274,21 @@ def mark_seen(item, db):
     db[_fingerprint(item)] = {"title": item["title"], "link": item["link"], "date": _today()}
 
 def make_prompt(item, style_rules):
-    sys_path = ENGINE_DIR / "prompts" / "system_prompt_ai.md"
-    system = sys_path.read_text("utf-8") if sys_path.exists() else "You are Alex, independent AI tools researcher."
+    sys_path = ENGINE_DIR / "prompts" / "system_prompt_editorial.md"
+    system = sys_path.read_text("utf-8").replace("{rules}", style_rules)
     user_msg = (
         f"TITLE: {item['title']}\n"
         f"SOURCE: {item['source']}\n"
         f"LINK:   {item['link']}\n"
         f"SUMMARY:\n{item['summary']}\n\n"
-        "Write ONLY the article body text (IGNORE system prompt about frontmatter - do NOT include --- markers, YAML, or JSON). "
-        "Conversational style with contractions, varied sentence length, "
-        "rhetorical questions, and at least 3 em-dashes.\n"
-        "Paraphrase everything. Do not copy sentences from the source.\n"
-        "End with disclaimer: 'This article is independently written based on publicly available information. AI products evolve fast; verify with official sources. No vendor sponsorship.'\n\n"
-        "CRITICAL RULES:\n"
-        "- This article MUST be 1500-2500 words. Short articles get rejected.\n"
-        "- NEVER invent specific numbers, scores, or benchmarks. If you dont know a number, say 'exact figures were not disclosed' or similar.\n"
-        "- NEVER write first-person testing claims like 'I tested this,' 'in my testing,' 'I spent three days,' 'I found that.' You are not a tester reporting results. Write analysis based on the source only.\n"
-        "- NEVER fabricate user stories, user quotes, screenshot metrics ('50k likes'), or anecdotes. If the source does not include a user quote, do not invent one.\n"
-        "- NEVER describe personal emotions as reactions to the product ('I was genuinely shocked,' 'this keeps me up at night'). Reference real analyst reactions or omit them.\n"
-        "- If you cannot verify a specific claim from the source link, use hedging language: 'reportedly,' 'according to the announcement,' 'claimed by the company.'\n"
-        "- When in doubt about a fact, omit it. Omitting is safe; fabricating gets the site banned.\n"
-        "- NEVER compare models with made-up performance data. Use qualitative language: 'reportedly faster,' 'claimed to improve.'\n"
-        "- Use the source link as your only factual anchor. Paraphrase, dont fabricate.\n"
-        "- Vary sentence length dramatically. Mix short punchy sentences with longer analytical ones.\n"
-        "- BANNED: 'I've been teaching TOEFL/GRE' or any mention of teaching. This is a tech blog, not an exam blog."
-        "- BANNED PHRASES: '50,000 likes', 'I screenshotted', 'went viral', 'I showed this to my student."
-        "- CRITICAL: Do NOT invent any reference links. The SOURCE link above is your only reference. Never create a \"References\" section or add links the system did not provide.\n"
+        "Write only an 800-1500 word article body in Markdown; do not add YAML.\n"
+        "Required sections: ## What the source establishes; ## What this means; "
+        "## A practical next step; ## Limits and uncertainty; ## When to use or skip it.\n"
+        "Use the supplied source as the factual boundary. Attribute announcement "
+        "claims, distinguish interpretation, and omit unsupported details.\n"
+        "Do not claim hands-on testing, invent metrics, quotes, people, prices, "
+        "benchmarks, reactions, or links. Do not write a generic news recap. Add "
+        "original value through a decision framework or reproducible workflow.\n"
     )
     return system, user_msg
 
@@ -269,6 +318,26 @@ def call_llm(system, user):
         print(f"  [warn] LLM call failed: {e}")
         return ""
 
+def article_text(item, body):
+    today = _today()
+    slug = _slugify(item["title"]) or "ai-news"
+    source_url = item.get("link", "")
+    refs_section = f"\n## Sources\n\n- {source_url}\n" if source_url else ""
+    frontmatter = (
+        "---\n"
+        f'title: "{item["title"]}"\n'
+        f'slug: "{today}-{slug}"\n'
+        f'date: "{today}"\n'
+        'domain: "ai"\n'
+        'category: "AI"\n'
+        f'description: "{item.get("summary", "").replace(chr(34), chr(39))[:220]}"\n'
+        f'primary_keyword: "{slug}"\n'
+        f'word_count: {len(body.split())}\n'
+        "---\n\n"
+    )
+    return frontmatter + body + refs_section + "\n"
+
+
 def save_article(item, body):
     today = _today()
     slug = _slugify(item["title"]) or "ai-news"
@@ -277,20 +346,16 @@ def save_article(item, body):
     while out_path.exists():
         n += 1
         out_path = OUTPUT_AI / f"{today}-{slug}-{n}.md"
-    # Sources go to References section at bottom, not frontmatter
-    source_url = item.get("link", "")
-    refs_section = f"\n## References\n\n- {source_url}\n" if source_url else ""
-    frontmatter = (
-        "---\n"
-        f'title: "{item["title"]}"\n'
-        f'slug: "{today}-{slug}"\n'
-        f'date: "{today}"\n'
-        'category: "AI"\n'
-        f'primary_keyword: "{slug}"\n'
-        f'word_count: {len(body.split())}\n'
-        "---\n\n"
-    )
-    out_path.write_text(frontmatter + body + refs_section + "\n", encoding="utf-8")
+    article = article_text(item, body)
+    if n > 1:
+        article = _re.sub(
+            r'^slug:\s*".*"$',
+            f'slug: "{today}-{slug}-{n}"',
+            article,
+            count=1,
+            flags=_re.MULTILINE,
+        )
+    out_path.write_text(article, encoding="utf-8")
     return out_path
 def rebuild_site():
     r = _subprocess.run([_sys.executable, str(SITE_BUILD)], capture_output=True, text=True)
@@ -344,96 +409,103 @@ def days_since(date_str):
 
 def main():
     print(f"=== daily_ai_news.py — {_today()} ===")
+    if last_ai_article_date() == _today():
+        print("[ai] already published today, skipping")
+        return 0
     style_rules_path = ENGINE_DIR / "rules" / "WRITING_RULES.md"
     style_rules = style_rules_path.read_text("utf-8") if style_rules_path.exists() else ""
     db = _load_seen()
     print("[1/5] Pulling RSS feeds...")
     items = pull_feeds()
     print(f"  pulled {len(items)} candidate items")
-    print("[2/5] Scoring for big-news relevance...")
-    big = [it for it in items if is_today(it) and is_big_news(it)]
-    print(f"  big-news matches: {len(big)}")
-    target = None
-    for it in sorted(big, key=score_item, reverse=True):
-        if not already_seen(it, db):
-            target = it
-            break
-    # Enforce minimum frequency: at least 1 AI article every 2 days
-    days_since_last = days_since(last_ai_article_date())
-    if target is None and days_since_last >= 2:
-        # Lower threshold: pick top available story regardless of big-news score
-        print(f"  [freq] {days_since_last} days since last AI article — forcing generation")
-        available = [it for it in items if is_today(it) and not already_seen(it, db)]
-        if not available:
-            # Fallback: allow any recent story (last 3 days) regardless of seen status
-            # (LLM will take a different angle than previous article)
-            print(f"  [freq] All today-stories seen — picking top recent for fresh angle")
-            from datetime import timedelta as _td
-            cutoff = _dt.datetime.now(_dt.timezone.utc) - _td(days=3)
-            available = [it for it in items if _is_recent(it, cutoff)]
-        if available:
-            target = sorted(available, key=score_item, reverse=True)[0]
-            print(f"  [freq] Forced pick (score {score_item(target)}): {target['title']}")
-    if target is None:
-        # DAILY FALLBACK: every day must have an AI article
-        print(f"  [daily] No fresh story \u2014 using daily fallback")
-        available_daily = [it for it in items if is_today(it)]
-        if available_daily:
-            target = sorted(available_daily, key=score_item, reverse=True)[0]
-            print(f"  [daily] Daily pick (score {score_item(target)}): {target['title']}")
-        else:
-            CURATED = [
-                {"title": "Top 7 Prompt Engineering Patterns for 2026", "source": "Curated", "link": "https://www.promptingguide.ai", "summary": "Roundup of the latest prompt chaining, few-shot, and system-prompt techniques professionals are using right now."},
-                {"title": "AI Coding Assistants Compared: Which One Actually Ships Code", "source": "Curated", "link": "https://github.com/features/copilot", "summary": "A practical comparison of Cursor, GitHub Copilot, Cody, and Windsurf on real-world tasks."},
-                {"title": "How to Build an AI Agent That Does Your Email", "source": "Curated", "link": "https://www.langchain.ai", "summary": "Step by step guide to wiring an LLM agent to triage, draft, and send email."},
-                {"title": "10 AI Productivity Tools Worth Paying For in 2026", "source": "Curated", "link": "https://www.notion.ai", "summary": "Honest ROI breakdown of AI tools across writing, analysis, design, and scheduling."},
-                {"title": "The State of Open-Weight Models: Llama 4, Mistral, and Beyond", "source": "Curated", "link": "https://huggingface.co", "summary": "What the latest open-weight releases actually mean for developers and startups."}
-            ]
-            target = _random.choice(CURATED)
-            print(f"  [daily] Curated pick: {target['title']}")
-    print(f"[3/5] Selected: {target['title']}  ({target['source']})")
-    system, user_msg = make_prompt(target, style_rules)
-    body = call_llm(system, user_msg)
-    if not body:
-        body = (
-            f"## {target['title']}\n\n"
-            f"This story broke today via {target['source']}. "
-            f"Details are still emerging — check the source: {target['link']}.\n"
-        )
-        print("  [warn] LLM gave no output; fallback stub saved")
-    # Validate body is not JSON metadata (pipeline bug protection)
-    body_stripped = body.strip()
-    if body_stripped.startswith("{") and body_stripped.endswith("}"):
+
+    print("[2/5] Building evidence-backed candidate queue...")
+    news = [
+        item
+        for item in sorted(items, key=score_item, reverse=True)
+        if is_today(item) and is_big_news(item) and not already_seen(item, db)
+    ]
+    daily_updates = [
+        item
+        for item in sorted(items, key=score_item, reverse=True)
+        if is_today(item)
+        and item not in news
+        and not already_seen(item, db)
+    ]
+    offset = _dt.date.today().toordinal() % len(EVERGREEN_TOPICS)
+    evergreen = EVERGREEN_TOPICS[offset:] + EVERGREEN_TOPICS[:offset]
+    evergreen = [item for item in evergreen if not already_seen(item, db)]
+    # Important news wins. Official evergreen guides are the preferred fallback;
+    # other same-day updates keep the daily queue renewable after evergreen topics
+    # have been used, while the quality gate still blocks thin recaps.
+    candidates = news + evergreen + daily_updates
+    print(
+        f"  major news={len(news)} evergreen={len(evergreen)} "
+        f"other daily updates={len(daily_updates)}"
+    )
+    if not candidates:
+        print("[ERROR] no unused AI topic is available; extend EVERGREEN_TOPICS")
+        return 1
+
+    minimum = int(CONFIG.get("defaults", {}).get("ai_news_min_words", 800))
+    maximum = int(CONFIG.get("defaults", {}).get("ai_news_max_words", 1500))
+    for attempt, target in enumerate(candidates[:3], start=1):
+        print(f"[3/5] Quality attempt {attempt}/3: {target['title']} ({target['source']})")
+        system, user_msg = make_prompt(target, style_rules)
+        body = call_llm(system, user_msg).strip()
+        if not body or (body.startswith("{") and body.endswith("}")):
+            print("  [reject] empty or metadata-only model response")
+            continue
         try:
-            import json as _jc
-            _jc.loads(body_stripped)
-            ws = "  [warn] LLM returned JSON metadata instead of article; using fallback"
-            print(ws)
-            body = (
-                target["title"] + "\n\n"
-                + "This story broke today via " + target["source"] + ". "
-                + "Details are still emerging \u2014 check the source: "
-                + target["link"] + ".\n"
-            )
+            import importlib as _il
+
+            body = _il.import_module("_clean_body").clean_body(body)
         except Exception:
             pass
-    # Final cleanup: strip stray frontmatter leaking into body
-    try:
-        import importlib as _il
-        _clean = _il.import_module("_clean_body")
-        body = _clean.clean_body(body)
-    except Exception:
-        pass
-    print("[5/5] Saving + rebuilding site...")
-    out_path = save_article(target, body)
-    mark_seen(target, db)
-    _save_seen(db)
-    log_event({"date": _today(), "action": "published",
-               "file": str(out_path), "title": target["title"],
-               "source": target["source"], "score": score_item(target)})
-    print(f"  saved: {out_path}")
-    rebuild_site()
-    return 0
+
+        preview = article_text(target, body)
+        report = evaluate_article(
+            preview,
+            domain="ai",
+            min_words=minimum,
+            max_words=maximum,
+            source_urls=[target["link"]],
+            existing_dir=OUTPUT_AI,
+        )
+        print(f"  [gate] {report.summary()} | {report.metrics}")
+        if not report.passed:
+            log_event(
+                {
+                    "date": _today(),
+                    "action": "rejected",
+                    "title": target["title"],
+                    "errors": report.errors,
+                }
+            )
+            continue
+
+        print("[5/5] Saving, publishing, and rebuilding...")
+        out_path = save_article(target, body)
+        destination = publish(out_path)
+        mark_seen(target, db)
+        _save_seen(db)
+        log_event(
+            {
+                "date": _today(),
+                "action": "published",
+                "file": str(out_path),
+                "site_file": str(destination),
+                "title": target["title"],
+                "source": target["source"],
+                "score": score_item(target),
+            }
+        )
+        print(f"  saved: {out_path}")
+        print(f"  published: {destination}")
+        return 0 if rebuild_site() else 1
+
+    print("[ERROR] three AI candidates failed the quality gate")
+    return 1
 
 if __name__ == "__main__":
     _sys.exit(main())

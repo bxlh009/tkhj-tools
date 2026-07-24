@@ -20,6 +20,7 @@ OUTPUT = ROOT / "output"
 sys.path.insert(0, str(SCRIPTS))
 
 import check_similarity
+import content_quality
 import generate
 
 
@@ -46,33 +47,35 @@ def check(desc, ok, detail=""):
 # 1. API Key 校验
 def test_api_key_validation():
     print("\n=== 1. API Key 校验 ===")
-    orig_key = os.environ.get("OPENAI_API_KEY")
+    cfg = json.loads((SCRIPTS / "config.json").read_text(encoding="utf-8"))
+    key_name = cfg["api"]["api_key_env"]
+    orig_key = os.environ.get(key_name)
 
-    os.environ["OPENAI_API_KEY"] = "sk-test-valid"
+    os.environ[key_name] = "sk-test-valid"
     try:
         k = generate.get_api_key()
         check("有效 key 返回正确", k == "sk-test-valid", f"got {k}")
-    except SystemExit:
-        check("有效 key 返回正确", False, "不应 exit")
+    except RuntimeError:
+        check("有效 key 返回正确", False, "不应报错")
 
-    os.environ["OPENAI_API_KEY"] = ""
+    os.environ[key_name] = ""
     try:
         generate.get_api_key()
-        check("空 key 应 sys.exit", False, "没有 exit")
-    except SystemExit:
-        check("空 key 应 sys.exit", True)
+        check("空 key 应拒绝", False, "没有报错")
+    except RuntimeError:
+        check("空 key 应拒绝", True)
 
-    os.environ["OPENAI_API_KEY"] = "   "
+    os.environ[key_name] = "   "
     try:
         generate.get_api_key()
-        check("纯空格 key 应 sys.exit", False, "没有 exit")
-    except SystemExit:
-        check("纯空格 key 应 sys.exit", True)
+        check("纯空格 key 应拒绝", False, "没有报错")
+    except RuntimeError:
+        check("纯空格 key 应拒绝", True)
 
     if orig_key is not None:
-        os.environ["OPENAI_API_KEY"] = orig_key
-    elif "OPENAI_API_KEY" in os.environ:
-        del os.environ["OPENAI_API_KEY"]
+        os.environ[key_name] = orig_key
+    elif key_name in os.environ:
+        del os.environ[key_name]
 
 
 # 2. Token 计费控制
@@ -88,75 +91,56 @@ def test_token_control():
     check("base_url 是 HTTPS", api["base_url"].startswith("https://"), api["base_url"])
 
 
-# 3. 10 维质量评分
+# 3. 内容质量门禁
 def test_scoring():
-    print("\n=== 3. 10 维质量评分 ===")
+    print("\n=== 3. 内容质量门禁 ===")
+    source = "https://example.com/source"
+    paragraph = (
+        "This section explains a concrete decision and the evidence a reader "
+        "should use before taking the next reversible step.\n\n"
+    )
+    good = (
+        "## Method\n\n" + paragraph * 8
+        + "## Original practice example one\n\nScenario and answer with reasoning.\n\n"
+        + paragraph * 6
+        + "## Original practice example two\n\nTry this scenario and check your answer.\n\n"
+        + paragraph * 6
+        + f"## Sources\n\n- {source}\n"
+    )
+    report = content_quality.evaluate_article(
+        good,
+        domain="learning",
+        min_words=200,
+        max_words=1200,
+        source_urls=[source],
+    )
+    check("合格学习稿通过", report.passed, str(report.errors))
 
-    _p = ("honestly, I have been teaching TOEFL for seven years. "
-        "it is not easy, but here is the thing, most students do not realize that reading is not about vocabulary. "
-        "do not get me wrong, words matter, but structure matters more. let me be clear, if you are stuck at 22, "
-        "it is not because you are lazy. turns out, it is because you are reading every single word. "
-        "here is what I tell my students, skim first, then dig into the details. basically, you need to triage. "
-        "I mean, it is literally the only way. look, I have seen this mistake a thousand times. "
-        "Worked Example 1, the main idea question, read the first sentence of each paragraph, that is it, find the common thread. "
-        "Worked Example 2, the inference question, look for clues in the surrounding sentences, connect the dots! "
-        "try the free quiz at https://exam.tkjtools.io today! disclaimer, this is independently written content. "
-        "Why does this matter? Because it works. Do you see the pattern? I sure do.")
-
-    good = _p * 12  # ~1800 words
-    good_inj, _ = generate.force_contr(good, target=15)
-    good_inj = generate.force_dashes(good_inj, n=4)
-    good_inj = generate.force_markers(good_inj)
-    sc, verdict, det = generate.score(good_inj, 1500, 2500)
-
-    check("好文章评分 int 且合理", isinstance(sc, int) and sc >= 0, "sc=%s" % sc)
-    check("好文章有 CTA", det.get("cta") is True)
-    check("好文章有 disclaimer", det.get("disclaimer") is True)
-
-    sc, verdict, det = generate.score("", 1500, 2500)
-    check("空字符串不 crash", isinstance(sc, int) and isinstance(verdict, str))
-
-    sc, verdict, det = generate.score("---\ntitle: test\n---", 1500, 2500)
-    check("只有 frontmatter 不 crash", isinstance(sc, int))
-
-    words = "word " * 1500
-    sc, verdict, det = generate.score(words, 1500, 2500)
-    check("刚好 min_words sc=int", isinstance(sc, int))
-
-    words = "word " * 3000
-    sc, verdict, det = generate.score(words, 1500, 2500)
-    check("超过 max_words sc=int", isinstance(sc, int))
-
-    bad = "## Title\n| Col1 | Col2 |\n| --- | --- |\n| A | B |\n"
-    sc, verdict, det = generate.score(bad, 100, 500)
-    check("banned format 被检测", det.get("banned_format") is True)
-
-    sc, verdict, det = generate.score("hello world test", None, None)
-    check("None min/max 不 crash", isinstance(sc, int))
+    fake = good + "\nI have taught 300+ students and guarantee results."
+    report = content_quality.evaluate_article(
+        fake,
+        domain="learning",
+        min_words=200,
+        max_words=1200,
+        source_urls=[source],
+    )
+    check("虚构权威和结果承诺被阻断", not report.passed, str(report.errors))
 
 
-# 4. 强制缩约词注入
+# 4. 元数据与来源组装
 def test_contraction_injection():
-    print("\n=== 4. 强制缩约词注入 ===")
-
-    text = "It is a test. It is only a test. " * 5
-    new_text, count = generate.force_contr(text, target=5)
-    check(f"替换数 <= target（got {count}）", count <= 5)
-    check("替换后 it's 存在", "it's" in new_text.lower() or "It's" in new_text)
-
-    new_text, count = generate.force_contr(text, target=0)
-    check("target=0 不替换", count == 0)
-
-    text_one = "It is here. All good."
-    new_text, count = generate.force_contr(text_one, target=100)
-    check(f"target 超量按实际替换（got {count}）", count <= 10)
-
-    new_text, count = generate.force_contr("", target=5)
-    check("空字符串不 crash", count == 0 and new_text == "")
-
-    fm_text = "---\ntitle: It is a test\n---\n\nIt is body text."
-    new_text, count = generate.force_contr(fm_text, target=5)
-    check("frontmatter 内的 it is 不被替换", "It is a test" in new_text)
+    print("\n=== 4. 元数据与来源组装 ===")
+    values = {"slug": "test-guide", "primary_keyword": "Test guide", "exam_name": "TOEFL"}
+    source = "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+    article = generate.build_article(
+        "## One\n\nText.\n\n## Two\n\nText.\n\n## Three\n\nText.",
+        article_type="exam",
+        values=values,
+        urls=[source],
+    )
+    check("生成 domain=learning", 'domain: "learning"' in article)
+    check("来源写入正文", source in article)
+    check("slug 写入 frontmatter", '"test-guide"' in article)
 
 
 # 5. 相似度检测

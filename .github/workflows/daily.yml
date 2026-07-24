@@ -2,7 +2,9 @@ name: Daily Content Generation
 
 on:
   schedule:
-    - cron: '0 10 * * *'
+    # Beijing 18:00, 21:00, and 00:00 retry windows. Daily guards prevent
+    # duplicate Learning or AI publication after the first successful run.
+    - cron: '0 10,13,16 * * *'
   workflow_dispatch:
 
 permissions:
@@ -26,10 +28,15 @@ jobs:
       - name: Generate daily content
         run: python scripts/daily_generate.py
 
+      - name: Verify quality gates
+        run: |
+          python scripts/test_content_quality.py
+          python scripts/audit_adsense_readiness.py
+
       - name: Commit and push
         run: |
           git config user.name "TKHJ Bot"
           git config user.email "bot@tkhjtools.top"
-          git add output/ daily_log.jsonl .seen_exam_vars.json .seen_ai_stories.json ai_news_log.jsonl
+          git add output/ site/content/ daily_log.jsonl .seen_exam_vars.json .seen_ai_stories.json ai_news_log.jsonl
           git diff --staged --quiet || git commit -m "Daily content $(date +'%Y-%m-%d')"
           git push
