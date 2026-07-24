@@ -1,0 +1,740 @@
+[
+  {
+    "slug": "toefl-reading-2026-task-map",
+    "file": "toefl-reading-2026-task-map.md",
+    "title": "TOEFL Reading in 2026: A Task-by-Task Study Map",
+    "description": "Turn the current TOEFL Reading task types into a focused weekly practice plan.",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-18",
+    "updated": "2026-07-24",
+    "sources": [
+      [
+        "ETS: TOEFL iBT Reading section",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content/reading.html"
+      ],
+      [
+        "ETS: TOEFL iBT preparation resources",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ]
+  },
+  {
+    "slug": "toefl-implied-meaning-evidence-method",
+    "file": "toefl-implied-meaning-evidence-method.md",
+    "title": "TOEFL Implied Meaning: The Two-Clue Evidence Method",
+    "description": "A repeatable method for answering implied-meaning questions without relying on outside knowledge.",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-19",
+    "updated": "2026-07-24",
+    "sources": [
+      [
+        "ETS: TOEFL iBT Reading section",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content/reading.html"
+      ],
+      [
+        "ETS: TOEFL iBT preparation resources",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ]
+  },
+  {
+    "slug": "toefl-vocabulary-in-context",
+    "file": "toefl-vocabulary-in-context.md",
+    "title": "TOEFL Vocabulary in Context: A Four-Clue Routine",
+    "description": "Use grammar, contrast, examples, and tone to infer an unfamiliar word before checking a dictionary.",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-20",
+    "updated": "2026-07-24",
+    "sources": [
+      [
+        "ETS: TOEFL iBT Reading section",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content/reading.html"
+      ],
+      [
+        "ETS: TOEFL iBT preparation resources",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ]
+  },
+  {
+    "slug": "ielts-true-false-not-given",
+    "file": "ielts-true-false-not-given.md",
+    "title": "IELTS True, False, Not Given: An Evidence-Only Method",
+    "description": "Separate contradiction from missing information with a precise three-step decision test.",
+    "category": "IELTS",
+    "track": "learning",
+    "published": "2026-07-21",
+    "updated": "2026-07-24",
+    "sources": [
+      [
+        "IELTS: Academic Reading test format",
+        "https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-reading"
+      ],
+      [
+        "IELTS: General Training Reading test format",
+        "https://ielts.org/take-a-test/test-types/ielts-general-training-test/ielts-general-training-format-reading"
+      ]
+    ]
+  },
+  {
+    "slug": "ielts-general-reading-time-plan",
+    "file": "ielts-general-reading-time-plan.md",
+    "title": "IELTS General Reading: A Flexible 60-Minute Time Plan",
+    "description": "Allocate time by difficulty, preserve answer-transfer time, and recover when one item stalls you.",
+    "category": "IELTS",
+    "track": "learning",
+    "published": "2026-07-22",
+    "updated": "2026-07-24",
+    "sources": [
+      [
+        "IELTS: General Training Reading test format",
+        "https://ielts.org/take-a-test/test-types/ielts-general-training-test/ielts-general-training-format-reading"
+      ],
+      [
+        "IELTS: General Training sample questions",
+        "https://ielts.org/take-a-test/preparation-resources/sample-test-questions/general-training-test"
+      ]
+    ]
+  },
+  {
+    "slug": "ielts-writing-task-2-revision-checklist",
+    "file": "ielts-writing-task-2-revision-checklist.md",
+    "title": "IELTS Writing Task 2: A Five-Minute Revision Checklist",
+    "description": "Use the final five minutes to find high-impact problems in task response, cohesion, vocabulary, and grammar.",
+    "category": "IELTS",
+    "track": "learning",
+    "published": "2026-07-23",
+    "updated": "2026-07-24",
+    "sources": [
+      [
+        "IELTS: Academic Writing test format",
+        "https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-writing"
+      ],
+      [
+        "IELTS: Writing band descriptors",
+        "https://ielts.org/cdn/ielts-guides/ielts-writing-band-descriptors.pdf"
+      ]
+    ]
+  },
+  {
+    "slug": "english-exam-error-log",
+    "file": "english-exam-error-log.md",
+    "title": "Build an English-Exam Error Log That Changes Your Next Practice",
+    "description": "Convert wrong answers into specific rules, drills, and review dates instead of collecting scores.",
+    "category": "Study system",
+    "track": "learning",
+    "published": "2026-07-24",
+    "updated": "2026-07-24",
+    "sources": [
+      [
+        "ETS: TOEFL iBT preparation resources",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ],
+      [
+        "IELTS: Official preparation resources",
+        "https://ielts.org/take-a-test/preparation-resources"
+      ]
+    ]
+  },
+  {
+    "slug": "ai-answer-verification-checklist",
+    "file": "ai-answer-verification-checklist.md",
+    "title": "Verify an AI Answer Before It Enters Your Work",
+    "description": "A source-and-risk checklist for deciding what to trust, what to test, and what still needs human verification.",
+    "category": "AI workflow",
+    "track": "ai",
+    "published": "2026-07-24",
+    "updated": "2026-07-24",
+    "sources": [
+      [
+        "NIST AI Resource Center",
+        "https://airc.nist.gov/"
+      ],
+      [
+        "NIST Generative AI Profile",
+        "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf"
+      ]
+    ]
+  },
+  {
+    "slug": "prompt-debugging-small-test-set",
+    "file": "prompt-debugging-small-test-set.md",
+    "title": "Debug an AI Prompt with a Small Test Set",
+    "description": "Replace prompt guesswork with varied examples, explicit checks, and a compact failure log.",
+    "category": "Prompt practice",
+    "track": "ai",
+    "published": "2026-07-24",
+    "updated": "2026-07-24",
+    "sources": [
+      [
+        "Google AI: Prompt design strategies",
+        "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+      ],
+      [
+        "NIST AI Resource Center",
+        "https://airc.nist.gov/"
+      ]
+    ]
+  },
+  {
+    "slug": "toefl-junior-listening-tips-2",
+    "file": "toefl-junior-listening-tips-2.md",
+    "title": "TOEFL Junior Listening: The S.I.G.N. Structural Listening Method",
+    "description": "The TOEFL Junior Comprehensive Test includes a Listening Comprehension section designed to assess a student’s ability to understand spoken English in academic and social contexts. For many test-takers, the primary…",
+    "category": "TOEFL Junior",
+    "track": "learning",
+    "published": "2026-07-07",
+    "updated": "2026-07-07",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "toefl-listening-conversation-strategy",
+    "file": "toefl-listening-conversation-strategy.md",
+    "title": "toefl listening conversation tips",
+    "description": "The TOEFL iBT Listening section is often the most volatile component of the exam for students aiming for a high score. While lectures follow a predictable academic structure, conversations introduce human nuance,…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-08",
+    "updated": "2026-07-08",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "toefl-listening-note-taking",
+    "file": "toefl-listening-note-taking.md",
+    "title": "toefl listening note taking method",
+    "description": "The transition from a score of 22 to a higher band in the TOEFL iBT Listening section is rarely about vocabulary acquisition or general comprehension speed. At this level, test-takers typically understand the words and…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-09",
+    "updated": "2026-07-09",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "toefl-primary-reading-guide-2",
+    "file": "toefl-primary-reading-guide-2.md",
+    "title": "toefl primary reading guide",
+    "description": "Learners with limited vocabulary face a specific bottleneck in the TOEFL Primary Reading section: they cannot rely on memorizing word lists to pass. Instead, they must decide how to allocate their cognitive effort…",
+    "category": "TOEFL Primary",
+    "track": "learning",
+    "published": "2026-07-10",
+    "updated": "2026-07-10",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "toefl-reading-26-in-30-days",
+    "file": "toefl-reading-26-in-30-days.md",
+    "title": "toefl reading score 26 in 30 days",
+    "description": "Achieving a score of 26 or higher on the TOEFL iBT Reading section requires more than general English proficiency; it demands specific test-taking strategies and disciplined practice. This article provides a structured,…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-11",
+    "updated": "2026-07-11",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "toefl-reading-fact-negative-fact",
+    "file": "toefl-reading-fact-negative-fact.md",
+    "title": "toefl reading fact negative fact questions",
+    "description": "The TOEFL iBT Reading section tests your ability to understand academic texts in English. One of the most frequent question types you will encounter is the Factual Information question, often referred to as a \"detail\"…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-12",
+    "updated": "2026-07-12",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "toefl-reading-inference-strategy-2",
+    "file": "toefl-reading-inference-strategy-2.md",
+    "title": "toefl reading tips",
+    "description": "Scoring a 22 on the TOEFL iBT Reading section is a common plateau. At this level, test-takers typically possess strong vocabulary and can locate explicit information quickly. However, they often lose points on inference…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-13",
+    "updated": "2026-07-13",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "toefl-reading-main-idea-purpose-2",
+    "file": "toefl-reading-main-idea-purpose-2.md",
+    "title": "toefl reading main idea questions",
+    "description": "TOEFL Reading Section 1: Main Idea and Purpose Questions. These questions often appear as the first item in a set or at the end of a passage. They test your ability to identify the central argument or the function of a…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-14",
+    "updated": "2026-07-14",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "toefl-reading-question-types-2",
+    "file": "toefl-reading-question-types-2.md",
+    "title": "TOEFL reading question types strategies",
+    "description": "The TOEFL iBT Reading section is not a test of how much you know about the world; it is a test of how accurately you can extract and process information from academic texts. Many learners struggle because they attempt…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-15",
+    "updated": "2026-07-15",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "toefl-reading-time-management",
+    "file": "toefl-reading-time-management.md",
+    "title": "toefl reading time management strategy",
+    "description": "Many TOEFL iBT candidates reach a score of 23 in the Reading section and find themselves unable to break through to a 26 or higher. At this stage, the issue is rarely vocabulary knowledge or basic comprehension.…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-16",
+    "updated": "2026-07-16",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "toefl-speaking-independent-task",
+    "file": "toefl-speaking-independent-task.md",
+    "title": "toefl speaking task 1 independent",
+    "description": "Reaching a score of 23 on the TOEFL iBT is a significant milestone, but it often represents a specific bottleneck in the Speaking section. At this level, test-takers typically possess adequate vocabulary and grammar to…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-17",
+    "updated": "2026-07-17",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-06-write-clear-instructions-for-a-repeatable-ai-task",
+    "file": "2026-07-06-write-clear-instructions-for-a-repeatable-ai-task.md",
+    "title": "Write Clear Instructions for a Repeatable AI Task",
+    "description": "Prompt engineering is often described as an art, but for consistent results in production workflows, it must be treated as a specification task. When you need an AI to perform the same operation repeatedly—such as…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-06",
+    "updated": "2026-07-06",
+    "sources": [
+      [
+        "Source",
+        "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-07-use-few-shot-examples-without-teaching-the-wrong-pattern",
+    "file": "2026-07-07-use-few-shot-examples-without-teaching-the-wrong-pattern.md",
+    "title": "Use Few-Shot Examples Without Teaching the Wrong Pattern",
+    "description": "Few-shot prompting—the practice of providing a model with a small number of input-output examples before asking it to solve a new problem—is one of the most effective ways to guide Large Language Models LLMs. However,…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-07",
+    "updated": "2026-07-07",
+    "sources": [
+      [
+        "Source",
+        "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-08-break-a-complex-ai-request-into-verifiable-prompt-steps",
+    "file": "2026-07-08-break-a-complex-ai-request-into-verifiable-prompt-steps.md",
+    "title": "Break a Complex AI Request into Verifiable Prompt Steps",
+    "description": "When an AI model produces a long, complex response, it is difficult to verify accuracy or spot logical errors. The entire output becomes a \"black box.\" If the final answer is wrong, you do not know which part of the…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-08",
+    "updated": "2026-07-08",
+    "sources": [
+      [
+        "Source",
+        "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-10-build-a-five-case-test-set-for-an-ai-prompt",
+    "file": "2026-07-10-build-a-five-case-test-set-for-an-ai-prompt.md",
+    "title": "Build a Five-Case Test Set for an AI Prompt",
+    "description": "When refining prompts for Large Language Models LLMs, relying on a single \"happy path\" example is insufficient. A robust evaluation strategy requires a structured test set that probes the boundaries of your instruction.…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-10",
+    "updated": "2026-07-10",
+    "sources": [
+      [
+        "Source",
+        "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-12-keep-a-failure-log-for-an-ai-assisted-workflow",
+    "file": "2026-07-12-keep-a-failure-log-for-an-ai-assisted-workflow.md",
+    "title": "Keep a Failure Log for an AI-Assisted Workflow",
+    "description": "AI models are probabilistic, not deterministic. Even with rigorous prompt engineering, outputs can drift, hallucinate, or fail to adhere to constraints. Relying on memory or scattered notes to track these failures leads…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-12",
+    "updated": "2026-07-12",
+    "sources": [
+      [
+        "Source",
+        "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-13-create-a-human-review-checkpoint-for-ai-content",
+    "file": "2026-07-13-create-a-human-review-checkpoint-for-ai-content.md",
+    "title": "Create a Human Review Checkpoint for AI Content",
+    "description": "Generative AI models are probabilistic systems, not deterministic truth engines. They predict the next likely token based on patterns in training data, which means they can produce confident-sounding hallucinations,…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-13",
+    "updated": "2026-07-13",
+    "sources": [
+      [
+        "Source",
+        "https://airc.nist.gov/"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-15-run-a-reversible-pilot-before-automating-work-with-ai",
+    "file": "2026-07-15-run-a-reversible-pilot-before-automating-work-with-ai.md",
+    "title": "Run a Reversible Pilot Before Automating Work with AI",
+    "description": "Many organizations rush to deploy AI agents for repetitive tasks, assuming that if the logic is sound, the automation will scale. This assumption often leads to \"automation debt\"—systems that are difficult to debug,…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-15",
+    "updated": "2026-07-15",
+    "sources": [
+      [
+        "Source",
+        "https://www.nist.gov/itl/ai-risk-management-framework"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-16-document-uncertainty-in-an-ai-assisted-decision",
+    "file": "2026-07-16-document-uncertainty-in-an-ai-assisted-decision.md",
+    "title": "Document Uncertainty in an AI-Assisted Decision",
+    "description": "Artificial intelligence systems are increasingly integrated into high-stakes workflows, from legal discovery to medical diagnostics. However, the opacity of model reasoning and the probabilistic nature of large language…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-16",
+    "updated": "2026-07-16",
+    "sources": [
+      [
+        "Source",
+        "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-17-review-ai-generated-research-notes-before-reuse",
+    "file": "2026-07-17-review-ai-generated-research-notes-before-reuse.md",
+    "title": "Review AI-Generated Research Notes Before Reuse",
+    "description": "AI models are increasingly used to summarize academic papers, legal documents, and technical reports. While these tools can accelerate information gathering, they introduce specific risks: hallucinated citations,…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-17",
+    "updated": "2026-07-17",
+    "sources": [
+      [
+        "Source",
+        "https://airc.nist.gov/"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-18-design-a-safe-ai-summarization-workflow",
+    "file": "2026-07-18-design-a-safe-ai-summarization-workflow.md",
+    "title": "Design a Safe AI Summarization Workflow",
+    "description": "AI summarization tools are powerful for distilling large documents, but they introduce significant risks: hallucination, omission of critical context, and the loss of traceability. For teams handling sensitive or…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-18",
+    "updated": "2026-07-18",
+    "sources": [
+      [
+        "Source",
+        "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-19-choose-what-an-ai-workflow-should-refuse-to-do",
+    "file": "2026-07-19-choose-what-an-ai-workflow-should-refuse-to-do.md",
+    "title": "Choose What an AI Workflow Should Refuse to Do",
+    "description": "In high-stakes environments, the value of an AI system is often determined not by what it produces, but by what it refuses to produce. When context is missing, consequences are high, or instructions conflict, continuing…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-19",
+    "updated": "2026-07-19",
+    "sources": [
+      [
+        "Source",
+        "https://www.nist.gov/itl/ai-risk-management-framework"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-20-compare-two-prompts-with-the-same-evaluation-cases",
+    "file": "2026-07-20-compare-two-prompts-with-the-same-evaluation-cases.md",
+    "title": "Compare Two Prompts with the Same Evaluation Cases",
+    "description": "When refining Large Language Model LLM prompts, it is easy to rely on subjective impressions. A new prompt might feel more professional, or a revised instruction might seem clearer. However, intuition is not a reliable…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-20",
+    "updated": "2026-07-20",
+    "sources": [
+      [
+        "Source",
+        "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-21-version-an-ai-prompt-without-losing-its-test-history",
+    "file": "2026-07-21-version-an-ai-prompt-without-losing-its-test-history.md",
+    "title": "Version an AI Prompt Without Losing Its Test History",
+    "description": "Prompt engineering is often treated as a creative writing exercise, but in production environments, it is a software development discipline. When you modify a prompt to fix a hallucination or improve tone, you risk…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-21",
+    "updated": "2026-07-21",
+    "sources": [
+      [
+        "Source",
+        "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-22-set-a-risk-tier-for-ai-generated-content",
+    "file": "2026-07-22-set-a-risk-tier-for-ai-generated-content.md",
+    "title": "Set a Risk Tier for AI-Generated Content",
+    "description": "Artificial intelligence tools can generate text, code, and images at scale, but not all outputs carry the same potential for harm. Treating every piece of AI-generated content as equally risky leads to either excessive…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-22",
+    "updated": "2026-07-22",
+    "sources": [
+      [
+        "Source",
+        "https://www.nist.gov/itl/ai-risk-management-framework"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-23-create-a-rollback-plan-for-an-ai-automation",
+    "file": "2026-07-23-create-a-rollback-plan-for-an-ai-automation.md",
+    "title": "Create a Rollback Plan for an AI Automation",
+    "description": "Integrating large language models LLMs or autonomous agents into production workflows introduces a specific operational risk: the potential for rapid, uncontrolled deviation from expected outputs. Unlike traditional…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-23",
+    "updated": "2026-07-23",
+    "sources": [
+      [
+        "Source",
+        "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "toefl-junior-listening-tips-3",
+    "file": "toefl-junior-listening-tips-3.md",
+    "title": "toefl junior listening tips",
+    "description": "The TOEFL Junior Comprehensive Test evaluates English language proficiency for students aged 11 and older. A common friction point in the Listening section is the perceived speed of native speakers. Many learners…",
+    "category": "TOEFL Junior",
+    "track": "learning",
+    "published": "2026-07-06",
+    "updated": "2026-07-06",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-09-add-context-without-letting-an-ai-invent-missing-facts",
+    "file": "2026-07-09-add-context-without-letting-an-ai-invent-missing-facts.md",
+    "title": "Add Context Without Letting an AI Invent Missing Facts",
+    "description": "When working with large language models LLMs, the most common source of hallucination is not a lack of intelligence, but a lack of boundary. When asked to fill in gaps in incomplete information, models default to…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-09",
+    "updated": "2026-07-09",
+    "sources": [
+      [
+        "Source",
+        "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-11-design-an-ai-output-contract-that-software-can-check",
+    "file": "2026-07-11-design-an-ai-output-contract-that-software-can-check.md",
+    "title": "Design an AI Output Contract That Software Can Check",
+    "description": "When integrating Large Language Models LLMs into production software, the most common failure point is not the model’s intelligence, but its unpredictability. An LLM might generate a valid JSON object one second and a…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-11",
+    "updated": "2026-07-11",
+    "sources": [
+      [
+        "Source",
+        "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-14-decide-when-an-ai-answer-needs-independent-verification",
+    "file": "2026-07-14-decide-when-an-ai-answer-needs-independent-verification.md",
+    "title": "Decide When an AI Answer Needs Independent Verification",
+    "description": "Artificial intelligence models have become ubiquitous tools for drafting, coding, and summarizing information. However, their probabilistic nature means they can generate plausible-sounding but factually incorrect…",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-14",
+    "updated": "2026-07-14",
+    "sources": [
+      [
+        "Source",
+        "https://airc.nist.gov/"
+      ]
+    ],
+    "automated": true
+  }
+]

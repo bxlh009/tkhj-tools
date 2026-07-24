@@ -46,8 +46,9 @@ def log_event(entry):
     with open(LOG, "a", encoding="utf-8") as f:
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
 
-def pick_exam_topic():
+def pick_exam_topic(excluded=None):
     """Rotate through exam topics, one per day."""
+    excluded = excluded or set()
     seen = {}
     if SEEN_VARS.exists():
         try:
@@ -55,28 +56,54 @@ def pick_exam_topic():
         except:
             seen = {}
     today = datetime.now().strftime("%Y-%m-%d")
-    # If already picked today, skip
+    # If an article already passed and was published today, skip.
     if seen.get("date") == today:
         return None
     # Get list of already-generated topics (slugs)
     generated = set(f.stem for f in OUT_EXAM.glob("*.md"))
-    available = [f for f in EXAM_VARS if f.stem not in generated]
+    available = [f for f in EXAM_VARS if f.stem not in generated and f not in excluded]
     # Skip var files marked as non-exam type (e.g. ai-news vars in the wrong folder)
-    available = [f for f in available if json.loads(f.read_text('utf-8')).get('type', 'exam') == 'exam']
+    available = [
+        f for f in available
+        if json.loads(f.read_text('utf-8')).get('type', 'exam') == 'exam'
+        and json.loads(f.read_text('utf-8')).get('exam_name')
+    ]
     if not available:
-        available = [f for f in EXAM_VARS if json.loads(f.read_text('utf-8')).get('type', 'exam') == 'exam']
+        available = [
+            f for f in EXAM_VARS
+            if f not in excluded
+            and json.loads(f.read_text('utf-8')).get('type', 'exam') == 'exam'
+            and json.loads(f.read_text('utf-8')).get('exam_name')
+        ]
         if not available:
-            available = EXAM_VARS  # last resort
+            available = [f for f in EXAM_VARS if f not in excluded]  # last resort
+            if not available:
+                return None
     pick = random.choice(available)
-    seen["date"] = today
-    seen["last"] = pick.stem
-    SEEN_VARS.write_text(json.dumps(seen, indent=2), encoding="utf-8")
     return pick
+
+
+def mark_exam_published(var_path):
+    SEEN_VARS.write_text(
+        json.dumps(
+            {"date": datetime.now().strftime("%Y-%m-%d"), "last": var_path.stem},
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
 
 def generate_exam(var_path):
     print(f"[exam] generating from {var_path.name}...")
     r = subprocess.run(
-        [sys.executable, str(HERE / "generate.py"), "--type", "exam", "--vars", str(var_path)],
+        [
+            sys.executable,
+            str(HERE / "generate.py"),
+            "--type",
+            "exam",
+            "--vars",
+            str(var_path),
+            "--publish",
+        ],
         capture_output=True, text=True, timeout=600
     )
     if r.returncode == 0:
@@ -111,19 +138,37 @@ def main():
     print(f"=== daily_generate.py — {datetime.now().strftime('%Y-%m-%d %H:%M')} ===")
     
     # 1. Exam: pick one topic and generate
-    var_path = pick_exam_topic()
-    if var_path:
-        generate_exam(var_path)
-    else:
+    attempted = set()
+    exam_ok = False
+    var_path = pick_exam_topic(attempted)
+    if var_path is None:
         print("[exam] already generated today, skipping")
+        exam_ok = True
+    else:
+        for attempt in range(1, 4):
+            print(f"[exam] quality attempt {attempt}/3")
+            attempted.add(var_path)
+            if generate_exam(var_path):
+                mark_exam_published(var_path)
+                exam_ok = True
+                break
+            var_path = pick_exam_topic(attempted)
+            if var_path is None:
+                break
     
     # 2. AI: check news, generate if big story
-    generate_ai_news()
+    ai_ok = generate_ai_news()
     
     # 3. Rebuild site
-    rebuild_site()
+    build_ok = rebuild_site()
     
     print("=== done ===")
+    if not exam_ok or not ai_ok or not build_ok:
+        print(
+            f"[ERROR] daily quota incomplete: learning={exam_ok} "
+            f"ai={ai_ok} build={build_ok}"
+        )
+        return 1
     return 0
 
 if __name__ == "__main__":

@@ -1,561 +1,475 @@
-import pathlib, re, shutil
+"""Build the curated TKHJ Tools site.
+
+Bulk drafts in ``output/`` are intentionally excluded. Only guides explicitly
+listed in ``site/content/guides.json`` can become public pages.
+"""
+
+from __future__ import annotations
+
+import html
+import json
+import pathlib
+import re
+import shutil
 from datetime import datetime
-import os, json
 
-DATA = os.path.dirname(os.path.abspath(__file__))
-HERE = pathlib.Path(DATA)
-OUT  = HERE / "_site"
-EXAM = HERE.parent / "output" / "exams"
-AI   = HERE.parent / "output" / "ai"
-STA  = HERE / "static"
 
-DOM  = "tkhjtools.top"
+HERE = pathlib.Path(__file__).resolve().parent
+OUT = HERE / "_site"
+STATIC = HERE / "static"
+CONTENT = HERE / "content"
+DOMAIN = "tkhjtools.top"
 NAME = "TKHJ Tools"
-TAG  = "Free study guides for every level, and honest AI news coverage."
-CSL  = "static/style.css"
-JSL  = "static/nav.js"
+TAGLINE = "Evidence-first guides for learning better and using AI with judgment."
+ADSENSE = (
+    '<script async src="https://pagead2.googlesyndication.com/pagead/js/'
+    'adsbygoogle.js?client=ca-pub-8913718352251239" crossorigin="anonymous"></script>'
+)
+ANALYTICS = (
+    '<script async src="https://www.googletagmanager.com/gtag/js?id=G-QFNJLMGDXL"></script>'
+    "<script>window.dataLayer=window.dataLayer||[];"
+    "function gtag(){dataLayer.push(arguments)}"
+    'gtag("js",new Date());gtag("config","G-QFNJLMGDXL");</script>'
+)
 
 
-GA_ID = "G-QFNJLMGDXL"
-GA_HEAD = '<script async src="https://www.googletagmanager.com/gtag/js?id=G-QFNJLMGDXL"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-QFNJLMGDXL");</script>'
-AD_HEAD = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8913718352251239" crossorigin="anonymous"></script>'
-AD_UNIT = '<div class="ad-unit"><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-8913718352251239" data-ad-slot="4470604333"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>'
-AD_UNIT_BOTTOM = '<div class="ad-unit" style="margin-top:32px"><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-8913718352251239" data-ad-slot="9603594639" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>'
+def esc(value: object) -> str:
+    return html.escape(str(value), quote=True)
 
-EXAM_TABS = ["All Exams","IELTS","TOEFL","GRE","SAT","More"]
-AI_TABS   = ["All","AI","Tools","Prompts","Workflows","Productivity"]
 
-EXAM_ICON = {"IELTS":"","TOEFL":"","GRE":"","SAT":"","More":""}
-AI_ICON   = {"AI":"","Tools":"🔧","Prompts":"📜","Workflows":"⚙️","Productivity":"🚀"}
+def slugify(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", re.sub(r"<[^>]+>", "", value).lower()).strip("-") or "section"
 
-if OUT.exists(): shutil.rmtree(OUT)
-OUT.mkdir(parents=True, exist_ok=True)
-for d in ["static","exam","exam/article","exam/tools","ai","ai/article","ai/tools"]:
-    (OUT / d).mkdir(parents=True, exist_ok=True)
-for f in STA.iterdir():
-    if f.is_file(): shutil.copy2(str(f), str(OUT / "static" / f.name))
 
-_fav_src = HERE / "static" / "favicon.png"
-if _fav_src.exists():
-    shutil.copy2(str(_fav_src), str(OUT / "favicon.png"))
+def inline(value: str) -> str:
+    value = esc(value)
+    value = re.sub(r"`([^`]+)`", r"<code>\1</code>", value)
+    value = re.sub(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", r'<a href="\2">\1</a>', value)
+    value = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", value)
+    return re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", value)
 
-# copy ads.txt to site root
-_ads = HERE / "ads.txt"
-if _ads.exists():
-    shutil.copy2(str(_ads), str(OUT / "ads.txt"))
-    print("ads.txt: copied from site/")
 
-NL = chr(10)
-def esc(s):
-    return str(s).replace("&","&amp;").replace("<","&lt;").replace('"',"&quot;")
+def markdown_to_html(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
+    lines = markdown.replace("\r\n", "\n").split("\n")
+    output: list[str] = []
+    headings: list[tuple[int, str, str]] = []
+    paragraph: list[str] = []
+    index = 0
 
-def read(p): return pathlib.Path(p).read_text("utf-8")
-def fm(md):
-    md = md.lstrip("\ufeff")
-    m = re.match(r"^---\n(.*?)\n---\n(.*)$", md, re.S)
-    if not m: return {}, md
-    meta = {}
-    for line in m.group(1).splitlines():
-        if ":" not in line: continue
-        k,v = line.split(":",1)
-        v = v.strip().strip("'").strip('"')
-        if v.startswith("["):
-            inner = v.strip("[]")
-            v = [x.strip().strip("'").strip('"') for x in inner.split(",") if x.strip()]
-        meta[k.strip()] = v
-    return meta, m.group(2)
+    def flush() -> None:
+        if paragraph:
+            value = " ".join(line.strip() for line in paragraph if line.strip())
+            if value:
+                output.append(f"<p>{inline(value)}</p>")
+            paragraph.clear()
 
-def clean_md(text):
-    out = []
-    for line in text.split(chr(10)):
-        line = re.sub(r"^#{1,6}\s+", "", line)
-        if re.match(r"^\s*[-*]\s+", line):
-            line = re.sub(r"^\s*[-*]\s+", "", line)
-        out.append(line)
-    return chr(10).join(out)
-
-def table_to_html(rows):
-    html_rows = []
-    for i, row in enumerate(rows):
-        cells = [esc(c.strip()) for c in row.split("|")]
-        if all(re.match(r"^[\s\-:]+$", c) for c in cells):
-            continue  # skip separator row
-        tag = "th" if i == 0 else "td"
-        html_rows.append("<tr>" + "".join(f"<{tag}>{c}</{tag}>" for c in cells) + "</tr>")
-    return '<div style="overflow-x:auto;margin:24px 0"><table>' + "".join(html_rows) + "</table></div>"
-
-def md2html(text):
-    text = re.sub(r"^---\n.*?\n---\n", "", text, flags=re.S)
-    text = clean_md(text)
-    out = []
-    in_table = False
-    table_rows = []
-    for line in text.split(chr(10)):
-        if re.match(r"^\s*\|", line):
-            table_rows.append(line.strip().strip("|"))
-            in_table = True
+    while index < len(lines):
+        stripped = lines[index].strip()
+        if not stripped:
+            flush()
+            index += 1
             continue
-        if in_table and table_rows:
-            out.append(table_to_html(table_rows))
-            table_rows = []
-            in_table = False
-        t = line.strip()
-        if not t: continue
-        if t.startswith("> "):
-            out.append("<blockquote><p>" + esc(t[2:]) + "</p></blockquote>")
+
+        heading = re.match(r"^(#{2,3})\s+(.+)$", stripped)
+        if heading:
+            flush()
+            level = len(heading.group(1))
+            label = heading.group(2).strip()
+            anchor = slugify(label)
+            headings.append((level, label, anchor))
+            output.append(f'<h{level} id="{anchor}">{inline(label)}</h{level}>')
+            index += 1
             continue
-        if re.match(r"^#{3}\s+", t):
-            h3_text = esc(re.sub(r"^#{3}\s+", "", t))
-            h3_id = re.sub(r"[^a-zA-Z0-9]+", "-", h3_text.lower()).strip("-")
-            out.append('<h3 id="' + h3_id + '">' + h3_text + "</h3>")
+
+        if stripped.startswith("> "):
+            flush()
+            output.append(f"<blockquote><p>{inline(stripped[2:])}</p></blockquote>")
+            index += 1
             continue
-        if re.match(r"^#{2}\s+", t):
-            h2_text = esc(re.sub(r"^#{2}\s+", "", t))
-            h2_id = re.sub(r"[^a-zA-Z0-9]+", "-", h2_text.lower()).strip("-")
-            out.append('<h2 id="' + h2_id + '">' + h2_text + "</h2>")
+
+        if stripped.startswith("|") and stripped.endswith("|"):
+            flush()
+            raw_rows: list[str] = []
+            while index < len(lines):
+                candidate = lines[index].strip()
+                if not (candidate.startswith("|") and candidate.endswith("|")):
+                    break
+                raw_rows.append(candidate)
+                index += 1
+            rows = [[cell.strip() for cell in row.strip("|").split("|")] for row in raw_rows]
+            if len(rows) > 1 and all(re.fullmatch(r":?-{3,}:?", cell) for cell in rows[1]):
+                header = "".join(f"<th>{inline(cell)}</th>" for cell in rows[0])
+                body = "".join(
+                    "<tr>" + "".join(f"<td>{inline(cell)}</td>" for cell in row) + "</tr>"
+                    for row in rows[2:]
+                )
+                output.append(
+                    f'<div class="table-wrap"><table><thead><tr>{header}</tr></thead>'
+                    f"<tbody>{body}</tbody></table></div>"
+                )
             continue
-        out.append("<p>" + esc(t) + "</p>")
-    if in_table and table_rows:
-        out.append(table_to_html(table_rows))
-    body = chr(10).join(out)
-    body = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", body)
-    body = re.sub(r"\*(.+?)\*", r"<em>\1</em>", body)
-    body = body.replace("*", "")
-    return body
 
-def ctag(tag):
-    t = (tag or "").lower()
-    for k,v in [("ielts","cat-ielts"),("toefl","cat-toefl"),("gre","cat-gre"),("sat","cat-sat"),("chatgpt","cat-chatgpt"),("notion","cat-notion"),("gemini","cat-gemini"),("prompt","cat-prompt"),("workflow","cat-workflow")]:
-        if k in t: return v
-    for k,v in [("act","cat-act"),("ap ","cat-ap"),("cambridge","cat-cambridge"),("duolingo","cat-duo"),("gcse","cat-gcse"),("gmat","cat-gmat"),("ib ","cat-ib"),("isee","cat-isee"),("map ","cat-map"),("mcat","cat-mcat"),("oet","cat-oet"),("pte","cat-pte"),("toeic","cat-toeic")]:
-        if k in t: return v
-    return "cat-other"
-
-
-def toc_html(body_html):
-    """Extract h2 and h3 headings and build a Table of Contents HTML string."""
-    import re as _re
-    h2s = _re.findall(r'<h2[^>]*>(.*?)</h2>', body_html)
-    h3s = _re.findall(r'<h3[^>]*>(.*?)</h3>', body_html)
-    all_h = [(h, 2) for h in h2s] + [(h, 3) for h in h3s]
-    if len(all_h) < 2:
-        return ""
-    items = []
-    for heading, level in all_h[:12]:
-        h_id = _re.sub(r"[^a-zA-Z0-9]+", "-", heading.lower()).strip("-")
-        indent = "" if level == 2 else ' style="padding-left:16px;font-size:0.85rem"'
-        items.append(f'<li{indent}><a href="#{h_id}">{heading}</a></li>')
-    return f'<nav class="article-toc"><strong style="display:block;margin-bottom:8px;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-3)">Contents</strong><ul style="list-style:none;padding:0;margin:0">{"".join(items)}</ul></nav>:0">{items}</ul></nav>'
-
-def card(a, is_exam=True):
-    slug = a["_slug"]
-    section = "exam" if is_exam else "ai"
-    url = "/" + section + "/article/" + slug + ".html"
-    cat = a.get("_display_cat", "Article")
-    cls = ctag(cat)
-    m = max(1, a["_wc"] // 220)
-    title = esc(a.get("title", "Untitled"))
-    # card description: first meaningful line from body, not just repeated keyword
-    _, body_text = fm(a.get("_body", ""))
-    first_line = next((l.lstrip('#').strip() for l in body_text.strip().split('\n') if l.strip() and len(l.strip()) > 20), '')
-    kw = esc(first_line[:120] + '…' if len(first_line) > 120 else first_line)
-    date = a.get("date", "")[:10]
-    keywords = a.get("_keywords", [])
-    keywords_json = esc(json.dumps(keywords, ensure_ascii=False) if keywords else "[]")
-    cover = '<div class="card-cover">' + esc(cat) + " &middot; " + esc(m) + " min</div>"
-    data_kw = ' data-keywords="' + keywords_json + '"'
-    body = '<div class="card-body">'
-    body += '<span class="card-cat ' + cls + '">' + esc(cat) + "</span>"
-    body += '<h3 class="card-title">' + title + "</h3>"
-    body += '<p class="card-desc">' + kw + "</p>"
-    body += '<div class="card-foot"><span>TKHJ Tools</span><span>' + date + "</span></div>"
-    body += "</div>"
-    return '<a class="card" href="' + url + '" data-card ' + data_kw + '>' + cover + body + "</a>"
-
-def load_articles(folder, is_exam=True):
-    arts = []
-    if not folder.exists(): return arts
-    for f in folder.glob("*.md"):
-        if re.search(r"-\d{1,2}$", f.stem) and not re.search(r"20\d{2}$", f.stem): continue
-        body = read(f)
-        meta, _ = fm(body)
-        slug = f.stem
-        title = meta.get("title", slug.replace("-"," ").title())
-        keywords = meta.get("long_tail", [])
-        if isinstance(keywords, str): keywords = [keywords]
-        raw_exam = meta.get("exam","")
-        raw_cat  = meta.get("category","")
-        if is_exam:
-            if "ielts" in raw_exam.lower() or "ielts" in slug.lower():
-                sec = (meta.get("section","").strip() or "Academic").split(" ")[0]
-                display = "IELTS " + sec
-            elif "toefl" in raw_exam.lower() or "toefl" in slug.lower():
-                sec = (meta.get("section","").strip() or "iBT").split(" ")[0]
-                display = "TOEFL " + sec
-            elif "gre" in raw_exam.lower() or "gre" in slug.lower():
-                sec = (meta.get("section","").strip() or "Verbal").split(" ")[0]
-                display = "GRE " + sec
-            elif "sat" in raw_exam.lower() or "sat" in slug.lower():
-                sec = (meta.get("section","").strip() or "Math").split(" ")[0]
-                display = "SAT " + sec
-            else:
-                display = raw_exam.strip() or "Exam"
-        else:
-            cat_map = {"comparison":"AI Comparison","tools":"AI Tools","prompts":"Prompts","workflow":"Workflows","productivity":"Productivity"}
-            display = cat_map.get(raw_cat.lower().strip(), "AI")
-        wc = len(body.split())
-        if wc < 100:
+        ordered = re.match(r"^\d+\.\s+(.+)$", stripped)
+        unordered = re.match(r"^[-*]\s+(.+)$", stripped)
+        if ordered or unordered:
+            flush()
+            tag = "ol" if ordered else "ul"
+            pattern = r"^\d+\.\s+(.+)$" if ordered else r"^[-*]\s+(.+)$"
+            items: list[str] = []
+            while index < len(lines):
+                match = re.match(pattern, lines[index].strip())
+                if not match:
+                    break
+                items.append(f"<li>{inline(match.group(1))}</li>")
+                index += 1
+            output.append(f"<{tag}>" + "".join(items) + f"</{tag}>")
             continue
-        arts.append({
-            "_slug":slug, "_body":body, "_wc":wc,
-            "title":title, "_keywords":keywords,
-            "_display_cat":display,
-            "exam":raw_exam or "Exam",
-            "category":raw_cat or "AI",
-            "date":meta.get("date",""),
-            "primary_keyword":meta.get("primary_keyword",""),
-            "_isexam": is_exam,
-        })
-    arts.sort(key=lambda a: a.get("date",""), reverse=True)
-    return arts
 
-def section_hero(title, desc, tag=None):
-    out = '<section class="section-hero" style="padding:48px 0 32px;border-bottom:1px solid var(--line);background:var(--surface)">'
-    out += '<div class="container">'
-    if tag: out += '<span style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);margin-bottom:8px;display:inline-block">' + esc(tag) + '</span>'
-    out += '<h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);line-height:1.2;margin:0 0 12px;color:var(--text-1);letter-spacing:-.02em;font-weight:800">' + esc(title) + '</h1>'
-    out += '<p style="margin:0;color:var(--text-2);max-width:640px">' + esc(desc) + '</p>'
-    out += '</div></section>'
-    return out
+        paragraph.append(stripped)
+        index += 1
+    flush()
+    return "\n".join(output), headings
 
-def tabs_html(name, items, selected_idx=0, icons=None):
-    out = []
-    for i,label in enumerate(items):
-        cls = "tab active" if i == selected_idx else "tab"
-        icon = icons.get(label, "") if icons else ""
-        prefix = icon + " " if icon else ""
-        out.append('<button class="' + cls + '" data-tab="' + name + '" data-val="' + esc(label) + '">' + prefix + '<span>' + esc(label) + "</span></button>")
-    return '<div class="tabs" data-tabs="' + name + '">' + NL.join(out) + "</div>"
 
-def footer():
-    y = str(datetime.now().year)
-    cols = [
-        '<h4 style="margin:0 0 8px;font-size:1.05rem;color:var(--text-1)">' + NAME + '</h4><p>Student-first study guides for English exams and AI tools. Most articles are AI-assisted and reviewed by human editor.</p>',
-        '<h4>Articles</h4><a href="/exam/">All Exam Articles</a><a href="/ai/">All AI Articles</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy Policy</a>',
-        '<h4>Popular Guides</h4><a href="/exam/article/ielts-writing-band-7-strategy.html">IELTS Writing Band 7</a><a href="/exam/article/toefl-reading-inference-strategy.html">TOEFL Reading</a><a href="/exam/article/gre-text-completion-master-plan.html">GRE Text</a><a href="/ai/article/gpt-5-vs-claude-4-comparison.html">GPT-5 vs Claude 4</a>',
-    ]
-    grid = ""
-    for c in cols:
-        grid += '<div class="foot-col">' + c + "</div>"
-    return '<footer class="site-footer"><div class="container"><div class="foot-grid">' + grid + '</div><p class="foot-copy">&copy; ' + y + " " + DOM + " \xb7 Independent study guides \xb7 Some content is AI-assisted and reviewed by human editors.</p></div></footer>"
+def load_guides() -> list[dict]:
+    manifest = json.loads((CONTENT / "guides.json").read_text("utf-8"))
+    guides: list[dict] = []
+    seen: set[str] = set()
+    for item in manifest:
+        if item["slug"] in seen:
+            raise ValueError(f"Duplicate slug: {item['slug']}")
+        seen.add(item["slug"])
+        source = CONTENT / item["file"]
+        markdown = source.read_text("utf-8")
+        body_html, headings = markdown_to_html(markdown)
+        guide = dict(item)
+        guide.setdefault("track", "learning")
+        guide.update(
+            body_html=body_html,
+            headings=headings,
+            word_count=len(re.findall(r"\b[\w’'-]+\b", markdown)),
+        )
+        guides.append(guide)
+    return guides
 
-def nav(active="home"):
-    out = ['<header class="site-header">']
-    out.append('<div class="container nav-row">')
-    out.append('<a href="/" class="brand"><img src="/static/logo.png" alt="TKHJ Tools" height="28"></a>')
-    out.append('<nav class="nav-links">')
-    for label, url,is_active in [["Home","/",active=="home"],["Exam","/exam/",active=="exam"],["AI","/ai/",active=="ai"],["About","/about.html",active=="about"]]:
-        cls = "active" if is_active else ""
-        out.append('<a href="' + url + '" class="' + cls + '">' + label + "</a>")
-    out.append('</nav><div class="nav-right">')
-    out.append('<button class="theme-toggle" aria-label="Toggle dark mode" data-theme-toggle><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>')
-    out.append('<form class="nav-search" onsubmit="return false;"><input type="search" placeholder="Search..." data-search></form>')
-    out.append('</div></div></header>')
-    return NL.join(out)
 
-def page(title, body_str, active="home", desc="", canonical="", schema=""):
-    description = esc(desc[:160]) if desc else esc(title) + " - TKHJ Tools study guides and AI coverage"
-    meta = [
-        '<meta charset="utf-8">',
-        '<meta name="viewport" content="width=device-width,initial-scale=1">',
-        '<title>' + esc(title) + ' | TKHJ Tools</title>',
-        '<link rel="icon" href="/favicon.png">',
-        AD_HEAD,
-        GA_HEAD,
-        '<meta name="description" content="' + description + '">',
-        '<meta name="theme-color" content="#3B82F6" media="(prefers-color-scheme:light)">',
-        '<link rel="stylesheet" href="/' + CSL + '">',
-        '<meta property="og:title" content="' + esc(title) + ' | TKHJ Tools">',
-        '<meta property="og:description" content="' + description + '">',
-        '<meta property="og:type" content="article">',
-        '<meta name="twitter:card" content="summary_large_text">',
-    ]
-    if canonical:
-        meta.append('<link rel="canonical" href="' + canonical + '">')
-    head = "<!doctype html><html lang=\"en\" data-theme=\"light\"><head>" + NL.join(meta)
+def nav(active: str = "") -> str:
+    items = [("Home", "/", "home"), ("Learning", "/learning/", "learning"),
+             ("AI", "/ai/", "ai"), ("Library", "/guides/", "guides"),
+             ("About", "/about.html", "about"), ("Contact", "/contact.html", "contact")]
+    links = "".join(
+        f'<a href="{url}"{" aria-current=\"page\"" if active == key else ""}>{label}</a>'
+        for label, url, key in items
+    )
+    return (
+        '<header class="site-header"><div class="container nav-row">'
+        '<a class="brand" href="/" aria-label="TKHJ Tools home">'
+        '<span class="brand-mark" aria-hidden="true">T</span>'
+        '<span class="brand-name"><span class="brand-long">TKHJ Tools</span>'
+        '<span class="brand-short">TKHJ</span></span></a>'
+        f'<nav class="nav-links" aria-label="Primary navigation">{links}</nav>'
+        '<button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">'
+        '<svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>'
+        '<svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/>'
+        '<path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2'
+        'M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button></div></header>'
+    )
+
+
+def footer() -> str:
+    return (
+        '<footer class="site-footer"><div class="container footer-grid"><div><strong>TKHJ Tools</strong>'
+        "<p>Source-grounded Learning and AI guides with visible reasoning, practical examples, "
+        "and explicit limits.</p></div><nav aria-label=\"Footer navigation\">"
+        '<a href="/learning/">Learning</a><a href="/ai/">AI</a>'
+        '<a href="/guides/">Library</a><a href="/about.html">Editorial process</a>'
+        '<a href="/contact.html">Corrections</a><a href="/privacy.html">Privacy</a></nav></div>'
+        f'<div class="container footer-base">&copy; {datetime.now().year} {DOMAIN}. '
+        "Independent editorial site; no provider endorsement is implied.</div></footer>"
+    )
+
+
+def page(title: str, description: str, body: str, *, active: str = "", path: str = "/",
+         page_type: str = "website", schema: dict | None = None) -> str:
+    canonical = f"https://{DOMAIN}{path}"
+    structured = ""
     if schema:
-        head += '<script type="application/ld+json">' + schema + '</script>'
-    head += "</head><body>"
-    body_open = "<script>try{var t=localStorage.getItem('tkhj-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>"
-    return head + body_open + nav(active) + '<div id="reading-progress"></div><main>' + body_str + "</main>" + footer() + '<script src="/' + JSL + '"></script><script>document.addEventListener("scroll",function(){var e=document.getElementById("reading-progress");if(e){var t=document.documentElement.scrollTop,n=document.documentElement.scrollHeight-document.documentElement.clientHeight;e.style.width=Math.min(t/n*100,100)+"%"}});</script></body></html>'
-
-def wp(path, content):
-    p = OUT / path
-    p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(content, encoding="utf-8")
-
-# ---- SEO: sitemap + robots ----
-def gen_sitemap(articles):
-    urls = []
-    for path, prio, changefreq in [
-        ("/", "1.0", "daily"),
-        ("/exam/", "0.9", "daily"),
-        ("/ai/", "0.9", "daily"),
-        ("/about.html", "0.3", "monthly"),
-        ("/search.html", "0.3", "monthly"),
-        ("/privacy.html", "0.3", "monthly"),
-        ("/contact.html", "0.3", "monthly"),
-    ]:
-        urls.append(f"""  <url>
-    <loc>https://{DOM}{path}</loc>
-    <priority>{prio}</priority>
-    <changefreq>{changefreq}</changefreq>
-  </url>""")
-    for a in articles:
-        section = "exam" if a.get("_isexam") else "ai"
-        url = f"https://{DOM}/{section}/article/{a['_slug']}.html"
-        d = (a.get("date") or "").strip()[:10]
-        prio = "0.8" if section == "exam" else "0.7"
-        if d:
-            urls.append(f"""  <url>
-    <loc>{url}</loc>
-    <lastmod>{d}</lastmod>
-    <priority>{prio}</priority>
-    <changefreq>weekly</changefreq>
-  </url>""")
-        else:
-            urls.append(f"""  <url>
-    <loc>{url}</loc>
-    <priority>{prio}</priority>
-    <changefreq>weekly</changefreq>
-  </url>""")
-    xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    xml += "\n".join(urls)
-    xml += "\n</urlset>"
-    wp("sitemap.xml", xml)
-    wp("robots.txt", f"User-agent: *\nAllow: /\nSitemap: https://{DOM}/sitemap.xml\n")
-
-# ---- SEO: related articles ----
-def related_html(current_slug, all_articles, n=4):
-    current = next((a for a in all_articles if a["_slug"] == current_slug), None)
-    if not current: return ""
-    is_exam = current.get("_isexam", True)
-    current_exam = (current.get("exam","") or "").lower()
-    current_cat = (current.get("category","") or "").lower()
-    cands = [a for a in all_articles if a["_slug"] != current_slug and a.get("_isexam") == is_exam]
-    same_exam = [a for a in cands if current_exam in (a.get("exam","") or "").lower()]
-    same_cat  = [a for a in cands if current_cat in (a.get("category","") or "").lower() and a not in same_exam]
-    other = [a for a in cands if a not in same_exam and a not in same_cat]
-    related = (same_exam + same_cat + other)[:n]
-    if not related: return ""
-    items = []
-    for a in related:
-        section = "exam" if a.get("_isexam") else "ai"
-        url = f"/{section}/article/{a['_slug']}.html"
-        items.append('<li><a href="' + url + '">' + esc(a["title"]) + "</a></li>")
-    return '<section class="related-articles"><h2>Related Articles</h2><ul>' + "\n".join(items) + "</ul></section>"
-
-def about_page():
-    hero = '<section class="section-hero" style="padding:64px 0 48px;text-align:left">'
-    hero += '<div class="container">'
-    hero += '<h1 style="font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;margin:0 0 16px;color:var(--text-1);font-weight:800">About TKHJ Tools</h1>'
-    hero += '<p style="margin:0;color:var(--text-2);max-width:640px;font-size:1.05rem">Independent study guides and honest AI tool comparisons. Built for students who deserve clarity.</p>'
-    hero += '</div></section>'
-    body = '<section class="section"><div class="container"><div style="max-width:680px;margin:0 auto">'
-
-    body += '<h2 style="font-weight:800;margin:0 0 16px">Our Mission</h2>'
-    body += '<p>Most exam-prep content falls into one of two traps: it is either a thinly veiled sales pitch for a course, or keyword-stuffed filler written for search engines, not students. TKHJ Tools starts from a different question: what would a good teacher write if they had the time to write everything they know? We build practical, honest study guides that help students prepare for the exams that matter to them. Along the way we also cover the AI tools reshaping how people work and learn.</p>'
-
-    body += '<h2 style="font-weight:800;margin:40px 0 16px">What We Cover</h2>'
-    body += '<p>Our exam section spans standardized tests across the full spectrum: TOEFL, IELTS, GRE, SAT, ACT, AP (Biology, Calculus, Chemistry, Physics, US History), GMAT, LSAT, MCAT, IB, Cambridge (YLE, KET, PET, FCE, CAE, Flyers), Duolingo English Test, PTE Academic, OET, TOEIC, GCSE, ISEE, SSAT, and MAP Growth. Each guide isolates the specific skill or question type that holds test takers back and gives a targeted fix.</p>'
-    body += '<p>The AI section tracks model releases, tool comparisons, and practical workflows. No clickbait predictions, no vendor fan mail. We explain what a tool does and whether it delivers.</p>'
-
-    body += '<h2 style="font-weight:800;margin:40px 0 16px">How We Work</h2>'
-    body += '<p>Articles start as AI-generated drafts using custom prompt templates that enforce strict quality rules: no markdown tables, no markdown headings, no bullet lists, conversational tone, and targeted word counts. Every draft then goes through human review before publication. The editor checks facts, removes claims that cannot be verified, rewrites weak passages, and ensures the article answers the question it promised to answer.</p>'
-    body += '<p>This workflow lets us cover more ground than a purely human operation while keeping the editorial bar higher than fully automated sites. We call it assisted authorship, not automation.</p>'
-
-    body += '<h2 style="font-weight:800;margin:40px 0 16px">Our Audience</h2>'
-    body += '<p>TKHJ Tools is built for self-directed learners: students who know the official resources exist but want a second opinion from someone who has taught these exams. Also for professionals curious about whether a new AI tool is worth their time. We do not chase virality, and we do not sell courses or coaching.</p>'
-
-    body += '<h2 style="font-weight:800;margin:40px 0 16px">Editorial Integrity</h2>'
-    body += '<p>We have no affiliate relationships with the testing organizations or AI companies we write about. We do not accept sponsored posts. AI tool reviews are based on publicly available information and rewritten in our own words, not copied from press releases. If a specific claim cannot be verified from the source, it is omitted or flagged with hedging language. When we make a factual error, we correct it publicly.</p>'
-
-    body += '<h2 style="font-weight:800;margin:40px 0 16px">Contact</h2>'
-    body += '<p>If you find an error or have a suggestion, <a href="https://github.com/bxlh009/tkhj-tools/issues">open an issue on GitHub</a>. We read every submission.</p>'
-
-    body += '</div></div></section>'
-    return page("About", hero + body, "about")
-
-def search_page():
-    body = '<section class="section-hero" style="padding:64px 0 48px;text-align:left">'
-    body += '<div class="container">'
-    body += '<h1 style="font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;margin:0 0 16px;color:var(--text-1);font-weight:800">Search</h1>'
-    body += '</div></section>'
-    body += '<section class="section"><div class="container"><div id="results" style="min-height:200px"><p id="search-status">Loading...</p></div></div></section>'
-    body += '<script src="/static/search.js"></script>'
-    return page("Search", body, "search")
-
-def insert_ads(html_body):
-    close_p = '</p>'
-    half = len(html_body) // 2
-    mid = html_body.rfind(close_p, 0, half)
-    if mid != -1:
-        mid += len(close_p)
-        html_body = html_body[:mid] + AD_UNIT + html_body[mid:]
-    return html_body + AD_UNIT
-
-def contact_page():
-    hero = '<section class="section-hero" style="padding:64px 0 48px;text-align:left">'
-    hero += '<div class="container">'
-    hero += '<h1 style="font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;margin:0 0 16px;color:var(--text-1);font-weight:800">Contact Us</h1>'
-    hero += '<p style="margin:0;color:var(--text-2);max-width:640px;font-size:1.05rem">Have a question, found an error, or want to collaborate? We read every message.</p>'
-    hero += '</div></section>'
-    body = '<section class="section"><div class="container"><div style="max-width:680px;margin:0 auto">'
-    body += '<h2 style="font-weight:700;margin:0 0 12px">Get in Touch</h2>'
-    body += '<p>Found an error or have a suggestion? <a href="https://github.com/bxlh009/tkhj-tools/issues">Open an issue on GitHub</a>. We review every submission.</p>'
-    body += '<h2 style="font-weight:700;margin:32px 0 12px">Report an Issue</h2>'
-    body += '<p>Spot a factual error, broken link, or outdated information? Send us the URL and what you expected to see. Your correction helps thousands of students.</p>'
-    body += '<h2 style="font-weight:700;margin:32px 0 12px">Collaboration</h2>'
-    body += '<p>We welcome guest posts from verified educators and AI researchers. Include your credentials and a brief pitch.</p>'
-    body += '<h2 style="font-weight:700;margin:32px 0 12px">Elsewhere</h2>'
-    body += '<p>GitHub Issues: <a href="https://github.com/bxlh009/tkhj-tools/issues">github.com/bxlh009/tkhj-tools/issues</a></p>'
-    body += '</div></div></section>'
-    return page("Contact", hero + body, "contact")
+        safe_schema = json.dumps(schema, ensure_ascii=False).replace("</", "<\\/")
+        structured = f'<script type="application/ld+json">{safe_schema}</script>'
+    return (
+        '<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        f"<title>{esc(title)} | {NAME}</title>"
+        f'<meta name="description" content="{esc(description[:160])}">'
+        f'<link rel="canonical" href="{canonical}"><link rel="icon" href="/favicon.png">'
+        '<meta name="theme-color" content="#0f766e">'
+        f'<meta property="og:title" content="{esc(title)} | {NAME}">'
+        f'<meta property="og:description" content="{esc(description[:160])}">'
+        f'<meta property="og:type" content="{page_type}"><meta property="og:url" content="{canonical}">'
+        '<meta name="twitter:card" content="summary"><link rel="stylesheet" href="/static/style.css">'
+        + ADSENSE + ANALYTICS + structured + "</head><body>"
+        '<script>try{var t=localStorage.getItem("tkhj-theme");'
+        'if(t)document.documentElement.dataset.theme=t}catch(e){}</script>'
+        '<a class="skip-link" href="#main-content">Skip to main content</a>'
+        + nav(active) + f'<main id="main-content" tabindex="-1">{body}</main>'
+        + footer() + '<script src="/static/nav.js"></script></body></html>'
+    )
 
 
-def privacy_page():
-    hero = '<section class="section-hero" style="padding:64px 0 48px;text-align:left">'
-    hero += '<div class="container">'
-    hero += '<h1 style="font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;margin:0 0 16px;color:var(--text-1);font-weight:800">Privacy Policy</h1>'
-    hero += '</div></section>'
-    body = '<section class="section"><div class="container"><div style="max-width:680px;margin:0 auto">'
-    body += '<p><strong>Last updated:</strong> July 11, 2026</p>'
-    body += '<h2 style="font-weight:700;margin:32px 0 12px">Information We Collect</h2>'
-    body += '<p>We use Google AdSense to display advertisements. Google uses cookies to serve ads based on prior visits to this site and other websites. You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads">Google Ads Settings</a>.</p>'
-    body += '<p>We collect standard web server logs (IP address, browser type, referring pages) for analytics and security purposes. This data is anonymized and not linked to any personal identity.</p>'
-    body += '<h2 style="font-weight:700;margin:32px 0 12px">Cookies</h2>'
-    body += '<p>This site uses cookies for: (1) Google AdSense personalized ads, (2) Cloudflare security and performance, (3) Local storage for theme preferences. No cookies are used for tracking individual users across sites beyond standard ad network practices.</p>'
-    body += '<h2 style="font-weight:700;margin:32px 0 12px">Third-Party Services</h2>'
-    body += '<p>We use the following third-party services: Google AdSense (advertising), Cloudflare (CDN and security), GitHub (hosting and deployment). Each service has its own privacy policy governing data collection.</p>'
-    body += '<h2 style="font-weight:700;margin:32px 0 12px">Content Disclaimer</h2>'
-    body += '<p>This site contains AI-assisted content that is reviewed by human editors before publication. Exam strategies are based on general teaching experience and may not guarantee specific test results. AI tool reviews reflect personal testing and should not be taken as professional endorsements.</p>'
-    body += '<h2 style="font-weight:700;margin:32px 0 12px">Contact</h2>'
-    body += '<p>For privacy-related inquiries, contact the site administrator via GitHub at <a href="https://github.com/bxlh009">github.com/bxlh009</a>.</p>'
-    body += '</div></div></section>'
-    return page("Privacy Policy", hero + body, "privacy")
+def guide_card(guide: dict) -> str:
+    minutes = max(3, round(guide["word_count"] / 220))
+    return (
+        f'<article class="guide-card"><a href="/guides/{guide["slug"]}.html">'
+        f'<span class="eyebrow">{esc(guide["category"])}</span><h3>{esc(guide["title"])}</h3>'
+        f'<p>{esc(guide["description"])}</p>'
+        f'<span class="card-meta">{minutes} min read · Updated {esc(guide["updated"])}</span>'
+        "</a></article>"
+    )
 
-def main():
-    exam_arts = load_articles(EXAM, True)
-    ai_arts = load_articles(AI, False)
-    all_arts = exam_arts + ai_arts
-    exam_html = NL.join(card(a, True) for a in exam_arts)
-    ai_html = NL.join(card(a, False) for a in ai_arts)
 
-    hero = '<section class="hero"><div style="max-width:720px;margin:0 auto">'
-    hero += '<h1>Smarter learning, <span style="color:var(--brand)">powered by clarity</span>.</h1>'
-    hero += '<p class="lead">' + TAG + '</p>'
-    hero += '</div></section>'
+def toc(guide: dict) -> str:
+    items = "".join(
+        f'<li class="toc-level-{level}"><a href="#{anchor}">{inline(label)}</a></li>'
+        for level, label, anchor in guide["headings"]
+    )
+    return f'<nav class="article-toc" aria-label="On this page"><strong>On this page</strong><ol>{items}</ol></nav>'
 
-    exam_tabs = tabs_html("exam", EXAM_TABS, 0, EXAM_ICON)
-    exam_sect = '<section class="section" data-section="exam">'
-    exam_sect += '<div class="container">'
-    exam_sect += '<div class="section-head"><div class="title-wrap"><h2>Exam Prep Articles</h2></div><a href="/exam/" class="view-all">View all &rarr;</a></div>'
-    exam_sect += exam_tabs
-    exam_sect += '<div class="grid-4">' + exam_html + "</div>"
-    exam_sect += '</div></section>'
 
-    ai_tabs = tabs_html("ai", AI_TABS, 0, AI_ICON)
-    ai_sect = '<section class="section-ai" data-section="ai">'
-    ai_sect += '<div class="container">'
-    ai_sect += '<div class="section-head"><div class="title-wrap"><h2>AI Tools &amp; Guides</h2><p style="margin:4px 0 0;font-size:0.9rem;color:var(--text-3)">Honest reviews and analysis — no hype, no vendor sponsorship</p></div><a href="/ai/" class="view-all">Explore all &rarr;</a></div>'
-    ai_sect += ai_tabs
-    ai_sect += '<div class="grid-4">' + ai_html + "</div>"
-    ai_sect += '</div></section>'
+def sources(guide: dict) -> str:
+    links = "".join(
+        f'<li><a href="{esc(url)}">{esc(label)}</a> <span>— checked {esc(guide["updated"])}</span></li>'
+        for label, url in guide["sources"]
+    )
+    return (
+        '<aside class="source-notes" aria-labelledby="source-notes-title"><h2 id="source-notes-title">'
+        "Source notes</h2><p>These links define the factual boundary used for this guide. "
+        "TKHJ Tools adds the explanation, workflow, decision framework, or original practice.</p>"
+        f"<ul>{links}</ul></aside>"
+    )
 
-    wp("index.html", page("Study guides & AI coverage", hero + exam_sect + AD_UNIT + ai_sect + AD_UNIT, "home", desc="Free TOEFL, IELTS, GRE, SAT study guides with battle-tested strategies. Honest AI tool reviews and comparisons with no vendor sponsorship."))
-    wp("about.html", about_page())
-    wp("search.html", search_page())
-    wp("contact.html", contact_page())
 
-    idx = [{"title": a["title"], "url": ("/exam/" if a.get("_isexam") else "/ai/") + "article/" + a["_slug"] + ".html", "cat": a["_display_cat"], "kw": a["_keywords"], "date": a.get("date","")[:10]} for a in all_arts]
-    wp("search_index.json", json.dumps(idx, ensure_ascii=False))
+def article_page(guide: dict, guides: list[dict]) -> str:
+    related = [g for g in guides if g["slug"] != guide["slug"] and g["track"] == guide["track"]][:2]
+    if not related:
+        related = [g for g in guides if g["slug"] != guide["slug"]][:2]
+    related_html = "".join(guide_card(item) for item in related)
+    track_path = "/ai/" if guide["track"] == "ai" else "/learning/"
+    track_label = "AI guides" if guide["track"] == "ai" else "Learning guides"
+    note = (
+        "Prepared with AI assistance, checked against the listed sources, and reviewed for "
+        "unsupported testing claims, invented authority, and actionable reader value."
+        if guide["track"] == "ai"
+        else
+        "Prepared with AI assistance, edited around one learner task, checked against the "
+        "listed official sources, and reviewed for original practice and explained reasoning."
+    )
+    article = (
+        f'<div class="article-shell"><article class="article-body"><a class="back-link" href="{track_path}">{track_label}</a>'
+        f'<span class="eyebrow">{esc(guide["category"])}</span><h1>{esc(guide["title"])}</h1>'
+        f'<p class="dek">{esc(guide["description"])}</p><div class="byline">By '
+        '<a href="/about.html#editorial-team">TKHJ Tools Editorial Team</a>'
+        f' · Published <time datetime="{guide["published"]}">{guide["published"]}</time>'
+        f' · Updated <time datetime="{guide["updated"]}">{guide["updated"]}</time></div>'
+        f'<aside class="editorial-note"><strong>How this guide was made</strong><p>{note}</p></aside>'
+        + toc(guide) + guide["body_html"] + sources(guide)
+        + '<div class="article-disclaimer">Independent editorial content. Product and exam names '
+        "belong to their respective owners. No endorsement is implied.</div></article>"
+        + '<aside class="related"><h2>Continue exploring</h2><div class="guide-grid compact">'
+        + related_html + "</div></aside></div>"
+    )
+    schema = {
+        "@context": "https://schema.org", "@type": "Article", "headline": guide["title"],
+        "description": guide["description"], "datePublished": guide["published"],
+        "dateModified": guide["updated"],
+        "mainEntityOfPage": f"https://{DOMAIN}/guides/{guide['slug']}.html",
+        "author": {"@type": "Organization", "name": "TKHJ Tools Editorial Team",
+                   "url": f"https://{DOMAIN}/about.html#editorial-team"},
+        "publisher": {"@type": "Organization", "name": NAME},
+    }
+    return page(guide["title"], guide["description"], article, active=guide["track"],
+                path=f"/guides/{guide['slug']}.html", page_type="article", schema=schema)
 
-    exam_listing = section_hero("Exam Prep Articles","IELTS, TOEFL, GRE, SAT study guides.","Exam")
-    exam_listing += '<section class="section" data-section="exam"><div class="container">'
-    exam_listing += '<div class="grid-4">' + exam_html + "</div></div></section>"
-    wp("exam/index.html", page("Exam Prep Articles", exam_listing + AD_UNIT + AD_UNIT, "exam", desc="Free TOEFL, IELTS, GRE, SAT study guides. Battle-tested strategies from an instructor who has taught 300+ students."))
 
-    ai_listing = section_hero("AI Tools & Guides","Workflows, prompts, and honest comparisons.","AI")
-    ai_listing += '<section class="section-ai" data-section="ai"><div class="container">'
-    ai_listing += '<div class="grid-4">' + ai_html + "</div></div></section>"
-    wp("ai/index.html", page("AI Tools & Guides", ai_listing + AD_UNIT + AD_UNIT, "ai", desc="Honest AI tool reviews and comparisons. No hype, no vendor sponsorship. Just hands-on testing and transparent analysis."))
+def home_page(guides: list[dict]) -> str:
+    learning = [g for g in guides if g["track"] == "learning"]
+    ai = [g for g in guides if g["track"] == "ai"]
+    learning_cards = "".join(guide_card(g) for g in reversed(learning[-3:]))
+    ai_cards = "".join(guide_card(g) for g in reversed(ai[-3:]))
+    body = (
+        '<section class="hero"><div class="container hero-grid"><div><span class="eyebrow">'
+        "Learning × AI</span><h1>Use evidence. Make a better next move.</h1>"
+        f'<p class="hero-lead">{TAGLINE} Learning guides turn mistakes into practice; AI guides '
+        "turn announcements and documentation into decisions.</p><div class=\"hero-actions\">"
+        '<a class="button primary" href="/learning/">Explore Learning</a>'
+        '<a class="button secondary" href="/ai/">Explore AI</a>'
+        '<a class="button secondary" href="/about.html">See the editorial process</a></div></div>'
+        '<aside class="method-card"><span class="method-number">01</span><h2>Find the evidence</h2>'
+        "<p>Locate the phrase, rule, or descriptor that controls the decision.</p>"
+        '<span class="method-number">02</span><h2>Separate claim from judgment</h2>'
+        "<p>Mark what the source establishes and what still needs verification.</p>"
+        '<span class="method-number">03</span><h2>Run a small next step</h2>'
+        "<p>Use an original practice item or reversible workflow before scaling up.</p></aside></div></section>"
+        '<section class="section"><div class="container section-heading"><div><span class="eyebrow">'
+        f'Learning</span><h2>Improve one study decision</h2><p>{len(learning)} focused guides with '
+        'original practice and official source notes.</p></div><a class="text-link" href="/learning/">'
+        f'View Learning</a></div><div class="container guide-grid">{learning_cards}</div></section>'
+        '<section class="section"><div class="container section-heading"><div><span class="eyebrow">'
+        f'AI</span><h2>Use AI with judgment</h2><p>{len(ai)} source-grounded guides with explicit '
+        'limits and concrete next steps.</p></div><a class="text-link" href="/ai/">View AI</a></div>'
+        f'<div class="container guide-grid">{ai_cards}</div></section>'
+        '<section class="trust-band"><div class="container trust-grid">'
+        "<div><strong>Two clear tracks</strong><p>Learning and AI have different evidence and "
+        "usefulness checks.</p></div><div><strong>Visible sources</strong><p>Time-sensitive and "
+        "format-dependent claims link to their factual anchors.</p></div><div><strong>Daily gate</strong>"
+        "<p>Automation can publish only after structure, source, originality, and honesty checks.</p>"
+        "</div></div></section>"
+    )
+    schema = {"@context": "https://schema.org", "@type": "WebSite", "name": NAME,
+              "url": f"https://{DOMAIN}/", "description": TAGLINE}
+    return page("Evidence-first Learning and AI guides", TAGLINE, body, active="home", schema=schema)
 
-    for a in exam_arts:
-        slug = a["_slug"]
-        meta, body = fm(a["_body"])
-        rel = related_html(slug, all_arts)
-        article_html = md2html(body)
-        toc = toc_html(article_html)
-                # Add anchor IDs to h2 tags for ToC navigation
-        article_html = re.sub(r'<h3(?!s+id=)>', lambda m: '<h3 id="' + re.sub(r'[^a-zA-Z0-9]+', '-', m.string[m.start()+4:m.start()+4+40].split('<')[0]).lower().strip('-') + '">', article_html)
-        article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + toc + article_html + '</article>';
-        disclaimer = '<div style="font-size:0.8rem;color:var(--text-3);margin-top:32px;padding-top:16px;border-top:1px solid var(--line)">This guide is independently written and not affiliated with or endorsed by ETS, the College Board, or any other testing organization. It is based on general teaching experience and publicly available test information.</div>'
-        # description: first body line
-        _, body_text = fm(a["_body"])
-        first = next((l.strip().lstrip("#").strip() for l in body_text.strip().split("\n") if l.strip() and len(l.strip()) > 20), "")
-        desc = first[:160] if first else a.get("title", "")
-        canonical = "https://" + DOM + "/exam/article/" + slug + ".html"
-        pub_date = a.get("date", "")[:10]
-        schema = json.dumps({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": a["title"],
-            "description": desc[:200],
-            "datePublished": pub_date if pub_date else None,
-            "author": {"@type": "Organization", "name": NAME},
-        }, ensure_ascii=False)
-        html = page(a["title"], article_inner + AD_UNIT + rel + AD_UNIT_BOTTOM + disclaimer, "exam", desc=desc, canonical=canonical, schema=schema)
-        wp("exam/article/" + slug + ".html", html)
 
-    for a in ai_arts:
-        slug = a["_slug"]
-        meta, body = fm(a["_body"])
-        rel = related_html(slug, all_arts)
-        article_html = md2html(body)
-        toc = toc_html(article_html)
-        article_inner = '<article class="article-body"><h1>' + esc(a["title"]) + '</h1>' + toc + article_html + '</article>';
-        disclaimer = '<div style="font-size:0.8rem;color:var(--text-3);margin-top:32px;padding-top:16px;border-top:1px solid var(--line)">This article is independently written based on publicly available information. AI products evolve quickly; verify with official sources. No vendor sponsorship or affiliate relationship.</div>'
-        _, body_text = fm(a["_body"])
-        first = next((l.strip().lstrip("#").strip() for l in body_text.strip().split("\n") if l.strip() and len(l.strip()) > 20), "")
-        desc = first[:160] if first else a.get("title", "")
-        canonical = "https://" + DOM + "/ai/article/" + slug + ".html"
-        pub_date = a.get("date", "")[:10]
-        schema = json.dumps({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": a["title"],
-            "description": desc[:200],
-            "datePublished": pub_date if pub_date else None,
-            "author": {"@type": "Organization", "name": NAME},
-        }, ensure_ascii=False)
-        html = page(a["title"], article_inner + AD_UNIT + rel + AD_UNIT_BOTTOM + disclaimer, "ai", desc=desc, canonical=canonical, schema=schema)
-        wp("ai/article/" + slug + ".html", html)
+def guides_page(guides: list[dict]) -> str:
+    cards = "".join(guide_card(g) for g in guides)
+    body = (
+        '<section class="page-hero"><div class="container narrow"><span class="eyebrow">Guide library</span>'
+        "<h1>Learning and AI, in one evidence-first library</h1><p>Choose a focused reader task. "
+        "Each page includes sources, explicit reasoning, and a concrete next step."
+        '</p></div></section><section class="section"><div class="container guide-grid">'
+        + cards + "</div></section>"
+    )
+    return page("All guides", "Source-grounded Learning and AI guides with practical next steps.",
+                body, active="guides", path="/guides/")
 
-    wp("privacy.html", privacy_page())
-    gen_sitemap(all_arts)
 
-    # auto-generate ads.txt from AD_HEAD ca-pub ID
-    _pub_id = ""
-    if "ca-pub-" in AD_HEAD:
-        _pub_id = AD_HEAD.split("ca-pub-")[1].split('"')[0].strip()
-    if _pub_id:
-        wp("ads.txt", "google.com, pub-" + _pub_id + ", DIRECT, f08c47fec0942fa0" + chr(10))
+def track_page(guides: list[dict], track: str) -> str:
+    selected = [guide for guide in guides if guide["track"] == track]
+    label = "AI" if track == "ai" else "Learning"
+    description = (
+        "Product changes, prompt methods, and AI workflows separated into claims, limits, and decisions."
+        if track == "ai"
+        else
+        "Exam methods and study systems with original practice and explained reasoning."
+    )
+    cards = "".join(guide_card(guide) for guide in reversed(selected))
+    body = (
+        f'<section class="page-hero"><div class="container narrow"><span class="eyebrow">{label}</span>'
+        f"<h1>{label} guides</h1><p>{description}</p></div></section>"
+        f'<section class="section"><div class="container guide-grid">{cards}</div></section>'
+    )
+    return page(f"{label} guides", description, body, active=track, path=f"/{track}/")
 
-    print("sitemap:", len(all_arts) + 7, "urls")
-    print("ads.txt:", "auto-generated" if _pub_id else "MISSING")
 
-    print("Built:", len(exam_arts), "exams +", len(ai_arts), "ai")
-    print("Ready for deployment.")
+def about_page() -> str:
+    body = (
+        '<section class="page-hero"><div class="container narrow"><span class="eyebrow">About</span>'
+        "<h1>Two tracks with one evidence standard</h1><p>TKHJ Tools publishes Learning and AI "
+        "guides. Automation is allowed, but invented experience, source-free claims, and quota "
+        "fillers are not.</p></div></section>"
+        '<section class="prose-page"><div class="container narrow"><h2>What makes a guide publishable</h2>'
+        "<p>A guide must solve one identifiable reader task, show its reasoning, include an original "
+        "example or reusable workflow, link important claims to sources, and pass the track-specific "
+        "quality gate before automated publication.</p>"
+        '<h2 id="editorial-team">Editorial team and authorship</h2><p>Published pages are attributed '
+        "to the TKHJ Tools Editorial Team. We do not use a fictional teacher identity or claim "
+        "student counts, score improvements, hands-on product tests, or credentials readers cannot verify.</p>"
+        "<h2>Use of AI</h2><p>AI may assist with outlining and drafting. That assistance is stated on "
+        "every guide. Publication requires narrowing the page to a real learner decision, removing "
+        "unsupported experience claims, checking current format statements against official pages, "
+        "and adding original practice or a concrete AI decision framework.</p>"
+        "<h2>Daily publishing</h2><p>The automation targets one Learning and one AI article each day. "
+        "A failed draft is replaced with another sourced topic; it is never replaced with a short "
+        "placeholder.</p><h2>Corrections and freshness</h2><p>Every guide "
+        "shows an updated date and a source-checked date. If a provider changes its format, we update "
+        'or withdraw the affected guide. <a href="/contact.html">Report a correction</a>.</p>'
+        "<h2>Independence</h2><p>TKHJ Tools is not affiliated with or endorsed by ETS, IELTS, the "
+        "British Council, IDP, or Cambridge University Press &amp; Assessment. We do not accept "
+        "sponsored posts or use affiliate links in these guides.</p></div></section>"
+    )
+    return page("About and editorial process", "How TKHJ Tools selects, sources, updates, and corrects guides.",
+                body, active="about", path="/about.html")
+
+
+def contact_page() -> str:
+    body = (
+        '<section class="page-hero"><div class="container narrow"><span class="eyebrow">Contact</span>'
+        "<h1>Report a factual or usability problem</h1><p>Include the page URL, the sentence at issue, "
+        "and a reliable source when available.</p></div></section>"
+        '<section class="prose-page"><div class="container narrow"><h2>Corrections</h2>'
+        "<p>Open a public issue in the project repository so changes remain traceable.</p>"
+        '<p><a class="button primary" href="https://github.com/bxlh009/tkhj-tools/issues">'
+        "Open a GitHub issue</a></p><h2>What to include</h2><ol><li>The exact guide URL.</li>"
+        "<li>The claim, broken link, or interaction that needs attention.</li><li>What you expected "
+        "to see.</li><li>An official source for factual corrections, when possible.</li></ol>"
+        "<h2>Response scope</h2><p>TKHJ Tools can correct its own content and interface. Contact the "
+        "exam provider for registration, scoring, accommodations, or account questions.</p></div></section>"
+    )
+    return page("Contact and corrections", "Report errors, outdated information, or usability problems.",
+                body, active="contact", path="/contact.html")
+
+
+def privacy_page() -> str:
+    body = (
+        '<section class="page-hero"><div class="container narrow"><span class="eyebrow">Privacy</span>'
+        "<h1>Privacy policy</h1><p>Last updated July 24, 2026.</p></div></section>"
+        '<section class="prose-page"><div class="container narrow"><h2>Information collected</h2>'
+        "<p>This site has no user accounts or contact form. Standard hosting logs may contain an IP "
+        "address, browser information, requested URL, and timestamp for security and reliability.</p>"
+        "<h2>Analytics</h2><p>Google Analytics is used to understand aggregate page use. Google may "
+        "set or read cookies and process device or usage data under its own privacy terms.</p>"
+        "<h2>Advertising</h2><p>The site includes the Google AdSense site-verification script. Google "
+        "may use cookies or local storage when advertising services are enabled. No manual ad units "
+        "are inserted between guide text during the approval build.</p><h2>Local preferences</h2>"
+        "<p>The color-theme choice is stored in local browser storage and is not sent to TKHJ Tools.</p>"
+        "<h2>External links</h2><p>Guides link to official providers and GitHub. Their privacy practices "
+        'apply after you leave this site.</p><h2>Questions</h2><p>Use the <a href="/contact.html">'
+        "corrections page</a> for privacy or content questions.</p></div></section>"
+    )
+    return page("Privacy policy", "Privacy information for analytics, advertising verification, and logs.",
+                body, path="/privacy.html")
+
+
+def write(path: str, content: str) -> None:
+    target = OUT / path
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(content, "utf-8")
+
+
+def sitemap(guides: list[dict]) -> str:
+    entries = [("/", None), ("/guides/", None), ("/learning/", None), ("/ai/", None), ("/about.html", None),
+               ("/contact.html", None), ("/privacy.html", None)]
+    entries += [(f"/guides/{g['slug']}.html", g["updated"]) for g in guides]
+    rows = "".join(
+        f"<url><loc>https://{DOMAIN}{path}</loc>"
+        + (f"<lastmod>{modified}</lastmod>" if modified else "") + "</url>"
+        for path, modified in entries
+    )
+    return ('<?xml version="1.0" encoding="UTF-8"?>'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + rows + "</urlset>")
+
+
+def main() -> None:
+    if OUT.exists():
+        shutil.rmtree(OUT)
+    (OUT / "static").mkdir(parents=True)
+    for name in ("style.css", "nav.js", "logo.png", "favicon.png"):
+        shutil.copy2(STATIC / name, OUT / "static" / name)
+    shutil.copy2(STATIC / "favicon.png", OUT / "favicon.png")
+    guides = load_guides()
+    write("index.html", home_page(guides))
+    write("guides/index.html", guides_page(guides))
+    write("learning/index.html", track_page(guides, "learning"))
+    write("ai/index.html", track_page(guides, "ai"))
+    write("about.html", about_page())
+    write("contact.html", contact_page())
+    write("privacy.html", privacy_page())
+    for guide in guides:
+        write(f"guides/{guide['slug']}.html", article_page(guide, guides))
+    write("sitemap.xml", sitemap(guides))
+    write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: https://{DOMAIN}/sitemap.xml\n")
+    write("ads.txt", "google.com, pub-8913718352251239, DIRECT, f08c47fec0942fa0\n")
+    print(f"Built {len(guides)} curated guides; bulk drafts excluded.")
+
 
 if __name__ == "__main__":
     main()

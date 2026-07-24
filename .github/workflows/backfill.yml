@@ -1,0 +1,54 @@
+name: Backfill Content Timeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: First publication date (YYYY-MM-DD)
+        required: true
+        default: "2026-07-06"
+      end_date:
+        description: Last publication date (YYYY-MM-DD)
+        required: true
+        default: "2026-07-24"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: content-timeline-backfill
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate and publish missing dates with Agnes
+        env:
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+        run: >-
+          python scripts/backfill_timeline.py
+          --start "${{ inputs.start_date }}"
+          --end "${{ inputs.end_date }}"
+
+      - name: Verify generated site
+        run: |
+          python scripts/run_all_tests.py
+          python scripts/test_content_quality.py
+          python scripts/audit_adsense_readiness.py
+
+      - name: Commit and push timeline
+        run: |
+          git config user.name "TKHJ Bot"
+          git config user.email "bot@tkhjtools.top"
+          git add output/ site/content/
+          git diff --staged --quiet || git commit -m "Backfill content timeline ${{ inputs.start_date }} to ${{ inputs.end_date }}"
+          git push

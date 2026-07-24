@@ -1,106 +1,148 @@
-# 内容引擎
+# TKHJ Tools 内容引擎
 
-考试 + AI 站群的自动化生产基地。
+面向 **Learning + AI** 双领域的每日内容生成、质量门禁和静态网站发布系统。
 
-一、目录结构
+## 每日目标
 
-    content-engine/
-      rules/
-        WRITING_RULES.md           写作规则（所有 prompt 和脚本的根）
-      prompts/
-        exam-method-prompt.md      考试方法论文 prompt 模板
-        ai-news-prompt.md          AI 新闻/工具评测 prompt 模板
-      vars/
-        example-toefl-reading.json 考试变量示例
-        example-ai-gpt5.json       AI 变量示例
-      scripts/
-        generate.py                文章生成脚本
-        check_similarity.py        相似度检测脚本
-        config.json                API 配置
-      output/                      GPT 生成的文章落地目录
+GitHub Actions 每天提供北京时间 18:00、21:00、次日 00:00 三个运行窗口：
 
-二、快速开始
+1. 生成并发布 1 篇 Learning 文章。
+2. 生成并发布 1 篇 AI 文章。
+3. 运行质量门禁和网站审计。
+4. 将通过门禁的稿件、公开清单与日志提交回仓库。
 
-1 设置环境变量
+第一次成功后，后续窗口会检测当天已发布状态并跳过；第一次遇到 API、RSS
+或质量门禁临时失败时，后续窗口继续重试，不会重复发布。
 
-    set OPENAI_API_KEY=sk-xxx         Windows Cmd
-    $env:OPENAI_API_KEY = "sk-xxx"    PowerShell
+AI 有合格重大新闻时生成来源限定的新闻分析；没有时从带官方来源的
+常青主题队列中选择工作流、提示词或评估主题。不得保存短占位稿凑数。
 
-2 生成一篇 TOEFL 阅读方法论文章
+## 内容链路
 
-    python scripts/generate.py --type exam --vars vars/example-toefl-reading.json
-
-3 生成一篇 AI 新闻对比文章
-
-    python scripts/generate.py --type ai --vars vars/example-ai-gpt5.json
-
-4 发布前检测相似度
-
-    python scripts/check_similarity.py --threshold 0.30
-
-三、变量文件格式
-
-每篇文章对应一个 JSON 文件，根据所选模板填写变量。
-
-考试模板变量
-    exam_name          TOEFL / IELTS / GRE / SAT / GMAT / LSAT / MCAT
-    section_name       阅读 / 写作 / 听力 / 口语 / 词汇
-    years              3-8（教龄体感）
-    bottleneck_score   阅读卡在 22
-    min_words          1500
-    max_words          2500
-    primary_keyword    SEO 主关键词
-    long_tail_keywords [...]
-    slug              URL 路径片段
-
-AI 模板变量
-    type               ai-news / tool-review / comparison
-    target_audience   人群描述
-    category           ai-news / tool-review / comparison
-    primary_keyword    SEO 主关键词
-    long_tail_keywords [...]
-    slug              URL 路径片段
-
-四、写作规则核心要点（详见 rules/WRITING_RULES.md）
-
-1 作者身份固定为 Evan，带过 300+ 学生的 TOEFL/GRE 讲师 + AI 工具研究员
-2 版权红线：不得复制真题原文，不得使用官方 Logo，不得声称官方授权
-3 例题必须改写：独立编写场景、替换人物、同义替换
-4 每篇文章发布前必须过自查清单：经验句、例题、关键词、免责声明缺一不可
-5 发布前相似度必须 < 30%，避免内容自噬
-
-五、发布工作流
-
-    写变量 JSON
+```text
+vars / RSS / 官方来源主题
         ↓
-    generate.py 调用
+source-grounded prompt
         ↓
-    output/ 产出草稿
+scripts/generate.py 或 scripts/daily_ai_news.py
         ↓
-    人工事实核查（数据、价格、例题答案）
+scripts/content_quality.py
+        ↓ 仅 PASS
+output/ 保留生成稿
         ↓
-    替换模板占位符、添加图片
+scripts/publish_article.py
         ↓
-    check_similarity.py 检测相似度
+site/content/*.md + guides.json
         ↓
-    提交到 Git / 部署到 tkjtools.io 主站
+site/build.py
+        ↓
+site/_site
+```
 
-六、配置说明
+`output/` 是生成记录，不能单独进入网站。只有通过质量门禁并被
+`publish_article.py` 登记进 `site/content/guides.json` 的文章才会公开。
 
-    api.model          gpt-4o-mini     主力模型（性价比高）
-    api.temperature    0.7             略高以提升文章多样性
-    api.max_tokens     4096            限制单篇最长输出
-    output_dir         ../output       生成文件落地位置
+## 关键文件
 
-七、依赖说明
+```text
+rules/WRITING_RULES.md             双领域事实与质量规则
+prompts/system_prompt_editorial.md 统一、非虚构作者系统提示词
+prompts/exam-method-prompt.md      Learning 生成任务
+prompts/ai-news-prompt.md          AI 生成任务
+scripts/generate.py                通用生成器
+scripts/daily_generate.py          每日双领域入口
+scripts/daily_ai_news.py           AI 新闻发现与常青主题回退
+scripts/content_quality.py         阻断式质量门禁
+scripts/publish_article.py         公开内容与清单登记
+site/build.py                      静态网站构建
+```
 
-仅依赖 Python 3.8+ 内建库：urllib / json / re / pathlib
-不依赖任何 pip 包（无 requests / openai SDK）
-唯一外部依赖：OpenAI 兼容的 API key
+## 质量门禁
 
-八、扩展新文章类型
+自动稿件出现以下任一问题就不会发布：
 
-在 prompts/ 新建 xxx-prompt.md，模板中引用 {变量名}
-在 vars/ 新建示例 JSON
-在 generate.py argparse choices 加上新类型
-主调逻辑中增加类型分发
+- 未达到要求字数或缺少可扫描结构；
+- 没有提供来源；
+- 虚构教师、学生、测试经验、成绩、用户量、引用或结果承诺；
+- 存在待填占位符；
+- Learning 缺少两个原创练习以及答案推理；
+- AI 缺少局限、不确定性或读者决策；
+- 与同领域既有草稿相似度达到 30%；
+- 模型返回空内容、JSON 元数据或 API 调用失败。
+
+Learning 生成失败会更换主题，最多尝试3次。AI 会按“新事件优先、常青官方
+主题回退”的顺序尝试最多3个主题。当天配额不完整时 GitHub Actions 失败，
+不会把失败稿伪装成成功发布。
+
+## 本地使用
+
+PowerShell 设置 API key：
+
+```powershell
+$env:AGNES_API_KEY = "your-key"
+```
+
+生成 Learning 草稿但不公开：
+
+```powershell
+python scripts\generate.py --type exam --vars vars\example-toefl-reading.json
+```
+
+生成、过门禁并自动进入公开清单：
+
+```powershell
+python scripts\generate.py --type exam --vars vars\example-toefl-reading.json --publish
+```
+
+运行完整每日任务：
+
+```powershell
+python scripts\daily_generate.py
+```
+
+## 回填历史时间线
+
+查看从2026年7月6日至7月24日还缺哪些日期：
+
+```powershell
+python scripts\backfill_timeline.py --start 2026-07-06 --end 2026-07-24 --dry-run
+```
+
+本地配置 `AGNES_API_KEY` 后执行实际回填：
+
+```powershell
+python scripts\backfill_timeline.py --start 2026-07-06 --end 2026-07-24
+```
+
+也可以在 GitHub 的 Actions 页面手动运行 `Backfill Content Timeline`。它会
+使用仓库 Secret `AGNES_API_KEY`，无需在日志或代码中暴露密钥。脚本按
+`guides.json` 检测每个领域已有的发布日期，因此中断后可安全重跑。
+
+## 构建与测试
+
+```powershell
+python scripts\run_all_tests.py
+python scripts\test_content_quality.py
+python site\build.py
+python scripts\audit_adsense_readiness.py
+```
+
+构建输出为 `site/_site`。Cloudflare Pages 配置：
+
+```text
+Build command: python site/build.py
+Build output directory: site/_site
+Production branch: main
+```
+
+## 发布规则
+
+- 公开作者统一为 TKHJ Tools Editorial Team。
+- 自动化和 AI 辅助必须披露。
+- 考试格式依赖官方考试机构页面。
+- 时效性 AI 内容优先使用产品或机构的一手资料。
+- 供应商声明必须明确归因，不能写成独立实测结论。
+- 自动发布不等于事实已由第三方独立确认；重要内容仍应定期抽查。
+
+Google 不保证任何技术或内容调整一定通过 AdSense。申请复审前应确认生产
+环境已部署最新版本、旧低价值页面已下线、站点地图可抓取。

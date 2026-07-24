@@ -1,377 +1,251 @@
-﻿import pathlib, re, random, statistics, sys, json, os, argparse
-import urllib.request, urllib.error
-import time
+"""Generate a source-grounded Learning or AI draft and apply a blocking gate."""
 
-import importlib
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import pathlib
+import re
+import sys
+import time
+import urllib.error
+import urllib.request
 from datetime import datetime
 
+from content_quality import evaluate_article
+from publish_article import publish
+
+
 SCRIPTS_DIR = pathlib.Path(__file__).resolve().parent
-CONFIG_FILE = SCRIPTS_DIR / 'config.json'
-CONFIG = json.loads(CONFIG_FILE.read_text())
-PROMPTS   = SCRIPTS_DIR.parent / 'prompts'
-RULES_F   = SCRIPTS_DIR.parent / 'rules' / 'WRITING_RULES.md'
-SYSP_F    = PROMPTS / 'system_prompt_layer1.md'
-EXAM_OUT  = SCRIPTS_DIR.parent / 'output' / 'exams'
-AI_OUT   = SCRIPTS_DIR.parent / 'output' / 'ai'
+ENGINE_DIR = SCRIPTS_DIR.parent
+CONFIG = json.loads((SCRIPTS_DIR / "config.json").read_text("utf-8"))
+PROMPTS = ENGINE_DIR / "prompts"
+RULES_FILE = ENGINE_DIR / "rules" / "WRITING_RULES.md"
+EXAM_OUT = ENGINE_DIR / "output" / "exams"
+AI_OUT = ENGINE_DIR / "output" / "ai"
 
-def get_api_key():
-    k = os.environ.get(CONFIG['api']['api_key_env'])
-    if not k or not k.strip(): sys.exit('[ERROR] env missing')
-    return k
+OFFICIAL_EXAM_SOURCES = {
+    "toefl": [
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html",
+    ],
+    "gre": [
+        "https://www.ets.org/gre/test-takers/general-test/about/content.html",
+        "https://www.ets.org/gre/test-takers/general-test/prepare.html",
+    ],
+    "ielts": [
+        "https://ielts.org/take-a-test/test-types/ielts-academic-test",
+        "https://ielts.org/take-a-test/preparation-resources",
+    ],
+    "sat": [
+        "https://satsuite.collegeboard.org/sat/whats-on-the-test",
+        "https://satsuite.collegeboard.org/practice",
+    ],
+}
 
-def read(p): return pathlib.Path(p).read_text(encoding='utf-8')
-def inj(tpl, v):
-    for k, val in v.items(): tpl = tpl.replace('{'+k+'}', str(val))
-    return tpl
-def read_json(p): return json.loads(read(p))
 
-def call_api(system, user, retries=3, base_delay=5):
-    payload = {'model':CONFIG['api']['model'],'messages':[{'role':'system','content':system},{'role':'user','content':user}],
-               'temperature':CONFIG['api']['temperature'],'top_p':CONFIG['api'].get('top_p',1.0),'max_tokens':CONFIG['api']['max_tokens']}
-    req = urllib.request.Request(CONFIG['api']['base_url'], data=json.dumps(payload).encode(),
-        headers={'Content-Type':'application/json','Authorization':'Bearer '+get_api_key()}, method='POST')
-    last_err = None
+def read(path: pathlib.Path) -> str:
+    return path.read_text(encoding="utf-8")
+
+
+def inject(template: str, values: dict[str, object]) -> str:
+    for key, value in values.items():
+        template = template.replace("{" + key + "}", str(value))
+    return template
+
+
+def get_api_key() -> str:
+    key = os.environ.get(CONFIG["api"]["api_key_env"], "").strip()
+    if not key:
+        raise RuntimeError(f"missing environment variable {CONFIG['api']['api_key_env']}")
+    return key
+
+
+def call_api(system: str, user: str, retries: int = 3, base_delay: int = 5) -> str:
+    payload = {
+        "model": CONFIG["api"]["model"],
+        "messages": [
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ],
+        "temperature": CONFIG["api"]["temperature"],
+        "top_p": CONFIG["api"].get("top_p", 1.0),
+        "max_tokens": CONFIG["api"]["max_tokens"],
+    }
+    request = urllib.request.Request(
+        CONFIG["api"]["base_url"],
+        data=json.dumps(payload).encode(),
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + get_api_key(),
+        },
+        method="POST",
+    )
+    last_error: Exception | None = None
     for attempt in range(1, retries + 1):
         try:
-            with urllib.request.urlopen(req, timeout=300) as r:
-                body = json.loads(r.read().decode())
-            print('[INFO] prompt='+str(body.get('usage',{}).get('prompt_tokens'))+' cmp='+str(body.get('usage',{}).get('completion_tokens')))
-            return body['choices'][0]['message']['content']
-        except (urllib.error.URLError, TimeoutError, OSError) as e:
-            last_err = e
+            with urllib.request.urlopen(request, timeout=300) as response:
+                body = json.loads(response.read().decode())
+            usage = body.get("usage", {})
+            print(
+                f"[INFO] prompt={usage.get('prompt_tokens')} "
+                f"completion={usage.get('completion_tokens')}"
+            )
+            return body["choices"][0]["message"]["content"]
+        except (urllib.error.URLError, TimeoutError, OSError, KeyError, ValueError) as error:
+            last_error = error
             if attempt < retries:
                 delay = base_delay * (2 ** (attempt - 1))
-                print(f'[WARN] API attempt {attempt}/{retries} failed ({type(e).__name__}: {e}); retry in {delay}s')
+                print(f"[WARN] API attempt {attempt}/{retries} failed; retry in {delay}s")
                 time.sleep(delay)
-            else:
-                print(f'[ERROR] API call failed after {retries} attempts: {e}')
-    raise RuntimeError(f'API call failed after {retries} attempts: {last_err}')
-
-# Layer 1 system prompt (loaded fresh per call with rules baked in)
-def sys_prompt(atype):
-    rules = read(RULES_F) if RULES_F.exists() else ''
-    if atype == 'exam':
-        # Randomly pick one of 3 personas for variety (layer1=old teacher, layer2=young peer, layer3=analyst)
-        import random as _rand
-        layer = _rand.choice(['1', '2', '3'])
-        sys_f = PROMPTS / f'system_prompt_layer{layer}.md'
-    else:
-        sys_f = SYSP_F
-    base = read(sys_f)
-    return base.replace('{atype}', atype).replace('{rules}', rules)
-
-def score(t, min_words=None, max_words=None):
-    """10-dimensional quality score (each 0-10, total 0-100).
-
-    Dimensions:
-      1. Avg sentence length 8-22
-      2. Burstiness (stdev >= 5)
-      3. Contractions >= 20
-      4. Rich punctuation (!?--)
-      5. Vocal markers (honestly, look, you know, I mean, basically)
-      6. No banned formatting (#, *, ---, | tables)
-      7. Word count within target range
-      8. 2+ worked examples with solutions
-      9. CTA to tkjtools.io
-      10. Disclaimer present
-    """
-    t = t.split('---',1)[-1] if t.strip().startswith('---') else t
-    wds = t.split()
-    if not wds: return 0, 'EMPTY', {}
-    lens = [len(s.split()) for s in re.split(r'[.!?]+', t) if len(s.split())>1]
-    if not lens: lens=[1]
-    t_norm = t.replace('’', "'").replace('‘', "'")  # normalize Unicode apostrophes
-    contr = len(re.findall(r"[A-Za-z]+'[A-Za-z]+", t_norm))
-    dash = t_norm.count('--')+t_norm.count('—')+t_norm.count('–')
-    excl = t_norm.count('!'); qmark = t_norm.count('?')
-    ev = statistics.stdev(lens) if len(lens)>1 else 0
-    avg = sum(lens)/len(lens)
-    vocal_markers = ['honestly', 'look,', 'you know', 'i mean,', 'basically,', 'turns out', 'let me be clear', 'no wait']
-    vocal_count = sum(t_norm.lower().count(m) for m in vocal_markers)
-
-    # points
-    p1 = 10 if 8<=avg<=22 else 0
-    p2 = 10 if ev>=5 else 0
-    p3 = 10 if contr>=20 else (5 if contr>=10 else 0)
-    p4 = 10 if dash+excl+qmark>=10 else (5 if dash+excl+qmark>=5 else 0)
-    p5 = 10 if vocal_count>=3 else (5 if vocal_count>=1 else 0)
-    # formatting bans
-    has_banned_format = bool(re.search(r'(^#{1,6}\s|\|.*\||^\s*[-*]\s|---)', t_norm, re.M))
-    p6 = 0 if has_banned_format else 10
-    # word count
-    word_count = len(wds)
-    if min_words and max_words:
-        p7 = 10 if min_words<=word_count<=max_words else (5 if word_count>=min_words*0.8 else 0)
-    else:
-        p7 = 10
-    # worked examples (>=2 with Solution/思路)
-    example_count = len(re.findall(r'(Worked Example|Example \d|Solution|解题思路)', t, re.I))
-    p8 = 10 if example_count>=2 else (5 if example_count>=1 else 0)
-    # CTA
-    p9 = 10 if re.search(r'tkjtools\.io', t) else 0
-    # disclaimer
-    p10 = 10 if re.search(r'(disclaimer|independently written|not endorsed|不代表.*官方)', t, re.I) else 0
-
-    total = p1+p2+p3+p4+p5+p6+p7+p8+p9+p10
-    details = {
-        'avg_len': round(avg,1), 'burstiness': round(ev,1), 'contractions': contr,
-        'punctuation': dash+excl+qmark, 'vocal_markers': vocal_count,
-        'banned_format': has_banned_format, 'word_count': word_count,
-        'examples': example_count, 'cta': p9>0, 'disclaimer': p10>0,
-    }
-    return total, ('PASS' if total>=75 else 'WARN'), details
+    raise RuntimeError(f"API call failed after {retries} attempts: {last_error}")
 
 
-def strip_banned_formatting(text):
-    """Strip banned markdown formatting from article body (preserves frontmatter)."""
-    fm, body = split_fm(text)
-    lines = body.split('\n')
-    out = []
-    fixes = 0
-    for line in lines:
-        orig = line
-        # strip heading markers
-        line = re.sub(r'^#{1,6}\s+', '', line)
-        # also strip inline heading markers (mid-sentence ### escaping the filter)
-        line = re.sub(r'\s*#{2,6}\s+', ' ', line)
-        # convert horizontal rules to paragraph breaks (don't delete — avoids blank gaps)
-        if re.match(r'^[_*-]{3,}\s*$', line):
-            fixes += 1
-            out.append('')
-            continue
-        # strip table rows
-        if re.match(r'^\s*\|.*\|\s*$', line):
-            fixes += 1
-            continue
-        # strip bullet markers at line start
-        line = re.sub(r'^\s*[-*]\s+', '', line)
-        if line != orig:
-            fixes += 1
-        out.append(line)
-    return fm + '\n'.join(out), fixes
+def source_urls(article_type: str, values: dict[str, object]) -> list[str]:
+    supplied = values.get("source_urls", [])
+    if isinstance(supplied, str):
+        supplied = [value.strip() for value in supplied.split(",") if value.strip()]
+    urls = [str(value) for value in supplied if str(value).startswith("http")]
+    if article_type == "exam":
+        exam = str(values.get("exam_name", "")).lower()
+        for key, official_urls in OFFICIAL_EXAM_SOURCES.items():
+            if key in exam:
+                urls.extend(official_urls)
+                break
+    return list(dict.fromkeys(urls))
 
 
-def split_fm(t):
-    m = re.match(r'^---\n.*?\n---\n', t, re.S)
-    return (m.group(0), t[m.end():]) if m else ('', t)
+def clean_body(text: str) -> str:
+    text = text.strip().removeprefix("```markdown").removesuffix("```").strip()
+    text = re.sub(r"^---\s*\n.*?\n---\s*\n", "", text, flags=re.DOTALL)
+    text = re.sub(r"^#\s+.+\n+", "", text, count=1)
+    return text.strip()
 
-# Layer 2e: paragraph-level GPT rewrite that injects contractions
-CASUAL_SYS = "You are Evan, blogger. Rewrite this paragraph using HEAVY contractions (it's, don't, can't, I'm, you're, they're, here's, there's, won't, wouldn't, shouldn't, hasn't, we've, didn't), add spoken rhythm (em-dashes, interruptions), make it sound genuinely human. Same meaning and facts, roughly same length. Output ONLY the rewritten text."
-def rewrite_para(p):
-    if len(p.split())<15: return p
-    try:
-        return call_api(CASUAL_SYS, 'Paragraph to rewrite:\n'+p)
-    except SystemExit: return p
-def force_casual(text, n=6):
-    fm, body = split_fm(text)
-    paras = body.split('\n\n')
-    cands = [(i, p) for i, p in enumerate(paras) if len(p.split())>25 and not p.strip().startswith('#')]
-    random.shuffle(cands)
-    for i, p in cands[:n]:
-        paras[i] = rewrite_para(p)
-    return fm + '\n\n'.join(paras)
 
-# Layer 2bcd: programmatic fallbacks
-PLAIN=["it is","do not","does not","cannot","I am","you are","they are","that is","there is","has not","have not"]
-CO=["it's","don't","doesn't","can't","I'm","you're","they're","that's","there's","hasn't","haven't"]
-PAIRS=list(zip(PLAIN,CO))
-def force_contr(text, target=18):
-    fm, body = split_fm(text)
-    random.shuffle(PAIRS); ch=0
-    for pl, co in PAIRS:
-        if ch>=target: break
-        rx=re.compile(r'(?<![a-zA-Z-])'+re.escape(pl)+r'(?![a-zA-Z-])',re.I)
-        ms=list(rx.finditer(body))
-        for mat in reversed(ms[:min(len(ms),target-ch)]):
-            s,e=mat.span()
-            body=body[:s]+(co[0].upper()+co[1:] if body[s].isupper() else co)+body[e:]
-            ch+=1
-    return fm+body, ch
-
-def force_dashes(text, n=6):
-    fm, body = split_fm(text)
-    for _ in range(n):
-        m=re.search(r',\s+(actually|basically|honestly|frankly|look|yes|no|well),',body,re.I)
-        if not m: break
-        body=body[:m.start()]+' \u2014 '+random.choice(['actually','honestly'])+' \u2014 '+body[m.end():]
-    return fm+body
-
-def force_merge(text):
-    fm, body = split_fm(text)
-    ss=re.split(r'(?<=[.!?])\s+', body); out=[]; i=0; mg=0
-    while i<len(ss) and mg<4:
-        w1=ss[i].split()
-        if 3<=len(w1)<=9 and i+1<len(ss) and 3<=len(ss[i+1].split())<=9:
-            c=random.choice([', and', ', but', ', so', ', yet'])
-            out.append(ss[i].rstrip('.!?')+c+' '+ss[i+1][0].lower()+ss[i+1][1:])
-            i+=2; mg+=1; continue
-        out.append(ss[i]); i+=1
-    out.extend(ss[i:])
-    return fm+' '.join(out)
-
-def force_markers(text):
-    MARKERS=['honestly,', 'look,', 'I mean,']
-    fm, body = split_fm(text)
-    paras=body.split('\n\n')
-    n_target=max(4, len(paras)//4)
-    for idx in random.sample(range(len(paras)), min(n_target, len(paras))):
-        p=paras[idx]
-        if not p.strip() or p.strip().startswith(('#','-','*','|')): continue
-        ss=re.split(r'(?<=[.!?])\s+', p)
-        if len(ss)<2: continue
-        pos = random.randint(1, len(ss)-1)
-        marker = random.choice(MARKERS)
-        ss.insert(pos, marker)
-        # lowercase the word after the marker to avoid "I mean, You're"
-        if pos+1 < len(ss) and ss[pos+1] and ss[pos+1][0].isupper() and ss[pos+1][0] != 'I':
-            ss[pos+1] = ss[pos+1][0].lower() + ss[pos+1][1:]
-        paras[idx]=' '.join(ss)
-    return fm+'\n\n'.join(paras)
-
-def ensure_dir(p): p.mkdir(parents=True, exist_ok=True)
-def first_free(d, slug, ext='.md'):
-    b=d/(slug+ext)
-    if not b.exists(): return b
-    n=2
-    while (d/('%s-%d%s'%(slug,n,ext))).exists(): n+=1
-    return d/('%s-%d%s'%(slug,n,ext))
-
-def extract_slug(content):
-    m=re.match(r'^---\n.*?\n---', content, re.S)
-    if not m: return None
-    for ln in m.group(0).splitlines():
-        if 'slug:' in ln:
-            return ln.split('slug:')[1].strip().strip("'\"")
-    return None
-
-def pick_template(atype):
-    """Pick a random template letter (A-H) for the given article type."""
-    import random
-    return random.choice("ABCDEFGHIJKLMNOP" if atype == "ai" else "ABCDEFGHIJKL")
-
-def wc(t):
-    return len(re.findall(r'[A-Za-z一-鿿]+', t.split('---')[-1] if t.startswith('---') else t))
-
-def write_output(content, slug, out_dir):
-    ensure_dir(out_dir)
-    p=first_free(out_dir, slug)
-    content = content.replace('’', "'").replace('‘', "'")  # normalize Unicode apostrophes
-    p.write_text(content, encoding='utf-8')
-    return p
-
-def ensure_cta_and_disclaimer(article, atype):
-    """Disclaimer is now added at the bottom of every article by build.py as a subtle footer.
-    This function only cleans up self-promotional CTAs."""
-    import re as _re
-    # Remove old-style blockquote disclaimers (build.py adds a cleaner one at bottom)
-    article = _re.sub(r"\n?>\s*[*>]*\s*Disclaimer[:?].*?\n", "\n", article, flags=re.I)
-    # Remove tkjtools.io self-promotion
-    article = _re.sub(r"[^.\n]*https?://(exam\.|ai\.)?tkjtools\.io[^.\n]*\.?\n?", "", article)
-    return article
-def main():
-    ap=argparse.ArgumentParser()
-    ap.add_argument('--type', required=True, choices=['exam','ai'])
-    ap.add_argument('--vars', required=True)
-    args=ap.parse_args()
-    tpl = read(PROMPTS / ('exam-method-prompt.md' if args.type=='exam' else 'ai-news-prompt.md'))
-    vars_data = read_json(args.vars)
-    vars_data["current_date"] = datetime.now().strftime("%Y-%m-%d")
-    up = inj(tpl, vars_data)
-    # Random format seed for article variability + template rotation
-    tpl_letter = pick_template(args.type)
-        # Template-specific openers for structural variety
-    TEMPLATE_OPENERS = {
-        "A": "Start with ONE specific student story (name + score + struggle). Make it feel real, not generic.",
-        "B": "Open with a common misconception or bad advice students often hear. Then immediately debunk it.",
-        "C": "Start with 2\u20133 self-assessment questions readers can answer. Route each answer to a specific section.",
-        "D": "Open with a comparison framing \u2014 why most students are torn between two approaches.",
-        "E": "Start with a surprising statistic or research finding that challenges common assumptions.",
-        "F": "Open with a direct address to the reader: \"If you are struggling with X, this is for you.\"",
-        "G": "Start with a short quiz or diagnostic test. Then score it and direct to the right section.",
-        "H": "Open with a before/after comparison. Show a bad approach then the good approach immediately.",
-        "I": "Start with an analogy or metaphor that reframes how the reader should think about this topic.",
-        "J": "Open with the most common question students ask about this topic, then answer it directly.",
-        "K": "Start with a timeline or progression story of a student over weeks or months.",
-        "L": "Open with a bold counter-intuitive claim that grabs attention, then justify it.",
-    }
-    opener = TEMPLATE_OPENERS.get(tpl_letter, "Start with a relatable student mistake or confusion.")
-    up = up + "\n\n--- FORMAT INSTRUCTION ---\n" + opener + "\nMix short sections and long deep-dives.\n"
-    up = up + f"\nYOU MUST FOLLOW Template {tpl_letter} from the Structure Rotation section. Do not deviate from that skeleton.\n"
-    print('[INFO] generating [%s]...' % args.type)
-    article = call_api(sys_prompt(args.type), up)
-    # Clean stray frontmatter / YAML / JSON leaking into body
-    try:
-        _clean = importlib.import_module("_clean_body")
-        cleaned = _clean.clean_body(article)
-        if cleaned != article:
-            print("[OK]   cleaned frontmatter/YAML leakage from body")
-        article = cleaned
-    except Exception as _e:
-        print(f"[WARN] _clean_body failed: {_e}")
-
-    min_w = vars_data.get("min_words", 1500)
-    max_w = vars_data.get("max_words", 2500)
-    sc, verdict, det = score(article, min_w, max_w)
-    print("[OK]   Score: %d/100 verdict=%s | %s" % (sc, verdict, det))
-    # Layer 2e: GPT paragraph rewrite (ONLY other instance adds contractions)
-    if verdict == 'WARN':
-        article = force_casual(article, n=6)
-        sc, verdict, det = score(article, min_w, max_w)
-        print('[OK]   Layer-2e casual rewrite: %d/100 | %s' % (sc, det))
-    # Layer 2bcd: programmatic fallbacks
-    if verdict == 'WARN':
-        article, c1 = force_contr(article, target=18)
-        article = force_dashes(article, n=5)
-        article = force_merge(article)
-        article = force_markers(article)
-        sc, verdict, det = score(article, min_w, max_w)
-        print('[OK]   Layer-2bcd: %d contractions injected; new score: %d/100 | %s' % (c1, sc, det))
-    # Layer 2f: strip banned formatting that survived (#, *, ---, |)
-    if verdict == 'WARN' and det.get('banned_format'):
-        article, n_fix = strip_banned_formatting(article)
-        sc, verdict, det = score(article, min_w, max_w)
-        print('[OK]   Layer-2f formatting strip: %d fixes; new score: %d/100' % (n_fix, sc))
-    if verdict == 'WARN':
-        missing = [k for k, v in {'examples': det.get('examples',0)>=2, 'cta': det.get('cta'), 'disclaimer': det.get('disclaimer'), 'word_count': det.get('word_count',0)>=min_w} .items() if not v]
-        print('[WARN] still WARN; missing or weak: %s; needs ' % ', '.join(missing) if missing else '[WARN] still WARN; needs 5-min human polish')
-    # Force-rewrite banned opening lines (Most students think...)
-    # opener rewrite disabled (module not available)
-
-    # Auto-append CTA + disclaimer if missing
-    article = ensure_cta_and_disclaimer(article, args.type)
-
-    # Similarity check BEFORE writing (avoid content self-cannibalization)
-    cur_out = EXAM_OUT if args.type == "exam" else AI_OUT
-    try:
-        from check_similarity import check_new_article
-        too_sim, sim_name, sim_score = check_new_article(article, str(cur_out))
-        if too_sim:
-            print(f"[WARN] too similar to {sim_name} ({sim_score:.0%}); consider different vars")
-        else:
-            print(f"[OK]   similarity OK (max {sim_score:.0%} vs existing)")
-    except Exception as e:
-        print(f"[WARN] similarity check failed: {e}")
-
-    # Ensure article has frontmatter (model sometimes skips --- wrappers)
-    if not article.startswith('---'):
-        title_from_body = article.strip().split(chr(10))[0][:80]
-        fm_lines = [
-            '---',
-            'title: "' + vars_data.get('primary_keyword', title_from_body).strip('"') + '"',
-            'slug: "' + vars_data.get('slug', 'untitled') + '"',
-            'date: "' + datetime.now().strftime('%Y-%m-%d') + '"',
-            'exam: "' + vars_data.get('exam_name', '') + '"',
-            'section: "' + vars_data.get('section_name', '') + '"',
-            'primary_keyword: "' + vars_data.get('primary_keyword', '') + '"',
-            'word_count: ' + str(len(article.split())),
-            'estimated_read_min: ' + str(max(1, len(article.split()) // 220)),
-            '---',
+def build_article(
+    body: str,
+    *,
+    article_type: str,
+    values: dict[str, object],
+    urls: list[str],
+    publish_date: str | None = None,
+) -> str:
+    body = re.sub(r"\n## Sources\s*\n.*$", "", body, flags=re.IGNORECASE | re.DOTALL).rstrip()
+    source_lines = "\n".join(f"- {url}" for url in urls)
+    body = f"{body}\n\n## Sources\n\n{source_lines}\n"
+    slug = str(values.get("slug", "untitled")).strip()
+    title = str(values.get("title") or values.get("primary_keyword") or slug.replace("-", " ").title())
+    domain = "learning" if article_type == "exam" else "ai"
+    publish_date = publish_date or datetime.now().strftime("%Y-%m-%d")
+    word_count = len(re.findall(r"[A-Za-zÀ-ž\u4e00-\u9fff]+", body))
+    frontmatter = "\n".join(
+        [
+            "---",
+            f"title: {json.dumps(title, ensure_ascii=False)}",
+            f"slug: {json.dumps(slug, ensure_ascii=False)}",
+            f'date: "{publish_date}"',
+            f'domain: "{domain}"',
+            f"category: {json.dumps(str(values.get('exam_name', 'AI')), ensure_ascii=False)}",
+            f"primary_keyword: {json.dumps(str(values.get('primary_keyword', '')), ensure_ascii=False)}",
+            f"word_count: {word_count}",
+            "---",
+            "",
         ]
-        article = chr(10).join(fm_lines) + chr(10) + article
-    slug = extract_slug(article) or vars_data.get('slug', 'untitled-' + datetime.now().strftime('%Y%m%d-%H%M%S'))
-    ensure_dir(cur_out)
-    out = write_output(article, slug, cur_out)
-    print('[OK]   written: %s (~%d words)' % (out, wc(article)))
+    )
+    return frontmatter + body
 
-if __name__ == '__main__':
-    main()
+
+def first_free(directory: pathlib.Path, slug: str) -> pathlib.Path:
+    candidate = directory / f"{slug}.md"
+    suffix = 2
+    while candidate.exists():
+        candidate = directory / f"{slug}-{suffix}.md"
+        suffix += 1
+    return candidate
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--type", required=True, choices=["exam", "ai"])
+    parser.add_argument("--vars", required=True)
+    parser.add_argument("--publish", action="store_true")
+    parser.add_argument(
+        "--date",
+        help="Publication date in YYYY-MM-DD format (used by timeline backfills)",
+    )
+    args = parser.parse_args()
+
+    values = json.loads(pathlib.Path(args.vars).read_text("utf-8"))
+    publish_date = args.date or datetime.now().strftime("%Y-%m-%d")
+    try:
+        datetime.strptime(publish_date, "%Y-%m-%d")
+    except ValueError:
+        print(f"[ERROR] invalid --date: {publish_date}")
+        return 2
+    values["current_date"] = publish_date
+    urls = source_urls(args.type, values)
+    values["source_urls"] = "\n".join(f"- {url}" for url in urls)
+
+    prompt_name = "exam-method-prompt.md" if args.type == "exam" else "ai-news-prompt.md"
+    user_prompt = inject(read(PROMPTS / prompt_name), values)
+    system_prompt = inject(
+        read(PROMPTS / "system_prompt_editorial.md"),
+        {"rules": read(RULES_FILE)},
+    )
+
+    print(f"[INFO] generating [{args.type}] with {len(urls)} supplied source(s)")
+    try:
+        body = clean_body(call_api(system_prompt, user_prompt))
+    except RuntimeError as error:
+        print(f"[ERROR] {error}")
+        return 2
+    if not body:
+        print("[ERROR] model returned an empty draft")
+        return 2
+
+    article = build_article(
+        body,
+        article_type=args.type,
+        values=values,
+        urls=urls,
+        publish_date=publish_date,
+    )
+    out_dir = EXAM_OUT if args.type == "exam" else AI_OUT
+    domain = "learning" if args.type == "exam" else "ai"
+    minimum = int(values.get("min_words", 1500 if domain == "learning" else 800))
+    maximum = int(values.get("max_words", 2500 if domain == "learning" else 1500))
+    report = evaluate_article(
+        article,
+        domain=domain,
+        min_words=minimum,
+        max_words=maximum,
+        source_urls=urls,
+        existing_dir=out_dir,
+    )
+    print(f"[GATE] {report.summary()} | {report.metrics}")
+    if not report.passed:
+        return 3
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    slug = str(values.get("slug", f"draft-{datetime.now():%Y%m%d-%H%M%S}"))
+    output = first_free(out_dir, slug)
+    actual_slug = output.stem
+    if actual_slug != slug:
+        article = re.sub(
+            r'^slug:\s*.+$',
+            f"slug: {json.dumps(actual_slug, ensure_ascii=False)}",
+            article,
+            count=1,
+            flags=re.MULTILINE,
+        )
+    output.write_text(article, encoding="utf-8")
+    print(f"[OK] eligible draft written: {output}")
+    if args.publish:
+        destination = publish(output)
+        print(f"[OK] published into site manifest: {destination}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
