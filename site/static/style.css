@@ -139,8 +139,8 @@ button { font: inherit; }
 .nav-search {
   position: relative;
   z-index: 2;
-  flex: 0 0 2.75em;
-  width: 2.75em;
+  flex: 0 0 3.25em;
+  width: 3.25em;
   height: 3em;
   margin: 0;
 }
@@ -152,15 +152,15 @@ button { font: inherit; }
 .nav-search-input {
   position: absolute;
   z-index: 0;
-  top: 0.25em;
-  right: 0;
-  width: 2.5em;
-  height: 2.5em;
+  top: 0.375em;
+  right: 1em;
+  width: 2.25em;
+  height: 2.25em;
   padding: 0;
   border: 0;
   border-radius: 50%;
   background: transparent;
-  box-shadow: 0 0 0 0.2em inset;
+  box-shadow: 0 0 0 0.18em inset;
   caret-color: var(--focus);
   color: var(--text);
   font: inherit;
@@ -169,6 +169,8 @@ button { font: inherit; }
 }
 .nav-search-input:focus,
 .nav-search-input:valid {
+  top: 0;
+  right: 0;
   width: 17em;
   height: 3em;
   padding: 0.75em 1em;
@@ -210,15 +212,15 @@ button { font: inherit; }
 .search-caret {
   position: absolute;
   z-index: 1;
-  top: 1.15em;
-  right: 0.05em;
-  width: 0.25em;
-  height: 1em;
+  top: 2em;
+  right: 0.95em;
+  width: 0.2em;
+  height: 0.8em;
   border-radius: 0 0 0.125em 0.125em;
   background: currentColor;
   color: var(--text);
   pointer-events: none;
-  transform: rotate(-45deg) translateY(0.75em);
+  transform: rotate(-45deg);
   transform-origin: 50% 0;
 }
 @keyframes show-search-caret {
@@ -227,18 +229,18 @@ button { font: inherit; }
 }
 @keyframes handle-to-caret {
   0% {
-    right: 0.05em;
-    top: 1.15em;
-    width: 0.25em;
-    height: 1em;
+    right: 0.95em;
+    top: 2em;
+    width: 0.2em;
+    height: 0.8em;
     background: currentColor;
-    transform: rotate(-45deg) translateY(0.75em);
+    transform: rotate(-45deg);
   }
   25% {
-    right: 0.05em;
-    top: 1.15em;
+    right: 0.95em;
+    top: 2em;
     background: currentColor;
-    transform: rotate(-180deg) translateY(0.75em);
+    transform: rotate(-180deg);
   }
   50%, 62.5% {
     right: 8.45em;
@@ -606,7 +608,7 @@ th { color: var(--text); background: var(--surface-soft); }
   .brand-logo { width: 60px; height: 24px; border-radius: 7px; }
   .nav-links { gap: 0; overflow-x: auto; }
   .nav-links a { min-height: 44px; padding: 0 9px; font-size: 0.84rem; }
-  .nav-search { flex-basis: 2.75em; }
+  .nav-search { flex-basis: 3.25em; }
   .nav-search-input:focus,
   .nav-search-input:valid { width: 12em; }
   .nav-search-input:focus + .search-caret,
@@ -639,18 +641,18 @@ th { color: var(--text); background: var(--surface-soft); }
 
 @keyframes handle-to-caret-mobile {
   0% {
-    right: 0.05em;
-    top: 1.15em;
-    width: 0.25em;
-    height: 1em;
+    right: 0.95em;
+    top: 2em;
+    width: 0.2em;
+    height: 0.8em;
     background: currentColor;
-    transform: rotate(-45deg) translateY(0.75em);
+    transform: rotate(-45deg);
   }
   25% {
-    right: 0.05em;
-    top: 1.15em;
+    right: 0.95em;
+    top: 2em;
     background: currentColor;
-    transform: rotate(-180deg) translateY(0.75em);
+    transform: rotate(-180deg);
   }
   50%, 62.5% {
     right: 5.95em;
