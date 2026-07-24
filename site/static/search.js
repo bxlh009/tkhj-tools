@@ -1,61 +1,83 @@
-(function(){
-  var urlParams = new URLSearchParams(window.location.search);
-  var q = (urlParams.get("q") || "").trim();
-  var resultsDiv = document.getElementById("results");
-  var titleInput = document.querySelector("[data-srch]");
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var query = (params.get("q") || "").trim();
+  var results = document.getElementById("results");
+  var pageInput = document.querySelector("[data-search-page]");
+  var chinese = document.documentElement.lang === "zh-CN";
 
-  if (titleInput) titleInput.value = q;
-  if (!q) {
-    if (resultsDiv) resultsDiv.innerHTML = '<p style="color:var(--text-3)">Enter a search term above.</p>';
+  if (pageInput) pageInput.value = query;
+  if (!results) return;
+
+  function message(text) {
+    results.replaceChildren();
+    var paragraph = document.createElement("p");
+    paragraph.className = "search-status";
+    paragraph.textContent = text;
+    results.appendChild(paragraph);
+  }
+
+  function card(item) {
+    var article = document.createElement("article");
+    article.className = "guide-card";
+    var link = document.createElement("a");
+    link.href = chinese && item.zh_url ? item.zh_url : item.url;
+    var eyebrow = document.createElement("span");
+    eyebrow.className = "eyebrow";
+    eyebrow.textContent = item.category;
+    var title = document.createElement("h3");
+    title.textContent = chinese && item.zh_title ? item.zh_title : item.title;
+    var description = document.createElement("p");
+    description.textContent = chinese && item.zh_description
+      ? item.zh_description
+      : item.description;
+    var meta = document.createElement("span");
+    meta.className = "card-meta";
+    meta.textContent = chinese ? "发布于 " + item.date : "Published " + item.date;
+    link.append(eyebrow, title, description, meta);
+    article.appendChild(link);
+    return article;
+  }
+
+  if (!query) {
+    message(chinese ? "请在上方输入搜索词。" : "Enter a search term above.");
     return;
   }
 
   fetch("/search_index.json")
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      var query = q.toLowerCase();
-      var hits = data.filter(function(a){
-        var hay = (a.title + " " + a.cat + " " + a.kw.join(" ")).toLowerCase();
-        return hay.indexOf(query) >= 0;
-      });
-
-      if (hits.length === 0) {
-        resultsDiv.innerHTML = '<p style="color:var(--text-3)">No results for "' + q + '"</p>';
-        return;
-      }
-
-      var html = '<p style="font-size:.9rem;color:var(--text-3);margin-bottom:24px">' + hits.length + ' result' + (hits.length>1?'s':'') + ' for "' + q + '"</p>';
-      html += '<div class="grid-4">';
-      hits.forEach(function(a){
-        html += '<a class="card" href="' + a.url + '">'
-          + '<div class="card-body">'
-          + '<span class="card-cat cat-ai">' + a.cat + '</span>'
-          + '<h3 class="card-title">' + a.title + '</h3>'
-          + '<div class="card-foot"><span>TKHJ Tools</span><span>' + a.date + '</span></div>'
-          + '</div></a>';
-      });
-      html += '</div>';
-      resultsDiv.innerHTML = html;
-
-      // Update page title
-      document.title = 'Search: ' + q + ' \u00b7 TKHJ Tools';
+    .then(function (response) {
+      if (!response.ok) throw new Error("Search index request failed");
+      return response.json();
     })
-    .catch(function(err){
-      resultsDiv.innerHTML = '<p style="color:red">Failed to load search index.</p>';
+    .then(function (items) {
+      var normalized = query.toLocaleLowerCase();
+      var hits = items.filter(function (item) {
+        var haystack = [
+          item.title,
+          item.description,
+          item.zh_title,
+          item.zh_description,
+          item.category,
+          item.track
+        ].join(" ").toLocaleLowerCase();
+        return haystack.includes(normalized);
+      });
+      results.replaceChildren();
+      var status = document.createElement("p");
+      status.className = "search-status";
+      status.textContent = chinese
+        ? "找到 " + hits.length + " 篇与“" + query + "”相关的文章"
+        : hits.length + " result" + (hits.length === 1 ? "" : "s") + ' for "' + query + '"';
+      results.appendChild(status);
+      if (!hits.length) return;
+      var grid = document.createElement("div");
+      grid.className = "guide-grid";
+      hits.forEach(function (item) {
+        grid.appendChild(card(item));
+      });
+      results.appendChild(grid);
+      document.title = (chinese ? "搜索：" : "Search: ") + query + " | TKHJ Tools";
+    })
+    .catch(function () {
+      message(chinese ? "搜索索引加载失败，请稍后重试。" : "Search index failed to load. Please try again.");
     });
-
-  // Search page Enter handler
-  var srchInput = document.querySelector("[data-srch]");
-  if (srchInput) {
-    srchInput.addEventListener("keydown", function(e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        var val = srchInput.value.trim();
-        if (val) {
-          window.location = "/search.html?q=" + encodeURIComponent(val);
-        }
-      }
-    });
-  }
-
 })();

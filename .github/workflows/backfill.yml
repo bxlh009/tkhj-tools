@@ -39,10 +39,18 @@ jobs:
           --start "${{ inputs.start_date }}"
           --end "${{ inputs.end_date }}"
 
+      - name: Translate missing guides and rebuild
+        env:
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+        run: |
+          python scripts/translate_article.py --all
+          python site/build.py
+
       - name: Verify generated site
         run: |
           python scripts/run_all_tests.py
           python scripts/test_content_quality.py
+          python scripts/test_translation.py
           python scripts/audit_adsense_readiness.py
 
       - name: Commit and push timeline

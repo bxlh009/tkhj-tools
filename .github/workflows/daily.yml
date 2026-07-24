@@ -28,9 +28,15 @@ jobs:
       - name: Generate daily content
         run: python scripts/daily_generate.py
 
+      - name: Translate missing guides and rebuild
+        run: |
+          python scripts/translate_article.py --all
+          python site/build.py
+
       - name: Verify quality gates
         run: |
           python scripts/test_content_quality.py
+          python scripts/test_translation.py
           python scripts/audit_adsense_readiness.py
 
       - name: Commit and push

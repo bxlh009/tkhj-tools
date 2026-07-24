@@ -35,7 +35,13 @@
     "learning-heading": ["Improve one study decision", "改善一个学习决策"],
     "ai-heading": ["Use AI with judgment", "有判断地使用 AI"],
     "view-learning": ["View Learning", "查看学习内容"],
-    "view-ai": ["View AI", "查看 AI 内容"]
+    "view-ai": ["View AI", "查看 AI 内容"],
+    "search-label": ["Search guides", "搜索指南"],
+    "search-placeholder": ["Search", "搜索"],
+    "search-page-placeholder": ["Search titles, topics, or exams", "搜索标题、主题或考试"],
+    "search-button": ["Search", "搜索"],
+    "search-eyebrow": ["Guide search", "指南搜索"],
+    "search-title": ["Search the library", "搜索文章库"]
   };
 
   function applyLanguage(language) {
@@ -44,6 +50,10 @@
     document.querySelectorAll("[data-i18n]").forEach(function (element) {
       var values = translations[element.dataset.i18n];
       if (values) element.textContent = values[chinese ? 1 : 0];
+    });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(function (element) {
+      var values = translations[element.dataset.i18nPlaceholder];
+      if (values) element.setAttribute("placeholder", values[chinese ? 1 : 0]);
     });
     if (languageToggle) {
       var label = languageToggle.querySelector("[data-language-label]");
@@ -81,18 +91,40 @@
     });
   }
 
-  var initialLanguage = document.documentElement.lang === "zh-CN" ? "zh-CN" : "en";
+  var pageLanguage = document.documentElement.dataset.pageLanguage || "en";
+  var alternateUrl = document.documentElement.dataset.languageUrl || "";
+  var storedLanguage = "";
+  try {
+    storedLanguage = localStorage.getItem("tkhj-language") || "";
+  } catch (error) {
+    // Use the server-rendered language when storage is unavailable.
+  }
+  if (
+    alternateUrl &&
+    ((pageLanguage === "en" && storedLanguage === "zh-CN") ||
+      (pageLanguage === "zh" && storedLanguage === "en"))
+  ) {
+    window.location.replace(alternateUrl);
+    return;
+  }
+  var initialLanguage = pageLanguage === "zh" || document.documentElement.lang === "zh-CN"
+    ? "zh-CN"
+    : "en";
   applyLanguage(initialLanguage);
 
   if (languageToggle) {
     languageToggle.addEventListener("click", function () {
       var next = document.documentElement.lang === "zh-CN" ? "en" : "zh-CN";
-      applyLanguage(next);
       try {
         localStorage.setItem("tkhj-language", next);
       } catch (error) {
         // The interface still switches when storage is unavailable.
       }
+      if (alternateUrl) {
+        window.location.assign(alternateUrl);
+        return;
+      }
+      applyLanguage(next);
     });
   }
 })();
