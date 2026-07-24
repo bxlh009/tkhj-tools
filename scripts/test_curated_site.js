@@ -75,6 +75,12 @@ async function run() {
       h1: document.querySelector("h1")?.textContent.trim(),
       learningNav: Boolean(document.querySelector("a[href='/learning/']")),
       aiNav: Boolean(document.querySelector("a[href='/ai/']")),
+      logoLoaded: Boolean(
+        document.querySelector(".brand-logo") &&
+        document.querySelector(".brand-logo").complete &&
+        document.querySelector(".brand-logo").naturalWidth > 0
+      ),
+      languageToggle: Boolean(document.querySelector("[data-language-toggle]")),
     }));
     if (homeMetrics.overflow) failures.push(`${name}: home page has horizontal overflow`);
     if (homeMetrics.cards < 5) failures.push(`${name}: expected at least 5 home cards, got ${homeMetrics.cards}`);
@@ -82,11 +88,26 @@ async function run() {
     if (!homeMetrics.learningNav || !homeMetrics.aiNav) {
       failures.push(`${name}: Learning or AI navigation missing`);
     }
+    if (!homeMetrics.logoLoaded) failures.push(`${name}: brand logo is missing or failed to load`);
+    if (!homeMetrics.languageToggle) failures.push(`${name}: language toggle is missing`);
     if (homeMetrics.h1 !== "Use evidence. Make a better next move.") {
       failures.push(`${name}: unexpected homepage H1`);
     }
 
     if (name === "desktop") {
+      if (homeMetrics.languageToggle) {
+        await page.locator("[data-language-toggle]").click();
+        if ((await page.locator("html").getAttribute("lang")) !== "zh-CN") {
+          failures.push("desktop: language toggle did not switch the page to Chinese");
+        }
+        if ((await page.locator(".nav-links a[href='/']").textContent()).trim() !== "首页") {
+          failures.push("desktop: navigation was not translated to Chinese");
+        }
+        await page.reload({ waitUntil: "domcontentloaded" });
+        if ((await page.locator("html").getAttribute("lang")) !== "zh-CN") {
+          failures.push("desktop: language choice did not persist");
+        }
+      }
       await page.locator("[data-theme-toggle]").click();
       if ((await page.locator("html").getAttribute("data-theme")) !== "dark") {
         failures.push("desktop: theme toggle did not switch to dark");

@@ -154,20 +154,22 @@ def load_guides() -> list[dict]:
 
 
 def nav(active: str = "") -> str:
-    items = [("Home", "/", "home"), ("Learning", "/learning/", "learning"),
-             ("AI", "/ai/", "ai"), ("Library", "/guides/", "guides"),
-             ("About", "/about.html", "about"), ("Contact", "/contact.html", "contact")]
+    items = [("Home", "/", "home", "nav-home"), ("Learning", "/learning/", "learning", "nav-learning"),
+             ("AI", "/ai/", "ai", "nav-ai"), ("Library", "/guides/", "guides", "nav-library"),
+             ("About", "/about.html", "about", "nav-about"),
+             ("Contact", "/contact.html", "contact", "nav-contact")]
     links = "".join(
-        f'<a href="{url}"{" aria-current=\"page\"" if active == key else ""}>{label}</a>'
-        for label, url, key in items
+        f'<a href="{url}" data-i18n="{i18n}"'
+        f'{" aria-current=\"page\"" if active == key else ""}>{label}</a>'
+        for label, url, key, i18n in items
     )
     return (
         '<header class="site-header"><div class="container nav-row">'
         '<a class="brand" href="/" aria-label="TKHJ Tools home">'
-        '<span class="brand-mark" aria-hidden="true">T</span>'
-        '<span class="brand-name"><span class="brand-long">TKHJ Tools</span>'
-        '<span class="brand-short">TKHJ</span></span></a>'
+        '<img class="brand-logo" src="/static/logo.png" alt="" width="88" height="30"></a>'
         f'<nav class="nav-links" aria-label="Primary navigation">{links}</nav>'
+        '<button class="language-toggle" type="button" data-language-toggle '
+        'aria-label="切换到中文"><span data-language-label>中文</span></button>'
         '<button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">'
         '<svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>'
         '<svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/>'
@@ -179,13 +181,17 @@ def nav(active: str = "") -> str:
 def footer() -> str:
     return (
         '<footer class="site-footer"><div class="container footer-grid"><div><strong>TKHJ Tools</strong>'
-        "<p>Source-grounded Learning and AI guides with visible reasoning, practical examples, "
-        "and explicit limits.</p></div><nav aria-label=\"Footer navigation\">"
-        '<a href="/learning/">Learning</a><a href="/ai/">AI</a>'
-        '<a href="/guides/">Library</a><a href="/about.html">Editorial process</a>'
-        '<a href="/contact.html">Corrections</a><a href="/privacy.html">Privacy</a></nav></div>'
+        '<p data-i18n="footer-summary">Source-grounded Learning and AI guides with visible reasoning, '
+        'practical examples, and explicit limits.</p></div><nav aria-label="Footer navigation">'
+        '<a href="/learning/" data-i18n="nav-learning">Learning</a>'
+        '<a href="/ai/" data-i18n="nav-ai">AI</a>'
+        '<a href="/guides/" data-i18n="nav-library">Library</a>'
+        '<a href="/about.html" data-i18n="footer-editorial">Editorial process</a>'
+        '<a href="/contact.html" data-i18n="footer-corrections">Corrections</a>'
+        '<a href="/privacy.html" data-i18n="footer-privacy">Privacy</a></nav></div>'
         f'<div class="container footer-base">&copy; {datetime.now().year} {DOMAIN}. '
-        "Independent editorial site; no provider endorsement is implied.</div></footer>"
+        '<span data-i18n="footer-disclaimer">Independent editorial site; no provider endorsement '
+        "is implied.</span></div></footer>"
     )
 
 
@@ -209,8 +215,10 @@ def page(title: str, description: str, body: str, *, active: str = "", path: str
         '<meta name="twitter:card" content="summary"><link rel="stylesheet" href="/static/style.css">'
         + ADSENSE + ANALYTICS + structured + "</head><body>"
         '<script>try{var t=localStorage.getItem("tkhj-theme");'
-        'if(t)document.documentElement.dataset.theme=t}catch(e){}</script>'
-        '<a class="skip-link" href="#main-content">Skip to main content</a>'
+        'if(t)document.documentElement.dataset.theme=t;'
+        'var l=localStorage.getItem("tkhj-language");'
+        'if(l==="zh-CN")document.documentElement.lang=l}catch(e){}</script>'
+        '<a class="skip-link" href="#main-content" data-i18n="skip-link">Skip to main content</a>'
         + nav(active) + f'<main id="main-content" tabindex="-1">{body}</main>'
         + footer() + '<script src="/static/nav.js"></script></body></html>'
     )
@@ -297,25 +305,28 @@ def home_page(guides: list[dict]) -> str:
     ai_cards = "".join(guide_card(g) for g in reversed(ai[-3:]))
     body = (
         '<section class="hero"><div class="container hero-grid"><div><span class="eyebrow">'
-        "Learning × AI</span><h1>Use evidence. Make a better next move.</h1>"
-        f'<p class="hero-lead">{TAGLINE} Learning guides turn mistakes into practice; AI guides '
+        'Learning × AI</span><h1 data-i18n="home-title">Use evidence. Make a better next move.</h1>'
+        f'<p class="hero-lead" data-i18n="home-lead">{TAGLINE} Learning guides turn mistakes into practice; AI guides '
         "turn announcements and documentation into decisions.</p><div class=\"hero-actions\">"
-        '<a class="button primary" href="/learning/">Explore Learning</a>'
-        '<a class="button secondary" href="/ai/">Explore AI</a>'
-        '<a class="button secondary" href="/about.html">See the editorial process</a></div></div>'
-        '<aside class="method-card"><span class="method-number">01</span><h2>Find the evidence</h2>'
+        '<a class="button primary" href="/learning/" data-i18n="explore-learning">Explore Learning</a>'
+        '<a class="button secondary" href="/ai/" data-i18n="explore-ai">Explore AI</a>'
+        '<a class="button secondary" href="/about.html" data-i18n="see-editorial">See the editorial process</a></div></div>'
+        '<aside class="method-card"><span class="method-number">01</span>'
+        '<h2 data-i18n="method-evidence">Find the evidence</h2>'
         "<p>Locate the phrase, rule, or descriptor that controls the decision.</p>"
-        '<span class="method-number">02</span><h2>Separate claim from judgment</h2>'
+        '<span class="method-number">02</span><h2 data-i18n="method-judgment">Separate claim from judgment</h2>'
         "<p>Mark what the source establishes and what still needs verification.</p>"
-        '<span class="method-number">03</span><h2>Run a small next step</h2>'
+        '<span class="method-number">03</span><h2 data-i18n="method-next-step">Run a small next step</h2>'
         "<p>Use an original practice item or reversible workflow before scaling up.</p></aside></div></section>"
         '<section class="section"><div class="container section-heading"><div><span class="eyebrow">'
-        f'Learning</span><h2>Improve one study decision</h2><p>{len(learning)} focused guides with '
+        f'Learning</span><h2 data-i18n="learning-heading">Improve one study decision</h2><p>{len(learning)} focused guides with '
         'original practice and official source notes.</p></div><a class="text-link" href="/learning/">'
-        f'View Learning</a></div><div class="container guide-grid">{learning_cards}</div></section>'
+        f'<span data-i18n="view-learning">View Learning</span></a></div>'
+        f'<div class="container guide-grid">{learning_cards}</div></section>'
         '<section class="section"><div class="container section-heading"><div><span class="eyebrow">'
-        f'AI</span><h2>Use AI with judgment</h2><p>{len(ai)} source-grounded guides with explicit '
-        'limits and concrete next steps.</p></div><a class="text-link" href="/ai/">View AI</a></div>'
+        f'AI</span><h2 data-i18n="ai-heading">Use AI with judgment</h2><p>{len(ai)} source-grounded guides with explicit '
+        'limits and concrete next steps.</p></div><a class="text-link" href="/ai/">'
+        '<span data-i18n="view-ai">View AI</span></a></div>'
         f'<div class="container guide-grid">{ai_cards}</div></section>'
         '<section class="trust-band"><div class="container trust-grid">'
         "<div><strong>Two clear tracks</strong><p>Learning and AI have different evidence and "
