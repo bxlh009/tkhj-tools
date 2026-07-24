@@ -212,8 +212,8 @@ button { font: inherit; }
 .search-caret {
   position: absolute;
   z-index: 1;
-  top: 2em;
-  right: 0.95em;
+  top: 1.875em;
+  right: 1.15em;
   width: 0.2em;
   height: 0.8em;
   border-radius: 0 0 0.125em 0.125em;
@@ -229,16 +229,16 @@ button { font: inherit; }
 }
 @keyframes handle-to-caret {
   0% {
-    right: 0.95em;
-    top: 2em;
+    right: 1.15em;
+    top: 1.875em;
     width: 0.2em;
     height: 0.8em;
     background: currentColor;
     transform: rotate(-45deg);
   }
   25% {
-    right: 0.95em;
-    top: 2em;
+    right: 1.15em;
+    top: 1.875em;
     background: currentColor;
     transform: rotate(-180deg);
   }
@@ -641,16 +641,16 @@ th { color: var(--text); background: var(--surface-soft); }
 
 @keyframes handle-to-caret-mobile {
   0% {
-    right: 0.95em;
-    top: 2em;
+    right: 1.15em;
+    top: 1.875em;
     width: 0.2em;
     height: 0.8em;
     background: currentColor;
     transform: rotate(-45deg);
   }
   25% {
-    right: 0.95em;
-    top: 2em;
+    right: 1.15em;
+    top: 1.875em;
     background: currentColor;
     transform: rotate(-180deg);
   }
