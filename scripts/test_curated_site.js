@@ -81,6 +81,7 @@ async function run() {
         document.querySelector(".brand-logo").naturalWidth > 0
       ),
       languageToggle: Boolean(document.querySelector("[data-language-toggle]")),
+      searchInput: Boolean(document.querySelector("[data-search]")),
     }));
     if (homeMetrics.overflow) failures.push(`${name}: home page has horizontal overflow`);
     if (homeMetrics.cards < 5) failures.push(`${name}: expected at least 5 home cards, got ${homeMetrics.cards}`);
@@ -90,6 +91,7 @@ async function run() {
     }
     if (!homeMetrics.logoLoaded) failures.push(`${name}: brand logo is missing or failed to load`);
     if (!homeMetrics.languageToggle) failures.push(`${name}: language toggle is missing`);
+    if (!homeMetrics.searchInput) failures.push(`${name}: search input is missing`);
     if (homeMetrics.h1 !== "Use evidence. Make a better next move.") {
       failures.push(`${name}: unexpected homepage H1`);
     }
@@ -117,6 +119,16 @@ async function run() {
         failures.push("desktop: theme choice did not persist");
       }
       await page.screenshot({ path: path.join(screenshots, "home-desktop.png"), fullPage: true });
+      if (homeMetrics.searchInput) {
+        await page.locator("[data-search]").fill("IELTS");
+        await page.locator("[data-search]").press("Enter");
+        await page.waitForURL(/\/search\.html\?q=IELTS$/);
+        await page.waitForSelector("#results .guide-card");
+        if ((await page.locator("#results .guide-card").count()) < 1) {
+          failures.push("desktop: search returned no IELTS guides");
+        }
+      }
+      await page.evaluate(() => localStorage.setItem("tkhj-language", "en"));
     }
 
     await page.goto(`${base}/guides/ielts-true-false-not-given.html`, { waitUntil: "domcontentloaded" });
@@ -136,6 +148,30 @@ async function run() {
     if (articleMetrics.sources < 2) failures.push(`${name}: source links missing`);
     if (articleMetrics.toc !== articleMetrics.h2) {
       failures.push(`${name}: ToC count ${articleMetrics.toc} differs from H2 count ${articleMetrics.h2}`);
+    }
+    if (name === "desktop") {
+      await page.locator("[data-language-toggle]").click();
+      await page.waitForURL(/\/zh\/guides\/ielts-true-false-not-given\.html$/);
+      const chineseArticle = await page.evaluate(() => ({
+        lang: document.documentElement.lang,
+        title: document.querySelector(".article-body h1")?.textContent || "",
+        text: document.querySelector(".article-body")?.textContent || "",
+        toc: document.querySelector(".article-toc strong")?.textContent || "",
+      }));
+      if (chineseArticle.lang !== "zh-CN") {
+        failures.push("desktop: Chinese article page has the wrong language attribute");
+      }
+      if (!/[\u4e00-\u9fff]/.test(chineseArticle.title)) {
+        failures.push("desktop: Chinese article title was not translated");
+      }
+      if ((chineseArticle.text.match(/[\u4e00-\u9fff]/g) || []).length < 200) {
+        failures.push("desktop: Chinese article body was not translated");
+      }
+      if (chineseArticle.toc !== "本页目录") {
+        failures.push("desktop: Chinese article table of contents was not translated");
+      }
+      await page.locator("[data-language-toggle]").click();
+      await page.waitForURL(/\/guides\/ielts-true-false-not-given\.html$/);
     }
     await page.goto(`${base}/guides/ai-answer-verification-checklist.html`, { waitUntil: "domcontentloaded" });
     if (!(await page.locator("a.back-link[href='/ai/']").count())) {
