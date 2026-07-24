@@ -16,6 +16,7 @@
     ],
     "footer-editorial": ["Editorial process", "编辑流程"],
     "footer-corrections": ["Corrections", "内容更正"],
+    "footer-legal": ["Copyright & disclaimer", "版权与免责声明"],
     "footer-privacy": ["Privacy", "隐私"],
     "footer-disclaimer": [
       "Independent editorial site; no provider endorsement is implied.",
