@@ -102,12 +102,24 @@ async function run() {
 
     if (name === "desktop") {
       if (homeMetrics.searchInput) {
+        const collapsedPlaceholderOpacity = await page.locator("[data-search]").evaluate(
+          (element) => getComputedStyle(element, "::placeholder").opacity
+        );
+        if (collapsedPlaceholderOpacity !== "0") {
+          failures.push("desktop: collapsed search placeholder is visible inside the icon");
+        }
         const collapsedWidth = (await page.locator("[data-search]").boundingBox()).width;
         await page.locator("[data-search]").focus();
         await page.waitForTimeout(600);
         const expandedWidth = (await page.locator("[data-search]").boundingBox()).width;
+        const expandedPlaceholderOpacity = await page.locator("[data-search]").evaluate(
+          (element) => getComputedStyle(element, "::placeholder").opacity
+        );
         if (expandedWidth <= collapsedWidth + 80) {
           failures.push("desktop: animated search did not expand on focus");
+        }
+        if (expandedPlaceholderOpacity !== "1") {
+          failures.push("desktop: expanded search placeholder is not visible");
         }
         await page.locator("[data-search]").blur();
       }
