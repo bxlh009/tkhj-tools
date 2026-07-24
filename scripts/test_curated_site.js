@@ -82,6 +82,8 @@ async function run() {
       ),
       languageToggle: Boolean(document.querySelector("[data-language-toggle]")),
       searchInput: Boolean(document.querySelector("[data-search]")),
+      animatedSearch: Boolean(document.querySelector(".nav-search-input + .search-caret")),
+      legalLink: Boolean(document.querySelector("a[href='/disclaimer.html']")),
     }));
     if (homeMetrics.overflow) failures.push(`${name}: home page has horizontal overflow`);
     if (homeMetrics.cards < 5) failures.push(`${name}: expected at least 5 home cards, got ${homeMetrics.cards}`);
@@ -92,11 +94,23 @@ async function run() {
     if (!homeMetrics.logoLoaded) failures.push(`${name}: brand logo is missing or failed to load`);
     if (!homeMetrics.languageToggle) failures.push(`${name}: language toggle is missing`);
     if (!homeMetrics.searchInput) failures.push(`${name}: search input is missing`);
+    if (!homeMetrics.animatedSearch) failures.push(`${name}: animated search styling hook is missing`);
+    if (!homeMetrics.legalLink) failures.push(`${name}: copyright and disclaimer link is missing`);
     if (homeMetrics.h1 !== "Use evidence. Make a better next move.") {
       failures.push(`${name}: unexpected homepage H1`);
     }
 
     if (name === "desktop") {
+      if (homeMetrics.searchInput) {
+        const collapsedWidth = (await page.locator("[data-search]").boundingBox()).width;
+        await page.locator("[data-search]").focus();
+        await page.waitForTimeout(600);
+        const expandedWidth = (await page.locator("[data-search]").boundingBox()).width;
+        if (expandedWidth <= collapsedWidth + 80) {
+          failures.push("desktop: animated search did not expand on focus");
+        }
+        await page.locator("[data-search]").blur();
+      }
       if (homeMetrics.languageToggle) {
         await page.locator("[data-language-toggle]").click();
         if ((await page.locator("html").getAttribute("lang")) !== "zh-CN") {
@@ -176,6 +190,25 @@ async function run() {
     await page.goto(`${base}/guides/ai-answer-verification-checklist.html`, { waitUntil: "domcontentloaded" });
     if (!(await page.locator("a.back-link[href='/ai/']").count())) {
       failures.push(`${name}: AI article does not link back to AI track`);
+    }
+    if (name === "desktop") {
+      await page.goto(`${base}/about.html`, { waitUntil: "domcontentloaded" });
+      await page.locator("[data-language-toggle]").click();
+      await page.waitForURL(/\/zh\/about\.html$/);
+      if (!/[\u4e00-\u9fff]/.test(await page.locator("main h1").textContent())) {
+        failures.push("desktop: About page did not switch to translated Chinese content");
+      }
+      await page.goto(`${base}/zh/contact.html`, { waitUntil: "domcontentloaded" });
+      if (!/[\u4e00-\u9fff]/.test(await page.locator("main h1").textContent())) {
+        failures.push("desktop: Contact page is not translated");
+      }
+      if (!(await page.locator("a[href='/zh/disclaimer.html']").count())) {
+        failures.push("desktop: Chinese contact page does not link to the disclaimer");
+      }
+      await page.goto(`${base}/zh/disclaimer.html`, { waitUntil: "domcontentloaded" });
+      if ((await page.locator("main h2").count()) < 5) {
+        failures.push("desktop: Chinese copyright and disclaimer page is incomplete");
+      }
     }
     if (name === "mobile") {
       await page.screenshot({ path: path.join(screenshots, "article-mobile.png"), fullPage: true });

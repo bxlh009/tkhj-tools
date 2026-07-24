@@ -187,8 +187,8 @@ def nav(active: str = "", language: str = "en") -> str:
              ("Learning", f"{prefix}/learning/", "learning", "nav-learning"),
              ("AI", f"{prefix}/ai/", "ai", "nav-ai"),
              ("Library", f"{prefix}/guides/", "guides", "nav-library"),
-             ("About", "/about.html", "about", "nav-about"),
-             ("Contact", "/contact.html", "contact", "nav-contact")]
+             ("About", f"{prefix}/about.html", "about", "nav-about"),
+             ("Contact", f"{prefix}/contact.html", "contact", "nav-contact")]
     links = "".join(
         f'<a href="{url}" data-i18n="{i18n}"'
         f'{" aria-current=\"page\"" if active == key else ""}>{label}</a>'
@@ -201,8 +201,9 @@ def nav(active: str = "", language: str = "en") -> str:
         f'<nav class="nav-links" aria-label="Primary navigation">{links}</nav>'
         '<form class="nav-search" action="/search.html" method="get" role="search">'
         '<label class="sr-only" for="site-search" data-i18n="search-label">Search guides</label>'
-        '<input id="site-search" name="q" type="search" data-search placeholder="Search" '
-        'data-i18n-placeholder="search-placeholder" autocomplete="off"></form>'
+        '<input class="nav-search-input" id="site-search" name="q" type="search" data-search '
+        'placeholder="Search" data-i18n-placeholder="search-placeholder" autocomplete="off" '
+        'required pattern=".*\\S.*"><span class="search-caret" aria-hidden="true"></span></form>'
         '<button class="language-toggle" type="button" data-language-toggle '
         'aria-label="切换到中文"><span data-language-label>中文</span></button>'
         '<button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">'
@@ -222,8 +223,9 @@ def footer(language: str = "en") -> str:
         f'<a href="{prefix}/learning/" data-i18n="nav-learning">Learning</a>'
         f'<a href="{prefix}/ai/" data-i18n="nav-ai">AI</a>'
         f'<a href="{prefix}/guides/" data-i18n="nav-library">Library</a>'
-        '<a href="/about.html" data-i18n="footer-editorial">Editorial process</a>'
-        '<a href="/contact.html" data-i18n="footer-corrections">Corrections</a>'
+        f'<a href="{prefix}/about.html" data-i18n="footer-editorial">Editorial process</a>'
+        f'<a href="{prefix}/contact.html" data-i18n="footer-corrections">Corrections</a>'
+        f'<a href="{prefix}/disclaimer.html" data-i18n="footer-legal">Copyright &amp; disclaimer</a>'
         '<a href="/privacy.html" data-i18n="footer-privacy">Privacy</a></nav></div>'
         f'<div class="container footer-base">&copy; {datetime.now().year} {DOMAIN}. '
         '<span data-i18n="footer-disclaimer">Independent editorial site; no provider endorsement '
@@ -357,6 +359,7 @@ def article_page(guide: dict, guides: list[dict], language: str = "en") -> str:
     published = "发布于" if chinese else "Published"
     updated = "更新于" if chinese else "Updated"
     made = "本指南如何制作" if chinese else "How this guide was made"
+    about_url = "/zh/about.html#editorial-team" if chinese else "/about.html#editorial-team"
     disclaimer = (
         "独立编辑内容。产品和考试名称归其各自所有者所有，不代表任何认可或背书。"
         if chinese else
@@ -368,7 +371,7 @@ def article_page(guide: dict, guides: list[dict], language: str = "en") -> str:
         f'<div class="article-shell"><article class="article-body"><a class="back-link" href="{track_path}">{track_label}</a>'
         f'<span class="eyebrow">{esc(guide["category"])}</span><h1>{esc(title)}</h1>'
         f'<p class="dek">{esc(description)}</p><div class="byline">{byline} '
-        '<a href="/about.html#editorial-team">TKHJ Tools Editorial Team</a>'
+        f'<a href="{about_url}">TKHJ Tools Editorial Team</a>'
         f' · {published} <time datetime="{guide["published"]}">{guide["published"]}</time>'
         f' · {updated} <time datetime="{guide["updated"]}">{guide["updated"]}</time></div>'
         f'<aside class="editorial-note"><strong>{made}</strong><p>{note}</p></aside>'
@@ -409,7 +412,7 @@ def home_page(guides: list[dict], language: str = "en") -> str:
         "turn announcements and documentation into decisions.</p><div class=\"hero-actions\">"
         f'<a class="button primary" href="{prefix}/learning/" data-i18n="explore-learning">Explore Learning</a>'
         f'<a class="button secondary" href="{prefix}/ai/" data-i18n="explore-ai">Explore AI</a>'
-        '<a class="button secondary" href="/about.html" data-i18n="see-editorial">See the editorial process</a></div></div>'
+        f'<a class="button secondary" href="{prefix}/about.html" data-i18n="see-editorial">See the editorial process</a></div></div>'
         '<aside class="method-card"><span class="method-number">01</span>'
         '<h2 data-i18n="method-evidence">Find the evidence</h2>'
         "<p>Locate the phrase, rule, or descriptor that controls the decision.</p>"
@@ -507,7 +510,30 @@ def track_page(guides: list[dict], track: str, language: str = "en") -> str:
                 alternate_path=alternate)
 
 
-def about_page() -> str:
+def about_page(language: str = "en") -> str:
+    if language == "zh":
+        body = (
+            '<section class="page-hero"><div class="container narrow"><span class="eyebrow">关于</span>'
+            "<h1>两个领域，同一套证据标准</h1><p>TKHJ Tools 发布学习与 AI 指南。我们可以使用自动化，"
+            "但不发布虚构经历、无来源主张或为凑数量而写的内容。</p></div></section>"
+            '<section class="prose-page"><div class="container narrow"><h2>什么样的指南可以发布</h2>'
+            "<p>每篇指南必须解决一个明确的读者任务，展示推理过程，提供原创示例或可复用流程，"
+            "为重要事实链接可靠来源，并通过对应领域的质量检查。</p>"
+            '<h2 id="editorial-team">编辑团队与署名</h2><p>文章统一署名为 TKHJ Tools 编辑团队。'
+            "我们不会虚构教师身份，也不会声称无法核实的学生数量、提分效果、产品实测经历或专业资质。</p>"
+            "<h2>AI 的使用</h2><p>AI 可以协助列提纲、起草和翻译，每篇指南都会披露这种协助。发布前还要"
+            "聚焦真实问题、删除无依据的经验性说法、用官方页面核对时效性信息，并加入原创练习或具体决策框架。</p>"
+            "<h2>每日发布</h2><p>自动流程每天计划发布一篇学习文章和一篇 AI 文章。未通过检查的草稿会换题重写，"
+            "不会用短小占位内容替代。</p><h2>更正与更新</h2><p>每篇指南都显示更新日期和来源核对日期。"
+            '如果考试或产品规则发生变化，我们会更新或撤下相关指南。<a href="/zh/contact.html">提交更正</a>。</p>'
+            "<h2>独立性</h2><p>TKHJ Tools 与 ETS、IELTS、British Council、IDP、"
+            "Cambridge University Press &amp; Assessment 均无隶属或背书关系。"
+            "这些指南不接受赞助文章，也不使用联盟推广链接。</p></div></section>"
+        )
+        return page("关于与编辑流程", "了解 TKHJ Tools 如何选择主题、核对来源、更新及更正指南。",
+                    body, active="about", path="/zh/about.html", language="zh",
+                    alternate_path="/about.html")
+
     body = (
         '<section class="page-hero"><div class="container narrow"><span class="eyebrow">About</span>'
         "<h1>Two tracks with one evidence standard</h1><p>TKHJ Tools publishes Learning and AI "
@@ -534,10 +560,31 @@ def about_page() -> str:
         "sponsored posts or use affiliate links in these guides.</p></div></section>"
     )
     return page("About and editorial process", "How TKHJ Tools selects, sources, updates, and corrects guides.",
-                body, active="about", path="/about.html")
+                body, active="about", path="/about.html", alternate_path="/zh/about.html")
 
 
-def contact_page() -> str:
+def contact_page(language: str = "en") -> str:
+    if language == "zh":
+        body = (
+            '<section class="page-hero"><div class="container narrow"><span class="eyebrow">联系</span>'
+            "<h1>报告事实或使用问题</h1><p>请提供页面网址、有问题的原句，并尽可能附上可靠来源。</p>"
+            "</div></section>"
+            '<section class="prose-page"><div class="container narrow"><h2>内容更正</h2>'
+            "<p>请在项目仓库创建公开 Issue，方便记录问题和后续修改。</p>"
+            '<p><a class="button primary" href="https://github.com/bxlh009/tkhj-tools/issues">'
+            "创建 GitHub Issue</a></p><h2>请提供这些信息</h2><ol><li>具体的指南网址。</li>"
+            "<li>需要处理的主张、失效链接或交互问题。</li><li>你原本预期看到的结果。</li>"
+            "<li>如涉及事实更正，请尽可能提供官方来源。</li></ol>"
+            "<h2>处理范围</h2><p>TKHJ Tools 可以更正本站内容和界面。报名、评分、便利安排或账户问题，"
+            "请直接联系相应考试或产品服务商。</p><h2>版权问题</h2>"
+            '<p>如果你认为本站内容侵犯了你的权利，请提供相关页面、作品或商标说明，以及你有权提出请求的证明。'
+            '我们会核查并在适当情况下更正或移除内容。详情参阅<a href="/zh/disclaimer.html">版权与免责声明</a>。</p>'
+            "</div></section>"
+        )
+        return page("联系与内容更正", "报告错误、过时信息、版权问题或使用问题。",
+                    body, active="contact", path="/zh/contact.html", language="zh",
+                    alternate_path="/contact.html")
+
     body = (
         '<section class="page-hero"><div class="container narrow"><span class="eyebrow">Contact</span>'
         "<h1>Report a factual or usability problem</h1><p>Include the page URL, the sentence at issue, "
@@ -549,10 +596,65 @@ def contact_page() -> str:
         "<li>The claim, broken link, or interaction that needs attention.</li><li>What you expected "
         "to see.</li><li>An official source for factual corrections, when possible.</li></ol>"
         "<h2>Response scope</h2><p>TKHJ Tools can correct its own content and interface. Contact the "
-        "exam provider for registration, scoring, accommodations, or account questions.</p></div></section>"
+        "exam provider for registration, scoring, accommodations, or account questions.</p>"
+        "<h2>Copyright concerns</h2><p>If you believe material on this site infringes your rights, "
+        "include the page, the protected work or mark, and evidence that you are authorized to report it. "
+        'We will review the request and correct or remove material when appropriate. See the '
+        '<a href="/disclaimer.html">copyright and disclaimer page</a>.</p></div></section>'
     )
     return page("Contact and corrections", "Report errors, outdated information, or usability problems.",
-                body, active="contact", path="/contact.html")
+                body, active="contact", path="/contact.html", alternate_path="/zh/contact.html")
+
+
+def disclaimer_page(language: str = "en") -> str:
+    if language == "zh":
+        body = (
+            '<section class="page-hero"><div class="container narrow"><span class="eyebrow">法律说明</span>'
+            "<h1>版权与免责声明</h1><p>最后更新：2026 年 7 月 24 日。</p></div></section>"
+            '<section class="prose-page"><div class="container narrow"><h2>内容与版权</h2>'
+            "<p>除非另有标注，本站的编辑文字、原创示例和工作流程由 TKHJ Tools 制作。引用、商标、"
+            "产品名称、考试名称及外部资料仍归各自权利人所有。来源链接不表示本站拥有相关资料。</p>"
+            "<h2>引用与转载</h2><p>我们尽量只使用说明问题所必需的有限引用，并链接来源。未经许可，"
+            "请勿完整复制本站文章。法律允许的引用仍应注明 TKHJ Tools 和原页面链接，并以适用法律为准。</p>"
+            "<h2>非官方信息</h2><p>本站提供一般学习和技术信息，不是考试机构、产品厂商或专业顾问。"
+            "内容不构成法律、财务、医疗或其他专业意见，也不保证特定分数、结果或产品表现。</p>"
+            "<h2>商标与独立性</h2><p>ETS、TOEFL、IELTS、British Council、IDP、Cambridge 以及"
+            "其他名称和标志可能是其各自所有者的商标。提及这些名称仅用于识别讨论对象，"
+            "不表示合作、授权、认可或背书。</p><h2>外部链接</h2><p>外部网站由第三方控制。"
+            "我们提供链接是为了核对来源，不对其内容、可用性或隐私做法作保证。</p>"
+            '<h2>权利通知</h2><p>如你认为本站侵犯版权、商标或其他合法权利，请通过'
+            '<a href="/zh/contact.html">联系与内容更正页面</a>提交具体网址、权利说明和授权证明。'
+            "我们会核查，并在适当情况下更正或移除相关内容。</p></div></section>"
+        )
+        return page("版权与免责声明", "TKHJ Tools 的版权、引用、商标、独立性和权利通知说明。",
+                    body, path="/zh/disclaimer.html", language="zh",
+                    alternate_path="/disclaimer.html")
+
+    body = (
+        '<section class="page-hero"><div class="container narrow"><span class="eyebrow">Legal</span>'
+        "<h1>Copyright and disclaimer</h1><p>Last updated July 24, 2026.</p></div></section>"
+        '<section class="prose-page"><div class="container narrow"><h2>Content and copyright</h2>'
+        "<p>Unless stated otherwise, TKHJ Tools creates the editorial text, original examples, and "
+        "workflows on this site. Quotations, trademarks, product names, exam names, and linked material "
+        "remain the property of their respective rights holders. Linking a source does not claim ownership.</p>"
+        "<h2>Quotation and reuse</h2><p>We aim to use only limited quotations needed to explain a point "
+        "and link to the source. Do not reproduce complete articles without permission. Where quotation "
+        "is permitted by law, attribute TKHJ Tools and link to the original page; applicable law controls.</p>"
+        "<h2>Not official or professional advice</h2><p>This site provides general learning and technical "
+        "information. It is not an exam provider, product vendor, or professional adviser. Content is not "
+        "legal, financial, medical, or other professional advice and does not guarantee scores, outcomes, "
+        "or product performance.</p><h2>Trademarks and independence</h2><p>ETS, TOEFL, IELTS, the British "
+        "Council, IDP, Cambridge, and other names or logos may be trademarks of their respective owners. "
+        "Their mention identifies the subject being discussed and does not imply affiliation, permission, "
+        "approval, or endorsement.</p><h2>External links</h2><p>Third parties control external sites. "
+        "Links are provided for source checking; TKHJ Tools does not guarantee their content, availability, "
+        "or privacy practices.</p><h2>Rights notices</h2><p>If you believe this site infringes copyright, "
+        'trademark, or another legal right, use the <a href="/contact.html">contact and corrections page</a> '
+        "and provide the exact URL, a description of the right, and evidence that you are authorized to "
+        "submit the notice. We will review it and correct or remove material when appropriate.</p></div></section>"
+    )
+    return page("Copyright and disclaimer", "Copyright, quotation, trademark, independence, and rights-notice information.",
+                body, path="/disclaimer.html", alternate_path="/zh/disclaimer.html")
 
 
 def privacy_page() -> str:
@@ -622,8 +724,10 @@ def write(path: str, content: str) -> None:
 
 def sitemap(guides: list[dict]) -> str:
     entries = [("/", None), ("/guides/", None), ("/learning/", None), ("/ai/", None), ("/about.html", None),
-               ("/contact.html", None), ("/privacy.html", None), ("/search.html", None),
-               ("/zh/", None), ("/zh/guides/", None), ("/zh/learning/", None), ("/zh/ai/", None)]
+               ("/contact.html", None), ("/disclaimer.html", None), ("/privacy.html", None),
+               ("/search.html", None), ("/zh/", None), ("/zh/guides/", None), ("/zh/learning/", None),
+               ("/zh/ai/", None), ("/zh/about.html", None), ("/zh/contact.html", None),
+               ("/zh/disclaimer.html", None)]
     entries += [(f"/guides/{g['slug']}.html", g["updated"]) for g in guides]
     entries += [
         (f"/zh/guides/{g['slug']}.html", g["updated"])
@@ -652,6 +756,7 @@ def main() -> None:
     write("ai/index.html", track_page(guides, "ai"))
     write("about.html", about_page())
     write("contact.html", contact_page())
+    write("disclaimer.html", disclaimer_page())
     write("privacy.html", privacy_page())
     write("search.html", search_page())
     write("search_index.json", search_index(guides))
@@ -663,6 +768,9 @@ def main() -> None:
     write("zh/guides/index.html", guides_page(guides, "zh"))
     write("zh/learning/index.html", track_page(guides, "learning", "zh"))
     write("zh/ai/index.html", track_page(guides, "ai", "zh"))
+    write("zh/about.html", about_page("zh"))
+    write("zh/contact.html", contact_page("zh"))
+    write("zh/disclaimer.html", disclaimer_page("zh"))
     write("sitemap.xml", sitemap(guides))
     write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: https://{DOMAIN}/sitemap.xml\n")
     write("ads.txt", "google.com, pub-8913718352251239, DIRECT, f08c47fec0942fa0\n")
