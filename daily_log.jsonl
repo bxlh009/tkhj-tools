@@ -84,3 +84,5 @@
 {"type": "build", "status": "ok", "_time": "2026-07-25T11:10:28.132085"}
 {"type": "ai", "status": "ok", "output": "=== daily_ai_news.py — 2026-07-25 ===\n[ai] already published today, skipping\n", "_time": "2026-07-25T14:37:16.829021"}
 {"type": "build", "status": "ok", "_time": "2026-07-25T14:37:16.979634"}
+{"type": "ai", "status": "ok", "output": "=== daily_ai_news.py — 2026-07-25 ===\n[ai] already published today, skipping\n", "_time": "2026-07-25T16:56:47.016311"}
+{"type": "build", "status": "ok", "_time": "2026-07-25T16:56:47.173668"}
