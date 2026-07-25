@@ -736,5 +736,43 @@
       ]
     ],
     "automated": true
+  },
+  {
+    "slug": "toefl-writing-academic-discussion",
+    "file": "toefl-writing-academic-discussion.md",
+    "title": "toefl writing academic discussion task",
+    "description": "The transition to the new TOEFL iBT format has replaced the traditional independent and integrated writing essays with a single, condensed task: the Academic Discussion. For many test-takers, this shift is not merely a…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-25",
+    "updated": "2026-07-25",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-25-anthropics-claude-opus-5-costs-well-below-fable-5-while-matching-or-beating-it-a",
+    "file": "2026-07-25-anthropics-claude-opus-5-costs-well-below-fable-5-while-matching-or-beating-it-a.md",
+    "title": "Anthropic's Claude Opus 5 costs well below Fable 5 while matching or beating it across most benchmarks",
+    "description": "Anthropic's Claude Opus 5 leads the Artificial Analysis Intelligence Index with 61 points, edging out Claude Fable 5 and GPT-5.6 Sol. The model scores highest in analytical quality and coding, and costs up to half as muc",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-25",
+    "updated": "2026-07-25",
+    "sources": [
+      [
+        "Source",
+        "https://the-decoder.com/anthropics-claude-opus-5-costs-well-below-fable-5-while-matching-or-beating-it-across-most-benchmarks/"
+      ]
+    ],
+    "automated": true
   }
 ]
