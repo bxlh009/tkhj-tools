@@ -86,3 +86,7 @@
 {"type": "build", "status": "ok", "_time": "2026-07-25T14:37:16.979634"}
 {"type": "ai", "status": "ok", "output": "=== daily_ai_news.py — 2026-07-25 ===\n[ai] already published today, skipping\n", "_time": "2026-07-25T16:56:47.016311"}
 {"type": "build", "status": "ok", "_time": "2026-07-25T16:56:47.173668"}
+{"type": "exam", "var": "toefl-reading-vocabulary-context-clues.json", "status": "fail", "error": "", "_time": "2026-07-26T11:19:25.147674"}
+{"type": "exam", "var": "toefl-listening-conversation-strategy.json", "status": "ok", "output": "s/tkhj-tools/output/exams/toefl-listening-conversation-strategy-2.md\n[OK] published into site manifest: /home/runner/work/tkhj-tools/tkhj-tools/site/content/toefl-listening-conversation-strategy-2.md\n", "_time": "2026-07-26T11:19:42.850657"}
+{"type": "ai", "status": "ok", "output": "56-sol-on-the-benchmark-designed-to.md\n  published: /home/runner/work/tkhj-tools/tkhj-tools/site/content/2026-07-26-anthropics-opus-5-blows-past-fable-5-and-gpt-56-sol-on-the-benchmark-designed-to.md\n", "_time": "2026-07-26T11:20:05.004170"}
+{"type": "build", "status": "ok", "_time": "2026-07-26T11:20:05.090969"}

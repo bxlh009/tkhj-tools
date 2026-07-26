@@ -774,5 +774,43 @@
       ]
     ],
     "automated": true
+  },
+  {
+    "slug": "toefl-listening-conversation-strategy-2",
+    "file": "toefl-listening-conversation-strategy-2.md",
+    "title": "toefl listening conversation tips",
+    "description": "Many TOEFL test-takers plateau at a score of 21, particularly in the Listening section. This score often indicates that while you can understand individual words and general topics, you are missing the subtle structural…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-26",
+    "updated": "2026-07-26",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-26-anthropics-opus-5-blows-past-fable-5-and-gpt-56-sol-on-the-benchmark-designed-to",
+    "file": "2026-07-26-anthropics-opus-5-blows-past-fable-5-and-gpt-56-sol-on-the-benchmark-designed-to.md",
+    "title": "Anthropic's Opus 5 blows past Fable 5 and GPT-5.6 Sol on the benchmark designed to measure real intelligence",
+    "description": "Anthropic's Claude Opus 5 scored 30.2 percent on ARC-AGI-3, nearly quadrupling GPT-5.6 Sol's previous record of 7.8 percent. The benchmark's developers say the model independently formulated reflection equations, a behav",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-26",
+    "updated": "2026-07-26",
+    "sources": [
+      [
+        "Source",
+        "https://the-decoder.com/anthropics-opus-5-blows-past-fable-5-and-gpt-5-6-sol-on-the-benchmark-designed-to-measure-real-intelligence/"
+      ]
+    ],
+    "automated": true
   }
 ]
