@@ -46,6 +46,8 @@ def local_target(source: pathlib.Path, href: str) -> pathlib.Path | None:
         target = source.parent / path
     if path.endswith("/"):
         target /= "index.html"
+    elif not pathlib.PurePosixPath(path).suffix:
+        target = pathlib.Path(f"{target}.html")
     return target
 
 
@@ -95,7 +97,7 @@ def main() -> int:
         article_text[article] = text_from_html(html)
         require('<article class="article-body">' in html, f"{article.name}: missing article landmark")
         require('class="byline"' in html, f"{article.name}: missing visible byline")
-        require("/about.html#editorial-team" in html, f"{article.name}: byline does not link to editorial details")
+        require("/about#editorial-team" in html, f"{article.name}: byline does not link to editorial details")
         require('class="editorial-note"' in html, f"{article.name}: missing creation/review disclosure")
         require('class="source-notes"' in html, f"{article.name}: missing source notes")
         require(len(re.findall(r"<h2\b", html, flags=re.I)) >= 3, f"{article.name}: fewer than three H2 sections")

@@ -187,8 +187,8 @@ def nav(active: str = "", language: str = "en") -> str:
              ("Learning", f"{prefix}/learning/", "learning", "nav-learning"),
              ("AI", f"{prefix}/ai/", "ai", "nav-ai"),
              ("Library", f"{prefix}/guides/", "guides", "nav-library"),
-             ("About", f"{prefix}/about.html", "about", "nav-about"),
-             ("Contact", f"{prefix}/contact.html", "contact", "nav-contact")]
+             ("About", f"{prefix}/about", "about", "nav-about"),
+             ("Contact", f"{prefix}/contact", "contact", "nav-contact")]
     links = "".join(
         f'<a href="{url}" data-i18n="{i18n}"'
         f'{" aria-current=\"page\"" if active == key else ""}>{label}</a>'
@@ -199,7 +199,7 @@ def nav(active: str = "", language: str = "en") -> str:
         f'<a class="brand" href="{prefix}/" aria-label="TKHJ Tools home">'
         '<img class="brand-logo" src="/static/logo.png" alt="" width="88" height="30"></a>'
         f'<nav class="nav-links" aria-label="Primary navigation">{links}</nav>'
-        '<form class="nav-search" action="/search.html" method="get" role="search">'
+        '<form class="nav-search" action="/search" method="get" role="search">'
         '<label class="sr-only" for="site-search" data-i18n="search-label">Search guides</label>'
         '<input class="nav-search-input" id="site-search" name="q" type="search" data-search '
         'placeholder="Search" data-i18n-placeholder="search-placeholder" autocomplete="off" '
@@ -223,10 +223,10 @@ def footer(language: str = "en") -> str:
         f'<a href="{prefix}/learning/" data-i18n="nav-learning">Learning</a>'
         f'<a href="{prefix}/ai/" data-i18n="nav-ai">AI</a>'
         f'<a href="{prefix}/guides/" data-i18n="nav-library">Library</a>'
-        f'<a href="{prefix}/about.html" data-i18n="footer-editorial">Editorial process</a>'
-        f'<a href="{prefix}/contact.html" data-i18n="footer-corrections">Corrections</a>'
-        f'<a href="{prefix}/disclaimer.html" data-i18n="footer-legal">Copyright &amp; disclaimer</a>'
-        '<a href="/privacy.html" data-i18n="footer-privacy">Privacy</a></nav></div>'
+        f'<a href="{prefix}/about" data-i18n="footer-editorial">Editorial process</a>'
+        f'<a href="{prefix}/contact" data-i18n="footer-corrections">Corrections</a>'
+        f'<a href="{prefix}/disclaimer" data-i18n="footer-legal">Copyright &amp; disclaimer</a>'
+        '<a href="/privacy" data-i18n="footer-privacy">Privacy</a></nav></div>'
         f'<div class="container footer-base">&copy; {datetime.now().year} {DOMAIN}. '
         '<span data-i18n="footer-disclaimer">Independent editorial site; no provider endorsement '
         "is implied.</span></div></footer>"
@@ -284,7 +284,7 @@ def guide_card(guide: dict, language: str = "en") -> str:
         f"{minutes} min read · Updated {guide['updated']}"
     )
     return (
-        f'<article class="guide-card"><a href="{prefix}/guides/{guide["slug"]}.html">'
+        f'<article class="guide-card"><a href="{prefix}/guides/{guide["slug"]}">'
         f'<span class="eyebrow">{esc(guide["category"])}</span><h3>{esc(title)}</h3>'
         f'<p>{esc(description)}</p><span class="card-meta">{esc(meta)}</span>'
         "</a></article>"
@@ -359,7 +359,7 @@ def article_page(guide: dict, guides: list[dict], language: str = "en") -> str:
     published = "发布于" if chinese else "Published"
     updated = "更新于" if chinese else "Updated"
     made = "本指南如何制作" if chinese else "How this guide was made"
-    about_url = "/zh/about.html#editorial-team" if chinese else "/about.html#editorial-team"
+    about_url = "/zh/about#editorial-team" if chinese else "/about#editorial-team"
     disclaimer = (
         "独立编辑内容。产品和考试名称归其各自所有者所有，不代表任何认可或背书。"
         if chinese else
@@ -380,9 +380,9 @@ def article_page(guide: dict, guides: list[dict], language: str = "en") -> str:
         + f'<aside class="related"><h2>{continue_label}</h2><div class="guide-grid compact">'
         + related_html + "</div></aside></div>"
     )
-    path = f"{prefix}/guides/{guide['slug']}.html"
+    path = f"{prefix}/guides/{guide['slug']}"
     alternate_path = (
-        f"/guides/{guide['slug']}.html" if chinese else f"/zh/guides/{guide['slug']}.html"
+        f"/guides/{guide['slug']}" if chinese else f"/zh/guides/{guide['slug']}"
     )
     schema = {
         "@context": "https://schema.org", "@type": "Article", "headline": title,
@@ -391,7 +391,7 @@ def article_page(guide: dict, guides: list[dict], language: str = "en") -> str:
         "inLanguage": "zh-CN" if chinese else "en",
         "mainEntityOfPage": f"https://{DOMAIN}{path}",
         "author": {"@type": "Organization", "name": "TKHJ Tools Editorial Team",
-                   "url": f"https://{DOMAIN}/about.html#editorial-team"},
+                   "url": f"https://{DOMAIN}/about#editorial-team"},
         "publisher": {"@type": "Organization", "name": NAME},
     }
     return page(title, description, article, active=guide["track"], path=path,
@@ -412,7 +412,7 @@ def home_page(guides: list[dict], language: str = "en") -> str:
         "turn announcements and documentation into decisions.</p><div class=\"hero-actions\">"
         f'<a class="button primary" href="{prefix}/learning/" data-i18n="explore-learning">Explore Learning</a>'
         f'<a class="button secondary" href="{prefix}/ai/" data-i18n="explore-ai">Explore AI</a>'
-        f'<a class="button secondary" href="{prefix}/about.html" data-i18n="see-editorial">See the editorial process</a></div></div>'
+        f'<a class="button secondary" href="{prefix}/about" data-i18n="see-editorial">See the editorial process</a></div></div>'
         '<aside class="method-card"><span class="method-number">01</span>'
         '<h2 data-i18n="method-evidence">Find the evidence</h2>'
         "<p>Locate the phrase, rule, or descriptor that controls the decision.</p>"
@@ -525,14 +525,14 @@ def about_page(language: str = "en") -> str:
             "聚焦真实问题、删除无依据的经验性说法、用官方页面核对时效性信息，并加入原创练习或具体决策框架。</p>"
             "<h2>每日发布</h2><p>自动流程每天计划发布一篇学习文章和一篇 AI 文章。未通过检查的草稿会换题重写，"
             "不会用短小占位内容替代。</p><h2>更正与更新</h2><p>每篇指南都显示更新日期和来源核对日期。"
-            '如果考试或产品规则发生变化，我们会更新或撤下相关指南。<a href="/zh/contact.html">提交更正</a>。</p>'
+            '如果考试或产品规则发生变化，我们会更新或撤下相关指南。<a href="/zh/contact">提交更正</a>。</p>'
             "<h2>独立性</h2><p>TKHJ Tools 与 ETS、IELTS、British Council、IDP、"
             "Cambridge University Press &amp; Assessment 均无隶属或背书关系。"
             "这些指南不接受赞助文章，也不使用联盟推广链接。</p></div></section>"
         )
         return page("关于与编辑流程", "了解 TKHJ Tools 如何选择主题、核对来源、更新及更正指南。",
-                    body, active="about", path="/zh/about.html", language="zh",
-                    alternate_path="/about.html")
+                    body, active="about", path="/zh/about", language="zh",
+                    alternate_path="/about")
 
     body = (
         '<section class="page-hero"><div class="container narrow"><span class="eyebrow">About</span>'
@@ -554,13 +554,13 @@ def about_page(language: str = "en") -> str:
         "A failed draft is replaced with another sourced topic; it is never replaced with a short "
         "placeholder.</p><h2>Corrections and freshness</h2><p>Every guide "
         "shows an updated date and a source-checked date. If a provider changes its format, we update "
-        'or withdraw the affected guide. <a href="/contact.html">Report a correction</a>.</p>'
+        'or withdraw the affected guide. <a href="/contact">Report a correction</a>.</p>'
         "<h2>Independence</h2><p>TKHJ Tools is not affiliated with or endorsed by ETS, IELTS, the "
         "British Council, IDP, or Cambridge University Press &amp; Assessment. We do not accept "
         "sponsored posts or use affiliate links in these guides.</p></div></section>"
     )
     return page("About and editorial process", "How TKHJ Tools selects, sources, updates, and corrects guides.",
-                body, active="about", path="/about.html", alternate_path="/zh/about.html")
+                body, active="about", path="/about", alternate_path="/zh/about")
 
 
 def contact_page(language: str = "en") -> str:
@@ -578,12 +578,12 @@ def contact_page(language: str = "en") -> str:
             "<h2>处理范围</h2><p>TKHJ Tools 可以更正本站内容和界面。报名、评分、便利安排或账户问题，"
             "请直接联系相应考试或产品服务商。</p><h2>版权问题</h2>"
             '<p>如果你认为本站内容侵犯了你的权利，请提供相关页面、作品或商标说明，以及你有权提出请求的证明。'
-            '我们会核查并在适当情况下更正或移除内容。详情参阅<a href="/zh/disclaimer.html">版权与免责声明</a>。</p>'
+            '我们会核查并在适当情况下更正或移除内容。详情参阅<a href="/zh/disclaimer">版权与免责声明</a>。</p>'
             "</div></section>"
         )
         return page("联系与内容更正", "报告错误、过时信息、版权问题或使用问题。",
-                    body, active="contact", path="/zh/contact.html", language="zh",
-                    alternate_path="/contact.html")
+                    body, active="contact", path="/zh/contact", language="zh",
+                    alternate_path="/contact")
 
     body = (
         '<section class="page-hero"><div class="container narrow"><span class="eyebrow">Contact</span>'
@@ -600,10 +600,10 @@ def contact_page(language: str = "en") -> str:
         "<h2>Copyright concerns</h2><p>If you believe material on this site infringes your rights, "
         "include the page, the protected work or mark, and evidence that you are authorized to report it. "
         'We will review the request and correct or remove material when appropriate. See the '
-        '<a href="/disclaimer.html">copyright and disclaimer page</a>.</p></div></section>'
+        '<a href="/disclaimer">copyright and disclaimer page</a>.</p></div></section>'
     )
     return page("Contact and corrections", "Report errors, outdated information, or usability problems.",
-                body, active="contact", path="/contact.html", alternate_path="/zh/contact.html")
+                body, active="contact", path="/contact", alternate_path="/zh/contact")
 
 
 def disclaimer_page(language: str = "en") -> str:
@@ -623,12 +623,12 @@ def disclaimer_page(language: str = "en") -> str:
             "不表示合作、授权、认可或背书。</p><h2>外部链接</h2><p>外部网站由第三方控制。"
             "我们提供链接是为了核对来源，不对其内容、可用性或隐私做法作保证。</p>"
             '<h2>权利通知</h2><p>如你认为本站侵犯版权、商标或其他合法权利，请通过'
-            '<a href="/zh/contact.html">联系与内容更正页面</a>提交具体网址、权利说明和授权证明。'
+            '<a href="/zh/contact">联系与内容更正页面</a>提交具体网址、权利说明和授权证明。'
             "我们会核查，并在适当情况下更正或移除相关内容。</p></div></section>"
         )
         return page("版权与免责声明", "TKHJ Tools 的版权、引用、商标、独立性和权利通知说明。",
-                    body, path="/zh/disclaimer.html", language="zh",
-                    alternate_path="/disclaimer.html")
+                    body, path="/zh/disclaimer", language="zh",
+                    alternate_path="/disclaimer")
 
     body = (
         '<section class="page-hero"><div class="container narrow"><span class="eyebrow">Legal</span>'
@@ -649,12 +649,12 @@ def disclaimer_page(language: str = "en") -> str:
         "approval, or endorsement.</p><h2>External links</h2><p>Third parties control external sites. "
         "Links are provided for source checking; TKHJ Tools does not guarantee their content, availability, "
         "or privacy practices.</p><h2>Rights notices</h2><p>If you believe this site infringes copyright, "
-        'trademark, or another legal right, use the <a href="/contact.html">contact and corrections page</a> '
+        'trademark, or another legal right, use the <a href="/contact">contact and corrections page</a> '
         "and provide the exact URL, a description of the right, and evidence that you are authorized to "
         "submit the notice. We will review it and correct or remove material when appropriate.</p></div></section>"
     )
     return page("Copyright and disclaimer", "Copyright, quotation, trademark, independence, and rights-notice information.",
-                body, path="/disclaimer.html", alternate_path="/zh/disclaimer.html")
+                body, path="/disclaimer", alternate_path="/zh/disclaimer")
 
 
 def privacy_page() -> str:
@@ -671,11 +671,11 @@ def privacy_page() -> str:
         "are inserted between guide text during the approval build.</p><h2>Local preferences</h2>"
         "<p>The color-theme choice is stored in local browser storage and is not sent to TKHJ Tools.</p>"
         "<h2>External links</h2><p>Guides link to official providers and GitHub. Their privacy practices "
-        'apply after you leave this site.</p><h2>Questions</h2><p>Use the <a href="/contact.html">'
+        'apply after you leave this site.</p><h2>Questions</h2><p>Use the <a href="/contact">'
         "corrections page</a> for privacy or content questions.</p></div></section>"
     )
     return page("Privacy policy", "Privacy information for analytics, advertising verification, and logs.",
-                body, path="/privacy.html")
+                body, path="/privacy")
 
 
 def search_page() -> str:
@@ -683,7 +683,7 @@ def search_page() -> str:
         '<section class="page-hero"><div class="container narrow">'
         '<span class="eyebrow" data-i18n="search-eyebrow">Guide search</span>'
         '<h1 data-i18n="search-title">Search the library</h1>'
-        '<form class="search-page-form" action="/search.html" method="get" role="search">'
+        '<form class="search-page-form" action="/search" method="get" role="search">'
         '<label class="sr-only" for="search-page-input" data-i18n="search-label">Search guides</label>'
         '<input id="search-page-input" name="q" type="search" data-search-page '
         'placeholder="Search titles, topics, or exams" data-i18n-placeholder="search-page-placeholder" '
@@ -694,7 +694,7 @@ def search_page() -> str:
         '<script src="/static/search.js"></script>'
     )
     return page("Search", "Search TKHJ Tools Learning and AI guides.", body, active="search",
-                path="/search.html")
+                path="/search")
 
 
 def search_index(guides: list[dict]) -> str:
@@ -707,10 +707,10 @@ def search_index(guides: list[dict]) -> str:
                 "category": guide["category"],
                 "track": guide["track"],
                 "date": guide["published"],
-                "url": f"/guides/{guide['slug']}.html",
+                "url": f"/guides/{guide['slug']}",
                 "zh_title": guide.get("zh_title", ""),
                 "zh_description": guide.get("zh_description", ""),
-                "zh_url": f"/zh/guides/{guide['slug']}.html" if "zh_title" in guide else "",
+                "zh_url": f"/zh/guides/{guide['slug']}" if "zh_title" in guide else "",
             }
         )
     return json.dumps(rows, ensure_ascii=False, separators=(",", ":"))
@@ -723,14 +723,14 @@ def write(path: str, content: str) -> None:
 
 
 def sitemap(guides: list[dict]) -> str:
-    entries = [("/", None), ("/guides/", None), ("/learning/", None), ("/ai/", None), ("/about.html", None),
-               ("/contact.html", None), ("/disclaimer.html", None), ("/privacy.html", None),
-               ("/search.html", None), ("/zh/", None), ("/zh/guides/", None), ("/zh/learning/", None),
-               ("/zh/ai/", None), ("/zh/about.html", None), ("/zh/contact.html", None),
-               ("/zh/disclaimer.html", None)]
-    entries += [(f"/guides/{g['slug']}.html", g["updated"]) for g in guides]
+    entries = [("/", None), ("/guides/", None), ("/learning/", None), ("/ai/", None), ("/about", None),
+               ("/contact", None), ("/disclaimer", None), ("/privacy", None),
+               ("/search", None), ("/zh/", None), ("/zh/guides/", None), ("/zh/learning/", None),
+               ("/zh/ai/", None), ("/zh/about", None), ("/zh/contact", None),
+               ("/zh/disclaimer", None)]
+    entries += [(f"/guides/{g['slug']}", g["updated"]) for g in guides]
     entries += [
-        (f"/zh/guides/{g['slug']}.html", g["updated"])
+        (f"/zh/guides/{g['slug']}", g["updated"])
         for g in guides if "zh_title" in g
     ]
     rows = "".join(
