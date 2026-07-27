@@ -10,6 +10,7 @@ function fileForUrl(rawUrl) {
   const pathname = decodeURIComponent(new URL(rawUrl, "http://127.0.0.1").pathname);
   let relative = pathname.replace(/^\/+/, "");
   if (!relative || relative.endsWith("/")) relative += "index.html";
+  else if (!path.extname(relative)) relative += ".html";
   const target = path.resolve(root, relative);
   if (!target.startsWith(root)) return null;
   return target;
@@ -83,7 +84,7 @@ async function run() {
       languageToggle: Boolean(document.querySelector("[data-language-toggle]")),
       searchInput: Boolean(document.querySelector("[data-search]")),
       animatedSearch: Boolean(document.querySelector(".nav-search-input + .search-caret")),
-      legalLink: Boolean(document.querySelector("a[href='/disclaimer.html']")),
+      legalLink: Boolean(document.querySelector("a[href='/disclaimer']")),
     }));
     if (homeMetrics.overflow) failures.push(`${name}: home page has horizontal overflow`);
     if (homeMetrics.cards < 5) failures.push(`${name}: expected at least 5 home cards, got ${homeMetrics.cards}`);
@@ -148,7 +149,7 @@ async function run() {
       if (homeMetrics.searchInput) {
         await page.locator("[data-search]").fill("IELTS");
         await page.locator("[data-search]").press("Enter");
-        await page.waitForURL(/\/search\.html\?q=IELTS$/);
+        await page.waitForURL(/\/search\?q=IELTS$/);
         await page.waitForSelector("#results .guide-card");
         if ((await page.locator("#results .guide-card").count()) < 1) {
           failures.push("desktop: search returned no IELTS guides");
@@ -157,12 +158,12 @@ async function run() {
       await page.evaluate(() => localStorage.setItem("tkhj-language", "en"));
     }
 
-    await page.goto(`${base}/guides/ielts-true-false-not-given.html`, { waitUntil: "domcontentloaded" });
+    await page.goto(`${base}/guides/ielts-true-false-not-given`, { waitUntil: "domcontentloaded" });
     console.log(`${name}: article loaded`);
     const articleMetrics = await page.evaluate(() => ({
       overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
       h2: document.querySelectorAll(".article-body > h2").length,
-      byline: Boolean(document.querySelector(".byline a[href='/about.html#editorial-team']")),
+      byline: Boolean(document.querySelector(".byline a[href='/about#editorial-team']")),
       disclosure: Boolean(document.querySelector(".editorial-note")),
       sources: document.querySelectorAll(".source-notes a").length,
       toc: document.querySelectorAll(".article-toc a").length,
@@ -177,7 +178,7 @@ async function run() {
     }
     if (name === "desktop") {
       await page.locator("[data-language-toggle]").click();
-      await page.waitForURL(/\/zh\/guides\/ielts-true-false-not-given\.html$/);
+      await page.waitForURL(/\/zh\/guides\/ielts-true-false-not-given$/);
       const chineseArticle = await page.evaluate(() => ({
         lang: document.documentElement.lang,
         title: document.querySelector(".article-body h1")?.textContent || "",
@@ -197,27 +198,27 @@ async function run() {
         failures.push("desktop: Chinese article table of contents was not translated");
       }
       await page.locator("[data-language-toggle]").click();
-      await page.waitForURL(/\/guides\/ielts-true-false-not-given\.html$/);
+      await page.waitForURL(/\/guides\/ielts-true-false-not-given$/);
     }
-    await page.goto(`${base}/guides/ai-answer-verification-checklist.html`, { waitUntil: "domcontentloaded" });
+    await page.goto(`${base}/guides/ai-answer-verification-checklist`, { waitUntil: "domcontentloaded" });
     if (!(await page.locator("a.back-link[href='/ai/']").count())) {
       failures.push(`${name}: AI article does not link back to AI track`);
     }
     if (name === "desktop") {
-      await page.goto(`${base}/about.html`, { waitUntil: "domcontentloaded" });
+      await page.goto(`${base}/about`, { waitUntil: "domcontentloaded" });
       await page.locator("[data-language-toggle]").click();
-      await page.waitForURL(/\/zh\/about\.html$/);
+      await page.waitForURL(/\/zh\/about$/);
       if (!/[\u4e00-\u9fff]/.test(await page.locator("main h1").textContent())) {
         failures.push("desktop: About page did not switch to translated Chinese content");
       }
-      await page.goto(`${base}/zh/contact.html`, { waitUntil: "domcontentloaded" });
+      await page.goto(`${base}/zh/contact`, { waitUntil: "domcontentloaded" });
       if (!/[\u4e00-\u9fff]/.test(await page.locator("main h1").textContent())) {
         failures.push("desktop: Contact page is not translated");
       }
-      if (!(await page.locator("a[href='/zh/disclaimer.html']").count())) {
+      if (!(await page.locator("a[href='/zh/disclaimer']").count())) {
         failures.push("desktop: Chinese contact page does not link to the disclaimer");
       }
-      await page.goto(`${base}/zh/disclaimer.html`, { waitUntil: "domcontentloaded" });
+      await page.goto(`${base}/zh/disclaimer`, { waitUntil: "domcontentloaded" });
       if ((await page.locator("main h2").count()) < 5) {
         failures.push("desktop: Chinese copyright and disclaimer page is incomplete");
       }
