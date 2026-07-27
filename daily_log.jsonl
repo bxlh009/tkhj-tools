@@ -94,3 +94,6 @@
 {"type": "build", "status": "ok", "_time": "2026-07-26T14:28:24.013919"}
 {"type": "ai", "status": "ok", "output": "=== daily_ai_news.py — 2026-07-26 ===\n[ai] already published today, skipping\n", "_time": "2026-07-26T17:00:28.632358"}
 {"type": "build", "status": "ok", "_time": "2026-07-26T17:00:28.750927"}
+{"type": "exam", "var": "toefl-speaking-templates.json", "status": "ok", "output": "home/runner/work/tkhj-tools/tkhj-tools/output/exams/toefl-speaking-templates-2.md\n[OK] published into site manifest: /home/runner/work/tkhj-tools/tkhj-tools/site/content/toefl-speaking-templates-2.md\n", "_time": "2026-07-27T14:29:57.175682"}
+{"type": "ai", "status": "ok", "output": "ctly-when-ai-agents-become-more-exp.md\n  published: /home/runner/work/tkhj-tools/tkhj-tools/site/content/2026-07-27-metr-introduces-a-new-metric-to-calculate-exactly-when-ai-agents-become-more-exp.md\n", "_time": "2026-07-27T14:32:51.780719"}
+{"type": "build", "status": "ok", "_time": "2026-07-27T14:32:51.941709"}

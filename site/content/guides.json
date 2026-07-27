@@ -812,5 +812,43 @@
       ]
     ],
     "automated": true
+  },
+  {
+    "slug": "toefl-speaking-templates-2",
+    "file": "toefl-speaking-templates-2.md",
+    "title": "TOEFL speaking templates high score",
+    "description": "The learner must decide whether to adopt a fixed template structure for TOEFL Speaking Task 2 Integrated Speaking or develop a flexible response framework based on task-specific analysis. This decision directly impacts…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-27",
+    "updated": "2026-07-27",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-27-metr-introduces-a-new-metric-to-calculate-exactly-when-ai-agents-become-more-exp",
+    "file": "2026-07-27-metr-introduces-a-new-metric-to-calculate-exactly-when-ai-agents-become-more-exp.md",
+    "title": "METR introduces a new metric to calculate exactly when AI agents become more expensive than humans",
+    "description": "METR's new metric, the 'expenditure horizon,' puts a dollar figure on how cost-effective AI agents are at solving problems. Early results on the NanoGPT speedrun are underwhelming, the metric has blind spots, and the new",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-27",
+    "updated": "2026-07-27",
+    "sources": [
+      [
+        "Source",
+        "https://the-decoder.com/metr-introduces-a-new-metric-to-calculate-exactly-when-ai-agents-become-more-expensive-than-humans/"
+      ]
+    ],
+    "automated": true
   }
 ]
