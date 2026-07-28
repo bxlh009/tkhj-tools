@@ -105,3 +105,5 @@
 {"type": "exam", "var": "toefl-primary-reading-guide.json", "status": "ok", "output": "unner/work/tkhj-tools/tkhj-tools/output/exams/toefl-primary-reading-guide-3.md\n[OK] published into site manifest: /home/runner/work/tkhj-tools/tkhj-tools/site/content/toefl-primary-reading-guide-3.md\n", "_time": "2026-07-28T11:58:06.956197"}
 {"type": "ai", "status": "ok", "output": "active-parameter-cyber-model-that-p.md\n  published: /home/runner/work/tkhj-tools/tkhj-tools/site/content/2026-07-28-microsoft-ai-releases-mai-cyber-1-flash-a-5b-active-parameter-cyber-model-that-p.md\n", "_time": "2026-07-28T11:58:46.088227"}
 {"type": "build", "status": "ok", "_time": "2026-07-28T11:58:46.250792"}
+{"type": "ai", "status": "ok", "output": "=== daily_ai_news.py — 2026-07-28 ===\n[ai] already published today, skipping\n", "_time": "2026-07-28T15:20:33.128581"}
+{"type": "build", "status": "ok", "_time": "2026-07-28T15:20:33.309002"}
