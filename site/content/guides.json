@@ -850,5 +850,43 @@
       ]
     ],
     "automated": true
+  },
+  {
+    "slug": "toefl-primary-reading-guide-3",
+    "file": "toefl-primary-reading-guide-3.md",
+    "title": "toefl primary reading guide",
+    "description": "Readers with limited vocabulary must decide whether to prioritize building a targeted word bank or improving reading comprehension through context clues when preparing for the TOEFL Primary Reading section. This…",
+    "category": "TOEFL Primary",
+    "track": "learning",
+    "published": "2026-07-28",
+    "updated": "2026-07-28",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-28-microsoft-ai-releases-mai-cyber-1-flash-a-5b-active-parameter-cyber-model-that-p",
+    "file": "2026-07-28-microsoft-ai-releases-mai-cyber-1-flash-a-5b-active-parameter-cyber-model-that-p.md",
+    "title": "Microsoft AI Releases MAI-Cyber-1-Flash: A 5B-Active-Parameter Cyber Model That Pushes MDASH to 95.95% on CyberGym",
+    "description": "Microsoft AI has released MAI-Cyber-1-Flash, its first model built specifically for cyber defense. It is a 137B total, 5B active sparse MoE fine-tune of MAI-Code-1-Flash with a 256k context window. The model does not shi",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-28",
+    "updated": "2026-07-28",
+    "sources": [
+      [
+        "Source",
+        "https://www.marktechpost.com/2026/07/28/microsoft-ai-releases-mai-cyber-1-flash-a-5b-active-parameter-cyber-model-that-pushes-mdash-to-95-95-on-cybergym/"
+      ]
+    ],
+    "automated": true
   }
 ]
