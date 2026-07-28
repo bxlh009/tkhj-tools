@@ -107,3 +107,5 @@
 {"type": "build", "status": "ok", "_time": "2026-07-28T11:58:46.250792"}
 {"type": "ai", "status": "ok", "output": "=== daily_ai_news.py — 2026-07-28 ===\n[ai] already published today, skipping\n", "_time": "2026-07-28T15:20:33.128581"}
 {"type": "build", "status": "ok", "_time": "2026-07-28T15:20:33.309002"}
+{"type": "ai", "status": "ok", "output": "=== daily_ai_news.py — 2026-07-28 ===\n[ai] already published today, skipping\n", "_time": "2026-07-28T17:26:54.472903"}
+{"type": "build", "status": "ok", "_time": "2026-07-28T17:26:54.646365"}
