@@ -888,5 +888,43 @@
       ]
     ],
     "automated": true
+  },
+  {
+    "slug": "toefl-reading-fact-negative-fact-2",
+    "file": "toefl-reading-fact-negative-fact-2.md",
+    "title": "toefl reading fact negative fact questions",
+    "description": "When you encounter a negative fact question on the TOEFL Reading section, your task is not to identify what is true—but to identify what is false or not mentioned. This requires a deliberate shift from standard reading…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-29",
+    "updated": "2026-07-29",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-29-openai-open-sources-codex-security-cli-to-help-developers-find-and-fix-vulnerabi",
+    "file": "2026-07-29-openai-open-sources-codex-security-cli-to-help-developers-find-and-fix-vulnerabi.md",
+    "title": "OpenAI open-sources Codex Security CLI to help developers find and fix vulnerabilities from the command line",
+    "description": "OpenAI has released Codex Security CLI, an open-source tool that automatically detects and fixes vulnerabilities in code repositories. Previously known internally as 'Aardvark,' the system has already helped fix more tha",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-29",
+    "updated": "2026-07-29",
+    "sources": [
+      [
+        "Source",
+        "https://the-decoder.com/openai-open-sources-codex-security-cli-to-help-developers-find-and-fix-vulnerabilities-from-the-command-line/"
+      ]
+    ],
+    "automated": true
   }
 ]

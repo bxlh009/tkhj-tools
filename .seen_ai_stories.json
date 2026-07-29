@@ -98,5 +98,10 @@
     "title": "Microsoft AI Releases MAI-Cyber-1-Flash: A 5B-Active-Parameter Cyber Model That Pushes MDASH to 95.95% on CyberGym",
     "link": "https://www.marktechpost.com/2026/07/28/microsoft-ai-releases-mai-cyber-1-flash-a-5b-active-parameter-cyber-model-that-pushes-mdash-to-95-95-on-cybergym/",
     "date": "2026-07-28"
+  },
+  "7e03e6c3fa1cbb": {
+    "title": "OpenAI open-sources Codex Security CLI to help developers find and fix vulnerabilities from the command line",
+    "link": "https://the-decoder.com/openai-open-sources-codex-security-cli-to-help-developers-find-and-fix-vulnerabilities-from-the-command-line/",
+    "date": "2026-07-29"
   }
 }
