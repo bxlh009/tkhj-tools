@@ -926,5 +926,43 @@
       ]
     ],
     "automated": true
+  },
+  {
+    "slug": "toefl-speaking-templates-3",
+    "file": "toefl-speaking-templates-3.md",
+    "title": "TOEFL speaking templates high score",
+    "description": "TOEFL Speaking Test takers face a critical decision early in preparation: whether to adopt a single, rigid template across all tasks or to customize templates based on task type. This article provides an evidence-based…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-30",
+    "updated": "2026-07-30",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-30-google-deepmind-ships-three-physical-ai-models-for-whole-body-control-dexterity",
+    "file": "2026-07-30-google-deepmind-ships-three-physical-ai-models-for-whole-body-control-dexterity.md",
+    "title": "Google DeepMind Ships Three Physical AI Models For Whole Body Control, Dexterity And Multi Robot Collaboration",
+    "description": "Google DeepMind has released Gemini Robotics 2, the intelligence layer for its next generation of robots. The release ships three models: a vision-language-action model for whole body humanoid control, Gemini Robotics ER",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-30",
+    "updated": "2026-07-30",
+    "sources": [
+      [
+        "Source",
+        "https://www.marktechpost.com/2026/07/30/google-deepmind-gemini-robotics-2-whole-body-control-dexterity-multi-robot-collaboration/"
+      ]
+    ],
+    "automated": true
   }
 ]

@@ -118,3 +118,8 @@
 {"type": "build", "status": "ok", "_time": "2026-07-29T15:08:17.250307"}
 {"type": "ai", "status": "ok", "output": "=== daily_ai_news.py — 2026-07-29 ===\n[ai] already published today, skipping\n", "_time": "2026-07-29T17:14:14.231511"}
 {"type": "build", "status": "ok", "_time": "2026-07-29T17:14:14.364622"}
+{"type": "exam", "var": "toefl-primary-reading-guide.json", "status": "fail", "error": "", "_time": "2026-07-30T17:26:59.871826"}
+{"type": "exam", "var": "toefl-reading-inference-strategy.json", "status": "fail", "error": "", "_time": "2026-07-30T17:27:17.843884"}
+{"type": "exam", "var": "toefl-speaking-templates.json", "status": "ok", "output": "home/runner/work/tkhj-tools/tkhj-tools/output/exams/toefl-speaking-templates-3.md\n[OK] published into site manifest: /home/runner/work/tkhj-tools/tkhj-tools/site/content/toefl-speaking-templates-3.md\n", "_time": "2026-07-30T17:27:41.057487"}
+{"type": "ai", "status": "ok", "output": "els-for-whole-body-control-dexterity.md\n  published: /home/runner/work/tkhj-tools/tkhj-tools/site/content/2026-07-30-google-deepmind-ships-three-physical-ai-models-for-whole-body-control-dexterity.md\n", "_time": "2026-07-30T17:28:05.788110"}
+{"type": "build", "status": "ok", "_time": "2026-07-30T17:28:05.960383"}
