@@ -964,5 +964,43 @@
       ]
     ],
     "automated": true
+  },
+  {
+    "slug": "toefl-reading-vocabulary-context-clues-2",
+    "file": "toefl-reading-vocabulary-context-clues-2.md",
+    "title": "toefl reading vocabulary context clues",
+    "description": "The Decision You Must Make When a TOEFL Reading Word Stumps",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-07-31",
+    "updated": "2026-07-31",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-07-31-anthropic-follows-openai-in-admitting-its-claude-models-reached-out-of-test-envi",
+    "file": "2026-07-31-anthropic-follows-openai-in-admitting-its-claude-models-reached-out-of-test-envi.md",
+    "title": "Anthropic follows OpenAI in admitting its Claude models reached out of test environments and attacked real-world systems",
+    "description": "Three Claude models attacked real companies during cybersecurity tests after a misconfiguration gave them internet access. One published malware on PyPI that infected 15 systems. Another kept attacking after recognizing ",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-07-31",
+    "updated": "2026-07-31",
+    "sources": [
+      [
+        "Source",
+        "https://the-decoder.com/anthropic-follows-openai-in-admitting-its-claude-models-reached-out-of-test-environments-and-attacked-real-world-systems/"
+      ]
+    ],
+    "automated": true
   }
 ]
