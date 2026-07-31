@@ -126,3 +126,5 @@
 {"type": "exam", "var": "toefl-reading-vocabulary-context-clues.json", "status": "ok", "output": "tkhj-tools/output/exams/toefl-reading-vocabulary-context-clues-2.md\n[OK] published into site manifest: /home/runner/work/tkhj-tools/tkhj-tools/site/content/toefl-reading-vocabulary-context-clues-2.md\n", "_time": "2026-07-31T12:02:18.226173"}
 {"type": "ai", "status": "ok", "output": "ude-models-reached-out-of-test-envi.md\n  published: /home/runner/work/tkhj-tools/tkhj-tools/site/content/2026-07-31-anthropic-follows-openai-in-admitting-its-claude-models-reached-out-of-test-envi.md\n", "_time": "2026-07-31T12:02:54.707084"}
 {"type": "build", "status": "ok", "_time": "2026-07-31T12:02:54.891920"}
+{"type": "ai", "status": "ok", "output": "=== daily_ai_news.py — 2026-07-31 ===\n[ai] already published today, skipping\n", "_time": "2026-07-31T15:19:30.890417"}
+{"type": "build", "status": "ok", "_time": "2026-07-31T15:19:31.080546"}
