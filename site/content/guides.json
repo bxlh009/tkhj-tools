@@ -1002,5 +1002,43 @@
       ]
     ],
     "automated": true
+  },
+  {
+    "slug": "toefl-writing-academic-discussion-2",
+    "file": "toefl-writing-academic-discussion-2.md",
+    "title": "toefl writing academic discussion task",
+    "description": "Before you write a single sentence in the TOEFL Writing Academic Discussion task, you face one decision: which stance will you take on the professor's question, and how will you relate it to the two student responses…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-08-01",
+    "updated": "2026-08-01",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-08-01-openai-announces-its-next-major-model-astra-by-dropping-ten-previously-unsolved",
+    "file": "2026-08-01-openai-announces-its-next-major-model-astra-by-dropping-ten-previously-unsolved.md",
+    "title": "OpenAI announces its \"next major model\" Astra by dropping ten previously unsolved math solutions",
+    "description": "OpenAI is building a new model family called 'Astra' that would let multiple agents tackle complex problems together for hours or even days. CEO Sam Altman has already demoed Astra to policymakers in Washington. OpenAI h",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-08-01",
+    "updated": "2026-08-01",
+    "sources": [
+      [
+        "Source",
+        "https://the-decoder.com/openai-announces-its-next-major-model-astra-by-dropping-ten-previously-unsolved-math-solutions/"
+      ]
+    ],
+    "automated": true
   }
 ]
