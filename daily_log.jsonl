@@ -134,3 +134,5 @@
 {"type": "exam", "var": "toefl-writing-academic-discussion.json", "status": "ok", "output": "khj-tools/tkhj-tools/output/exams/toefl-writing-academic-discussion-2.md\n[OK] published into site manifest: /home/runner/work/tkhj-tools/tkhj-tools/site/content/toefl-writing-academic-discussion-2.md\n", "_time": "2026-08-01T14:26:32.773147"}
 {"type": "ai", "status": "ok", "output": "-by-dropping-ten-previously-unsolved.md\n  published: /home/runner/work/tkhj-tools/tkhj-tools/site/content/2026-08-01-openai-announces-its-next-major-model-astra-by-dropping-ten-previously-unsolved.md\n", "_time": "2026-08-01T14:27:00.523411"}
 {"type": "build", "status": "ok", "_time": "2026-08-01T14:27:00.712202"}
+{"type": "ai", "status": "ok", "output": "=== daily_ai_news.py — 2026-08-01 ===\n[ai] already published today, skipping\n", "_time": "2026-08-01T16:58:58.086684"}
+{"type": "build", "status": "ok", "_time": "2026-08-01T16:58:58.267429"}
