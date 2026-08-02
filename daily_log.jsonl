@@ -136,3 +136,7 @@
 {"type": "build", "status": "ok", "_time": "2026-08-01T14:27:00.712202"}
 {"type": "ai", "status": "ok", "output": "=== daily_ai_news.py — 2026-08-01 ===\n[ai] already published today, skipping\n", "_time": "2026-08-01T16:58:58.086684"}
 {"type": "build", "status": "ok", "_time": "2026-08-01T16:58:58.267429"}
+{"type": "exam", "var": "toefl-speaking-templates.json", "status": "fail", "error": "", "_time": "2026-08-02T11:16:30.010642"}
+{"type": "exam", "var": "toefl-speaking-independent-task.json", "status": "ok", "output": "rk/tkhj-tools/tkhj-tools/output/exams/toefl-speaking-independent-task-2.md\n[OK] published into site manifest: /home/runner/work/tkhj-tools/tkhj-tools/site/content/toefl-speaking-independent-task-2.md\n", "_time": "2026-08-02T11:16:59.640611"}
+{"type": "ai", "status": "ok", "output": "ough-color-blocks-to-full-3d-protot.md\n  published: /home/runner/work/tkhj-tools/tkhj-tools/site/content/2026-08-02-claude-opus-5-pushes-prompt-to-game-ai-from-rough-color-blocks-to-full-3d-protot.md\n", "_time": "2026-08-02T11:17:24.973627"}
+{"type": "build", "status": "ok", "_time": "2026-08-02T11:17:25.166028"}

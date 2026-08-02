@@ -1040,5 +1040,43 @@
       ]
     ],
     "automated": true
+  },
+  {
+    "slug": "toefl-speaking-independent-task-2",
+    "file": "toefl-speaking-independent-task-2.md",
+    "title": "toefl speaking task 1 independent",
+    "description": "TOEFL Speaking Task 1 asks you to express and defend an opinion on a familiar topic. You have 15 seconds to prepare and 45 seconds to speak. The single decision that determines your score is not which opinion you…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-08-02",
+    "updated": "2026-08-02",
+    "sources": [
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "Source",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automated": true
+  },
+  {
+    "slug": "2026-08-02-claude-opus-5-pushes-prompt-to-game-ai-from-rough-color-blocks-to-full-3d-protot",
+    "file": "2026-08-02-claude-opus-5-pushes-prompt-to-game-ai-from-rough-color-blocks-to-full-3d-protot.md",
+    "title": "Claude Opus 5 pushes prompt-to-game AI from rough color blocks to full 3D prototypes with physics and music",
+    "description": "Anthropic's Claude Opus 5 generates complete 3D games from single prompts, including a first-person shooter, a kart racer, and a Minecraft clone, all without a single external asset. Geometry, textures, physics, and in s",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-08-02",
+    "updated": "2026-08-02",
+    "sources": [
+      [
+        "Source",
+        "https://the-decoder.com/claude-opus-5-pushes-prompt-to-game-ai-from-rough-color-blocks-to-full-3d-prototypes-with-physics-and-music/"
+      ]
+    ],
+    "automated": true
   }
 ]
