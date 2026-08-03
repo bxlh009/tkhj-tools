@@ -18,6 +18,15 @@ class ControlledAutomationTests(unittest.TestCase):
         self.assertRegex(workflow, r"git add[^\n]*site/content")
         self.assertIn("concurrency:", workflow)
 
+    def test_generation_and_translation_each_receive_the_api_secret(self):
+        workflow = (ROOT / ".github" / "workflows" / "daily.yml").read_text("utf-8")
+        secret_binding = "AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}"
+        self.assertEqual(
+            workflow.count(secret_binding),
+            2,
+            "generation and translation must each receive the API secret",
+        )
+
     def test_backfill_remains_manual_and_cannot_publish(self):
         workflow = (ROOT / ".github" / "workflows" / "backfill.yml").read_text("utf-8")
         backfill = (ROOT / "scripts" / "backfill_timeline.py").read_text("utf-8")

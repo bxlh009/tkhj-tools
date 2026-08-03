@@ -52,6 +52,8 @@ jobs:
         run: python scripts/daily_generate.py --track "$CONTENT_TRACK" --auto-publish
 
       - name: Translate newly accepted guides
+        env:
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
         run: python scripts/translate_article.py --all
 
       - name: Build public site
