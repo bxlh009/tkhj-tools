@@ -144,3 +144,4 @@
 {"type": "build", "status": "ok", "_time": "2026-08-02T14:28:20.209183"}
 {"type": "ai", "status": "ok", "output": "=== daily_ai_news.py — 2026-08-02 ===\n[ai] already published today, skipping\n", "_time": "2026-08-02T16:57:43.087148"}
 {"type": "build", "status": "ok", "_time": "2026-08-02T16:57:43.280121"}
+{"type": "exam", "var": "toefl-reading-evidence-pairs.json", "status": "ok", "output": "j-tools/tkhj-tools/output/exams/toefl-reading-evidence-pairs.md\n[OK] automatically published into curated pathway: /home/runner/work/tkhj-tools/tkhj-tools/site/content/toefl-reading-evidence-pairs.md\n", "_time": "2026-08-03T14:54:15.975198"}

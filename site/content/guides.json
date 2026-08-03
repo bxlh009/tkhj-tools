@@ -1078,5 +1078,44 @@
       ]
     ],
     "automated": true
+  },
+  {
+    "slug": "toefl-reading-evidence-pairs",
+    "file": "toefl-reading-evidence-pairs.md",
+    "title": "Use Evidence Pairs to Check TOEFL Reading Answers",
+    "description": "When you sit for the TOEFL Reading section, each question presents a single, recurring decision: which answer choice is directly supported by the passage text? The test does not reward outside knowledge, personal…",
+    "category": "TOEFL",
+    "track": "learning",
+    "published": "2026-08-03",
+    "updated": "2026-08-03",
+    "sources": [
+      [
+        "ets.org",
+        "https://www.ets.org/toefl/test-takers/ibt/about/content.html"
+      ],
+      [
+        "ets.org",
+        "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+      ]
+    ],
+    "automation_assisted": true,
+    "editorial_status": "automatic_policy",
+    "publication_mode": "automatic_policy",
+    "pathway_id": "learning-read",
+    "quality_policy_version": 1,
+    "quality_metrics": {
+      "domain": "learning",
+      "word_count": 1966,
+      "headings": 11,
+      "paragraphs": 60,
+      "source_count": 2,
+      "repeated_paragraphs": 0,
+      "max_similarity": 0.0,
+      "similar_article": null
+    },
+    "quality_fingerprint": "98bce4bbe5b58c97ac71857cbc9d70d8960dc3527f0c40bd44b6bbb7845b34cd",
+    "primary_source_domains": [
+      "ets.org"
+    ]
   }
 ]
