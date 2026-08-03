@@ -1,14 +1,14 @@
-name: Backfill Content Timeline
+name: Backfill Editorial Drafts
 
 on:
   workflow_dispatch:
     inputs:
       start_date:
-        description: First publication date (YYYY-MM-DD)
+        description: First candidate date (YYYY-MM-DD)
         required: true
         default: "2026-07-06"
       end_date:
-        description: Last publication date (YYYY-MM-DD)
+        description: Last candidate date (YYYY-MM-DD)
         required: true
         default: "2026-07-24"
 
@@ -31,7 +31,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Generate and publish missing dates with Agnes
+      - name: Generate missing editorial candidates with Agnes
         env:
           AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
         run: >-
@@ -39,25 +39,17 @@ jobs:
           --start "${{ inputs.start_date }}"
           --end "${{ inputs.end_date }}"
 
-      - name: Translate missing guides and rebuild
-        env:
-          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
-        run: |
-          python scripts/translate_article.py --all
-          python site/build.py
-
-      - name: Verify generated site
+      - name: Verify draft gates
         run: |
           python scripts/run_all_tests.py
           python scripts/test_content_quality.py
-          python scripts/test_translation.py
-          python scripts/test_canonical_urls.py
-          python scripts/audit_adsense_readiness.py
+          python scripts/test_draft_only_automation.py
+          python scripts/test_curation.py
 
-      - name: Commit and push timeline
+      - name: Commit draft queue
         run: |
           git config user.name "TKHJ Bot"
           git config user.email "bot@tkhjtools.top"
-          git add output/ site/content/
-          git diff --staged --quiet || git commit -m "Backfill content timeline ${{ inputs.start_date }} to ${{ inputs.end_date }}"
+          git add output/
+          git diff --staged --quiet || git commit -m "Backfill editorial drafts ${{ inputs.start_date }} to ${{ inputs.end_date }}"
           git push

@@ -139,20 +139,22 @@ def build_article(
     domain = "learning" if article_type == "exam" else "ai"
     publish_date = publish_date or datetime.now().strftime("%Y-%m-%d")
     word_count = len(re.findall(r"[A-Za-zÀ-ž\u4e00-\u9fff]+", body))
-    frontmatter = "\n".join(
-        [
-            "---",
-            f"title: {json.dumps(title, ensure_ascii=False)}",
-            f"slug: {json.dumps(slug, ensure_ascii=False)}",
-            f'date: "{publish_date}"',
-            f'domain: "{domain}"',
-            f"category: {json.dumps(str(values.get('exam_name', 'AI')), ensure_ascii=False)}",
-            f"primary_keyword: {json.dumps(str(values.get('primary_keyword', '')), ensure_ascii=False)}",
-            f"word_count: {word_count}",
-            "---",
-            "",
-        ]
-    )
+    frontmatter_lines = [
+        "---",
+        f"title: {json.dumps(title, ensure_ascii=False)}",
+        f"slug: {json.dumps(slug, ensure_ascii=False)}",
+        f'date: "{publish_date}"',
+        f'domain: "{domain}"',
+        f"category: {json.dumps(str(values.get('exam_name', 'AI')), ensure_ascii=False)}",
+        f"primary_keyword: {json.dumps(str(values.get('primary_keyword', '')), ensure_ascii=False)}",
+    ]
+    pathway_id = str(values.get("pathway_id", "")).strip()
+    if pathway_id:
+        frontmatter_lines.append(
+            f"pathway_id: {json.dumps(pathway_id, ensure_ascii=False)}"
+        )
+    frontmatter_lines.extend([f"word_count: {word_count}", "---", ""])
+    frontmatter = "\n".join(frontmatter_lines)
     return frontmatter + body
 
 
@@ -169,14 +171,43 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--type", required=True, choices=["exam", "ai"])
     parser.add_argument("--vars", required=True)
+    parser.add_argument(
+        "--pathway",
+        help="Override the variable file with a verified reader pathway.",
+    )
     parser.add_argument("--publish", action="store_true")
     parser.add_argument(
+        "--auto-publish",
+        action="store_true",
+        help="Publish only through the automatic pathway and primary-source policy.",
+    )
+    parser.add_argument(
+        "--editorial-approval",
+        action="store_true",
+        help="Required with --publish after a human editorial review.",
+    )
+    parser.add_argument(
         "--date",
-        help="Publication date in YYYY-MM-DD format (used by timeline backfills)",
+        help="Candidate date in YYYY-MM-DD format (used by draft backfills)",
     )
     args = parser.parse_args()
 
+    if args.publish and args.auto_publish:
+        print("[ERROR] choose either --publish or --auto-publish")
+        return 2
+    if args.publish and not args.editorial_approval:
+        print("[ERROR] --publish requires --editorial-approval")
+        return 2
+    if args.editorial_approval and not args.publish:
+        print("[ERROR] --editorial-approval is only valid with --publish")
+        return 2
+
     values = json.loads(pathlib.Path(args.vars).read_text("utf-8"))
+    if args.pathway:
+        values["pathway_id"] = args.pathway
+    if args.auto_publish and not str(values.get("pathway_id", "")).strip():
+        print("[ERROR] --auto-publish requires pathway_id in the variable file")
+        return 2
     publish_date = args.date or datetime.now().strftime("%Y-%m-%d")
     try:
         datetime.strptime(publish_date, "%Y-%m-%d")
@@ -242,8 +273,11 @@ def main() -> int:
     output.write_text(article, encoding="utf-8")
     print(f"[OK] eligible draft written: {output}")
     if args.publish:
-        destination = publish(output)
+        destination = publish(output, editorial_approval=True)
         print(f"[OK] published into site manifest: {destination}")
+    elif args.auto_publish:
+        destination = publish(output, automatic_policy_approval=True)
+        print(f"[OK] automatically published into curated pathway: {destination}")
     return 0
 
 

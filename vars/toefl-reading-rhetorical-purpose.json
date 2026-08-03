@@ -1,0 +1,8 @@
+{
+  "type": "exam", "exam_name": "TOEFL", "section_name": "Reading",
+  "min_words": 1800, "max_words": 2500,
+  "title": "Answer TOEFL Rhetorical Purpose Questions by Naming the Paragraph Job",
+  "primary_keyword": "TOEFL rhetorical purpose questions",
+  "long_tail_keywords": ["why does the author mention TOEFL", "paragraph purpose reading"],
+  "slug": "toefl-reading-rhetorical-purpose", "language": "English"
+}

@@ -9,6 +9,7 @@ ad code before approval.
 from __future__ import annotations
 
 import itertools
+import json
 import pathlib
 import re
 import sys
@@ -18,6 +19,8 @@ from urllib.parse import urlsplit
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "site" / "_site"
 ARTICLE_DIR = SITE / "guides"
+ZH_ARTICLE_DIR = SITE / "zh" / "guides"
+CONTENT = ROOT / "site" / "content"
 
 
 def text_from_html(html: str) -> str:
@@ -70,7 +73,26 @@ def main() -> int:
         if ARTICLE_DIR.exists()
         else []
     )
-    require(8 <= len(articles) <= 60, f"expected 8-60 gated guides, found {len(articles)}")
+    catalog = json.loads((CONTENT / "guides.json").read_text("utf-8"))
+    curation = json.loads((CONTENT / "curation.json").read_text("utf-8"))
+    expected_slugs = {
+        slug
+        for pathway in curation["pathways"]
+        for slug in pathway["slugs"]
+    }
+    excluded_slugs = set(curation["excluded"])
+    catalog_slugs = {item["slug"] for item in catalog}
+    actual_slugs = {article.stem for article in articles}
+    zh_articles = sorted(
+        path for path in ZH_ARTICLE_DIR.glob("*.html") if path.name != "index.html"
+    )
+    zh_slugs = {article.stem for article in zh_articles}
+
+    require(len(expected_slugs) >= 39, f"expected at least 39 editorially selected guides, found {len(expected_slugs)}")
+    require(expected_slugs | excluded_slugs == catalog_slugs, "catalog has unclassified guide slugs")
+    require(not (expected_slugs & excluded_slugs), "selected and excluded guide sets overlap")
+    require(actual_slugs == expected_slugs, "English build does not exactly match the curated guide set")
+    require(zh_slugs == expected_slugs, "Chinese build does not exactly match the curated guide set")
 
     all_html = "\n".join(path.read_text("utf-8") for path in html_files)
     require('<ins class="adsbygoogle"' not in all_html, "manual ad units are present before approval")
@@ -80,6 +102,29 @@ def main() -> int:
     require((SITE / "ai" / "index.html").exists(), "AI track index is missing")
     require("Learning × AI" in all_html, "dual-domain positioning is missing")
     require("300+ students" not in all_html, "unverified teaching-volume claim is still published")
+
+    sitemap_text = (SITE / "sitemap.xml").read_text("utf-8")
+    require("https://tkhjtools.top/search</loc>" not in sitemap_text, "thin search page is in sitemap")
+    require("https://tkhjtools.top/zh/search</loc>" not in sitemap_text, "thin Chinese search page is in sitemap")
+    require(
+        '<meta name="robots" content="noindex,follow">'
+        in (SITE / "search.html").read_text("utf-8"),
+        "search page is indexable",
+    )
+    require(
+        '<meta name="robots" content="noindex,follow">'
+        in (SITE / "zh" / "search.html").read_text("utf-8"),
+        "Chinese search page is indexable",
+    )
+    search_rows = json.loads((SITE / "search_index.json").read_text("utf-8"))
+    search_slugs = {row["url"].rsplit("/", 1)[-1] for row in search_rows}
+    require(search_slugs == expected_slugs, "search index does not exactly match the curated set")
+    redirects = (SITE / "_redirects").read_text("utf-8")
+    for source, target in curation["redirects"].items():
+        require(
+            f"/guides/{source} /guides/{target} 301" in redirects,
+            f"missing canonical redirect for {source}",
+        )
 
     suspicious_claims = (
         "i've watched hundreds",
@@ -96,10 +141,12 @@ def main() -> int:
         lower = html.lower()
         article_text[article] = text_from_html(html)
         require('<article class="article-body">' in html, f"{article.name}: missing article landmark")
+        require(len(re.findall(r"<h1\b", html, flags=re.I)) == 1, f"{article.name}: must have one H1")
         require('class="byline"' in html, f"{article.name}: missing visible byline")
         require("/about#editorial-team" in html, f"{article.name}: byline does not link to editorial details")
         require('class="editorial-note"' in html, f"{article.name}: missing creation/review disclosure")
         require('class="source-notes"' in html, f"{article.name}: missing source notes")
+        require(html.count('class="source-notes"') == 1, f"{article.name}: duplicate source notes")
         require(len(re.findall(r"<h2\b", html, flags=re.I)) >= 3, f"{article.name}: fewer than three H2 sections")
         require(bool(re.search(r"<(?:ol|ul)\b", html, flags=re.I)), f"{article.name}: no semantic list")
         require('<link rel="canonical"' in html, f"{article.name}: missing canonical URL")
@@ -116,6 +163,10 @@ def main() -> int:
     for source in html_files:
         html = source.read_text("utf-8")
         require('class="skip-link"' in html, f"{source.relative_to(SITE)}: missing skip link")
+        ids = re.findall(r'\bid="([^"]+)"', html, flags=re.I)
+        require(len(ids) == len(set(ids)), f"{source.relative_to(SITE)}: duplicate HTML ids")
+        require("<p>---</p>" not in html, f"{source.relative_to(SITE)}: raw horizontal rule")
+        require("```" not in html, f"{source.relative_to(SITE)}: raw code fence")
         for href in re.findall(r'href="([^"]+)"', html, flags=re.I):
             target = local_target(source, href)
             if target is not None:

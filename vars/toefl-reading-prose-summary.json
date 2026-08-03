@@ -1,0 +1,8 @@
+{
+  "type": "exam", "exam_name": "TOEFL", "section_name": "Reading",
+  "min_words": 1800, "max_words": 2500,
+  "title": "Build a TOEFL Prose Summary from Claims Instead of Details",
+  "primary_keyword": "TOEFL prose summary questions",
+  "long_tail_keywords": ["TOEFL reading summary strategy", "main claim versus detail"],
+  "slug": "toefl-reading-prose-summary", "language": "English"
+}

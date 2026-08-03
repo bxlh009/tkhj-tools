@@ -1,0 +1,8 @@
+{
+  "type": "exam", "exam_name": "TOEFL", "section_name": "Reading",
+  "min_words": 1800, "max_words": 2500,
+  "title": "Use Evidence Pairs to Check TOEFL Reading Answers",
+  "primary_keyword": "TOEFL reading evidence check",
+  "long_tail_keywords": ["prove a TOEFL answer", "eliminate unsupported answer choices"],
+  "slug": "toefl-reading-evidence-pairs", "language": "English"
+}

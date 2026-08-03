@@ -1,4 +1,4 @@
-"""Backfill one Learning and one AI article per date through the normal gate."""
+"""Backfill eligible Learning and AI drafts without changing the public site."""
 
 from __future__ import annotations
 
@@ -6,6 +6,7 @@ import argparse
 import json
 import os
 import pathlib
+import re
 import subprocess
 import sys
 import tempfile
@@ -16,6 +17,8 @@ ENGINE_DIR = pathlib.Path(__file__).resolve().parent.parent
 SCRIPTS_DIR = ENGINE_DIR / "scripts"
 VARS_DIR = ENGINE_DIR / "vars"
 MANIFEST = ENGINE_DIR / "site" / "content" / "guides.json"
+OUTPUT_EXAMS = ENGINE_DIR / "output" / "exams"
+OUTPUT_AI = ENGINE_DIR / "output" / "ai"
 
 AI_TOPICS = [
     (
@@ -115,15 +118,23 @@ def dates_between(start: date, end: date) -> list[date]:
     return [start + timedelta(days=offset) for offset in range((end - start).days + 1)]
 
 
-def published_dates() -> dict[str, set[str]]:
+def existing_dates() -> dict[str, set[str]]:
     result = {"learning": set(), "ai": set()}
-    if not MANIFEST.exists():
-        return result
-    for item in json.loads(MANIFEST.read_text("utf-8")):
-        track = item.get("track", "learning")
-        published = item.get("published")
-        if track in result and published:
-            result[track].add(published)
+    if MANIFEST.exists():
+        for item in json.loads(MANIFEST.read_text("utf-8")):
+            track = item.get("track", "learning")
+            published = item.get("published")
+            if track in result and published:
+                result[track].add(published)
+    for track, directory in (("learning", OUTPUT_EXAMS), ("ai", OUTPUT_AI)):
+        for path in directory.glob("*.md"):
+            match = re.search(
+                r'^date:\s*["\']?(\d{4}-\d{2}-\d{2})',
+                path.read_text("utf-8"),
+                flags=re.MULTILINE,
+            )
+            if match:
+                result[track].add(match.group(1))
     return result
 
 
@@ -158,7 +169,6 @@ def run_generator(article_type: str, variables: pathlib.Path, publish_date: str)
         str(variables),
         "--date",
         publish_date,
-        "--publish",
     ]
     result = subprocess.run(command, cwd=ENGINE_DIR)
     return result.returncode == 0
@@ -210,7 +220,7 @@ def main() -> int:
         return 2
 
     calendar = dates_between(start, end)
-    existing = published_dates()
+    existing = existing_dates()
     missing_learning = [day for day in calendar if day.isoformat() not in existing["learning"]]
     missing_ai = [day for day in calendar if day.isoformat() not in existing["ai"]]
     print(
@@ -284,16 +294,7 @@ def main() -> int:
             print(f"  - {failure}")
         return 1
 
-    build = subprocess.run([sys.executable, str(ENGINE_DIR / "site" / "build.py")], cwd=ENGINE_DIR)
-    if build.returncode != 0:
-        return build.returncode
-    audit = subprocess.run(
-        [sys.executable, str(SCRIPTS_DIR / "audit_adsense_readiness.py")],
-        cwd=ENGINE_DIR,
-    )
-    if audit.returncode != 0:
-        return audit.returncode
-    print("\n[OK] timeline backfill complete")
+    print("\n[OK] timeline candidate drafts complete; public curation is a separate step")
     return 0
 
 

@@ -1,7 +1,7 @@
 """Build the curated TKHJ Tools site.
 
-Bulk drafts in ``output/`` are intentionally excluded. Only guides explicitly
-listed in ``site/content/guides.json`` can become public pages.
+Bulk drafts in ``output/`` are intentionally excluded. A catalog entry becomes
+public only when ``site/content/curation.json`` assigns it to a reader pathway.
 """
 
 from __future__ import annotations
@@ -12,6 +12,7 @@ import pathlib
 import re
 import shutil
 from datetime import datetime
+from urllib.parse import urlsplit
 
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -19,6 +20,7 @@ OUT = HERE / "_site"
 STATIC = HERE / "static"
 CONTENT = HERE / "content"
 TRANSLATIONS = CONTENT / "zh"
+CURATION = CONTENT / "curation.json"
 DOMAIN = "tkhjtools.top"
 NAME = "TKHJ Tools"
 TAGLINE = "Evidence-first guides for learning better and using AI with judgment."
@@ -51,11 +53,46 @@ def inline(value: str) -> str:
     return re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", value)
 
 
+def strip_trailing_sources(markdown: str) -> str:
+    """Remove a final Markdown source appendix; the page renders manifest sources once."""
+    return re.sub(
+        r"\n##\s+(?:Sources|来源|参考资料|参考来源|资料来源)\s*\n.*$",
+        "",
+        markdown.rstrip(),
+        flags=re.IGNORECASE | re.DOTALL,
+    ).rstrip()
+
+
+def complete_description(description: str, markdown: str) -> str:
+    """Replace a mechanically truncated card summary with a complete body sentence."""
+    value = description.strip()
+    if value.endswith(("…", "...")):
+        for paragraph in re.split(r"\n\s*\n", markdown):
+            candidate = paragraph.strip()
+            if not candidate or candidate.startswith(("#", "|", "- ", "* ", ">", "```")):
+                continue
+            candidate = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", candidate)
+            candidate = re.sub(r"[*_`]", "", candidate)
+            candidate = re.sub(r"\s+", " ", candidate).strip()
+            if len(candidate.split()) < 12:
+                continue
+            sentences = re.findall(r".+?[.!?。！？](?=\s|$)", candidate)
+            if sentences:
+                value = sentences[0].strip()
+            else:
+                value = candidate[:200].rsplit(" ", 1)[0].rstrip(" ,;:") + "."
+            break
+    if value and not value.endswith((".", "!", "?", "。", "！", "？")):
+        value += "."
+    return value
+
+
 def markdown_to_html(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
     lines = markdown.replace("\r\n", "\n").split("\n")
     output: list[str] = []
     headings: list[tuple[int, str, str]] = []
     paragraph: list[str] = []
+    anchor_counts: dict[str, int] = {}
     index = 0
 
     def flush() -> None:
@@ -72,12 +109,42 @@ def markdown_to_html(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
             index += 1
             continue
 
+        if stripped.startswith("```"):
+            flush()
+            language = stripped[3:].strip()
+            index += 1
+            code_lines: list[str] = []
+            while index < len(lines) and not lines[index].strip().startswith("```"):
+                code_lines.append(lines[index])
+                index += 1
+            if index < len(lines):
+                index += 1
+            language_class = (
+                f' class="language-{esc(slugify(language))}"' if language else ""
+            )
+            output.append(
+                f"<pre><code{language_class}>{html.escape(chr(10).join(code_lines))}</code></pre>"
+            )
+            continue
+
+        if re.fullmatch(r"(?:-{3,}|_{3,}|\*{3,})", stripped):
+            flush()
+            output.append("<hr>")
+            index += 1
+            continue
+
         heading = re.match(r"^(#{2,3})\s+(.+)$", stripped)
         if heading:
             flush()
             level = len(heading.group(1))
             label = heading.group(2).strip()
-            anchor = slugify(label)
+            base_anchor = slugify(label)
+            anchor_counts[base_anchor] = anchor_counts.get(base_anchor, 0) + 1
+            anchor = (
+                base_anchor
+                if anchor_counts[base_anchor] == 1
+                else f"{base_anchor}-{anchor_counts[base_anchor]}"
+            )
             headings.append((level, label, anchor))
             output.append(f'<h{level} id="{anchor}">{inline(label)}</h{level}>')
             index += 1
@@ -133,19 +200,98 @@ def markdown_to_html(markdown: str) -> tuple[str, list[tuple[int, str, str]]]:
     return "\n".join(output), headings
 
 
+def select_curated_guides(manifest: list[dict], curation: dict) -> list[dict]:
+    """Return the explicit public set and reject unclassified catalog entries."""
+    catalog: dict[str, dict] = {}
+    for item in manifest:
+        slug = item["slug"]
+        if slug in catalog:
+            raise ValueError(f"Duplicate slug: {slug}")
+        catalog[slug] = item
+
+    selected: list[dict] = []
+    selected_slugs: set[str] = set()
+    overrides = curation.get("overrides", {})
+    for pathway_order, pathway in enumerate(curation.get("pathways", [])):
+        track = pathway["track"]
+        for guide_order, slug in enumerate(pathway.get("slugs", [])):
+            if slug not in catalog:
+                raise ValueError(f"Curated slug is missing from catalog: {slug}")
+            if slug in selected_slugs:
+                raise ValueError(f"Curated slug appears more than once: {slug}")
+            if catalog[slug].get("track", "learning") != track:
+                raise ValueError(f"Curated track mismatch for {slug}: expected {track}")
+            selected_slugs.add(slug)
+            item = dict(catalog[slug])
+            item.update(overrides.get(slug, {}))
+            item.update(
+                pathway_id=pathway["id"],
+                pathway_title=pathway["title"],
+                pathway_title_zh=pathway.get("title_zh", pathway["title"]),
+                pathway_description=pathway.get("description", ""),
+                pathway_description_zh=pathway.get(
+                    "description_zh", pathway.get("description", "")
+                ),
+                pathway_order=pathway_order,
+                guide_order=guide_order,
+            )
+            selected.append(item)
+
+    excluded = set(curation.get("excluded", {}))
+    unknown_exclusions = excluded - set(catalog)
+    if unknown_exclusions:
+        raise ValueError(
+            "Excluded slugs are missing from catalog: " + ", ".join(sorted(unknown_exclusions))
+        )
+    overlap = selected_slugs & excluded
+    if overlap:
+        raise ValueError("Slugs cannot be selected and excluded: " + ", ".join(sorted(overlap)))
+    unclassified = set(catalog) - selected_slugs - excluded
+    if unclassified:
+        raise ValueError(
+            "Catalog slugs need an editorial decision: " + ", ".join(sorted(unclassified))
+        )
+
+    normalized_titles: dict[str, str] = {}
+    for item in selected:
+        normalized = re.sub(r"\W+", " ", item["title"].casefold()).strip()
+        if normalized in normalized_titles:
+            raise ValueError(
+                f"Duplicate public title: {item['slug']} and {normalized_titles[normalized]}"
+            )
+        normalized_titles[normalized] = item["slug"]
+
+    featured = curation.get("featured", [])
+    if len(featured) != len(set(featured)):
+        raise ValueError("Featured slugs must be unique")
+    if unknown_featured := set(featured) - selected_slugs:
+        raise ValueError("Featured slugs are not public: " + ", ".join(sorted(unknown_featured)))
+    featured_order = {slug: order for order, slug in enumerate(featured)}
+    for item in selected:
+        item["featured"] = item["slug"] in featured_order
+        item["featured_order"] = featured_order.get(item["slug"])
+
+    redirects = curation.get("redirects", {})
+    for source, target in redirects.items():
+        if source not in excluded:
+            raise ValueError(f"Redirect source must be excluded: {source}")
+        if target not in selected_slugs:
+            raise ValueError(f"Redirect target must be public: {target}")
+    return selected
+
+
 def load_guides() -> list[dict]:
     manifest = json.loads((CONTENT / "guides.json").read_text("utf-8"))
+    curation = json.loads(CURATION.read_text("utf-8"))
+    manifest = select_curated_guides(manifest, curation)
     guides: list[dict] = []
-    seen: set[str] = set()
     for item in manifest:
-        if item["slug"] in seen:
-            raise ValueError(f"Duplicate slug: {item['slug']}")
-        seen.add(item["slug"])
         source = CONTENT / item["file"]
-        markdown = source.read_text("utf-8")
+        markdown = strip_trailing_sources(source.read_text("utf-8"))
         body_html, headings = markdown_to_html(markdown)
         guide = dict(item)
         guide.setdefault("track", "learning")
+        guide["description"] = complete_description(guide["description"], markdown)
         guide.update(
             body_html=body_html,
             headings=headings,
@@ -168,11 +314,11 @@ def load_guides() -> list[dict]:
                     metadata[key.strip()] = value.strip().strip("\"'")
             if metadata.get("source_slug") != item["slug"]:
                 raise ValueError(f"Chinese sidecar slug mismatch: {translation.name}")
-            zh_markdown = match.group(2).strip()
+            zh_markdown = strip_trailing_sources(match.group(2).strip())
             zh_body_html, zh_headings = markdown_to_html(zh_markdown)
             guide.update(
                 zh_title=metadata["title"],
-                zh_description=metadata["description"],
+                zh_description=complete_description(metadata["description"], zh_markdown),
                 zh_body_html=zh_body_html,
                 zh_headings=zh_headings,
                 zh_word_count=len(re.findall(r"[\w’'-]+", zh_markdown)),
@@ -182,13 +328,15 @@ def load_guides() -> list[dict]:
 
 
 def nav(active: str = "", language: str = "en") -> str:
-    prefix = "/zh" if language == "zh" else ""
-    items = [("Home", f"{prefix}/", "home", "nav-home"),
-             ("Learning", f"{prefix}/learning/", "learning", "nav-learning"),
+    chinese = language == "zh"
+    prefix = "/zh" if chinese else ""
+    search_path = f"{prefix}/search" if prefix else "/search"
+    items = [("首页" if chinese else "Home", f"{prefix}/", "home", "nav-home"),
+             ("学习" if chinese else "Learning", f"{prefix}/learning/", "learning", "nav-learning"),
              ("AI", f"{prefix}/ai/", "ai", "nav-ai"),
-             ("Library", f"{prefix}/guides/", "guides", "nav-library"),
-             ("About", f"{prefix}/about", "about", "nav-about"),
-             ("Contact", f"{prefix}/contact", "contact", "nav-contact")]
+             ("文章库" if chinese else "Library", f"{prefix}/guides/", "guides", "nav-library"),
+             ("关于" if chinese else "About", f"{prefix}/about", "about", "nav-about"),
+             ("联系" if chinese else "Contact", f"{prefix}/contact", "contact", "nav-contact")]
     links = "".join(
         f'<a href="{url}" data-i18n="{i18n}"'
         f'{" aria-current=\"page\"" if active == key else ""}>{label}</a>'
@@ -198,14 +346,14 @@ def nav(active: str = "", language: str = "en") -> str:
         '<header class="site-header"><div class="container nav-row">'
         f'<a class="brand" href="{prefix}/" aria-label="TKHJ Tools home">'
         '<img class="brand-logo" src="/static/logo.png" alt="" width="88" height="30"></a>'
-        f'<nav class="nav-links" aria-label="Primary navigation">{links}</nav>'
-        '<form class="nav-search" action="/search" method="get" role="search">'
-        '<label class="sr-only" for="site-search" data-i18n="search-label">Search guides</label>'
+        f'<nav class="nav-links" aria-label="{"主导航" if chinese else "Primary navigation"}">{links}</nav>'
+        f'<form class="nav-search" action="{search_path}" method="get" role="search">'
+        f'<label class="sr-only" for="site-search" data-i18n="search-label">{"搜索指南" if chinese else "Search guides"}</label>'
         '<input class="nav-search-input" id="site-search" name="q" type="search" data-search '
-        'placeholder="Search" data-i18n-placeholder="search-placeholder" autocomplete="off" '
+        f'placeholder="{"搜索" if chinese else "Search"}" data-i18n-placeholder="search-placeholder" autocomplete="off" '
         'required pattern=".*\\S.*"><span class="search-caret" aria-hidden="true"></span></form>'
-        '<button class="language-toggle" type="button" data-language-toggle '
-        'aria-label="切换到中文"><span data-language-label>中文</span></button>'
+        f'<button class="language-toggle" type="button" data-language-toggle aria-label="{"Switch to English" if chinese else "切换到中文"}">'
+        f'<span data-language-label>{"EN" if chinese else "中文"}</span></button>'
         '<button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">'
         '<svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>'
         '<svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/>'
@@ -215,27 +363,37 @@ def nav(active: str = "", language: str = "en") -> str:
 
 
 def footer(language: str = "en") -> str:
-    prefix = "/zh" if language == "zh" else ""
+    chinese = language == "zh"
+    prefix = "/zh" if chinese else ""
+    summary = (
+        "以可靠来源为基础的学习与 AI 指南，提供清晰推理、实用示例和明确边界。"
+        if chinese
+        else "Source-grounded Learning and AI guides with visible reasoning, practical examples, and explicit limits."
+    )
+    disclaimer = (
+        "独立编辑网站；不代表任何服务商认可或背书。"
+        if chinese
+        else "Independent editorial site; no provider endorsement is implied."
+    )
     return (
         '<footer class="site-footer"><div class="container footer-grid"><div><strong>TKHJ Tools</strong>'
-        '<p data-i18n="footer-summary">Source-grounded Learning and AI guides with visible reasoning, '
-        'practical examples, and explicit limits.</p></div><nav aria-label="Footer navigation">'
-        f'<a href="{prefix}/learning/" data-i18n="nav-learning">Learning</a>'
+        f'<p data-i18n="footer-summary">{summary}</p></div>'
+        f'<nav aria-label="{"页脚导航" if chinese else "Footer navigation"}">'
+        f'<a href="{prefix}/learning/" data-i18n="nav-learning">{"学习" if chinese else "Learning"}</a>'
         f'<a href="{prefix}/ai/" data-i18n="nav-ai">AI</a>'
-        f'<a href="{prefix}/guides/" data-i18n="nav-library">Library</a>'
-        f'<a href="{prefix}/about" data-i18n="footer-editorial">Editorial process</a>'
-        f'<a href="{prefix}/contact" data-i18n="footer-corrections">Corrections</a>'
-        f'<a href="{prefix}/disclaimer" data-i18n="footer-legal">Copyright &amp; disclaimer</a>'
-        '<a href="/privacy" data-i18n="footer-privacy">Privacy</a></nav></div>'
+        f'<a href="{prefix}/guides/" data-i18n="nav-library">{"文章库" if chinese else "Library"}</a>'
+        f'<a href="{prefix}/about" data-i18n="footer-editorial">{"编辑流程" if chinese else "Editorial process"}</a>'
+        f'<a href="{prefix}/contact" data-i18n="footer-corrections">{"内容更正" if chinese else "Corrections"}</a>'
+        f'<a href="{prefix}/disclaimer" data-i18n="footer-legal">{"版权与免责声明" if chinese else "Copyright &amp; disclaimer"}</a>'
+        f'<a href="{prefix}/privacy" data-i18n="footer-privacy">{"隐私" if chinese else "Privacy"}</a></nav></div>'
         f'<div class="container footer-base">&copy; {datetime.now().year} {DOMAIN}. '
-        '<span data-i18n="footer-disclaimer">Independent editorial site; no provider endorsement '
-        "is implied.</span></div></footer>"
+        f'<span data-i18n="footer-disclaimer">{disclaimer}</span></div></footer>'
     )
 
 
 def page(title: str, description: str, body: str, *, active: str = "", path: str = "/",
          page_type: str = "website", schema: dict | None = None, language: str = "en",
-         alternate_path: str = "") -> str:
+         alternate_path: str = "", index: bool = True) -> str:
     canonical = f"https://{DOMAIN}{path}"
     html_language = "zh-CN" if language == "zh" else "en"
     alternate = ""
@@ -249,10 +407,11 @@ def page(title: str, description: str, body: str, *, active: str = "", path: str
     if schema:
         safe_schema = json.dumps(schema, ensure_ascii=False).replace("</", "<\\/")
         structured = f'<script type="application/ld+json">{safe_schema}</script>'
+    robots = "" if index else '<meta name="robots" content="noindex,follow">'
     return (
         f'<!doctype html><html lang="{html_language}" data-theme="light" '
         f'data-page-language="{language}" data-language-url="{esc(alternate_path)}">'
-        '<head><meta charset="utf-8">'
+        f'<head><meta charset="utf-8">{robots}'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         f"<title>{esc(title)} | {NAME}</title>"
         f'<meta name="description" content="{esc(description[:160])}">'
@@ -303,8 +462,14 @@ def toc(guide: dict, language: str = "en") -> str:
 
 def sources(guide: dict, language: str = "en") -> str:
     chinese = language == "zh"
+    def display_label(label: str, url: str) -> str:
+        if label.strip().casefold() not in {"source", "来源"}:
+            return label
+        hostname = (urlsplit(url).hostname or "source").casefold()
+        return hostname.removeprefix("www.")
+
     links = "".join(
-        f'<li><a href="{esc(url)}">{esc("来源" if chinese else label)}</a> '
+        f'<li><a href="{esc(url)}">{esc(display_label(label, url))}</a> '
         f'<span>— {"核对日期" if chinese else "checked"} {esc(guide["updated"])}</span></li>'
         for label, url in guide["sources"]
     )
@@ -325,9 +490,30 @@ def sources(guide: dict, language: str = "en") -> str:
 def article_page(guide: dict, guides: list[dict], language: str = "en") -> str:
     chinese = language == "zh"
     eligible = [g for g in guides if not chinese or "zh_title" in g]
-    related = [g for g in eligible if g["slug"] != guide["slug"] and g["track"] == guide["track"]][:2]
-    if not related:
-        related = [g for g in eligible if g["slug"] != guide["slug"]][:2]
+    related = [
+        candidate
+        for candidate in eligible
+        if candidate["slug"] != guide["slug"]
+        and candidate.get("pathway_id") == guide.get("pathway_id")
+    ][:2]
+    if len(related) < 2:
+        related_slugs = {candidate["slug"] for candidate in related}
+        related.extend(
+            candidate
+            for candidate in eligible
+            if candidate["slug"] != guide["slug"]
+            and candidate["slug"] not in related_slugs
+            and candidate["track"] == guide["track"]
+        )
+        related = related[:2]
+    if len(related) < 2:
+        related_slugs = {candidate["slug"] for candidate in related}
+        related.extend(
+            candidate
+            for candidate in eligible
+            if candidate["slug"] != guide["slug"] and candidate["slug"] not in related_slugs
+        )
+        related = related[:2]
     related_html = "".join(guide_card(item, language) for item in related)
     prefix = "/zh" if chinese else ""
     track_path = f"{prefix}/ai/" if guide["track"] == "ai" else f"{prefix}/learning/"
@@ -338,19 +524,19 @@ def article_page(guide: dict, guides: list[dict], language: str = "en") -> str:
     )
     if chinese:
         note = (
-            "本指南由 AI 辅助准备，并对照所列来源进行核查；编辑还检查了无依据的测试主张、"
-            "虚构权威和对读者是否具有可执行价值。"
+            "本指南由 AI 辅助准备，以所列来源界定事实范围，并被归入一个明确的 AI 决策路径；"
+            "自动生成本身不会让草稿进入公开文章库。"
             if guide["track"] == "ai" else
-            "本指南由 AI 辅助准备，围绕一个明确的学习任务编辑，并对照官方来源核查；"
-            "编辑还检查了原创练习和推理说明。"
+            "本指南由 AI 辅助准备，围绕一个明确的学习任务组织，并被归入一个学习路径；"
+            "自动生成本身不会让草稿进入公开文章库。"
         )
     else:
         note = (
-            "Prepared with AI assistance, checked against the listed sources, and reviewed for "
-            "unsupported testing claims, invented authority, and actionable reader value."
+            "Prepared with AI assistance, bounded by the listed sources, and assigned to a specific "
+            "AI decision pathway. Automated generation alone cannot add a draft to the public library."
             if guide["track"] == "ai" else
-            "Prepared with AI assistance, edited around one learner task, checked against the "
-            "listed official sources, and reviewed for original practice and explained reasoning."
+            "Prepared with AI assistance, organized around one learner task, and assigned to a "
+            "learning pathway. Automated generation alone cannot add a draft to the public library."
         )
     title = guide["zh_title"] if chinese else guide["title"]
     description = guide["zh_description"] if chinese else guide["description"]
@@ -400,53 +586,113 @@ def article_page(guide: dict, guides: list[dict], language: str = "en") -> str:
 
 
 def home_page(guides: list[dict], language: str = "en") -> str:
-    prefix = "/zh" if language == "zh" else ""
+    chinese = language == "zh"
+    prefix = "/zh" if chinese else ""
     learning = [g for g in guides if g["track"] == "learning"]
     ai = [g for g in guides if g["track"] == "ai"]
-    learning_cards = "".join(guide_card(g, language) for g in reversed(learning[-3:]))
-    ai_cards = "".join(guide_card(g, language) for g in reversed(ai[-3:]))
+    learning_featured = sorted(
+        (guide for guide in learning if guide.get("featured")),
+        key=lambda guide: guide["featured_order"],
+    )
+    ai_featured = sorted(
+        (guide for guide in ai if guide.get("featured")),
+        key=lambda guide: guide["featured_order"],
+    )
+    learning_cards = "".join(guide_card(g, language) for g in learning_featured)
+    ai_cards = "".join(guide_card(g, language) for g in ai_featured)
+    copy = (
+        {
+            "title": "依据证据，做出更好的下一步。",
+            "lead": "帮助你更有效学习、更稳妥使用 AI。学习指南把错误转化为练习，AI 指南把文档转化为可检查的决策。",
+            "explore_learning": "探索学习",
+            "explore_ai": "探索 AI",
+            "editorial": "查看编辑流程",
+            "method_1": "找到证据",
+            "method_1_body": "找到控制判断的短语、规则或评分描述。",
+            "method_2": "区分事实主张与判断",
+            "method_2_body": "标明来源已经证明的内容，以及仍需核验的部分。",
+            "method_3": "先执行一个小步骤",
+            "method_3_body": "在扩大使用前，先做一道原创练习或运行一个可回退的小流程。",
+            "learning": "学习",
+            "learning_heading": "改善一个学习决策",
+            "learning_count": f"{len(learning)} 篇精选指南，包含原创练习和官方来源说明。",
+            "view_learning": "查看学习内容",
+            "ai_heading": "有判断地使用 AI",
+            "ai_count": f"{len(ai)} 篇循证指南，明确说明限制和具体下一步。",
+            "view_ai": "查看 AI 内容",
+            "trust_1": "两条清晰路径",
+            "trust_1_body": "学习与 AI 内容采用各自对应的证据和实用性检查。",
+            "trust_2": "来源可见",
+            "trust_2_body": "时效性和格式相关主张会链接到其事实依据。",
+            "trust_3": "编辑精选",
+            "trust_3_body": "自动化只生成草稿；只有明确选入的指南才会进入公开文章库。",
+        }
+        if chinese
+        else {
+            "title": "Use evidence. Make a better next move.",
+            "lead": f"{TAGLINE} Learning guides turn mistakes into practice; AI guides turn documentation into checkable decisions.",
+            "explore_learning": "Explore Learning",
+            "explore_ai": "Explore AI",
+            "editorial": "See the editorial process",
+            "method_1": "Find the evidence",
+            "method_1_body": "Locate the phrase, rule, or descriptor that controls the decision.",
+            "method_2": "Separate claim from judgment",
+            "method_2_body": "Mark what the source establishes and what still needs verification.",
+            "method_3": "Run a small next step",
+            "method_3_body": "Use an original practice item or reversible workflow before scaling up.",
+            "learning": "Learning",
+            "learning_heading": "Improve one study decision",
+            "learning_count": f"{len(learning)} selected guides with original practice and official source notes.",
+            "view_learning": "View Learning",
+            "ai_heading": "Use AI with judgment",
+            "ai_count": f"{len(ai)} source-grounded guides with explicit limits and concrete next steps.",
+            "view_ai": "View AI",
+            "trust_1": "Two clear tracks",
+            "trust_1_body": "Learning and AI have different evidence and usefulness checks.",
+            "trust_2": "Visible sources",
+            "trust_2_body": "Time-sensitive and format-dependent claims link to their factual anchors.",
+            "trust_3": "Editorial selection",
+            "trust_3_body": "Automation creates drafts; only explicitly selected guides enter the public library.",
+        }
+    )
     body = (
         '<section class="hero"><div class="container hero-grid"><div><span class="eyebrow">'
-        'Learning × AI</span><h1 data-i18n="home-title">Use evidence. Make a better next move.</h1>'
-        f'<p class="hero-lead" data-i18n="home-lead">{TAGLINE} Learning guides turn mistakes into practice; AI guides '
-        "turn announcements and documentation into decisions.</p><div class=\"hero-actions\">"
-        f'<a class="button primary" href="{prefix}/learning/" data-i18n="explore-learning">Explore Learning</a>'
-        f'<a class="button secondary" href="{prefix}/ai/" data-i18n="explore-ai">Explore AI</a>'
-        f'<a class="button secondary" href="{prefix}/about" data-i18n="see-editorial">See the editorial process</a></div></div>'
+        f'Learning × AI</span><h1 data-i18n="home-title">{copy["title"]}</h1>'
+        f'<p class="hero-lead" data-i18n="home-lead">{copy["lead"]}</p><div class="hero-actions">'
+        f'<a class="button primary" href="{prefix}/learning/" data-i18n="explore-learning">{copy["explore_learning"]}</a>'
+        f'<a class="button secondary" href="{prefix}/ai/" data-i18n="explore-ai">{copy["explore_ai"]}</a>'
+        f'<a class="button secondary" href="{prefix}/about" data-i18n="see-editorial">{copy["editorial"]}</a></div></div>'
         '<aside class="method-card"><span class="method-number">01</span>'
-        '<h2 data-i18n="method-evidence">Find the evidence</h2>'
-        "<p>Locate the phrase, rule, or descriptor that controls the decision.</p>"
-        '<span class="method-number">02</span><h2 data-i18n="method-judgment">Separate claim from judgment</h2>'
-        "<p>Mark what the source establishes and what still needs verification.</p>"
-        '<span class="method-number">03</span><h2 data-i18n="method-next-step">Run a small next step</h2>'
-        "<p>Use an original practice item or reversible workflow before scaling up.</p></aside></div></section>"
+        f'<h2 data-i18n="method-evidence">{copy["method_1"]}</h2><p>{copy["method_1_body"]}</p>'
+        f'<span class="method-number">02</span><h2 data-i18n="method-judgment">{copy["method_2"]}</h2>'
+        f'<p>{copy["method_2_body"]}</p><span class="method-number">03</span>'
+        f'<h2 data-i18n="method-next-step">{copy["method_3"]}</h2><p>{copy["method_3_body"]}</p>'
+        '</aside></div></section>'
         '<section class="section"><div class="container section-heading"><div><span class="eyebrow">'
-        f'Learning</span><h2 data-i18n="learning-heading">Improve one study decision</h2><p>{len(learning)} focused guides with '
-        f'original practice and official source notes.</p></div><a class="text-link" href="{prefix}/learning/">'
-        f'<span data-i18n="view-learning">View Learning</span></a></div>'
+        f'{copy["learning"]}</span><h2 data-i18n="learning-heading">{copy["learning_heading"]}</h2>'
+        f'<p>{copy["learning_count"]}</p></div><a class="text-link" href="{prefix}/learning/">'
+        f'<span data-i18n="view-learning">{copy["view_learning"]}</span></a></div>'
         f'<div class="container guide-grid">{learning_cards}</div></section>'
         '<section class="section"><div class="container section-heading"><div><span class="eyebrow">'
-        f'AI</span><h2 data-i18n="ai-heading">Use AI with judgment</h2><p>{len(ai)} source-grounded guides with explicit '
-        f'limits and concrete next steps.</p></div><a class="text-link" href="{prefix}/ai/">'
-        '<span data-i18n="view-ai">View AI</span></a></div>'
+        f'AI</span><h2 data-i18n="ai-heading">{copy["ai_heading"]}</h2><p>{copy["ai_count"]}</p>'
+        f'</div><a class="text-link" href="{prefix}/ai/"><span data-i18n="view-ai">{copy["view_ai"]}</span></a></div>'
         f'<div class="container guide-grid">{ai_cards}</div></section>'
         '<section class="trust-band"><div class="container trust-grid">'
-        "<div><strong>Two clear tracks</strong><p>Learning and AI have different evidence and "
-        "usefulness checks.</p></div><div><strong>Visible sources</strong><p>Time-sensitive and "
-        "format-dependent claims link to their factual anchors.</p></div><div><strong>Daily gate</strong>"
-        "<p>Automation can publish only after structure, source, originality, and honesty checks.</p>"
-        "</div></div></section>"
+        f'<div><strong>{copy["trust_1"]}</strong><p>{copy["trust_1_body"]}</p></div>'
+        f'<div><strong>{copy["trust_2"]}</strong><p>{copy["trust_2_body"]}</p></div>'
+        f'<div><strong>{copy["trust_3"]}</strong><p>{copy["trust_3_body"]}</p></div>'
+        '</div></section>'
     )
     path = f"{prefix}/"
-    title = "循证学习与 AI 指南" if language == "zh" else "Evidence-first Learning and AI guides"
+    title = "循证学习与 AI 指南" if chinese else "Evidence-first Learning and AI guides"
     description = (
         "帮助你更有效学习、更有判断地使用 AI 的循证指南。"
-        if language == "zh" else TAGLINE
+        if chinese else TAGLINE
     )
     schema = {"@context": "https://schema.org", "@type": "WebSite", "name": NAME,
               "url": f"https://{DOMAIN}{path}", "description": description,
-              "inLanguage": "zh-CN" if language == "zh" else "en"}
-    alternate = "/" if language == "zh" else "/zh/"
+              "inLanguage": "zh-CN" if chinese else "en"}
+    alternate = "/" if chinese else "/zh/"
     return page(title, description, body, active="home", path=path, schema=schema,
                 language=language, alternate_path=alternate)
 
@@ -497,12 +743,32 @@ def track_page(guides: list[dict], track: str, language: str = "en") -> str:
             if track == "ai" else
             "Exam methods and study systems with original practice and explained reasoning."
         )
-    cards = "".join(guide_card(guide, language) for guide in reversed(selected))
+    pathway_sections: list[str] = []
+    pathway_ids = list(dict.fromkeys(guide["pathway_id"] for guide in selected))
+    for pathway_number, pathway_id in enumerate(pathway_ids, start=1):
+        pathway_guides = [guide for guide in selected if guide["pathway_id"] == pathway_id]
+        first = pathway_guides[0]
+        pathway_title = (
+            first["pathway_title_zh"] if language == "zh" else first["pathway_title"]
+        )
+        pathway_description = (
+            first["pathway_description_zh"]
+            if language == "zh"
+            else first["pathway_description"]
+        )
+        pathway_label = f"路径 {pathway_number}" if language == "zh" else f"Pathway {pathway_number}"
+        cards = "".join(guide_card(guide, language) for guide in pathway_guides)
+        pathway_sections.append(
+            '<section class="section pathway-section"><div class="container section-heading">'
+            f'<div><span class="eyebrow">{pathway_label}</span><h2>{esc(pathway_title)}</h2>'
+            f"<p>{esc(pathway_description)}</p></div></div>"
+            f'<div class="container guide-grid">{cards}</div></section>'
+        )
     heading = f"{label}指南" if language == "zh" else f"{label} guides"
     body = (
         f'<section class="page-hero"><div class="container narrow"><span class="eyebrow">{label}</span>'
         f"<h1>{heading}</h1><p>{description}</p></div></section>"
-        f'<section class="section"><div class="container guide-grid">{cards}</div></section>'
+        + "".join(pathway_sections)
     )
     path = f"{prefix}/{track}/"
     alternate = f"/{track}/" if language == "zh" else f"/zh/{track}/"
@@ -515,16 +781,16 @@ def about_page(language: str = "en") -> str:
         body = (
             '<section class="page-hero"><div class="container narrow"><span class="eyebrow">关于</span>'
             "<h1>两个领域，同一套证据标准</h1><p>TKHJ Tools 发布学习与 AI 指南。我们可以使用自动化，"
-            "但不发布虚构经历、无来源主张或为凑数量而写的内容。</p></div></section>"
+            "自动流程只会在固定栏目时段评估一个候选；全部规则通过后才会加入公开文章库，否则自动跳过。</p></div></section>"
             '<section class="prose-page"><div class="container narrow"><h2>什么样的指南可以发布</h2>'
             "<p>每篇指南必须解决一个明确的读者任务，展示推理过程，提供原创示例或可复用流程，"
-            "为重要事实链接可靠来源，并通过对应领域的质量检查。</p>"
+            "为重要事实链接可靠来源，通过对应领域的质量检查，并归入维护者预先批准的公开阅读路径。</p>"
             '<h2 id="editorial-team">编辑团队与署名</h2><p>文章统一署名为 TKHJ Tools 编辑团队。'
             "我们不会虚构教师身份，也不会声称无法核实的学生数量、提分效果、产品实测经历或专业资质。</p>"
-            "<h2>AI 的使用</h2><p>AI 可以协助列提纲、起草和翻译，每篇指南都会披露这种协助。发布前还要"
-            "聚焦真实问题、删除无依据的经验性说法、用官方页面核对时效性信息，并加入原创练习或具体决策框架。</p>"
-            "<h2>每日发布</h2><p>自动流程每天计划发布一篇学习文章和一篇 AI 文章。未通过检查的草稿会换题重写，"
-            "不会用短小占位内容替代。</p><h2>更正与更新</h2><p>每篇指南都显示更新日期和来源核对日期。"
+            "<h2>AI 的使用</h2><p>AI 可以协助列提纲、起草和翻译，每篇指南都会披露这种协助。自动发布还必须重新通过"
+            "结构、来源、重复度和虚构权威检查；AI 指南至少需要两个独立官方来源。</p>"
+            "<h2>草稿与编辑精选</h2><p>本站不设每日发布配额。自动流程每周最多评估两个栏目位；无合格主题就跳过。"
+            "未分类、质量失败或完整构建失败的稿件不会提交到公开文章库。</p><h2>更正与更新</h2><p>每篇指南都显示更新日期和来源核对日期。"
             '如果考试或产品规则发生变化，我们会更新或撤下相关指南。<a href="/zh/contact">提交更正</a>。</p>'
             "<h2>独立性</h2><p>TKHJ Tools 与 ETS、IELTS、British Council、IDP、"
             "Cambridge University Press &amp; Assessment 均无隶属或背书关系。"
@@ -537,22 +803,21 @@ def about_page(language: str = "en") -> str:
     body = (
         '<section class="page-hero"><div class="container narrow"><span class="eyebrow">About</span>'
         "<h1>Two tracks with one evidence standard</h1><p>TKHJ Tools publishes Learning and AI "
-        "guides. Automation is allowed, but invented experience, source-free claims, and quota "
-        "fillers are not.</p></div></section>"
+        "guides. A scheduled pipeline evaluates one candidate in a controlled slot and adds it to the "
+        "public library only when every publication and build check passes.</p></div></section>"
         '<section class="prose-page"><div class="container narrow"><h2>What makes a guide publishable</h2>'
         "<p>A guide must solve one identifiable reader task, show its reasoning, include an original "
         "example or reusable workflow, link important claims to sources, and pass the track-specific "
-        "quality gate before automated publication.</p>"
+        "quality gate and belong to a reader pathway pre-approved by a maintainer.</p>"
         '<h2 id="editorial-team">Editorial team and authorship</h2><p>Published pages are attributed '
         "to the TKHJ Tools Editorial Team. We do not use a fictional teacher identity or claim "
         "student counts, score improvements, hands-on product tests, or credentials readers cannot verify.</p>"
-        "<h2>Use of AI</h2><p>AI may assist with outlining and drafting. That assistance is stated on "
-        "every guide. Publication requires narrowing the page to a real learner decision, removing "
-        "unsupported experience claims, checking current format statements against official pages, "
-        "and adding original practice or a concrete AI decision framework.</p>"
-        "<h2>Daily publishing</h2><p>The automation targets one Learning and one AI article each day. "
-        "A failed draft is replaced with another sourced topic; it is never replaced with a short "
-        "placeholder.</p><h2>Corrections and freshness</h2><p>Every guide "
+        "<h2>Use of AI</h2><p>AI may assist with outlining, drafting, and translation. That assistance is "
+        "stated on every guide. Automatic publication re-runs structure, sourcing, repetition, and false-authority "
+        "checks; AI guides also require two independent official sources.</p>"
+        "<h2>Drafts and editorial selection</h2><p>There is no daily publication quota. The pipeline evaluates at "
+        "most two track slots per week and skips when no candidate qualifies. Unclassified, gate-failing, or "
+        "build-failing content is never committed to the public library.</p><h2>Corrections and freshness</h2><p>Every guide "
         "shows an updated date and a source-checked date. If a provider changes its format, we update "
         'or withdraw the affected guide. <a href="/contact">Report a correction</a>.</p>'
         "<h2>Independence</h2><p>TKHJ Tools is not affiliated with or endorsed by ETS, IELTS, the "
@@ -657,7 +922,25 @@ def disclaimer_page(language: str = "en") -> str:
                 body, path="/disclaimer", alternate_path="/zh/disclaimer")
 
 
-def privacy_page() -> str:
+def privacy_page(language: str = "en") -> str:
+    if language == "zh":
+        body = (
+            '<section class="page-hero"><div class="container narrow"><span class="eyebrow">隐私</span>'
+            "<h1>隐私政策</h1><p>最后更新：2026 年 8 月 3 日。</p></div></section>"
+            '<section class="prose-page"><div class="container narrow"><h2>收集的信息</h2>'
+            "<p>本站没有用户账户或联系表单。标准托管日志可能为了安全和可靠性记录 IP 地址、"
+            "浏览器信息、请求网址和时间戳。</p><h2>分析</h2><p>本站使用 Google Analytics "
+            "了解汇总访问情况。Google 可能根据其隐私条款使用 Cookie，并处理设备或使用数据。</p>"
+            "<h2>广告验证</h2><p>本站包含 Google AdSense 网站验证脚本。广告服务启用后，Google "
+            "可能使用 Cookie 或本地存储；当前审核版本不会在指南正文中插入手动广告单元。</p>"
+            "<h2>本地偏好</h2><p>配色和语言选择保存在浏览器本地存储中，不会发送给 TKHJ Tools。</p>"
+            "<h2>外部链接</h2><p>指南会链接官方服务商和 GitHub。离开本站后，适用相应网站的隐私做法。</p>"
+            '<h2>问题</h2><p>如有隐私或内容问题，请使用<a href="/zh/contact">联系与内容更正页面</a>。'
+            "</p></div></section>"
+        )
+        return page("隐私政策", "TKHJ Tools 关于分析、广告验证、日志和本地偏好的隐私说明。",
+                    body, path="/zh/privacy", language="zh", alternate_path="/privacy")
+
     body = (
         '<section class="page-hero"><div class="container narrow"><span class="eyebrow">Privacy</span>'
         "<h1>Privacy policy</h1><p>Last updated July 24, 2026.</p></div></section>"
@@ -675,26 +958,41 @@ def privacy_page() -> str:
         "corrections page</a> for privacy or content questions.</p></div></section>"
     )
     return page("Privacy policy", "Privacy information for analytics, advertising verification, and logs.",
-                body, path="/privacy")
+                body, path="/privacy", alternate_path="/zh/privacy")
 
 
-def search_page() -> str:
+def search_page(language: str = "en") -> str:
+    chinese = language == "zh"
+    prefix = "/zh" if chinese else ""
+    eyebrow = "指南搜索" if chinese else "Guide search"
+    heading = "搜索文章库" if chinese else "Search the library"
+    label = "搜索指南" if chinese else "Search guides"
+    placeholder = "搜索标题、主题或考试" if chinese else "Search titles, topics, or exams"
+    button = "搜索" if chinese else "Search"
     body = (
         '<section class="page-hero"><div class="container narrow">'
-        '<span class="eyebrow" data-i18n="search-eyebrow">Guide search</span>'
-        '<h1 data-i18n="search-title">Search the library</h1>'
-        '<form class="search-page-form" action="/search" method="get" role="search">'
-        '<label class="sr-only" for="search-page-input" data-i18n="search-label">Search guides</label>'
+        f'<span class="eyebrow" data-i18n="search-eyebrow">{eyebrow}</span>'
+        f'<h1 data-i18n="search-title">{heading}</h1>'
+        f'<form class="search-page-form" action="{prefix}/search" method="get" role="search">'
+        f'<label class="sr-only" for="search-page-input" data-i18n="search-label">{label}</label>'
         '<input id="search-page-input" name="q" type="search" data-search-page '
-        'placeholder="Search titles, topics, or exams" data-i18n-placeholder="search-page-placeholder" '
+        f'placeholder="{placeholder}" data-i18n-placeholder="search-page-placeholder" '
         'autocomplete="off"><button class="button primary" type="submit" '
-        'data-i18n="search-button">Search</button></form></div></section>'
+        f'data-i18n="search-button">{button}</button></form></div></section>'
         '<section class="section"><div class="container"><div id="results" '
         'class="search-results" aria-live="polite"></div></div></section>'
         '<script src="/static/search.js"></script>'
     )
-    return page("Search", "Search TKHJ Tools Learning and AI guides.", body, active="search",
-                path="/search")
+    title = "搜索" if chinese else "Search"
+    description = (
+        "搜索 TKHJ Tools 的学习与 AI 指南。"
+        if chinese
+        else "Search TKHJ Tools Learning and AI guides."
+    )
+    path = f"{prefix}/search"
+    alternate = "/search" if chinese else "/zh/search"
+    return page(title, description, body, active="search", path=path, index=False,
+                language=language, alternate_path=alternate)
 
 
 def search_index(guides: list[dict]) -> str:
@@ -725,9 +1023,9 @@ def write(path: str, content: str) -> None:
 def sitemap(guides: list[dict]) -> str:
     entries = [("/", None), ("/guides/", None), ("/learning/", None), ("/ai/", None), ("/about", None),
                ("/contact", None), ("/disclaimer", None), ("/privacy", None),
-               ("/search", None), ("/zh/", None), ("/zh/guides/", None), ("/zh/learning/", None),
+               ("/zh/", None), ("/zh/guides/", None), ("/zh/learning/", None),
                ("/zh/ai/", None), ("/zh/about", None), ("/zh/contact", None),
-               ("/zh/disclaimer", None)]
+               ("/zh/disclaimer", None), ("/zh/privacy", None)]
     entries += [(f"/guides/{g['slug']}", g["updated"]) for g in guides]
     entries += [
         (f"/zh/guides/{g['slug']}", g["updated"])
@@ -742,14 +1040,28 @@ def sitemap(guides: list[dict]) -> str:
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + rows + "</urlset>")
 
 
+def redirects_file(curation: dict) -> str:
+    rows: list[str] = []
+    for source, target in sorted(curation.get("redirects", {}).items()):
+        rows.append(f"/guides/{source} /guides/{target} 301")
+        rows.append(f"/zh/guides/{source} /zh/guides/{target} 301")
+    return "\n".join(rows) + ("\n" if rows else "")
+
+
 def main() -> None:
-    if OUT.exists():
-        shutil.rmtree(OUT)
-    (OUT / "static").mkdir(parents=True)
+    OUT.mkdir(parents=True, exist_ok=True)
+    # Keep the build root and directory skeleton stable on Windows. Removing the
+    # root can succeed while recreating it is denied by inherited ACLs.
+    for article_dir in (OUT / "guides", OUT / "zh" / "guides"):
+        if article_dir.exists():
+            for article in article_dir.glob("*.html"):
+                article.unlink()
+    (OUT / "static").mkdir(parents=True, exist_ok=True)
     for name in ("style.css", "nav.js", "search.js", "logo.png", "favicon.png"):
         shutil.copy2(STATIC / name, OUT / "static" / name)
     shutil.copy2(STATIC / "favicon.png", OUT / "favicon.png")
     guides = load_guides()
+    curation = json.loads(CURATION.read_text("utf-8"))
     write("index.html", home_page(guides))
     write("guides/index.html", guides_page(guides))
     write("learning/index.html", track_page(guides, "learning"))
@@ -771,9 +1083,12 @@ def main() -> None:
     write("zh/about.html", about_page("zh"))
     write("zh/contact.html", contact_page("zh"))
     write("zh/disclaimer.html", disclaimer_page("zh"))
+    write("zh/privacy.html", privacy_page("zh"))
+    write("zh/search.html", search_page("zh"))
     write("sitemap.xml", sitemap(guides))
     write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: https://{DOMAIN}/sitemap.xml\n")
     write("ads.txt", "google.com, pub-8913718352251239, DIRECT, f08c47fec0942fa0\n")
+    write("_redirects", redirects_file(curation))
     print(f"Built {len(guides)} curated guides; bulk drafts excluded.")
 
 

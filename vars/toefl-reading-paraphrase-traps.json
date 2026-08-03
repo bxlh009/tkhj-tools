@@ -1,0 +1,8 @@
+{
+  "type": "exam", "exam_name": "TOEFL", "section_name": "Reading",
+  "min_words": 1800, "max_words": 2500,
+  "title": "Detect Paraphrase Traps in TOEFL Reading Answer Choices",
+  "primary_keyword": "TOEFL reading paraphrase traps",
+  "long_tail_keywords": ["wrong answer choice patterns", "compare claim scope TOEFL"],
+  "slug": "toefl-reading-paraphrase-traps", "language": "English"
+}

@@ -1,0 +1,220 @@
+{
+  "updated": "2026-08-03",
+  "purpose": "Evidence-to-action guides for language learning decisions and reliable AI workflows.",
+  "featured": [
+    "english-exam-error-log",
+    "toefl-reading-2026-task-map",
+    "toefl-implied-meaning-evidence-method",
+    "ai-answer-verification-checklist",
+    "prompt-debugging-small-test-set",
+    "2026-07-22-set-a-risk-tier-for-ai-generated-content"
+  ],
+  "pathways": [
+    {
+      "id": "learning-diagnose",
+      "track": "learning",
+      "title": "Diagnose before you drill",
+      "title_zh": "先诊断，再练习",
+      "description": "Map the task, classify the error, and choose the next practice from evidence instead of repetition.",
+      "description_zh": "先定位任务和错误类型，再依据证据选择下一次练习，而不是机械重复。",
+      "slugs": [
+        "english-exam-error-log",
+        "toefl-reading-2026-task-map",
+        "toefl-reading-question-types-2"
+      ]
+    },
+    {
+      "id": "learning-read",
+      "track": "learning",
+      "title": "Read from evidence",
+      "title_zh": "用证据完成阅读判断",
+      "description": "Use textual clues for vocabulary, implication, factual, inference, and main-purpose decisions.",
+      "description_zh": "用文本线索处理词义、隐含意义、事实、推断和主旨判断。",
+      "slugs": [
+        "toefl-implied-meaning-evidence-method",
+        "toefl-vocabulary-in-context",
+        "ielts-true-false-not-given",
+        "toefl-primary-reading-guide-2",
+        "toefl-reading-fact-negative-fact",
+        "toefl-reading-inference-strategy-2",
+        "toefl-reading-main-idea-purpose-2"
+      ]
+    },
+    {
+      "id": "learning-listen",
+      "track": "learning",
+      "title": "Listen for structure",
+      "title_zh": "听结构，而不是逐字翻译",
+      "description": "Capture purpose, constraints, tone, and resolution without turning notes into a transcript.",
+      "description_zh": "抓住目的、限制、语气和解决方式，避免把笔记写成逐字稿。",
+      "slugs": [
+        "toefl-junior-listening-tips-2",
+        "toefl-listening-conversation-strategy",
+        "toefl-listening-note-taking"
+      ]
+    },
+    {
+      "id": "learning-produce",
+      "track": "learning",
+      "title": "Build an answer under constraints",
+      "title_zh": "在限制条件下组织答案",
+      "description": "Plan, adapt, deliver, and revise speaking or writing responses with reusable structures.",
+      "description_zh": "用可复用结构完成口语或写作的规划、调整、表达和检查。",
+      "slugs": [
+        "ielts-writing-task-2-revision-checklist",
+        "toefl-speaking-independent-task",
+        "toefl-writing-academic-discussion",
+        "toefl-speaking-templates-2"
+      ]
+    },
+    {
+      "id": "learning-plan",
+      "track": "learning",
+      "title": "Allocate limited test time",
+      "title_zh": "分配有限的考试时间",
+      "description": "Use checkpoints and recovery rules instead of rigid minute-by-minute schedules.",
+      "description_zh": "使用检查点和恢复规则，而不是僵硬的逐分钟计划。",
+      "slugs": [
+        "ielts-general-reading-time-plan",
+        "toefl-reading-time-management"
+      ]
+    },
+    {
+      "id": "ai-define",
+      "track": "ai",
+      "title": "Define the task and output",
+      "title_zh": "定义任务与输出",
+      "description": "Turn an ambiguous request into clear instructions, context boundaries, examples, and a checkable output contract.",
+      "description_zh": "把模糊需求转成清晰指令、上下文边界、示例和可检查的输出契约。",
+      "slugs": [
+        "2026-07-06-write-clear-instructions-for-a-repeatable-ai-task",
+        "2026-07-07-use-few-shot-examples-without-teaching-the-wrong-pattern",
+        "2026-07-08-break-a-complex-ai-request-into-verifiable-prompt-steps",
+        "2026-07-09-add-context-without-letting-an-ai-invent-missing-facts",
+        "2026-07-11-design-an-ai-output-contract-that-software-can-check"
+      ]
+    },
+    {
+      "id": "ai-evaluate",
+      "track": "ai",
+      "title": "Evaluate before you replace",
+      "title_zh": "先评估，再替换",
+      "description": "Use fixed cases, explicit checks, failure logs, and version history to compare prompt changes.",
+      "description_zh": "用固定用例、明确检查、失败日志和版本记录比较提示词变化。",
+      "slugs": [
+        "prompt-debugging-small-test-set",
+        "2026-07-10-build-a-five-case-test-set-for-an-ai-prompt",
+        "2026-07-20-compare-two-prompts-with-the-same-evaluation-cases",
+        "2026-07-12-keep-a-failure-log-for-an-ai-assisted-workflow",
+        "2026-07-21-version-an-ai-prompt-without-losing-its-test-history"
+      ]
+    },
+    {
+      "id": "ai-verify",
+      "track": "ai",
+      "title": "Verify before reuse",
+      "title_zh": "复用之前先核验",
+      "description": "Separate evidence, model output, reviewer judgment, and unresolved uncertainty before information enters later work.",
+      "description_zh": "在信息进入后续工作前，区分证据、模型输出、审核判断和未解决的不确定性。",
+      "slugs": [
+        "ai-answer-verification-checklist",
+        "2026-07-14-decide-when-an-ai-answer-needs-independent-verification",
+        "2026-07-17-review-ai-generated-research-notes-before-reuse",
+        "2026-07-18-design-a-safe-ai-summarization-workflow",
+        "2026-07-16-document-uncertainty-in-an-ai-assisted-decision"
+      ]
+    },
+    {
+      "id": "ai-control",
+      "track": "ai",
+      "title": "Control failure and rollback",
+      "title_zh": "控制失败并保留回退能力",
+      "description": "Match review, refusal, rollout, and rollback controls to the cost of an AI-assisted error.",
+      "description_zh": "根据 AI 辅助错误的代价配置审核、拒绝、试点和回退控制。",
+      "slugs": [
+        "2026-07-13-create-a-human-review-checkpoint-for-ai-content",
+        "2026-07-15-run-a-reversible-pilot-before-automating-work-with-ai",
+        "2026-07-19-choose-what-an-ai-workflow-should-refuse-to-do",
+        "2026-07-22-set-a-risk-tier-for-ai-generated-content",
+        "2026-07-23-create-a-rollback-plan-for-an-ai-automation"
+      ]
+    }
+  ],
+  "overrides": {
+    "toefl-listening-conversation-strategy": {
+      "title": "TOEFL Listening Conversations: Track Fact, Function, and Tone",
+      "description": "A three-layer note-taking method for separating explicit facts, speaker purpose, and pragmatic tone in TOEFL conversations."
+    },
+    "toefl-listening-note-taking": {
+      "title": "TOEFL Listening Note-Taking: Build a Three-Column Structural Map",
+      "description": "Capture main ideas, relationships, and evidence without attempting to transcribe an entire TOEFL lecture or conversation."
+    },
+    "toefl-primary-reading-guide-2": {
+      "title": "TOEFL Primary Reading: Use a Three-Step Context Loop",
+      "description": "A child-friendly context routine for choosing a likely meaning, checking it against the sentence, and revising when evidence disagrees."
+    },
+    "toefl-reading-fact-negative-fact": {
+      "title": "TOEFL Factual and Negative Factual Questions: Locate, Verify, Eliminate",
+      "description": "Separate factual from negative-factual tasks, retrieve the controlling sentence, and eliminate choices with explicit evidence."
+    },
+    "toefl-reading-inference-strategy-2": {
+      "title": "TOEFL Reading Inference Questions: Link Evidence Before You Deduce",
+      "description": "A repeatable evidence-link-deduce method for making the smallest inference supported by a TOEFL passage."
+    },
+    "toefl-reading-main-idea-purpose-2": {
+      "title": "TOEFL Main Idea and Purpose Questions: Use the H-F-E Framework",
+      "description": "Use hierarchy, function, and evidence to distinguish a passage's central claim from examples and paragraph-level purposes."
+    },
+    "toefl-reading-question-types-2": {
+      "title": "TOEFL Reading Question Types: Choose the Method Before the Answer",
+      "description": "Identify the question's evidence demand first, then apply the matching factual, vocabulary, inference, or purpose routine."
+    },
+    "toefl-reading-time-management": {
+      "title": "TOEFL Reading Time Management: Use Checkpoints and Recovery Rules",
+      "description": "A flexible timing protocol that switches between careful reading and targeted retrieval while preserving time to recover."
+    },
+    "toefl-speaking-independent-task": {
+      "title": "TOEFL Speaking Task 1: Build and Deliver a PREP-2 Response",
+      "description": "Choose a defensible position, prepare two reasons, and deliver a structured independent-speaking response under the time limit."
+    },
+    "toefl-writing-academic-discussion": {
+      "title": "TOEFL Academic Discussion Writing: Contribute Instead of Repeating",
+      "description": "A ten-minute protocol for choosing a stance, adding a distinct contribution, and connecting it to the ongoing discussion."
+    },
+    "toefl-speaking-templates-2": {
+      "title": "TOEFL Speaking Templates: Scaffold, Adapt, and Avoid Memorized Answers",
+      "description": "Use adaptable speaking scaffolds while preserving task-specific reasoning, natural delivery, and evidence."
+    }
+  },
+  "redirects": {
+    "toefl-junior-listening-tips-3": "toefl-junior-listening-tips-2",
+    "toefl-listening-conversation-strategy-2": "toefl-listening-conversation-strategy",
+    "toefl-primary-reading-guide-3": "toefl-primary-reading-guide-2",
+    "toefl-reading-fact-negative-fact-2": "toefl-reading-fact-negative-fact",
+    "toefl-speaking-templates-3": "toefl-speaking-templates-2",
+    "toefl-reading-vocabulary-context-clues-2": "toefl-vocabulary-in-context",
+    "toefl-writing-academic-discussion-2": "toefl-writing-academic-discussion",
+    "toefl-speaking-independent-task-2": "toefl-speaking-independent-task",
+    "toefl-reading-26-in-30-days": "toefl-reading-2026-task-map"
+  },
+  "excluded": {
+    "toefl-junior-listening-tips-3": "Duplicate search intent",
+    "toefl-listening-conversation-strategy-2": "Duplicate search intent",
+    "toefl-primary-reading-guide-3": "Duplicate search intent",
+    "toefl-reading-fact-negative-fact-2": "Duplicate search intent",
+    "toefl-speaking-templates-3": "Duplicate search intent",
+    "toefl-reading-vocabulary-context-clues-2": "Duplicate search intent",
+    "toefl-writing-academic-discussion-2": "Duplicate search intent",
+    "toefl-speaking-independent-task-2": "Duplicate search intent",
+    "toefl-reading-26-in-30-days": "Outcome-led title and overlapping study-plan intent",
+    "2026-07-25-anthropics-claude-opus-5-costs-well-below-fable-5-while-matching-or-beating-it-a": "Time-sensitive recap based on a single secondary source",
+    "2026-07-26-anthropics-opus-5-blows-past-fable-5-and-gpt-56-sol-on-the-benchmark-designed-to": "Time-sensitive recap based on a single secondary source",
+    "2026-07-27-metr-introduces-a-new-metric-to-calculate-exactly-when-ai-agents-become-more-exp": "Time-sensitive recap outside the durable workflow scope",
+    "2026-07-28-microsoft-ai-releases-mai-cyber-1-flash-a-5b-active-parameter-cyber-model-that-p": "Time-sensitive recap based on a single secondary source",
+    "2026-07-29-openai-open-sources-codex-security-cli-to-help-developers-find-and-fix-vulnerabi": "Time-sensitive recap based on a single secondary source",
+    "2026-07-30-google-deepmind-ships-three-physical-ai-models-for-whole-body-control-dexterity": "Time-sensitive recap based on a single secondary source",
+    "2026-07-31-anthropic-follows-openai-in-admitting-its-claude-models-reached-out-of-test-envi": "Time-sensitive recap based on a single secondary source",
+    "2026-08-01-openai-announces-its-next-major-model-astra-by-dropping-ten-previously-unsolved": "Time-sensitive recap based on a single secondary source",
+    "2026-08-02-claude-opus-5-pushes-prompt-to-game-ai-from-rough-color-blocks-to-full-3d-protot": "Time-sensitive recap based on a single secondary source"
+  }
+}

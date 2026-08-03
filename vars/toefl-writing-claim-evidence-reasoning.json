@@ -1,0 +1,8 @@
+{
+  "type": "exam", "exam_name": "TOEFL", "section_name": "Writing",
+  "min_words": 1800, "max_words": 2500,
+  "title": "Build Claim-Evidence-Reasoning Units for TOEFL Academic Discussion",
+  "primary_keyword": "TOEFL claim evidence reasoning",
+  "long_tail_keywords": ["academic discussion paragraph", "explain evidence in TOEFL writing"],
+  "slug": "toefl-writing-claim-evidence-reasoning", "language": "English"
+}

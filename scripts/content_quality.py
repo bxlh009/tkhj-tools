@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import re
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
+from urllib.parse import urlsplit
 
 
 FALSE_AUTHORITY_PATTERNS = {
@@ -98,8 +100,19 @@ def evaluate_article(
 
     words = _word_count(body)
     headings = len(re.findall(r"^##\s+\S", body, flags=re.MULTILINE))
+    source_sections = len(re.findall(r"^##\s+Sources\s*$", body, flags=re.MULTILINE | re.IGNORECASE))
     paragraphs = len([p for p in re.split(r"\n\s*\n", body) if len(p.split()) >= 8])
     urls = sorted(set(re.findall(r"https?://[^\s)\]>]+", text)))
+    normalized_paragraphs = [
+        re.sub(r"\s+", " ", re.sub(r"[#>*_`]", "", paragraph)).strip().casefold()
+        for paragraph in re.split(r"\n\s*\n", body)
+        if len(paragraph.split()) >= 12
+    ]
+    repeated_paragraphs = [
+        paragraph
+        for paragraph, count in Counter(normalized_paragraphs).items()
+        if paragraph and count >= 3
+    ]
 
     if words < min_words:
         errors.append(f"too short: {words} words, minimum {min_words}")
@@ -107,10 +120,24 @@ def evaluate_article(
         errors.append(f"too long: {words} words, maximum {max_words}")
     if headings < 3:
         errors.append(f"insufficient structure: {headings} section headings")
+    if re.search(r"^#\s+\S", body, flags=re.MULTILINE):
+        errors.append("body must not contain an H1 heading")
+    if source_sections != 1:
+        errors.append("article must contain exactly one Sources section")
     if paragraphs < 6:
         errors.append(f"too few substantive paragraphs: {paragraphs}")
+    if repeated_paragraphs:
+        errors.append("repeated paragraph filler")
     if not source_urls:
         errors.append("no supplied source URL")
+    invalid_source_hosts = {"example.com", "example.org", "example.net", "localhost", "127.0.0.1"}
+    if any(
+        urlsplit(url).scheme != "https"
+        or not urlsplit(url).hostname
+        or urlsplit(url).hostname.casefold() in invalid_source_hosts
+        for url in source_urls
+    ):
+        errors.append("sources must be HTTPS links to real publishers")
     missing_sources = [url for url in source_urls if url not in urls]
     if missing_sources:
         errors.append("supplied sources are missing from the article")
@@ -164,6 +191,7 @@ def evaluate_article(
             "headings": headings,
             "paragraphs": paragraphs,
             "source_count": len(urls),
+            "repeated_paragraphs": len(repeated_paragraphs),
             "max_similarity": round(max_similarity, 3),
             "similar_article": similar_name,
         },

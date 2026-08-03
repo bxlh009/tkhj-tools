@@ -1,19 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-daily_ai_news.py — daily AI-frontier news check + conditional article publish
+daily_ai_news.py — AI source check + editorial draft generation
 
 Rules
 -----
-1. Runs every day (ideally at 08:00 US Eastern / 09:00 EDT).
-2. Searches the latest AI news from multiple English sources.
-3. Only acts when there is a genuine NEW big-event story (OpenAI, Anthropic,
-   Google DeepMind, Meta AI, Mistral, EU AI Act, major model release, etc.).
-4. If NO big-today story: exit silently (no article written, builds.py still
-   regenerates site so the date-stamp stays current).
-5. If YES: generate a single 1500-2500 word markdown article following the
-   project's writing rules (no markdown tables, no headings markers, no
-   line-start bullets, Arabic-numeral lists only). Save to output/ai/YYYY-MM-DD-slug.md.
-6. Append a one-line entry to ai_news_log.jsonl.
+1. Searches current AI sources and configured evergreen primary-source topics.
+2. Generates at most one candidate that passes the deterministic quality gate.
+3. Saves the candidate to output/ai/YYYY-MM-DD-slug.md and logs the decision.
+4. Never publishes, edits the public catalog, rebuilds the site, or deploys.
 
 Requires: requests (stdlib only — uses urllib).
 Requires: AGNES_API_KEY. Empty responses and low-quality drafts are rejected.
@@ -21,12 +15,12 @@ Requires: AGNES_API_KEY. Empty responses and low-quality drafts are rejected.
 from __future__ import annotations
 
 import datetime as _dt
+import argparse as _argparse
 import hashlib as _hashlib
 import json as _json
 import os as _os
 import pathlib as _pathlib
 import re as _re
-import subprocess as _subprocess
 import sys as _sys
 import urllib.error as _urllib_error
 import urllib.request as _urllib_request
@@ -42,7 +36,6 @@ CONFIG      = _json.loads(CONFIG_FILE.read_text("utf-8")) if CONFIG_FILE.exists(
 OUTPUT_AI   = ENGINE_DIR / "output" / "ai"
 SEEN_DB     = ENGINE_DIR / ".seen_ai_stories.json"
 NEWS_LOG    = ENGINE_DIR / "ai_news_log.jsonl"
-SITE_BUILD  = ENGINE_DIR / "site" / "build.py"
 
 RSS_FEEDS = [
     ("VentureBeat AI",              "https://venturebeat.com/category/ai/feed/"),
@@ -125,6 +118,31 @@ EVERGREEN_TOPICS = [
         "kind": "evergreen",
     },
 ]
+
+AUTO_EVERGREEN_METADATA = {
+    "Debug an AI Prompt with a Small Test Set": "ai-evaluate",
+    "Verify an AI Answer Before It Enters Your Notes": "ai-verify",
+    "When Few-Shot Examples Improve an AI Workflow": "ai-evaluate",
+    "Run a Reversible Pilot Before Automating Work with AI": "ai-control",
+    "Break a Complex AI Task into Verifiable Steps": "ai-define",
+    "Document Uncertainty in AI-Assisted Decisions": "ai-verify",
+    "Write Clear Output Constraints for an AI Prompt": "ai-define",
+    "Create a Human Review Checkpoint for AI Content": "ai-control",
+}
+SECONDARY_PRIMARY_SOURCE = "https://oecd.ai/en/ai-principles"
+
+
+def automatic_evergreen_topics():
+    topics = []
+    for original in EVERGREEN_TOPICS:
+        pathway_id = AUTO_EVERGREEN_METADATA.get(original["title"])
+        if not pathway_id:
+            continue
+        item = dict(original)
+        item["pathway_id"] = pathway_id
+        item["links"] = [item["link"], SECONDARY_PRIMARY_SOURCE]
+        topics.append(item)
+    return topics
 
 
 # Safety: blocklist for dangerous/skip domains
@@ -279,7 +297,7 @@ def make_prompt(item, style_rules):
     user_msg = (
         f"TITLE: {item['title']}\n"
         f"SOURCE: {item['source']}\n"
-        f"LINK:   {item['link']}\n"
+        f"LINKS:\n" + "\n".join(f"- {url}" for url in item.get("links", [item["link"]])) + "\n"
         f"SUMMARY:\n{item['summary']}\n\n"
         "Write only an 800-1500 word article body in Markdown; do not add YAML.\n"
         "Required sections: ## What the source establishes; ## What this means; "
@@ -321,8 +339,13 @@ def call_llm(system, user):
 def article_text(item, body):
     today = _today()
     slug = _slugify(item["title"]) or "ai-news"
-    source_url = item.get("link", "")
-    refs_section = f"\n## Sources\n\n- {source_url}\n" if source_url else ""
+    source_urls = item.get("links", [item.get("link", "")])
+    body = _re.sub(
+        r"\n## Sources\s*\n.*$", "", body, flags=_re.IGNORECASE | _re.DOTALL
+    ).rstrip()
+    refs_section = "\n\n## Sources\n\n" + "\n".join(
+        f"- {url}" for url in source_urls if url
+    ) + "\n"
     frontmatter = (
         "---\n"
         f'title: "{item["title"]}"\n'
@@ -330,6 +353,7 @@ def article_text(item, body):
         f'date: "{today}"\n'
         'domain: "ai"\n'
         'category: "AI"\n'
+        f'pathway_id: "{item.get("pathway_id", "")}"\n'
         f'description: "{item.get("summary", "").replace(chr(34), chr(39))[:220]}"\n'
         f'primary_keyword: "{slug}"\n'
         f'word_count: {len(body.split())}\n'
@@ -357,13 +381,6 @@ def save_article(item, body):
         )
     out_path.write_text(article, encoding="utf-8")
     return out_path
-def rebuild_site():
-    r = _subprocess.run([_sys.executable, str(SITE_BUILD)], capture_output=True, text=True)
-    if r.returncode != 0:
-        print("[warn] build.py failed:", r.stderr)
-        return False
-    return True
-
 def log_event(entry):
     with NEWS_LOG.open("a", encoding="utf-8") as f:
         f.write(_json.dumps(entry, ensure_ascii=False) + "\n")
@@ -408,15 +425,18 @@ def days_since(date_str):
     return (now - last).days
 
 def main():
+    parser = _argparse.ArgumentParser()
+    parser.add_argument("--auto-publish", action="store_true")
+    args = parser.parse_args()
     print(f"=== daily_ai_news.py — {_today()} ===")
     if last_ai_article_date() == _today():
-        print("[ai] already published today, skipping")
+        print("[ai] already drafted today, skipping")
         return 0
     style_rules_path = ENGINE_DIR / "rules" / "WRITING_RULES.md"
     style_rules = style_rules_path.read_text("utf-8") if style_rules_path.exists() else ""
     db = _load_seen()
-    print("[1/5] Pulling RSS feeds...")
-    items = pull_feeds()
+    print("[1/5] Pulling RSS feeds..." if not args.auto_publish else "[1/5] Loading approved evergreen queue...")
+    items = [] if args.auto_publish else pull_feeds()
     print(f"  pulled {len(items)} candidate items")
 
     print("[2/5] Building evidence-backed candidate queue...")
@@ -433,19 +453,20 @@ def main():
         and not already_seen(item, db)
     ]
     offset = _dt.date.today().toordinal() % len(EVERGREEN_TOPICS)
-    evergreen = EVERGREEN_TOPICS[offset:] + EVERGREEN_TOPICS[:offset]
+    topic_pool = automatic_evergreen_topics() if args.auto_publish else EVERGREEN_TOPICS
+    evergreen = topic_pool[offset % len(topic_pool):] + topic_pool[:offset % len(topic_pool)]
     evergreen = [item for item in evergreen if not already_seen(item, db)]
     # Important news wins. Official evergreen guides are the preferred fallback;
     # other same-day updates keep the daily queue renewable after evergreen topics
     # have been used, while the quality gate still blocks thin recaps.
-    candidates = news + evergreen + daily_updates
+    candidates = evergreen if args.auto_publish else news + evergreen + daily_updates
     print(
         f"  major news={len(news)} evergreen={len(evergreen)} "
         f"other daily updates={len(daily_updates)}"
     )
     if not candidates:
-        print("[ERROR] no unused AI topic is available; extend EVERGREEN_TOPICS")
-        return 1
+        print("[ai] no unused approved topic; safely skipping")
+        return 0
 
     minimum = int(CONFIG.get("defaults", {}).get("ai_news_min_words", 800))
     maximum = int(CONFIG.get("defaults", {}).get("ai_news_max_words", 1500))
@@ -469,7 +490,7 @@ def main():
             domain="ai",
             min_words=minimum,
             max_words=maximum,
-            source_urls=[target["link"]],
+            source_urls=target.get("links", [target["link"]]),
             existing_dir=OUTPUT_AI,
         )
         print(f"  [gate] {report.summary()} | {report.metrics}")
@@ -484,25 +505,25 @@ def main():
             )
             continue
 
-        print("[5/5] Saving, publishing, and rebuilding...")
+        print("[5/5] Saving editorial draft...")
         out_path = save_article(target, body)
-        destination = publish(out_path)
+        if args.auto_publish:
+            publish(out_path, automatic_policy_approval=True)
         mark_seen(target, db)
         _save_seen(db)
         log_event(
             {
                 "date": _today(),
-                "action": "published",
+                "action": "drafted",
                 "file": str(out_path),
-                "site_file": str(destination),
                 "title": target["title"],
                 "source": target["source"],
                 "score": score_item(target),
             }
         )
         print(f"  saved: {out_path}")
-        print(f"  published: {destination}")
-        return 0 if rebuild_site() else 1
+        print("  status: automatically published" if args.auto_publish else "  status: editorial draft only; public curation is a separate step")
+        return 0
 
     print("[ERROR] three AI candidates failed the quality gate")
     return 1

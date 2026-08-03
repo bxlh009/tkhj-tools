@@ -1,17 +1,29 @@
-name: Daily Content Generation
+name: Controlled Automatic Publishing
 
 on:
   schedule:
-    # Beijing 18:00, 21:00, and 00:00 retry windows. Daily guards prevent
-    # duplicate Learning or AI publication after the first successful run.
-    - cron: '0 10,13,16 * * *'
+    - cron: '0 10 * * 1'
+    - cron: '0 10 * * 4'
   workflow_dispatch:
+    inputs:
+      track:
+        description: Content track to evaluate
+        required: true
+        default: learning
+        type: choice
+        options:
+          - learning
+          - ai
 
 permissions:
   contents: write
 
+concurrency:
+  group: controlled-content-publishing
+  cancel-in-progress: false
+
 jobs:
-  generate:
+  publish:
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
@@ -22,28 +34,45 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Set API key
-        run: echo "AGNES_API_KEY=${{ secrets.AGNES_API_KEY }}" >> $GITHUB_ENV
-
-      - name: Generate daily content
-        run: python scripts/daily_generate.py
-
-      - name: Translate missing guides and rebuild
+      - name: Select scheduled track
+        shell: bash
         run: |
-          python scripts/translate_article.py --all
-          python site/build.py
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            track="${{ inputs.track }}"
+          elif [[ "${{ github.event.schedule }}" == "0 10 * * 1" ]]; then
+            track="learning"
+          else
+            track="ai"
+          fi
+          echo "CONTENT_TRACK=$track" >> "$GITHUB_ENV"
 
-      - name: Verify quality gates
+      - name: Generate and policy-publish one eligible guide
+        env:
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+        run: python scripts/daily_generate.py --track "$CONTENT_TRACK" --auto-publish
+
+      - name: Translate newly accepted guides
+        run: python scripts/translate_article.py --all
+
+      - name: Build public site
+        run: python site/build.py
+
+      - name: Verify publication and AdSense readiness
         run: |
           python scripts/test_content_quality.py
+          python scripts/test_publish_article.py
+          python scripts/test_automatic_pipeline.py
+          python scripts/test_draft_only_automation.py
+          python scripts/test_curation.py
           python scripts/test_translation.py
           python scripts/test_canonical_urls.py
           python scripts/audit_adsense_readiness.py
 
-      - name: Commit and push
+      - name: Commit only a fully verified publication
+        shell: bash
         run: |
           git config user.name "TKHJ Bot"
           git config user.email "bot@tkhjtools.top"
           git add output/ site/content/ daily_log.jsonl .seen_exam_vars.json .seen_ai_stories.json ai_news_log.jsonl
-          git diff --staged --quiet || git commit -m "Daily content $(date +'%Y-%m-%d')"
+          git diff --staged --quiet || git commit -m "Verified content publication $(date +'%Y-%m-%d')"
           git push

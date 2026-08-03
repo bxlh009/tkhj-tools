@@ -94,17 +94,21 @@ def test_token_control():
 # 3. 内容质量门禁
 def test_scoring():
     print("\n=== 3. 内容质量门禁 ===")
-    source = "https://example.com/source"
-    paragraph = (
-        "This section explains a concrete decision and the evidence a reader "
-        "should use before taking the next reversible step.\n\n"
-    )
+    source = "https://www.ets.org/toefl/test-takers/ibt/prepare.html"
+
+    def paragraphs(topic, count):
+        return "".join(
+            f"{topic} step {index} records evidence item {index}, explains a distinct learner "
+            f"decision, and sets a checkable action for practice round {index}.\n\n"
+            for index in range(1, count + 1)
+        )
+
     good = (
-        "## Method\n\n" + paragraph * 8
+        "## Method\n\n" + paragraphs("Method", 8)
         + "## Original practice example one\n\nScenario and answer with reasoning.\n\n"
-        + paragraph * 6
+        + paragraphs("First scenario", 6)
         + "## Original practice example two\n\nTry this scenario and check your answer.\n\n"
-        + paragraph * 6
+        + paragraphs("Second scenario", 6)
         + f"## Sources\n\n- {source}\n"
     )
     report = content_quality.evaluate_article(

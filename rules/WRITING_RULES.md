@@ -9,8 +9,8 @@ TKHJ Tools has two tracks:
 1. Learning: exam methods, study systems, original practice, and decision tools.
 2. AI: product changes, practical workflows, prompt design, and evidence-based decision guides.
 
-The daily target is one publishable Learning article and one publishable AI
-article. Frequency never permits publishing a failed draft.
+There is no publication-frequency quota. Automation may create candidate drafts,
+but it must not publish, change the public manifest, or classify a guide for curation.
 
 ## Truth and authorship
 
@@ -45,8 +45,8 @@ reader decision or workflow, state limitations, and list sources. RSS summaries
 are discovery inputs, not evidence for fabricated tests, benchmarks, prices,
 quotes, or broad market conclusions.
 
-When there is no qualifying daily news event, use a configured evergreen AI topic
-with official documentation. Never create a news placeholder merely to meet quota.
+When there is no qualifying news event, use a configured evergreen AI topic with
+official documentation. Never create a news placeholder merely to fill a queue.
 
 ## Structure and style
 
@@ -67,5 +67,7 @@ Reject a generated draft before saving when it:
 - lacks limitations and a reader decision for AI; or
 - is 30% or more similar to an existing draft in the same track.
 
-Passing the gate means “eligible for publication automation,” not independent
-confirmation that every source claim is true.
+Passing the gate means “eligible for the editorial queue.” It is not publication,
+editorial approval, independent fact confirmation, or a decision to index the page.
+Public inclusion requires explicit maintainer approval and a classification in
+`site/content/curation.json`; an unclassified catalog entry must block the build.

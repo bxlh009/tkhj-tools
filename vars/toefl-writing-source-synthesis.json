@@ -1,0 +1,8 @@
+{
+  "type": "exam", "exam_name": "TOEFL", "section_name": "Writing",
+  "min_words": 1800, "max_words": 2500,
+  "title": "Synthesize Reading and Listening Evidence in TOEFL Writing",
+  "primary_keyword": "TOEFL writing source synthesis",
+  "long_tail_keywords": ["integrated writing evidence", "connect lecture and reading claims"],
+  "slug": "toefl-writing-source-synthesis", "language": "English"
+}
