@@ -1117,5 +1117,45 @@
     "primary_source_domains": [
       "ets.org"
     ]
+  },
+  {
+    "slug": "2026-08-06-when-few-shot-examples-improve-an-ai-workflow",
+    "file": "2026-08-06-when-few-shot-examples-improve-an-ai-workflow.md",
+    "title": "When Few-Shot Examples Improve an AI Workflow",
+    "description": "A decision guide for adding specific and varied examples without overfitting a prompt to one case.",
+    "category": "AI",
+    "track": "ai",
+    "published": "2026-08-06",
+    "updated": "2026-08-06",
+    "sources": [
+      [
+        "ai.google.dev",
+        "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+      ],
+      [
+        "oecd.ai",
+        "https://oecd.ai/en/ai-principles"
+      ]
+    ],
+    "automation_assisted": true,
+    "editorial_status": "automatic_policy",
+    "publication_mode": "automatic_policy",
+    "pathway_id": "ai-evaluate",
+    "quality_policy_version": 1,
+    "quality_metrics": {
+      "domain": "ai",
+      "word_count": 1218,
+      "headings": 6,
+      "paragraphs": 27,
+      "source_count": 2,
+      "repeated_paragraphs": 0,
+      "max_similarity": 0.0,
+      "similar_article": null
+    },
+    "quality_fingerprint": "68e16ea654bd17ddda6f1cca4cf2cb58b071a57b60f5da1d65a73943a3f9004d",
+    "primary_source_domains": [
+      "google.dev",
+      "oecd.ai"
+    ]
   }
 ]

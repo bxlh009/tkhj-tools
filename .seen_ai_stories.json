@@ -123,5 +123,10 @@
     "title": "Claude Opus 5 pushes prompt-to-game AI from rough color blocks to full 3D prototypes with physics and music",
     "link": "https://the-decoder.com/claude-opus-5-pushes-prompt-to-game-ai-from-rough-color-blocks-to-full-3d-prototypes-with-physics-and-music/",
     "date": "2026-08-02"
+  },
+  "3519017b03998b": {
+    "title": "When Few-Shot Examples Improve an AI Workflow",
+    "link": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+    "date": "2026-08-06"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-03",
+  "updated": "2026-08-06",
   "purpose": "Evidence-to-action guides for language learning decisions and reliable AI workflows.",
   "featured": [
     "english-exam-error-log",
@@ -107,7 +107,8 @@
         "2026-07-10-build-a-five-case-test-set-for-an-ai-prompt",
         "2026-07-20-compare-two-prompts-with-the-same-evaluation-cases",
         "2026-07-12-keep-a-failure-log-for-an-ai-assisted-workflow",
-        "2026-07-21-version-an-ai-prompt-without-losing-its-test-history"
+        "2026-07-21-version-an-ai-prompt-without-losing-its-test-history",
+        "2026-08-06-when-few-shot-examples-improve-an-ai-workflow"
       ]
     },
     {
